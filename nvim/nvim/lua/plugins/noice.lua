@@ -1,7 +1,7 @@
 local M = {
   "folke/noice.nvim",
-  event = "VeryLazy",
-	requires = {
+	event = { "VeryLazy", "CmdlineEnter" },
+	dependencies = {
 		'rcarriga/nvim-notify'
 	}
 }
@@ -14,7 +14,7 @@ require('noice').setup({
 			enabled = true,
 			view = 'cmdline_popup',
 			format = {
-				cmdline     = { icon = '>_' },
+				cmdline = { icon = '>_' },
 			},
 		},
 		messages = {
@@ -27,7 +27,7 @@ require('noice').setup({
 		},
 		popupmenu = {
 			enabled = true,
-			backend = 'cmp'
+			backend = 'nui'
 		},
 		lsp = {
 			signature = {
@@ -76,10 +76,11 @@ require('noice').setup({
 			excluded_filetypes = { "cmp_menu", "cmp_docs", "notify" },
 		},
 		presets = {
-			bottom_search = true,
-			-- command_palette = true,
-			-- long_message_to_split = false,
-			inc_rename = true,
+      bottom_search = true,
+      command_palette = true,
+      long_message_to_split = true,
+      inc_rename = true,
+      cmdline_output_to_split = false,
 		},
 		views = {
 			mini = {
@@ -101,7 +102,7 @@ require('noice').setup({
 			popupmenu = {
 				relative = 'editor',
 				position = {
-					row = 8,
+					-- row = 8,
 					col = "50%",
 				},
 				size = {

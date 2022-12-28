@@ -8,29 +8,43 @@ function M.setup(options)
     debounce = 150,
     save_after_format = false,
     sources = {
-      -- nls.builtins.formatting.prettierd,
-      nls.builtins.formatting.stylua,
-      nls.builtins.formatting.fish_indent,
-      -- nls.builtins.formatting.fixjson.with({ filetypes = { "jsonc" } }),
-      -- nls.builtins.formatting.eslint_d,
-      -- nls.builtins.diagnostics.shellcheck,
-      nls.builtins.formatting.shfmt,
-      nls.builtins.diagnostics.markdownlint,
-      -- nls.builtins.diagnostics.luacheck,
-      nls.builtins.formatting.prettierd.with({
-        filetypes = { "markdown" }, -- only runs `deno fmt` for markdown
-      }),
-      nls.builtins.diagnostics.selene.with({
-        condition = function(utils)
-          return utils.root_has_file({ "selene.toml" })
-        end,
-      }),
+		-- formatting
+		nls.builtins.formatting.shfmt,
+		nls.builtins.formatting.black,
+		nls.builtins.formatting.autopep8,
+		nls.builtins.formatting.isort,
+		nls.builtins.formatting.trim_newlines,
+		nls.builtins.formatting.prettier.with({
+			filetypes = { 'html', 'css', 'yaml', 'markdown', 'json', 'javascript' },
+		}),
+		-- nls.builtins.formatting.stylelint,
+		-- nls.builtins.formatting.stylua,
 
-      nls.builtins.code_actions.gitsigns,
-      nls.builtins.formatting.isort,
-      nls.builtins.formatting.black,
-      nls.builtins.diagnostics.flake8,
-    },
+		-- diagnostics
+		-- with_diagnostics_code(nls.builtins.diagnostics.shellcheck),
+		-- nls.builtins.diagnostics.djlint,
+		nls.builtins.diagnostics.curlylint,
+		nls.builtins.diagnostics.tidy,
+		-- nls.builtins.diagnostics.shellcheck,
+		nls.builtins.diagnostics.flake8,
+		-- nls.builtins.diagnostics.mypy,
+		nls.builtins.diagnostics.cmake_lint,
+		-- nls.builtins.diagnostics.stylelint,
+		nls.builtins.diagnostics.trail_space,
+		nls.builtins.diagnostics.gitlint.with {
+			extra_args = { '--contrib=contrib-title-conventional-commits', '--ignore=body-is-missing' },
+		},
+
+		nls.builtins.hover.dictionary,
+
+		-- code actions
+		nls.builtins.code_actions.refactoring,
+		-- nls.builtins.code_actions.refactoring,
+		nls.builtins.code_actions.proselint,
+		nls.builtins.code_actions.eslint_d,
+		nls.builtins.code_actions.gitsigns,
+		nls.builtins.code_actions.gitrebase,
+	},
     on_attach = options.on_attach,
     root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", ".git"),
   })

@@ -40,13 +40,12 @@ require("lazy").setup("plugins", {
  -- debug = true,
 })
 
+require("config.colors")
 vim.api.nvim_create_autocmd("User", {
  pattern = "VeryLazy",
  callback = function()
   require("config.keymaps")
   require("config.commands")
-  require("config.autocmds")
-  require("config.colors")
  end,
 })
 
@@ -76,5 +75,4 @@ local builtins = {
 for _, plugin in ipairs(builtins) do
  vim.g["loaded_" .. plugin] = 1
 end
-
 -- End of File

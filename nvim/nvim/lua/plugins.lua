@@ -10,8 +10,25 @@ return {
 			require('nvim-web-devicons').setup()
 		end
 	},
+	{
+		'hood/popui.nvim',
+		disable = false,
+		config = function()
+			vim.ui.select = require('popui.ui-overrider')
+			vim.ui.input = require('popui.input-overrider')
+		end
+	},
   "rlch/github-notifications.nvim",
   { "folke/neoconf.nvim", cmd = "Neoconf" },
+	{
+		'NvChad/nvim-colorizer.lua',
+		disable = false,
+		event = 'VimEnter',
+		config = function ()
+			require('colorizer').setup()
+			vim.cmd([[ColorizerAttachToBuffer]])
+		end
+	},
 	{ "EdenEast/nightfox.nvim", event = "VeryLazy" },
 	{
 		"mbbill/undotree",
@@ -34,7 +51,6 @@ return {
 	},
 	{ "NvChad/nvim-colorizer.lua", ft = { "css" } },
   { "stevearc/dressing.nvim", event = "VeryLazy" },
-	{ 'p00f/nvim-ts-rainbow' },
   {
     "ThePrimeagen/refactoring.nvim",
     init = function()
@@ -93,6 +109,18 @@ return {
       end, { desc = "Structural Replace" })
     end,
   },
+	{
+		'kylechui/nvim-surround',
+		event = 'InsertEnter',
+		-- keys = {{'n', 'ys'}, {'n', 'ds'}, {'n', 'cs'}, {'x', 'S'}},
+		init = function ()
+			require('nvim-surround').setup({
+				highlight = {
+					duration = 300,
+			}
+		})
+	end
+	},
   {
     "nvim-treesitter/nvim-treesitter-context",
     event = "BufReadPre",
@@ -117,11 +145,10 @@ return {
 	},
 	{
 		'lewis6991/satellite.nvim',
-		event = 'VimEnter',
-		after = { 'nvim-lspconfig' },
+		event = 'VeryLazy',
 		config=function ()
 			require('satellite').setup()
 		end
-	}
+	},
 }
 -- End of File

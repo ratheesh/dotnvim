@@ -1,5 +1,6 @@
 local M = {
 	"hrsh7th/nvim-cmp",
+	disable = false,
 	event = "InsertEnter",
 	dependencies = {
 		"hrsh7th/cmp-buffer",
@@ -8,13 +9,11 @@ local M = {
 		"hrsh7th/cmp-nvim-lua",
 		"L3MON4D3/LuaSnip",
 		"onsails/lspkind-nvim",
-
+		"dmitmel/cmp-cmdline-history",
 	},
 }
 
 function M.config()
-	local cmp = require("cmp")
-	local lspkind = require("lspkind")
 	local cmp     = require('cmp')
 	local types   = require('cmp.types')
 	local luasnip = require('luasnip')
@@ -37,10 +36,10 @@ function M.config()
 	end
 
 	local icons = {
-		Text     = ' ' , Method = ' ' , Function  = ' ' , Constructor = ' ' , Field         = ' ' ,
-		Variable = ' ' , Class  = ' ' , Interface = ' ' , Module      = ' ' , Property      = ' ' ,
-		Unit     = ' ' , Value  = ' ' , Enum      = ' ' , Keyword     = ' ' , Snippet       = ' ' ,
-		color    = ' ' , File   = ' ' , Reference = ' ' , Folder      = ' ' , Enummember    = ' ' ,
+		Text     = ' ' , Method = 'ƒ ' , Function  = ' ' , Constructor = ' ' , Field         = ' ' ,
+		Variable = ' ' , Class  = ' ' , Interface = ' ' , Module      = ' ' , Property      = ' ' ,
+		Unit     = ' ' , Value  = ' ' , Enum      = ' ' , Keyword     = ' ' , Snippet       = '﬌ ' ,
+		color    = ' ' , File   = ' ' , Reference = ' ' , Folder      = ' ' , Enummember    = ' ' ,
 		Constant = ' ' , Struct = 'פּ ' , Event     = ' ' , Operator    = ' ' , Typeparameter = ' ' ,
 
 		--[[ Text     = '',  Method = '', Function  = '', Constructor = '', Field         = 'ﰠ',
@@ -144,7 +143,7 @@ function M.config()
 				else
 					fallback()
 				end
-			end, { 'i', 's' }),
+			end, { 'i', 's', 'c' }),
 
 			['<S-Tab>'] = cmp.mapping(function(fallback)
 				if cmp.visible() then
@@ -154,9 +153,38 @@ function M.config()
 				else
 					fallback()
 				end
-			end, { 'i', 's' }),
+			end, { 'i', 's', 'c' }),
 		}
 	})
+
+	-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+	local cmdline_view = {
+		entries = {
+			name = 'wildmenu',
+			separator = ' • ',
+		},
+		winhighlight = 'Normal:WildStatus,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None',
+	}
+	cmp.setup.cmdline({ '/', '?' }, {
+		mapping = cmp.mapping.preset.cmdline(),
+		view = cmdline_view,
+		sources = {
+			{ name = 'buffer' }
+		}
+	})
+
+	-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+	cmp.setup.cmdline(':', {
+		mapping = cmp.mapping.preset.cmdline(),
+		-- view = cmdline_view,
+		sources = cmp.config.sources({
+			{ name = 'path' }
+		}, {
+			{ name = 'cmdline' }
+		})
+	})
+	local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+	cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done { map_char = { tex = '' } })
 end
 
 return M

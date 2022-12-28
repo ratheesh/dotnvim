@@ -17,7 +17,7 @@ local function map(mode, new_keys, to_do, options)
   end
   local ok, _ = pcall(keymap, mode, new_keys, to_do, default_options)
   if not ok then
-    local msg = 'Fail to mapping ' .. new_keys .. ' for ' .. to_do
+    local msg = 'Fail to map ' .. new_keys .. ' for ' .. to_do
     vim.notify(msg, vim.log.levels.ERROR, {
       title = 'Keymap',
     })
@@ -46,10 +46,12 @@ map("n", "<Leader>w", "<cmd>w<CR>")
 map("n", "<Leader>x", "<cmd>x<CR>")
 map("n", "<Leader>X", "<cmd>xall<CR>")
 map({ "n", "x" }, "<Leader>;", ":", { desc = "Enter Cmd Mode" })
-map("n", "<BS>", "<cmd>nohlsearch<CR>")
+-- map("n", "<BS>", "<cmd>nohlsearch<CR>")
+-- map("n", "<BS>", "V")
 map("n", "<Leader><BS>", "<C-V>", { desc = "Enter Visual Block Mode" })
 map("n", "<Leader><Space>", "V", { desc = "Enter Visual Mode" })
 -- map("n" , "<A-d>", "<cmd>bdelete<CR>", { desc = "Delete Current Buf" })
+
 map("n", "<A-o>", "<cmd>call append(line('.')   , '')<CR>")
 map("n", "<A-O>", "<cmd>call append(line('.')-1 , '')<CR>")
 map("n", "<F2>", "<cmd>echomsg expand('%:p')<CR>")
@@ -70,6 +72,7 @@ map("n", "<leader>j", ":m .+1<CR>==")
 map("v", "J", ":m '>+1<CR>gv=gv") ]]
 map("i", "<C-k>", "<Esc>:m .-2<CR>==")
 map("i", "<C-j>", "<Esc>:m .+1<CR>==")
+
 map("i", ".", ".<C-g>u")
 map("i", "!", "!<C-g>u")
 map("i", "?", "?<C-g>u")

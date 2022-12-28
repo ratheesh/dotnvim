@@ -9,6 +9,7 @@ local M = {
     "RRethy/nvim-treesitter-textsubjects",
     "nvim-treesitter/nvim-treesitter-refactor",
     "mfussenegger/nvim-treehopper",
+		'p00f/nvim-ts-rainbow',
     { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
   },
 }
