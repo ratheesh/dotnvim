@@ -51,10 +51,6 @@ return {
 		end,
 	},
 	{
-		'RRethy/nvim-treesitter-endwise',
-		event = 'InsertEnter',
-	},
-	{
 		"ojroques/vim-oscyank",
 		cmd = { "OSCYank", "OSCYankReg" },
 	},
