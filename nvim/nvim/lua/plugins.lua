@@ -35,6 +35,15 @@ return {
 		cmd = { "UndotreeShow", "UndotreeToggle", "UndotreeHide", "UndotreeFocus" },
 	},
 	{
+		'echasnovski/mini.indentscope',
+		event = 'CursorHold',
+		config = function()
+			require('mini.indentscope').setup({
+				symbol = '╎',
+			})
+		end,
+	},
+	{
 		"smjonas/inc-rename.nvim",
 		cmd = "IncRename",
 		config = function()
