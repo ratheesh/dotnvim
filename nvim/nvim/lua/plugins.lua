@@ -95,17 +95,6 @@ return {
       })
     end,
   },
-
-  {
-    "folke/trouble.nvim",
-    cmd = { "TroubleToggle", "Trouble" },
-    config = function()
-      require("trouble").setup({
-        auto_open = false,
-        use_diagnostic_signs = true, -- en
-      })
-    end,
-  },
   {
     "cshuaimin/ssr.nvim",
     -- Calling setup is optional.
