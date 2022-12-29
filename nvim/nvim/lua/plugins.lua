@@ -22,6 +22,14 @@ return {
 	{ 'psliwka/vim-smoothie', keys = { '<c-u>', '<c-d>' }},
   { "folke/neoconf.nvim", cmd = "Neoconf" },
 	{
+		'xiyaowong/virtcolumn.nvim',
+		event   = 'BufReadPost',
+		config = function ()
+			vim.g.virtcolumn_char = '▕'
+			vim.g.virtcolumn_priority = 0
+		end
+	},
+	{
 		'NvChad/nvim-colorizer.lua',
 		disable = false,
 		event = 'VimEnter',
