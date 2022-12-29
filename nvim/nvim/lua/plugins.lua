@@ -19,6 +19,7 @@ return {
 		end
 	},
   "rlch/github-notifications.nvim",
+	{ 'psliwka/vim-smoothie', keys = { '<c-u>', '<c-d>' }},
   { "folke/neoconf.nvim", cmd = "Neoconf" },
 	{
 		'NvChad/nvim-colorizer.lua',
