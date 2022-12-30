@@ -1,6 +1,6 @@
 local M = {
   "nvim-telescope/telescope.nvim",
-	enabled = false,
+	enabled = true,
   cmd = { "Telescope" },
 
   dependencies = {
@@ -135,7 +135,7 @@ function M.config()
 end
 
 function M.init()
-  vim.keymap.set("n", "<leader>fo", function()
+  --[[ vim.keymap.set("n", "<leader>fo", function()
     require("plugins.telescope").git_files()
   end, { desc = "Find File" })
 
@@ -149,7 +149,7 @@ function M.init()
 
   vim.keymap.set("n", "<leader>pp", function()
     require("telescope").extensions.project.project({})
-  end, { desc = "Find Project" })
+  end, { desc = "Find Project" }) ]]
 end
 
 return M
