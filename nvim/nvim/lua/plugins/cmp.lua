@@ -1,14 +1,19 @@
 local M = {
 	"hrsh7th/nvim-cmp",
 	disable = false,
-	event = "InsertEnter",
+	event = { "InsertEnter", "CmdlineEnter" },
 	dependencies = {
+		"L3MON4D3/LuaSnip",
+    "hrsh7th/cmp-path",
 		"hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-emoji",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-nvim-lua",
 		"L3MON4D3/LuaSnip",
+    "saadparwaiz1/cmp_luasnip",
 		"onsails/lspkind-nvim",
+    "hrsh7th/cmp-cmdline",
 		"dmitmel/cmp-cmdline-history",
 	},
 }
@@ -50,6 +55,18 @@ function M.config()
 	}
 
 	cmp.setup({
+    --[[ completion = {
+      completeopt = "menu,menuone,noinsert",
+    }, ]]
+		snippet = {
+			expand = function(args) require('luasnip').lsp_expand(args.body) end,
+		},
+		experimental = {
+      ghost_text = { hl_group = "CmpGhostText" },
+		},
+		performance = {
+			trigger_debounce_time = 50
+		},
 		window = {
 			completion    = cmp.config.window.bordered({
 				winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None',
@@ -63,10 +80,11 @@ function M.config()
 		},
 		sources = {
 			-- { name = 'nvim_lsp_signature_help' },
+			{ name = 'luasnip'  },
 			{ name = 'nvim_lsp' },
 			{ name = 'nvim_lua' },
 			{ name = 'path'     },
-			{ name = 'luasnip'  },
+			{ name = 'emoji'  },
 			{
 				name = 'buffer',
 				option = {
@@ -81,26 +99,6 @@ function M.config()
 			},
 			{ name = 'conventionalcommits' },
 		},
-		experimental = {
-			ghost_text = { hl_group = 'CmpGhostText' }
-		},
-		performance = {
-			trigger_debounce_time = 100
-		},
-		snippet = {
-			expand = function(args) require('luasnip').lsp_expand(args.body) end,
-		},
-		--[[ sorting = {
-			comparators = {
-				cmp.config.compare.offset,
-				cmp.config.compare.exact,
-				cmp.config.compare.recently_used,
-				cmp.config.compare.kind,
-				cmp.config.compare.sort_text,
-				cmp.config.compare.length,
-				cmp.config.compare.order,
-			},
-		}, ]]
 		formatting = {
 			fields = { 'kind', 'abbr', 'menu'},
 			format = require('lspkind').cmp_format({
@@ -143,7 +141,7 @@ function M.config()
 				else
 					fallback()
 				end
-			end, { 'i', 's', 'c' }),
+			end, { 'i', 's' }),
 
 			['<S-Tab>'] = cmp.mapping(function(fallback)
 				if cmp.visible() then
@@ -153,7 +151,7 @@ function M.config()
 				else
 					fallback()
 				end
-			end, { 'i', 's', 'c' }),
+			end, { 'i', 's' }),
 		}
 	})
 
@@ -165,6 +163,7 @@ function M.config()
 		},
 		winhighlight = 'Normal:WildStatus,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None',
 	}
+
 	cmp.setup.cmdline({ '/', '?' }, {
 		mapping = cmp.mapping.preset.cmdline(),
 		view = cmdline_view,
@@ -174,15 +173,16 @@ function M.config()
 	})
 
 	-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-	cmp.setup.cmdline(':', {
+	cmp.setup.cmdline(":", {
 		mapping = cmp.mapping.preset.cmdline(),
-		-- view = cmdline_view,
 		sources = cmp.config.sources({
-			{ name = 'path' }
-		}, {
-			{ name = 'cmdline' }
-		})
+			{ name = "noice_popupmenu" },
+			{ name = "path" },
+			{ name = "cmdline" },
+			{ name = "cmdline_history" },
+		}),
 	})
+
 	local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 	cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done { map_char = { tex = '' } })
 end
