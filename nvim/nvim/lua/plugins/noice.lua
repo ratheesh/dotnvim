@@ -1,6 +1,6 @@
 local M = {
   "folke/noice.nvim",
-	event = { "VeryLazy", "CmdlineEnter" },
+	event = { "CmdlineEnter" },
 	dependencies = {
 		'rcarriga/nvim-notify'
 	}
