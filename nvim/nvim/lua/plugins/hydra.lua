@@ -1,7 +1,11 @@
 local M = {
 	'anuvyklack/hydra.nvim',
-	event = 'VimEnter',
-	requires = { 'anuvyklack/keymap-layer.nvim' },
+	-- event = 'VeryLazy',
+	keys = { '<space>g' },
+	dependencies = {
+		'anuvyklack/keymap-layer.nvim',
+		'NvChad/nvim-colorizer.lua',
+	},
 }
 
 function M.config()
