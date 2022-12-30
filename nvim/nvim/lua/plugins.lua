@@ -32,8 +32,7 @@ return {
 	},
 	{
 		'NvChad/nvim-colorizer.lua',
-		disable = false,
-		event = 'VimEnter',
+		event = 'VeryLazy',
 		config = function ()
 			require('colorizer').setup()
 			vim.cmd([[ColorizerAttachToBuffer]])
