@@ -115,8 +115,8 @@ return {
 	{
 		'kylechui/nvim-surround',
 		event = 'InsertEnter',
-		-- keys = {{'n', 'ys'}, {'n', 'ds'}, {'n', 'cs'}, {'x', 'S'}},
-		init = function ()
+		keys = { n = { 'ds', 'cs' }, x = { 'S' } },
+		config = function ()
 			require('nvim-surround').setup({
 				highlight = {
 					duration = 300,
