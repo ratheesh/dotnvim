@@ -5,7 +5,7 @@ require("config/lazy_bootstrap")
 
 require("lazy").setup("plugins", {
  defaults = { lazy = true },
- install = { colorscheme = { "tokyonight" } },
+ -- install = { colorscheme = { "tokyonight" } },
  ui = {
 	 border = 'rounded',
  },
