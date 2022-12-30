@@ -1,6 +1,7 @@
 local M = {
 	'kylechui/nvim-surround',
-	disable = false,
+	enabled = true,
+	keys = { n = { 'ds', 'cs' }, v = { 'S' } }
 }
 
 function M.config()
