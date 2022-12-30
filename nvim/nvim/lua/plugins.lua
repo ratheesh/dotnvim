@@ -4,6 +4,7 @@ return {
 	"folke/neodev.nvim",
 	"williamboman/mason-lspconfig.nvim",
   "folke/which-key.nvim",
+	{ "tpope/vim-repeat", keys = "." },
 	{
 		'kyazdani42/nvim-web-devicons',
 		config = function ()
