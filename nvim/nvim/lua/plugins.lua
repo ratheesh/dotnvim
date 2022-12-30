@@ -18,7 +18,7 @@ return {
 			vim.ui.input = require('popui.input-overrider')
 		end
 	},
-  "rlch/github-notifications.nvim",
+  -- "rlch/github-notifications.nvim",
 	{ 'psliwka/vim-smoothie', keys = { '<c-u>', '<c-d>' }},
   { "folke/neoconf.nvim", cmd = "Neoconf" },
 	{
@@ -38,7 +38,7 @@ return {
 			vim.cmd([[ColorizerAttachToBuffer]])
 		end
 	},
-	{ "EdenEast/nightfox.nvim", event = "VeryLazy" },
+	-- { "EdenEast/nightfox.nvim", event = "VeryLazy" },
 	{
 		"mbbill/undotree",
 		cmd = { "UndotreeShow", "UndotreeToggle", "UndotreeHide", "UndotreeFocus" },
@@ -77,7 +77,6 @@ return {
       require("refactoring").setup({})
     end,
   },
-
   {
     "simrat39/symbols-outline.nvim",
     cmd = "SymbolsOutline",
@@ -88,7 +87,6 @@ return {
       require("symbols-outline").setup()
     end,
   },
-
   {
     "m-demare/hlargs.nvim",
     event = "VeryLazy",
@@ -131,7 +129,6 @@ return {
       require("treesitter-context").setup()
     end,
   },
-
   {
     "andymass/vim-matchup",
     event = "BufReadPost",
