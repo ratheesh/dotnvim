@@ -45,7 +45,7 @@ return {
 	},
 	{
 		'echasnovski/mini.indentscope',
-		event = 'CursorHold',
+		event = 'LspAttach',
 		config = function()
 			require('mini.indentscope').setup({
 				symbol = '╎',
