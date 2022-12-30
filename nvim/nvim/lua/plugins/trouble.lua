@@ -1,6 +1,8 @@
 local M = {
 	'folke/trouble.nvim',
-	event = 'LspAttach',
+	enabled = true,
+	-- event = 'LspAttach',
+	cmd = { 'Trouble' }
 }
 
 function M.config()
