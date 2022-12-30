@@ -1,7 +1,8 @@
 
 local M = {
 		'bootleq/vim-cycle',
-		event = 'VeryLazy',
+		-- event = 'VeryLazy',
+		keys = { '-', '+' }
 }
 
 function M.config()
