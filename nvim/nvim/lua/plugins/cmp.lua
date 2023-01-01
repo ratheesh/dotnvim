@@ -3,7 +3,11 @@ local M = {
 	disable = false,
 	event = { "InsertEnter", "CmdlineEnter" },
 	dependencies = {
-		"L3MON4D3/LuaSnip",
+		{
+			"L3MON4D3/LuaSnip",
+			event = 'LspAttach',
+			dependencies = { 'rafamadriz/friendly-snippets' },
+		},
     "hrsh7th/cmp-path",
 		"hrsh7th/cmp-buffer",
     "hrsh7th/cmp-emoji",
@@ -168,18 +172,20 @@ function M.config()
 		mapping = cmp.mapping.preset.cmdline(),
 		view = cmdline_view,
 		sources = {
-			{ name = 'buffer' }
+			{ name = 'buffer' },
+			{ name = "cmdline_history" },
 		}
 	})
 
 	-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 	cmp.setup.cmdline(":", {
 		mapping = cmp.mapping.preset.cmdline(),
+		view = cmdline_view,
 		sources = cmp.config.sources({
-			{ name = "noice_popupmenu" },
-			{ name = "path" },
-			{ name = "cmdline" },
 			{ name = "cmdline_history" },
+			{ name = "cmdline" },
+			{ name = "path" },
+			{ name = "noice_popupmenu" },
 		}),
 	})
 
