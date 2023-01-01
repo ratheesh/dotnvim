@@ -169,5 +169,29 @@ return {
 			require('satellite').setup()
 		end
 	},
+	{
+		'dhruvasagar/vim-table-mode',
+		cmd = { 'TableModeToggle' , 'TableModeEnable', 'TableModeDisable', 'TableModeRealign' },
+		config = function ()
+			vim.g.table_mode_corner_corner   = '+'
+			vim.g.table_mode_header_fillchar = '='
+			vim.b.table_mode_corner          = '+'
+		end
+	},
+	{
+		'antoyo/vim-licenses',
+		cmd = { 'Gplv2', 'Apache', 'Mit' },
+		config = function ()
+			vim.g.licenses_copyright_holders_name = 'Ratheesh <ratheeshreddy@gmail.com>'
+			vim.g.licenses_authors_name           = 'Ratheesh S'
+			vim.g.licenses_default_commands       = { 'Gplv2', 'Apache', 'Mit' }
+		end
+	},
+	{
+		'lewis6991/spaceless.nvim',
+		config = function()
+			require'spaceless'.setup()
+		end
+	}
 }
 -- End of File
