@@ -23,11 +23,13 @@ return {
 	{ 'psliwka/vim-smoothie', keys = { '<c-u>', '<c-d>' }},
   { "folke/neoconf.nvim", cmd = "Neoconf" },
 	{
-		'xiyaowong/virtcolumn.nvim',
+		"lukas-reineke/virt-column.nvim",
+		enabled = true,
 		event   = 'BufReadPost',
 		config = function ()
-			vim.g.virtcolumn_char = '▕'
-			vim.g.virtcolumn_priority = 0
+			-- vim.g.virtcolumn_char = '▕'
+			-- vim.g.virtcolumn_priority = 0
+			require("virt-column").setup({char = "▕"})
 		end
 	},
 	{
