@@ -1,7 +1,8 @@
 local M = {
   "folke/noice.nvim",
-	event = { "CmdlineEnter" },
+	event = { 'VeryLazy' },
 	dependencies = {
+		"MunifTanjim/nui.nvim",
 		'rcarriga/nvim-notify'
 	}
 }
@@ -12,9 +13,12 @@ function M.config()
 require('noice').setup({
 		cmdline = {
 			enabled = true,
-			view = 'cmdline_popup',
+			view = 'cmdline',
 			format = {
 				cmdline = { icon = '>_' },
+				lua = false,
+				filter = false,
+				help = false,
 			},
 		},
 		messages = {
@@ -27,7 +31,7 @@ require('noice').setup({
 		},
 		popupmenu = {
 			enabled = true,
-			backend = 'nui'
+			backend = 'cmp'
 		},
 		lsp = {
 			signature = {
@@ -65,6 +69,9 @@ require('noice').setup({
 				},
 			},
 		},
+		hover = {
+      enabled = false,
+    },
 		notify = {
 			enabled = true,
 		},
@@ -81,6 +88,7 @@ require('noice').setup({
       long_message_to_split = true,
       inc_rename = true,
       cmdline_output_to_split = false,
+			lsp_doc_border = true,
 		},
 		views = {
 			mini = {
