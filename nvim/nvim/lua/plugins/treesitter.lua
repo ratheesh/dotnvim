@@ -5,20 +5,20 @@ local M = {
   event = "BufReadPost",
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    "RRethy/nvim-treesitter-textsubjects",
-    "nvim-treesitter/nvim-treesitter-refactor",
-    "mfussenegger/nvim-treehopper",
+    -- "RRethy/nvim-treesitter-textsubjects",
+    -- "nvim-treesitter/nvim-treesitter-refactor",
+    -- "mfussenegger/nvim-treehopper",
 		{ 'p00f/nvim-ts-rainbow', event = 'LspAttach' },
 		{ 'RRethy/nvim-treesitter-endwise', event = 'InsertEnter' },
-    { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
+    -- { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
   },
 }
 
 function M.init()
-  vim.cmd([[
-    omap     <silent> m :<C-U>lua require('tsht').nodes()<CR>
-    xnoremap <silent> m :lua require('tsht').nodes()<CR>
-  ]])
+  --vim.cmd([[
+  --  omap     <silent> m :<C-U>lua require('tsht').nodes()<CR>
+  --  xnoremap <silent> m :lua require('tsht').nodes()<CR>
+  --]])
 end
 
 function M.config()
