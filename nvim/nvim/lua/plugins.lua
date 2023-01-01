@@ -2,8 +2,9 @@ return {
 	"MunifTanjim/nui.nvim",
 	"nvim-lua/plenary.nvim",
 	"folke/neodev.nvim",
-	"williamboman/mason-lspconfig.nvim",
-  "folke/which-key.nvim",
+	{ 'mattn/emmet-vim', ft = { 'html', 'css', 'scss', 'xml' } },
+	{ "williamboman/mason-lspconfig.nvim", event = 'LspAttach' },
+	-- { "folke/which-key.nvim", keys = { '<space>' } },
 	{ "tpope/vim-repeat", keys = "." },
 	{
 		'kyazdani42/nvim-web-devicons',
@@ -65,7 +66,7 @@ return {
 		"ojroques/vim-oscyank",
 		cmd = { "OSCYank", "OSCYankReg" },
 	},
-	{ "NvChad/nvim-colorizer.lua", ft = { "css" } },
+	-- { "NvChad/nvim-colorizer.lua", ft = { "css" } },
   { "stevearc/dressing.nvim", event = "VeryLazy" },
   {
     "ThePrimeagen/refactoring.nvim",
@@ -106,6 +107,7 @@ return {
   {
     "cshuaimin/ssr.nvim",
     -- Calling setup is optional.
+		keys = { '<space>cR' },
     init = function()
       vim.keymap.set({ "n", "x" }, "<leader>cR", function()
         require("ssr").open()
@@ -114,7 +116,7 @@ return {
   },
 	{
 		'kylechui/nvim-surround',
-		event = 'InsertEnter',
+		event = 'VeryLazy',
 		keys = { n = { 'ds', 'cs' }, x = { 'S' } },
 		config = function ()
 			require('nvim-surround').setup({
