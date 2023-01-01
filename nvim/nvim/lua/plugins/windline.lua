@@ -544,6 +544,8 @@ windline.setup({
 		quickfix,
 	},
 })
+
+vim.opt.laststatus = 3
 end
 
 return M
