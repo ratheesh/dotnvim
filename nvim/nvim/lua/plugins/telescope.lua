@@ -10,7 +10,11 @@ local M = {
     { "nvim-telescope/telescope-symbols.nvim" },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		{ "natecraddock/telescope-zf-native.nvim" },
-		{ "desdic/telescope-rooter.nvim" }
+		{ "desdic/telescope-rooter.nvim" },
+		{
+			'nvim-telescope/telescope-frecency.nvim',
+			dependencies = { 'kkharji/sqlite.lua' }
+		}
   },
 }
 
@@ -30,7 +34,7 @@ end
 
 function M.config()
   -- local actions = require("telescope.actions")
-  local trouble = require("trouble.providers.telescope")
+  -- local trouble = require("trouble.providers.telescope")
 
   local telescope = require("telescope")
   local borderless = true
@@ -125,7 +129,7 @@ function M.config()
     },
   })
 
-  -- telescope.load_extension("frecency")
+  telescope.load_extension("frecency")
   -- telescope.load_extension("fzf")
   telescope.load_extension("z")
   telescope.load_extension("file_browser")
