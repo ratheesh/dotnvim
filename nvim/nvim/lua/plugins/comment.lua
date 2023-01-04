@@ -1,6 +1,6 @@
 local M = {
 	'numToStr/Comment.nvim',
-	-- event = 'CursorHold',
+	event = 'VeryLazy',
 	keys = { 'gc', 'gcc', 'gb', 'gbc', '<A-;>' },
 }
 
