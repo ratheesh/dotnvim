@@ -2,11 +2,12 @@
 -- License: MIT
 -- Neovim bootstraping
 
-vim.opt.rtp:append(vim.fn.stdpath "config" .. "/config")
+-- vim.opt.rtp:append(vim.fn.stdpath "config" .. "/config")
 
-require("config.settings")
+vim.g.mapleader        = " "
 require("config/lazy_bootstrap")
 
+require("config.settings")
 require("config.colors")
 vim.api.nvim_create_autocmd("User", {
 	pattern = "VeryLazy",
