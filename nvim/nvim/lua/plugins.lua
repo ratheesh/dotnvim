@@ -38,7 +38,7 @@ return {
 		event = 'VeryLazy',
 		config = function ()
 			require('colorizer').setup()
-			vim.cmd([[ColorizerAttachToBuffer]])
+			-- vim.cmd([[ColorizerAttachToBuffer]])
 		end
 	},
 	-- { "EdenEast/nightfox.nvim", event = "VeryLazy" },
