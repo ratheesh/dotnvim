@@ -1,3 +1,7 @@
+-- Copyright (c) 2023 Ratheesh <ratheeshreddy@gmail.com>
+-- License: MIT
+-- Gitsigns plugin config
+
 local M = {
   "lewis6991/gitsigns.nvim",
   event = "BufReadPre",
@@ -12,16 +16,15 @@ function M.config()
 				opts.buffer = bufnr
 				vim.keymap.set(mode, l, r, opts)
 			end
-
 			map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 		end,
 		signs = {
-			add = { text = "▍" },
-			change = { text = "▍", },
-			delete = { text = "▸", },
-			topdelete = { text = "▾", },
-			changedelete = { text = "▍", },
-			untracked = { text = "▍" },
+			add          = { text = "▍" },
+			change       = { text = "▍" },
+			delete       = { text = "━" },
+			topdelete    = { text = "▾" },
+			changedelete = { text = "▍" },
+			untracked    = { text = "▍" },
 		},
 		diff_opts = {
 			internal = true,
