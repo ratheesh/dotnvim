@@ -7,12 +7,6 @@ return {
 	-- { "folke/which-key.nvim", keys = { '<space>' } },
 	{ "tpope/vim-repeat", keys = "." },
 	{
-		'kyazdani42/nvim-web-devicons',
-		config = function ()
-			require('nvim-web-devicons').setup()
-		end
-	},
-	{
 		'hood/popui.nvim',
 		disable = false,
 		config = function()

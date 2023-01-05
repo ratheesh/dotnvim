@@ -2,7 +2,14 @@ local M = {
 	'goolord/alpha-nvim',
 	disable  = false,
 	event    = 'VimEnter',
-	dependencies = { 'kyazdani42/nvim-web-devicons' },
+	dependencies = {
+		{
+			'kyazdani42/nvim-web-devicons',
+			config = function ()
+				require('nvim-web-devicons').setup()
+			end
+		},
+	},
 }
 
 function M.config()
