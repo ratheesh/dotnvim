@@ -1,10 +1,7 @@
 return {
-	"MunifTanjim/nui.nvim",
-	"nvim-lua/plenary.nvim",
-	"folke/neodev.nvim",
+	{ "folke/neodev.nvim", event = 'VeryLazy' },
 	{ 'mattn/emmet-vim', ft = { 'html', 'css', 'scss', 'xml' } },
 	{ "williamboman/mason-lspconfig.nvim", event = 'LspAttach' },
-	-- { "folke/which-key.nvim", keys = { '<space>' } },
 	{ "tpope/vim-repeat", keys = "." },
 	{
 		'hood/popui.nvim',
@@ -187,6 +184,7 @@ return {
 	},
 	{
 		'lewis6991/spaceless.nvim',
+		event = 'VeryLazy',
 		config = function()
 			require'spaceless'.setup()
 		end
