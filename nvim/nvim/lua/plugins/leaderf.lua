@@ -5,6 +5,17 @@ local M = {
 	run = '<cmd>LeaderfInstallCExtension<cr>',
 }
 
+function M.init()
+  	local function map(mode, l, r, opts)
+  		opts = opts or {}
+  		vim.keymap.set(mode, l, r, opts)
+  	end
+  	map('n', '<leader>fo', '<cmd>Leaderf file<CR>')
+  	map('n', '<leader>fr', '<cmd>Leaderf mru<CR>')
+  	map('n', '<leader>ft', '<cmd>Leaderf bufTag<CR>')
+  	map('n', '<leader>/',  '<cmd>LeaderfRgInteractive<CR>')
+end
+
 function M.config()
 	vim.g.Lf_WindowPosition        = 'popup'
 	vim.g.Lf_WorkingDirectoryMode  = 'Ac'
@@ -21,16 +32,6 @@ function M.config()
 	vim.g.Lf_PopupBorders          = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' }
 	vim.g.Lf_ShowRelativePath      = 0
 	vim.g.Lf_StlSeparator          = { left = '', right = '', font = '' }
-
-	local function map(mode, l, r, opts)
-		opts = opts or {}
-		-- opts.buffer = bufnr
-		vim.keymap.set(mode, l, r, opts)
-	end
-	map('n', '<leader>fo', '<cmd>Leaderf file<CR>')
-	map('n', '<leader>fr', '<cmd>Leaderf mru<CR>')
-	map('n', '<leader>ft', '<cmd>Leaderf bufTag<CR>')
-	map('n', '<leader>d/', '<cmd>LeaderfRgInteractive<CR>')
 end
 
 return M
