@@ -4,6 +4,11 @@ return {
 	{ "williamboman/mason-lspconfig.nvim", event = 'LspAttach' },
 	{ "tpope/vim-repeat", keys = "." },
 	{
+		'winston0410/range-highlight.nvim',
+		event = { 'CmdlineEnter' },
+		dependencies = { "winston0410/cmd-parser.nvim"  }
+	},
+	{
 		'hood/popui.nvim',
 		disable = false,
 		config = function()
