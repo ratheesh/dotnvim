@@ -16,12 +16,21 @@ return {
   { "folke/neoconf.nvim", cmd = "Neoconf" },
 	{
 		"lukas-reineke/virt-column.nvim",
-		enabled = true,
+		enabled = false,
 		event   = 'BufReadPost',
 		config = function ()
 			-- vim.g.virtcolumn_char = '▕'
 			-- vim.g.virtcolumn_priority = 0
-			require("virt-column").setup({char = "▕"})
+			require("virt-column").setup({char = '▕', virtcolumn = '+1'})
+		end
+	},
+	{
+		'xiyaowong/virtcolumn.nvim',
+		enabled = true,
+		event = 'BufReadPost',
+		config = function ()
+			vim.g.virtcolumn_char = '▕' -- char to display the line
+			vim.g.virtcolumn_priority = 10 -- priority of extmark
 		end
 	},
 	{
