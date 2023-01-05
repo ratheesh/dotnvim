@@ -10,6 +10,7 @@ local M = {
     -- "mfussenegger/nvim-treehopper",
 		{ 'p00f/nvim-ts-rainbow', event = 'LspAttach' },
 		{ 'RRethy/nvim-treesitter-endwise', event = 'InsertEnter' },
+		"nvim-lua/plenary.nvim",
     -- { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
   },
 }
