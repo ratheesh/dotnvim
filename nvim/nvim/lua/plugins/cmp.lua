@@ -6,7 +6,8 @@ local M = {
 		'rafamadriz/friendly-snippets',
 		"L3MON4D3/LuaSnip",
     "hrsh7th/cmp-path",
-		"hrsh7th/cmp-buffer",
+		-- "hrsh7th/cmp-buffer",
+		"ve5li/cmp-buffer",
     "hrsh7th/cmp-emoji",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-path",
@@ -94,11 +95,7 @@ function M.config()
 				name = 'buffer',
 				option = {
 					get_bufnrs = function()
-						local bufs = {}
-						for _, win in ipairs(vim.api.nvim_list_wins()) do
-							bufs[vim.api.nvim_win_get_buf(win)] = true
-						end
-						return vim.tbl_keys(bufs)
+						return vim.api.nvim_list_bufs()
 					end
 				},
 			},
@@ -134,6 +131,12 @@ function M.config()
 			-- ['<C-e>']     = mapping.abort(),
 			['<C-y>']     = mapping.confirm({ select = true }),
 			['<CR>']      = mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
+			['<C-l>'] = cmp.mapping(function(fallback)
+				if cmp.visible() then
+					return cmp.complete_common_string()
+				end
+				fallback()
+			end, { 'i', 'c' }),
 			['<Tab>'] 		= mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item()
