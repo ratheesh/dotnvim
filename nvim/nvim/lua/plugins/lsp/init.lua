@@ -14,6 +14,20 @@ local M = {
 				})
 			end
 		},
+		{
+			'dnlhc/glance.nvim',
+			disable = false,
+			event = 'LspAttach',
+			config = function()
+				require('glance').setup({
+					border = {
+						enable      = true,
+						top_char    = '─',
+						bottom_char = '─',
+					},
+				})
+			end,
+		}
 	}
 }
 
