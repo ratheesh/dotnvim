@@ -1,5 +1,5 @@
 return {
-	{ "folke/neodev.nvim", event = 'VeryLazy' },
+	{ "folke/neodev.nvim", enabled =false, event = 'VeryLazy' },
 	{ 'mattn/emmet-vim', ft = { 'html', 'css', 'scss', 'xml' } },
 	{ "williamboman/mason-lspconfig.nvim", event = 'LspAttach' },
 	{ "tpope/vim-repeat", keys = "." },
@@ -16,26 +16,24 @@ return {
 			vim.ui.input = require('popui.input-overrider')
 		end
 	},
-  -- "rlch/github-notifications.nvim",
+	-- "rlch/github-notifications.nvim",
 	{ 'psliwka/vim-smoothie', keys = { '<c-u>', '<c-d>' }},
-  { "folke/neoconf.nvim", cmd = "Neoconf" },
+	{ "folke/neoconf.nvim", enabled = false, cmd = "Neoconf" },
 	{
 		"lukas-reineke/virt-column.nvim",
-		enabled = false,
-		event   = 'BufReadPost',
+		enabled = true,
+		event   = 'VeryLazy',
 		config = function ()
-			-- vim.g.virtcolumn_char = '▕'
-			-- vim.g.virtcolumn_priority = 0
 			require("virt-column").setup({char = '▕', virtcolumn = '+1'})
 		end
 	},
 	{
 		'xiyaowong/virtcolumn.nvim',
-		enabled = true,
+		enabled = false,
 		event = 'BufReadPost',
 		config = function ()
-			vim.g.virtcolumn_char = '▕' -- char to display the line
-			vim.g.virtcolumn_priority = 10 -- priority of extmark
+			vim.g.virtcolumn_char = '▕'
+			vim.g.virtcolumn_priority = 10
 		end
 	},
 	{
@@ -72,53 +70,60 @@ return {
 		cmd = { "OSCYank", "OSCYankReg" },
 	},
 	-- { "NvChad/nvim-colorizer.lua", ft = { "css" } },
-  { "stevearc/dressing.nvim", event = "VeryLazy" },
-  {
-    "ThePrimeagen/refactoring.nvim",
-    init = function()
-      -- prompt for a refactor to apply when the remap is triggered
-      vim.keymap.set("v", "<leader>r", function()
-        require("refactoring").select_refactor()
-      end, { noremap = true, silent = true, expr = false })
-    end,
-    config = function()
-      require("refactoring").setup({})
-    end,
-  },
-  {
-    "simrat39/symbols-outline.nvim",
-    cmd = "SymbolsOutline",
-    init = function()
-      vim.keymap.set("n", "<leader>cs", "<cmd>SymbolsOutline<cr>", { desc = "Symbols Outline" })
-    end,
-    config = function()
-      require("symbols-outline").setup()
-    end,
-  },
-  {
-    "m-demare/hlargs.nvim",
-    event = "VeryLazy",
-    enabled = false,
-    config = function()
-      require("hlargs").setup({
-        excluded_argnames = {
-          usages = {
-            lua = { "self", "use" },
-          },
-        },
-      })
-    end,
-  },
-  {
-    "cshuaimin/ssr.nvim",
-    -- Calling setup is optional.
+	{ "stevearc/dressing.nvim", event = "VeryLazy" },
+	{
+		"ThePrimeagen/refactoring.nvim",
+		init = function()
+			-- prompt for a refactor to apply when the remap is triggered
+			vim.keymap.set("v", "<leader>r", function()
+				require("refactoring").select_refactor()
+			end, { noremap = true, silent = true, expr = false })
+		end,
+		config = function()
+			require("refactoring").setup({})
+		end,
+	},
+	{
+		'ckolkey/ts-node-action',
+		dependencies = { 'nvim-treesitter' },
+		config = function()
+			require("ts-node-action").setup({})
+		end
+	},
+	{
+		"simrat39/symbols-outline.nvim",
+		cmd = "SymbolsOutline",
+		init = function()
+			vim.keymap.set("n", "<leader>cs", "<cmd>SymbolsOutline<cr>", { desc = "Symbols Outline" })
+		end,
+		config = function()
+			require("symbols-outline").setup()
+		end,
+	},
+	{
+		"m-demare/hlargs.nvim",
+		event = "VeryLazy",
+		enabled = false,
+		config = function()
+			require("hlargs").setup({
+				excluded_argnames = {
+					usages = {
+						lua = { "self", "use" },
+					},
+				},
+			})
+		end,
+	},
+	{
+		"cshuaimin/ssr.nvim",
+		-- Calling setup is optional.
 		keys = { '<space>cR' },
-    init = function()
-      vim.keymap.set({ "n", "x" }, "<leader>cR", function()
-        require("ssr").open()
-      end, { desc = "Structural Replace" })
-    end,
-  },
+		init = function()
+			vim.keymap.set({ "n", "x" }, "<leader>cR", function()
+				require("ssr").open()
+			end, { desc = "Structural Replace" })
+		end,
+	},
 	{
 		'kylechui/nvim-surround',
 		event = 'VeryLazy',
@@ -127,26 +132,27 @@ return {
 			require('nvim-surround').setup({
 				highlight = {
 					duration = 300,
-			}
-		})
-	end
+				}
+			})
+		end
 	},
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    event = "BufReadPre",
-    config = function()
-      require("treesitter-context").setup()
-    end,
-  },
-  {
-    "andymass/vim-matchup",
-    event = "BufReadPost",
-    config = function()
-      vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
-    end,
-  },
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		event = "BufReadPre",
+		config = function()
+			require("treesitter-context").setup()
+		end,
+	},
+	{
+		"andymass/vim-matchup",
+		event = "BufReadPost",
+		config = function()
+			vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
+		end,
+	},
 	{
 		'lewis6991/hover.nvim',
+		enabled = false,
 		event = 'LspAttach',
 		require = 'nvim-lspconfig',
 		config = function()
@@ -172,10 +178,37 @@ return {
 		end,
 	},
 	{
+		'asiryk/auto-hlsearch.nvim',
+		enabled = false,
+		init = function ()
+			require("auto-hlsearch").setup({
+				remap_keys = { "/", "?", "*", "#", "n", "N" },
+			})
+		end
+	},
+	{
 		'lewis6991/satellite.nvim',
 		event = 'VeryLazy',
-		config=function ()
+		config = function ()
 			require('satellite').setup()
+		end
+	},
+	{
+		'echasnovski/mini.align',
+		enabled = true,
+		init = function ()
+			require('mini.align').setup()
+		end
+	},
+	{
+		'junegunn/vim-easy-align',
+		enabled = false,
+		event   = "VeryLazy",
+		config  = function ()
+			vim.cmd([[
+			xmap ga <Plug>(EasyAlign)
+			nmap ga <Plug>(EasyAlign)
+			]])
 		end
 	},
 	{
@@ -200,7 +233,7 @@ return {
 		'lewis6991/spaceless.nvim',
 		event = 'VeryLazy',
 		config = function()
-			require'spaceless'.setup()
+			require('spaceless').setup()
 		end
 	}
 }
