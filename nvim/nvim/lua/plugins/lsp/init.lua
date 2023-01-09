@@ -4,7 +4,7 @@ local M = {
 	event = "BufReadPre",
 	dependencies = {
 		{ 'hrsh7th/cmp-nvim-lsp', event = 'LspAttach' },
-		{ 'ray-x/lsp_signature.nvim', event = 'InsertEnter' },
+		{ 'ray-x/lsp_signature.nvim', enabled = true, event = 'InsertEnter' },
 		{
 			'mrshmllow/document-color.nvim',
 			-- event   = 'LspAttach',
@@ -34,8 +34,8 @@ function M.config()
 	-- require("neoconf").setup()
 
 	local function on_attach(client, bufnr)
-		require( "lsp_signature").setup({
-			bind 						= true,
+		local lsp_signature_cfg = {
+			bind 			= true,
 			wrap            = true,
 			floating_window = false,
 			doc_lines       = 0,
@@ -43,10 +43,12 @@ function M.config()
 			hint_prefix     = '🐼 ',
 			hint_scheme     = 'String',
 			hi_parameter    = 'LspSignatureActiveParameter',
+			always_trigger  = true,
 			handler_opts    = {
 				border = 'rounded'
 			}
-		}, bufnr)
+		}
+		require('lsp_signature').on_attach(lsp_signature_cfg, bufnr)
 
 		if client.server_capabilities.definitionProvider then
 			vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
