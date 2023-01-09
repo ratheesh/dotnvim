@@ -6,8 +6,12 @@ local M = {
 		{ 'hrsh7th/cmp-nvim-lsp', event = 'LspAttach' },
 		{ 'ray-x/lsp_signature.nvim', enabled = true, event = 'InsertEnter' },
 		{
+			'Issafalcon/lsp-overloads.nvim',
+			event = 'InsertEnter'
+		},
+		{
 			'mrshmllow/document-color.nvim',
-			-- event   = 'LspAttach',
+			event   = 'LspAttach',
 			config  = function ()
 				require('document-color').setup({
 					mode = 'background',
@@ -34,7 +38,7 @@ local M = {
 function M.config()
 	require('plugins.lsp.pylance')
 
-	require("neodev").setup({
+	--[[ require("neodev").setup({
 		debug = true,
 		experimental = {
 			pathStrict = true,
@@ -42,10 +46,9 @@ function M.config()
 		library = {
 			runtime = "~/projects/neovim/runtime/",
 		},
-	})
+	}) ]]
 	require("mason")
 	require("plugins.lsp.diagnostics").setup()
-	-- require("neoconf").setup()
 
 	local function on_attach(client, bufnr)
 		local lsp_signature_cfg = {
@@ -179,18 +182,18 @@ function M.config()
 							strict = "Warning",
 						},
 						groupFileStatus = {
-							["ambiguity"] = "Opened",
-							["await"] = "Opened",
-							["codestyle"] = "None",
-							["duplicate"] = "Opened",
-							["global"] = "Opened",
-							["luadoc"] = "Opened",
-							["redefined"] = "Opened",
-							["strict"] = "Opened",
-							["strong"] = "Opened",
+							["ambiguity"]  = "Opened",
+							["await"]      = "Opened",
+							["codestyle"]  = "None",
+							["duplicate"]  = "Opened",
+							["global"]     = "Opened",
+							["luadoc"]     = "Opened",
+							["redefined"]  = "Opened",
+							["strict"]     = "Opened",
+							["strong"]     = "Opened",
 							["type-check"] = "Opened",
 							["unbalanced"] = "Opened",
-							["unused"] = "Opened",
+							["unused"]     = "Opened",
 						},
 						unusedLocalExclude = { "_*" },
 					},
@@ -198,7 +201,7 @@ function M.config()
 						enable = false,
 						defaultConfig = {
 							indent_style = "space",
-							indent_size = "2",
+							indent_size  = "2",
 							continuation_indent_size = "2",
 						},
 					},
