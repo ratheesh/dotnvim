@@ -9,6 +9,7 @@ require("config/lazy_bootstrap")
 
 require("config.settings")
 require("config.colors")
+require("config.autocmds")
 vim.api.nvim_create_autocmd("User", {
 	pattern = "VeryLazy",
 	callback = function()
