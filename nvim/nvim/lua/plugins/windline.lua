@@ -309,8 +309,10 @@ local function lsp_client_names(component)
 	for _, client in pairs(vim.lsp.get_active_clients({bufnr = 0})) do
 		if client.name ==  'jedi_language_server' then
 			client.name = 'jedi'
-		--[[ elseif client.name ==  'null-ls' then
-			client.name = nil ]]
+		elseif client.name ==  'sumneko_lua' then
+			client.name = 'lua'
+		elseif client.name ==  'null-ls' then
+			client.name = 'null'
 		end
 		table.insert(clients, client.name)
 	end
@@ -402,7 +404,7 @@ basic.indent = {
 basic.right = {
 	hl_colors = {
 		sep_before = { 'RightBg'  , 'NormalBg'         },
-		sep_after  = { 'RightBg'  , 'black'            },
+		sep_after  = { 'RightBg'  , 'NormalBg'            },
 		text       = { 'black'    , 'RightBg'          },
 		lineno     = { 'LineNoFg' , 'LineNoBg'         },
 		sep        = { 'black'    , 'RightBg' , 'bold' },
@@ -420,6 +422,38 @@ basic.right = {
 	end,
 }
 
+basic.lazy = {
+	hl_colors = {
+		sep  = { 'RightBg', 'NormalBg' },
+		text = { 'LazyFg'  , 'NormalBg'},
+	},
+	text = function()
+		if require("lazy.status").has_updates() then
+			return {
+				{ ' ', 'sep' },
+				{ require("lazy.status").updates(), 'text' },
+				{ ' ', 'sep' },
+			}
+		end
+	end,
+}
+
+basic.showcmd = {
+	hl_colors = {
+		sep  = { 'RightBg', 'NormalBg' },
+		text = { 'LazyFg'  , 'NormalBg'},
+	},
+	text = function()
+		if require("noice").api.status.command.has() then
+			return {
+				{ '', 'sep' },
+				{ require("noice").api.status.command.get(), 'text' },
+				{ ' ', 'sep' },
+			}
+		end
+	end,
+}
+
 local default = {
 	filetypes = { 'default' },
 	active = {
@@ -430,6 +464,9 @@ local default = {
 		basic.projectname,
 		basic.file,
 		basic.git,
+		basic.divider,
+		basic.lazy,
+		basic.showcmd,
 		basic.divider,
 		basic.lsp_diagnos,
 		{ ' ', hl_list.Active },
@@ -536,6 +573,8 @@ windline.setup({
 		colors.LineNoBg      = "#A070C8"
 		colors.RightBg       = "#AE8A7E"
 
+		colors.LazyFg = "#4eb899"
+
 		return colors
 	end,
 
@@ -549,3 +588,4 @@ vim.opt.laststatus = 3
 end
 
 return M
+--                  
