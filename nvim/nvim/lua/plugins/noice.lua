@@ -27,7 +27,7 @@ require('noice').setup({
 			view_warn = 'mini',
 			view_error = 'mini',
 			view_history = 'messages',
-			view_search  = 'virtualtext',
+			view_search  = false
 		},
 		popupmenu = {
 			enabled = true,
@@ -39,7 +39,6 @@ require('noice').setup({
 				auto_open = false,
 				view = nil,
 				opts = {skip = true},
-
 				override = {
 					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
 					["vim.lsp.util.stylize_markdown"] = true,
@@ -61,7 +60,7 @@ require('noice').setup({
 				view = "hover",
 				---@type NoiceViewOptions
 				opts = {
-					-- lang = "markdown",
+					lang = "markdown",
 					replace = true,
 					render = "plain",
 					format = { "{message}" },
