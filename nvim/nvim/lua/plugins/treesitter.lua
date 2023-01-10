@@ -8,7 +8,7 @@ local M = {
     -- "RRethy/nvim-treesitter-textsubjects",
     -- "nvim-treesitter/nvim-treesitter-refactor",
     -- "mfussenegger/nvim-treehopper",
-		{ 'p00f/nvim-ts-rainbow', event = 'LspAttach' },
+		{ 'mrjones2014/nvim-ts-rainbow', event = 'LspAttach' },
 		{ 'RRethy/nvim-treesitter-endwise', event = 'InsertEnter' },
 		"nvim-lua/plenary.nvim",
     -- { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
