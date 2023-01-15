@@ -19,12 +19,12 @@ function M.config()
 			map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 		end,
 		signs = {
-			add          = { text = "▍" },
-			change       = { text = "▍" },
-			delete       = { text = "━" },
+			add          = { text = "│" },
+			change       = { text = "│" },
+			delete       = { text = "─" },
 			topdelete    = { text = "▾" },
-			changedelete = { text = "▍" },
-			untracked    = { text = "▍" },
+			changedelete = { text = "│" },
+			untracked    = { text = "│" },
 		},
 		diff_opts = {
 			internal = true,
