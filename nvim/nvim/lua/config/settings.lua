@@ -9,6 +9,7 @@ vim.opt.shada          = "%,<50,'25,/25,:20,s20,h,f1"
 vim.opt.wrap           = true
 vim.opt.list           = true
 vim.opt.listchars      = { trail = "•", tab = "  ", extends = "", precedes = "" }
+vim.opt.fillchars      = [[eob: ,fold: ,foldopen:▼,foldsep: ,foldclose:▶]]
 vim.opt.scrolloff      = 5
 vim.opt.whichwrap:append "<,>,[,]"
 vim.opt.title          = true
@@ -16,7 +17,8 @@ vim.opt.clipboard      = "unnamedplus"
 vim.opt.cmdheight      = 0
 vim.opt.smartindent    = true
 vim.opt.tabstop        = 4
-vim.opt.signcolumn     = "yes"
+vim.opt.signcolumn     = "auto" -- "yes"
+vim.opt.foldcolumn     = "auto" -- "yes"
 vim.opt.shiftwidth     = 4
 vim.opt.shortmess:append("sI")
 vim.opt.smartcase      = true
