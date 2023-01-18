@@ -4,6 +4,43 @@ return {
 	{ "williamboman/mason-lspconfig.nvim", event = 'LspAttach' },
 	{ "tpope/vim-repeat", keys = "." },
 	{
+		"luukvbaal/statuscol.nvim",
+		enabled = true,
+		event = 'VeryLazy',
+		config = function()
+			local builtin = require('statuscol.builtin')
+			local cfg = {
+				separator   = true,
+				thousands   = false,
+				relculright = false,
+				lnumfunc    = nil,
+				reeval      = false,
+				setopt      = true,
+				order       = "FSNs",
+				-- Click actions
+				Lnum                   = builtin.lnum_click,
+				FoldPlus               = builtin.foldplus_click,
+				FoldMinus              = builtin.foldminus_click,
+				FoldEmpty              = builtin.foldempty_click,
+				DapBreakpointRejected  = builtin.toggle_breakpoint,
+				DapBreakpoint          = builtin.toggle_breakpoint,
+				DapBreakpointCondition = builtin.toggle_breakpoint,
+				DiagnosticSignError    = builtin.diagnostic_click,
+				DiagnosticSignHint     = builtin.diagnostic_click,
+				DiagnosticSignInfo     = builtin.diagnostic_click,
+				DiagnosticSignWarn     = builtin.diagnostic_click,
+				GitSignsTopdelete      = builtin.gitsigns_click,
+				GitSignsUntracked      = builtin.gitsigns_click,
+				GitSignsAdd            = builtin.gitsigns_click,
+				GitSignsChangedelete   = builtin.gitsigns_click,
+				GitSignsDelete         = builtin.gitsigns_click,
+			}
+			require('statuscol').setup(cfg)
+			vim.opt.statuscolumn   = '%=%{v:relnum?v:relnum:v:wrap ? "" : v:lnum} %#SignColumn#%s'
+			-- vim.opt.statuscolumn   = '%=%{v:relnum?v:relnum:v:wrap ? "" : v:lnum}▕%#SignColumn# %s%#FoldColumn#%{foldlevel(v:lnum) > 0 ? (foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "▼" : "▶") : "│") : " " }'
+		end
+	},
+	{
 		'winston0410/range-highlight.nvim',
 		event = { 'CmdlineEnter' },
 		dependencies = { "winston0410/cmd-parser.nvim"  }
