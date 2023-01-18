@@ -1,6 +1,7 @@
 local M = {
   "nvim-telescope/telescope.nvim",
-	enabled = true,
+  enabled = true,
+  name = 'telescope',
   cmd = { "Telescope" },
 
   dependencies = {
@@ -8,13 +9,17 @@ local M = {
     { "nvim-telescope/telescope-z.nvim" },
     { "nvim-telescope/telescope-project.nvim" },
     { "nvim-telescope/telescope-symbols.nvim" },
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-		{ "natecraddock/telescope-zf-native.nvim" },
-		{ "desdic/telescope-rooter.nvim" },
-		{
-			'nvim-telescope/telescope-frecency.nvim',
-			dependencies = { 'kkharji/sqlite.lua' }
-		}
+	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	{ "natecraddock/telescope-zf-native.nvim" },
+	{ "desdic/telescope-rooter.nvim" },
+	{
+		'nvim-telescope/telescope-frecency.nvim',
+		-- dependencies = { 'kkharji/sqlite.lua' }
+	},
+	{
+		'danielfalk/smart-open.nvim',
+		dependencies = { 'tami5/sqlite.lua' }
+	}
   },
 }
 
@@ -40,32 +45,32 @@ function M.config()
   local borderless = true
   telescope.setup({
     extensions = {
-			--[[ ["fzf"] = {
+			["fzf"] = {
 				fuzzy = true, -- false will only do exact matching
 				override_generic_sorter = true, -- override the generic sorter
 				override_file_sorter = true, -- override the file sorter
 				case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 				-- the default case_mode is "smart_case"
-			}, ]]
+			},
 			["rooter"] = {
 				enable = true,
 				patterns = { ".git", ".project" },
 				debug = false
 			},
-			["zf-native"] = {
-            -- options for sorting file-like items
-            file = {
-                enable = true,
-                highlight_results = true,
-                match_filename = true,
-            },
+			--[[ ["zf-native"] = {
+				-- options for sorting file-like items
+				file = {
+					enable = true,
+					highlight_results = true,
+					match_filename = true,
+				},
 
-            generic = {
-                enable = true,
-                highlight_results = true,
-                match_filename = false,
-            },
-        }
+				generic = {
+					enable = true,
+					highlight_results = true,
+					match_filename = false,
+				},
+			} ]]
     },
     defaults = {
 			mappings = {
@@ -93,7 +98,7 @@ function M.config()
       -- },
       -- prompt_position = "bottom",
       prompt_prefix      = "  ",
-      selection_caret    = "➦ ",
+      selection_caret    = "⮫ ",
       entry_prefix       = " ",
       initial_mode       = "insert",
       selection_strategy = "reset",
@@ -136,6 +141,7 @@ function M.config()
   telescope.load_extension("project")
   telescope.load_extension("zf-native")
   telescope.load_extension("rooter")
+  require"telescope".load_extension("smart_open")
 end
 
 function M.init()
