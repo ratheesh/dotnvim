@@ -1,7 +1,7 @@
 local M = {
 	'akinsho/bufferline.nvim',
   event = "BufReadPre",
-	dependencies = { 'kyazdani42/nvim-web-devicons' },
+	dependencies = { 'nvim-tree/nvim-web-devicons' },
 }
 
 function M.config()
