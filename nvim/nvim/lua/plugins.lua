@@ -283,6 +283,13 @@ return {
 		config = function()
 			require('spaceless').setup()
 		end
+	},
+	{
+		'echasnovski/mini.move',
+		enabled = true,
+		config = function ()
+			require('mini.move').setup()
+		end
 	}
 }
 -- End of File
