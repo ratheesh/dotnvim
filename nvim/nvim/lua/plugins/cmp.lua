@@ -8,16 +8,16 @@ local M = {
     "hrsh7th/cmp-path",
 		-- "hrsh7th/cmp-buffer",
 		"ve5li/cmp-buffer",
-    "hrsh7th/cmp-emoji",
+		"hrsh7th/cmp-emoji",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-nvim-lua",
 		'davidsierradz/cmp-conventionalcommits',
 		'dcampos/cmp-emmet-vim',
-		"L3MON4D3/LuaSnip",
-    "saadparwaiz1/cmp_luasnip",
+		-- "L3MON4D3/LuaSnip",
+		"saadparwaiz1/cmp_luasnip",
 		"onsails/lspkind-nvim",
-    "hrsh7th/cmp-cmdline",
+		"hrsh7th/cmp-cmdline",
 		"dmitmel/cmp-cmdline-history",
 	},
 }
@@ -84,12 +84,13 @@ function M.config()
 		},
 		sources = {
 			-- { name = 'nvim_lsp_signature_help' },
-			{ name = 'luasnip'  },
+			-- { name = 'luasnip'  },
 			{ name = 'nvim_lsp' },
 			{ name = 'nvim_lua' },
+			{ name = 'path'     },
+			{ name = 'luasnip'  },
 			{ name = 'conventionalcommits' },
 			-- { name = 'emmet_vim' },
-			{ name = 'path'     },
 			{ name = 'emoji'  },
 			{
 				name = 'buffer',
@@ -102,7 +103,8 @@ function M.config()
 			{ name = 'conventionalcommits' },
 		},
 		formatting = {
-			fields = { 'kind', 'abbr', 'menu'},
+			fields = { 'kind', 'abbr'},
+			-- fields = { 'kind', 'abbr', 'menu'},
 			format = require('lspkind').cmp_format({
 				preset        = 'codicons',
 				ellipsis_char = '...',
@@ -185,12 +187,13 @@ function M.config()
 	cmp.setup.cmdline(":", {
 		mapping = cmp.mapping.preset.cmdline(),
 		view = cmdline_view,
-		sources = cmp.config.sources({
+		-- sources = cmp.config.sources({
+		sources = {
 			{ name = "cmdline_history" },
 			{ name = "cmdline" },
 			{ name = "path" },
 			{ name = "noice_popupmenu" },
-		}),
+		},
 	})
 
 	local cmp_autopairs = require('nvim-autopairs.completion.cmp')
