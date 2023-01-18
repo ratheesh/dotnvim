@@ -1,5 +1,12 @@
 return {
-	{ "folke/neodev.nvim", enabled =false, event = 'VeryLazy' },
+	{
+		"folke/neodev.nvim",
+		enabled = false,
+		event = 'VeryLazy',
+		config = function ()
+			require('neodev').setup()
+		end
+	},
 	{ 'mattn/emmet-vim', ft = { 'html', 'css', 'scss', 'xml' } },
 	{ "williamboman/mason-lspconfig.nvim", event = 'LspAttach' },
 	{ "tpope/vim-repeat", keys = "." },
@@ -122,13 +129,16 @@ return {
 	},
 	{
 		'ckolkey/ts-node-action',
+		enabled =  false,
 		dependencies = { 'nvim-treesitter' },
 		config = function()
 			require("ts-node-action").setup({})
+			vim.keymap.set({ "n" }, "<bs>", require("ts-node-action").node_action, { desc = "Trigger Node Action" })
 		end
 	},
 	{
 		"simrat39/symbols-outline.nvim",
+		enabled = false,
 		cmd = "SymbolsOutline",
 		init = function()
 			vim.keymap.set("n", "<leader>cs", "<cmd>SymbolsOutline<cr>", { desc = "Symbols Outline" })
@@ -153,7 +163,7 @@ return {
 	},
 	{
 		"cshuaimin/ssr.nvim",
-		-- Calling setup is optional.
+		enabled = false,
 		keys = { '<space>cR' },
 		init = function()
 			vim.keymap.set({ "n", "x" }, "<leader>cR", function()
@@ -209,6 +219,7 @@ return {
 	},
 	{
 		"dstein64/vim-startuptime",
+		enabled = false,
 		cmd = "StartupTime",
 		config = function()
 			vim.g.startuptime_tries = 10
