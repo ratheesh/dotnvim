@@ -31,6 +31,68 @@ local M = {
 					},
 				})
 			end,
+		},
+		{
+			'lvimuser/lsp-inlayhints.nvim',
+			enabled = true,
+			config = function ()
+				local default_config = {
+					inlay_hints = {
+						parameter_hints = {
+							show = true,
+						},
+						type_hints = {
+							show = true,
+						},
+						only_current_line = true,
+						label_formatter = function(labels, kind, opts, client_name)
+							if kind == 2 and not opts.parameter_hints.show then
+								return ""
+							elseif not opts.type_hints.show then
+								return ""
+							end
+
+							return table.concat(labels or {}, ", ")
+						end,
+						virt_text_formatter = function(label, hint, opts, client_name)
+							if client_name == "sumneko_lua" then
+								if hint.kind == 2 then
+									hint.paddingLeft = false
+								else
+									hint.paddingRight = false
+								end
+							end
+
+							local virt_text = {}
+							virt_text[#virt_text + 1] = hint.paddingLeft and { " ", "Normal" } or nil
+							virt_text[#virt_text + 1] = { label, opts.highlight }
+							virt_text[#virt_text + 1] = hint.paddingRight and { " ", "Normal" } or nil
+
+							return virt_text
+						end,
+
+						-- highlight group
+						highlight = "LspInlayHint",
+					},
+					enabled_at_startup = true,
+					debug_mode = false,
+				}
+				require("lsp-inlayhints").setup({default_config})
+
+				--[[ vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
+				vim.api.nvim_create_autocmd("LspAttach", {
+					group = "LspAttach_inlayhints",
+					callback = function(args)
+						if not (args.data and args.data.client_id) then
+							return
+						end
+
+						local bufnr = args.buf
+						local client = vim.lsp.get_client_by_id(args.data.client_id)
+						require("lsp-inlayhints").on_attach(client, bufnr)
+					end,
+				}) ]]
+			end
 		}
 	}
 }
@@ -70,6 +132,8 @@ function M.config()
 		if client.server_capabilities.definitionProvider then
 			vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
 		end
+
+		require("lsp-inlayhints").on_attach(client, bufnr)
 
 		client.server_capabilities.semanticTokensProvider = nil
 
@@ -114,7 +178,7 @@ function M.config()
 			completeUnimported   = true,
 			semanticHighlighting = true,
 			InlayHints = {
-				Enabled        = false,
+				Enabled        = true,
 				ParameterNames = true,
 				DeducedTypes   = true,
 			},
@@ -145,8 +209,9 @@ function M.config()
 
 		-- python
 		-- pyright = {},
-		pylance = {},
 		jedi_language_server = {},
+		pylance = {},
+		tsserver = {},
 
 		-- lua
 		sumneko_lua = {
@@ -158,7 +223,7 @@ function M.config()
 					},
 					completion = {
 						workspaceWord = true,
-						callSnippet = "Both",
+						callSnippet = "Replace",
 					},
 					misc = {
 						parameters = {
@@ -215,7 +280,7 @@ function M.config()
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
 	capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 	capabilities.textDocument.foldingRange = {
-		dynamicRegistration = true,
+		dynamicRegistration = false,
 		lineFoldingOnly = true,
 	}
 
