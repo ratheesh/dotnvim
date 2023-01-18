@@ -11,7 +11,7 @@ function M.config()
 		ignore  = nil,
 		toggler = {
 			line = 'gcc',
-			block = 'gbc',
+			block = 'gbb',
 		},
 		opleader = {
 			line  = 'gc',
