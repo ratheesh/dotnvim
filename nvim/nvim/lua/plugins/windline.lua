@@ -440,19 +440,22 @@ basic.lazy = {
 
 basic.showcmd = {
 	hl_colors = {
-		sep  = { 'RightBg', 'NormalBg' },
-		text = { 'LazyFg'  , 'NormalBg'},
+		sep  = { 'FileNameBg', 'NormalBg' },
+		text = { 'LazyFg'  , 'FileNameBg'},
 	},
 	text = function()
 		if require("noice").api.status.command.has() then
 			return {
-				{ '', 'sep' },
-				{ require("noice").api.status.command.get(), 'text' },
-				{ ' ', 'sep' },
+				{ sep.left_rounded, 'sep' },
+				{ '⌨ ' .. require("noice").api.status.command.get() .. ' ', 'text' },
+				{ '', 'sep' },
+				{ ' ' .. require("lazy.status").updates(), 'text' },
+				{ sep.right_rounded, 'sep' },
 			}
 		end
 	end,
 }
+--                  
 
 local default = {
 	filetypes = { 'default' },
@@ -465,7 +468,6 @@ local default = {
 		basic.file,
 		basic.git,
 		basic.divider,
-		basic.lazy,
 		basic.showcmd,
 		basic.divider,
 		basic.lsp_diagnos,
