@@ -36,9 +36,9 @@ function M.setup(client, buffer)
 					l = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "List Folders" },
 				},
 			},
-			x = {
+			--[[ x = {
 				d = { "<cmd>Telescope diagnostics<cr>", "Search Diagnostics" },
-			},
+			}, ]]
 		},
 		g = {
 			name = "+goto",
