@@ -129,7 +129,7 @@ return {
 	},
 	{
 		'ckolkey/ts-node-action',
-		enabled =  false,
+		enabled =  true,
 		dependencies = { 'nvim-treesitter' },
 		config = function()
 			require("ts-node-action").setup({})
@@ -163,7 +163,7 @@ return {
 	},
 	{
 		"cshuaimin/ssr.nvim",
-		enabled = false,
+		enabled = true,
 		keys = { '<space>cR' },
 		init = function()
 			vim.keymap.set({ "n", "x" }, "<leader>cR", function()
@@ -199,7 +199,7 @@ return {
 	},
 	{
 		'lewis6991/hover.nvim',
-		enabled = false,
+		enabled = true,
 		event = 'LspAttach',
 		require = 'nvim-lspconfig',
 		config = function()
@@ -236,6 +236,7 @@ return {
 	},
 	{
 		'lewis6991/satellite.nvim',
+		enabled = true,
 		event = 'VeryLazy',
 		config = function ()
 			require('satellite').setup()
