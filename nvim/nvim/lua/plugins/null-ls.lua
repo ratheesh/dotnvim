@@ -38,12 +38,11 @@ function M.setup(options)
 		nls.builtins.hover.dictionary,
 
 		-- code actions
-		nls.builtins.code_actions.refactoring,
-		-- nls.builtins.code_actions.refactoring,
 		nls.builtins.code_actions.proselint,
 		nls.builtins.code_actions.eslint_d,
 		nls.builtins.code_actions.gitsigns,
 		nls.builtins.code_actions.gitrebase,
+		nls.builtins.code_actions.refactoring,
 	},
     on_attach = options.on_attach,
     root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", ".git"),
