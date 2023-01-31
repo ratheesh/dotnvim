@@ -188,6 +188,7 @@ function M.config()
 	-- Web Dev
 		cssls = {},
 		cssmodules_ls = {},
+		tailwindcss = {},
 		emmet_ls = {},
 		yamlls = {},
 		eslint = {},
