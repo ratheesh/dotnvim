@@ -116,10 +116,12 @@ function M.config()
 				-- undercurl = true,
 			},
 			numbers = {
-				bg = '#1E2430'
+				bg = '#1E2430',
+				bold = true,
 			},
 			numbers_visible = {
-				bg = '#1E2430'
+				bg = '#1E2430',
+				bold = true,
 			},
 			numbers_selected = {
 				fg = '#F2A490',
