@@ -12,7 +12,7 @@ return {
 	{ "tpope/vim-repeat", keys = "." },
 	{
 		"luukvbaal/statuscol.nvim",
-		enabled = true,
+		enabled = false,
 		event = 'VeryLazy',
 		config = function()
 			local builtin = require('statuscol.builtin')
@@ -43,7 +43,7 @@ return {
 				GitSignsDelete         = builtin.gitsigns_click,
 			}
 			require('statuscol').setup(cfg)
-			vim.opt.statuscolumn   = '%=%{v:relnum?v:relnum:v:wrap ? "" : v:lnum} %#SignColumn#%s'
+			-- vim.opt.statuscolumn   = '%=%{v:relnum?v:relnum:v:wrap ? "" : v:lnum} %#SignColumn#%s'
 			-- vim.opt.statuscolumn   = '%=%{v:relnum?v:relnum:v:wrap ? "" : v:lnum}▕%#SignColumn# %s%#FoldColumn#%{foldlevel(v:lnum) > 0 ? (foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "▼" : "▶") : "│") : " " }'
 		end
 	},
