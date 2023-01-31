@@ -73,7 +73,7 @@ hl(0 , "QuickFixLine" , { fg = nil       , bg = "#3B4252" , italic = false , bol
 hl(0 , "Pmenu"        , { fg = "#373D49" , bg = "#1E2430" , italic = false , bold = false , underline = false })
 hl(0 , "PmenuSbar"    , { fg = "#b16286" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "PmenuSel"     , { fg = nil 		 , bg = "#25384F" , italic = false , bold = false , underline = false })
-hl(0 , "PmenuThumb"   , { fg = "#a0a0a0" , bg = "#4B515C" , italic = false , bold = false , underline = false })
+hl(0 , "PmenuThumb"   , { fg = "#b16286" , bg = "#1E2430" , italic = false , bold = false , underline = false })
 hl(0 , "TabLine"      , { fg = "#4C566A" , bg = "#3B4252" , italic = false , bold = false , underline = false })
 hl(0 , "TabLineFill"  , { fg = "#4C566A" , bg = "#3B4252" , italic = false , bold = false , underline = false })
 hl(0 , "TabLineSel"   , { fg = "#A3BE8C" , bg = "#e53a80" , italic = false , bold = true , underline = false  })
@@ -141,9 +141,9 @@ hl(0 , "NvimInternalError"	 		, { fg = "#BF616A" , bg = nil       , italic = fal
 
 -- Gitsigns
 -- sign column
-hl(0 , "GitSignsAdd"                , { fg = "#81A1C1" , bg = "#2B3242" , italic = false , bold = false , underline = false })
-hl(0 , "GitSignsChange"             , { fg = "#606672" , bg = "#2B3242" , italic = false , bold = false , underline = false })
-hl(0 , "GitSignsDelete"             , { fg = "#D57780" , bg = "#2B3242" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsAdd"                , { fg = "#A3BE8C" , bg = "#2B3242" , italic = false , bold = true  , underline = false })
+hl(0 , "GitSignsChange"             , { fg = "#8457ad" , bg = "#2B3242" , italic = false , bold = true  , underline = false })
+hl(0 , "GitSignsDelete"             , { fg = "#D57780" , bg = "#2B3242" , italic = false , bold = true  , underline = false })
 
 hl(0 , "GitSignsAddNr"              , { fg = "#a0a0a0" , bg = "#2a4a56" , italic = false , bold = false , underline = false })
 hl(0 , "GitSignsChangeNr"           , { fg = "#a0a0a0" , bg = "#2a4a56" , italic = false , bold = false , underline = false })
@@ -179,21 +179,21 @@ hl(0 , "GitSignsStagedChangeNr"   	, { fg = "#F0F0F0" , bg = "#4C5D79" , italic 
 hl(0 , "GitSignsStagedDeleteNr"   	, { fg = "#000000" , bg = "#D57780" , italic = false , bold = false , underline = false })
 
 -- nvim-cmp
-hl(0 , "CmpDocNormal"           	, { fg = "#b0b0b0" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "CmpItemAbbr"           		, { fg = "#909090" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "CmpItemAbbrMatchFuzzy" 		, { fg = "#F06372" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "CmpItemAbbrMatch"      		, { fg = "#6888b4" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "CmpItemMatch"          		, { fg = "#eeeeee" , bg = nil , italic = false , bold = false , underline = true  })
-hl(0 , "CmpItemAbbrDeprecated" 		, { fg = "#eeeeee" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "CmpItemKind"           		, { fg = "#F7B0BA" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "CmpItemMenu"           		, { fg = "#6E7179" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "CmpItemKindVariable"   		, { fg = "#C76D83" , bg = nil , italic = false , bold = true  , underline = false })
-hl(0 , "CmpItemKindInterface"  		, { fg = "#00A7CF" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "CmpItemKindText"       		, { fg = "#C586C0" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "CmpItemKindFunction"   		, { fg = "#00A7CF" , bg = nil , italic = false , bold = true  , underline = false })
-hl(0 , "CmpItemKindMethod"     		, { fg = "#C586C0" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "CmpItemKindKeyword"    		, { fg = "#fbb4ae" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "CmpItemKindSnippet"    		, { fg = "#9467bd" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpDocNormal"             , { fg = "#b0b0b0" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemAbbr"           	  , { fg = "#909090" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemAbbrMatchFuzzy" 	  , { fg = "#F06372" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemAbbrMatch"      	  , { fg = "#6888b4" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemMatch"          	  , { fg = "#eeeeee" , bg = nil , italic = false , bold = false , underline = true  })
+hl(0 , "CmpItemAbbrDeprecated" 	  , { fg = "#eeeeee" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKind"           	  , { fg = "#F7B0BA" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemMenu"           	  , { fg = "#6E7179" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindVariable"   	  , { fg = "#C76D83" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindInterface"  	  , { fg = "#00A7CF" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindText"       	  , { fg = "#C586C0" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindFunction"   	  , { fg = "#00A7CF" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindMethod"     	  , { fg = "#C586C0" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindKeyword"    	  , { fg = "#fbb4ae" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindSnippet"    	  , { fg = "#9467bd" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "CmpItemKindConstructor"   , { fg = "#A3BE8C" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "CmpItemKindField"         , { fg = "#9467bd" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "CmpItemKindClass"         , { fg = "#9c755f" , bg = nil , italic = false , bold = false , underline = false })
@@ -312,8 +312,10 @@ hl(0 , "NoiceCmdlineCmdline"    , { fg = "#FA2C77" , bg = nil , italic = false ,
 hl(0 , "NoiceCmdlinePopupBorder", { fg = "#858ba8" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "NoiceCmdlineIcon" 		, { fg = "#1bb1e7" , bg = nil , italic = false , bold = true  , underline = false })
 hl(0 , "NoicePopupMenuMatch" 	, { fg = "#1bb1e7" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "NoiceLspProgressTitle"  , { fg = "#858ba8" , bg = nil , italic = true  , bold = false , underline = false })
+hl(0 , "NoiceLspProgressTitle"  , { fg = "#858ba8" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "NoiceLspProgressClient" , { fg = "#C76D83" , bg = nil , italic = false , bold = true  , underline = false })
+hl(0 , "NoiceLspProgressTodo"   , { fg = "#C76D83" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "NoiceLspProgressDone"   , { fg = "#A3BE8C" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "NoiceVirtualText"       , { fg = "#F7CAB8" , bg = nil , italic = true  , bold = false , underline = false })
 
 -- LeaderF
@@ -408,5 +410,9 @@ hl(0 , "NotifierContentDim", { fg = "#6B717C" , bg = nil , italic = true , bold 
 hl(0 , "NotifierTitle"     , { fg = "#99c794" , bg = nil , italic = false, bold = false , underline = false })
 hl(0 , "NotifierIcon"      , { fg = "#E23D75" , bg = nil , italic = true , bold = false , underline = false })
 
-hl(0 , "markdownError"     , { fg = nil       , bg = nil , italic = false, bold = false , underline = false })
+hl(0 , "markdownError"     , { fg = nil , bg = nil , italic = false, bold = false , underline = false })
+
+hl(0 , "HighlightedLineNr" , { fg = "#a0a0a0" , bg = "#3a5a66" , italic = false, bold = false , underline = false })
+hl(0 , "DimLineNr"         , { fg = "#a0a0a0" , bg = "#2a4a56" , italic = false , bold = false , underline = false })
+
 -- End of File
