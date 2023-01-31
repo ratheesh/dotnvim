@@ -143,14 +143,15 @@ function M.config()
 			{ name = 'conventionalcommits' },
 		},
 		formatting = {
-			fields = { 'kind', 'abbr'},
+			-- fields = { 'kind', 'abbr'},
 			-- fields = { 'kind', 'abbr', 'menu'},
+			fields = { 'abbr', 'kind'},
 			format = require('lspkind').cmp_format({
 				preset        = 'codicons',
 				ellipsis_char = '...',
-				mode          = 'symbol',
+				mode          = 'symbol_text',
 				symbol_map    = icons,
-				maxwidth      = 60,
+				maxwidth      = 50,
 				before = function (entry, vim_item)
 					vim_item.menu = ({
 						luasnip     = 'SNP',
