@@ -1,5 +1,6 @@
 local M = {
 	'windwp/windline.nvim',
+	enabled = true,
 	event = 'VeryLazy'
 }
 
@@ -375,10 +376,12 @@ basic.fileinfo = {
 
 basic.indent = {
 	hl_colors = {
-		sep_before = { 'IndentBg', 'NormalBg' },
-		sep_after  = { 'IndentBg', 'NormalBg' },
-		sep        = { 'black', 	 'IndentBg', 'bold' },
-		color      = { 'IndentFg', 'IndentBg' },
+		sep_before  = { 'IndentBg',   'NormalBg'     },
+		sep_after   = { 'CursorChBg', 'NormalBg'     },
+		sep         = { 'black',      'IndentBg'     },
+		sep1        = { 'IndentBg',   'CursorChBg'   },
+		indentcolor = { 'IndentFg',   'IndentBg'     },
+		charcolor   = { 'CursorChFg', 'CursorChBg'   },
 	},
 	text = function()
 		local sw = vim.bo.shiftwidth
@@ -392,19 +395,22 @@ basic.indent = {
 		return {
 			{ ' ', 'sep_before' },
 			{ sep.left_rounded, 'sep_before' },
-			{string.format('%s%s≡', sw, im), 'color'},
-			{'│','sep'},
-			{ '𝒞𝒽:%02B𝒉', 'color' },
+			{string.format('%s%s≡', sw, im), 'indentcolor'},
+			-- {'│','sep'},
+			{'','sep1'},
+			-- {'','sep1'},
+			{ '𝒞𝒽:%02B𝒉', 'charcolor' },
 			{ sep.right_rounded, 'sep_after' },
 		}
 	end,
 	width = 70
 }
+--                  
 
 basic.right = {
 	hl_colors = {
 		sep_before = { 'RightBg'  , 'NormalBg'         },
-		sep_after  = { 'RightBg'  , 'NormalBg'            },
+		sep_after  = { 'RightBg'  , 'NormalBg'         },
 		text       = { 'black'    , 'RightBg'          },
 		lineno     = { 'LineNoFg' , 'LineNoBg'         },
 		sep        = { 'black'    , 'RightBg' , 'bold' },
@@ -468,7 +474,7 @@ local default = {
 		basic.file,
 		basic.git,
 		basic.divider,
-		basic.showcmd,
+		-- basic.showcmd,
 		basic.divider,
 		basic.lsp_diagnos,
 		{ ' ', hl_list.Active },
@@ -567,15 +573,18 @@ windline.setup({
 		colors.FileInfoFg    = "#000000"
 		colors.FileInfoBg    = "#94789B"
 
-		colors.IndentFg      = "#eeeeee"
-		colors.IndentBg      = "#5E6169"
+		colors.IndentFg      = "#000000"
+		colors.IndentBg      = "#af7aa1"
+
+		colors.CursorChFg    = "#eeeeee"
+		colors.CursorChBg    = "#4d708c"
 		colors.SearchCntFg   = "#4EB899"
 
 		colors.LineNoFg      = "#eeeeee"
 		colors.LineNoBg      = "#A070C8"
 		colors.RightBg       = "#AE8A7E"
 
-		colors.LazyFg = "#4eb899"
+		colors.LazyFg 		 = "#4eb899"
 
 		return colors
 	end,
