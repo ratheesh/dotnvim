@@ -1,19 +1,20 @@
 local M = {
 	'akinsho/bufferline.nvim',
-  event = "BufReadPre",
+	event = "BufReadPre",
 	dependencies = { 'nvim-tree/nvim-web-devicons' },
 }
 
 function M.config()
 	require('bufferline').setup({
 		options = {
+			always_show_bufferline = false,
 			mode      = 'buffers',
 			-- numbers   = 'ordinal',
 			numbers = function(opts)
 				local tmpid = opts.ordinal > 9 and 10 or opts.ordinal
-				local icons = {"೧", "೨", "೩", "೪", "೫", "೬", "೭", "೮", "೯", ""}
-				-- local icons = {"1", "2", "3", "4", "5", "6", "7", "8", "9", ""}
-				return icons[tmpid]
+				-- local icons = {"೧", "೨", "೩", "೪", "೫", "೬", "೭", "೮", "೯", ""}
+				local icons = {"1", "2", "3", "4", "5", "6", "7", "8", "", ""}
+				return icons[tmpid] --         
 			end,
 			indicator = {
 				-- icon = '▌',

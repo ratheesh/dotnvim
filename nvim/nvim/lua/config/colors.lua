@@ -4,13 +4,13 @@
 
 -- _G.colors = {
 -- 	red  = "#BF616A" , teal  = "#97B7D7"  , one_bg = "#373D49"   , lightbg  = "#3B4252"  , blue       = "#81A1C1"   ,
--- 	cyan = "#5E81AC" , black  = "#1E2430" , orange  = "#D08770"  , one_bg2  = "#434C5E"  , foreground = "#EEEEEE"   ,
+-- 	cyan = "#5E81AC" , black  = "#28303a" , orange  = "#D08770"  , one_bg2  = "#434C5E"  , foreground = "#EEEEEE"   ,
 -- 	grey = "#4B515D" , green  = "#A3BE8C" , purple  = "#8FBCBB"  , one_bg3  = "#4C566A"  , light_grey = "#646A76"   ,
 -- 	line = "#3A404C" , white  = "#D8DEE9" , yellow  = "#EBCB8B"  , lightbg2 = "#393F4B"  , dark_purple = "#B48EAD"  ,
 -- 	pink = "#D57780" , black2 = "#343A46" , grey_fg  = "#606672" , baby_pink = "#DE878F" , darker_black = "#2A303C" ,
 -- }
 
--- vim.g.terminal_color_0  = "#1E2430"
+-- vim.g.terminal_color_0  = "#28303a"
 -- vim.g.terminal_color_1  = "#BF616A"
 -- vim.g.terminal_color_2  = "#A3BE8C"
 -- vim.g.terminal_color_3  = "#EBCB8B"
@@ -29,15 +29,15 @@
 
 local hl = vim.api.nvim_set_hl
 
-hl(0 , "Normal"       , { fg = "#EEEEEE" , bg = "#1E2430" , italic = false , bold = false , underline = false })
-hl(0 , "NormalFloat"  , { fg = "#EEEEEE" , bg = "#1E2430" , italic = false , bold = false , underline = false })
+hl(0 , "Normal"       , { fg = "#EEEEEE" , bg = "#28303a" , italic = false , bold = false , underline = false })
+hl(0 , "NormalFloat"  , { fg = "#EEEEEE" , bg = "#28303a" , italic = false , bold = false , underline = false })
 hl(0 , "FloatBorder"  , { fg = "#4C566A" , bg = nil       , italic = false , bold = true  , underline = false })
 hl(0 , "FloatTitle"   , { fg = "#81A1C1" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "Bold"         , { fg = nil       , bg = nil       , italic = false , bold = true  , underline = false })
 hl(0 , "Debug"        , { fg = "#D57780" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "Directory"    , { fg = "#81A1C1" , bg = nil       , italic = false , bold = false , underline = false })
-hl(0 , "Error"        , { fg = "#1E2430" , bg = "#D57780" , italic = false , bold = false , underline = false })
-hl(0 , "ErrorMsg"     , { fg = "#D57780" , bg = "#1E2430" , italic = false , bold = false , underline = false })
+hl(0 , "Error"        , { fg = "#28303a" , bg = "#D57780" , italic = false , bold = false , underline = false })
+hl(0 , "ErrorMsg"     , { fg = "#D57780" , bg = "#28303a" , italic = false , bold = false , underline = false })
 hl(0 , "Exception"    , { fg = "#D57780" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "FoldColumn"   , { fg = "#687588" , bg = "#2B3242" , italic = false , bold = false , underline = false })
 hl(0 , "Folded"       , { fg = "#4C566A" , bg = "#2B3242" , italic = false , bold = false , underline = false })
@@ -57,23 +57,23 @@ hl(0 , "VisualNOS"    , { fg = "#D57780" , bg = nil       , italic = false , bol
 hl(0 , "WarningMsg"   , { fg = "#D57780" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "WildMenu"     , { fg = "#D57780" , bg = "#EBCB8B" , italic = false , bold = false , underline = false })
 hl(0 , "Title"        , { fg = "#81A1C1" , bg = nil       , italic = false , bold = false , underline = false })
-hl(0 , "Conceal"      , { fg = "#81A1C1" , bg = "#1E2430" , italic = false , bold = false , underline = false })
-hl(0 , "Cursor"       , { fg = "#1E2430" , bg = "#F0F0F0" , italic = false , bold = false , underline = false })
+hl(0 , "Conceal"      , { fg = "#81A1C1" , bg = "#28303a" , italic = false , bold = false , underline = false })
+hl(0 , "Cursor"       , { fg = "#28303a" , bg = "#F0F0F0" , italic = false , bold = false , underline = false })
 hl(0 , "NonText"      , { fg = "#4C566A" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "LineNr"       , { fg = "#a0a0a0" , bg = "#2a4a56" , italic = false , bold = false , underline = false })
 hl(0 , "StatusLineNC" , { fg = "#4C566A" , bg = nil       , italic = false , bold = false , underline = false })
-hl(0 , "SignColumn"   , { fg = nil 		 , bg = "#2B3242" , italic = false , bold = false , underline = false })
+hl(0 , "SignColumn"   , { fg = nil 		 , bg = "#3C465A" , italic = false , bold = false , underline = false })
 hl(0 , "StatusLine"   , { fg = "#434C5E" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "VertSplit"    , { fg = "#434C5E" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "ColorColumn"  , { fg = nil       , bg = '#3B4252' , italic = false , bold = false , underline = false })
 hl(0 , "CursorColumn" , { fg = nil       , bg = nil 	  , italic = false , bold = false , underline = false })
 hl(0 , "CursorLine"   , { fg = nil       , bg = "#153450" , italic = false , bold = false , underline = false })
-hl(0 , "CursorLineNr" , { fg = "#f0f0f0" , bg = "#b16286" , italic = false , bold = false , underline = false })
+hl(0 , "CursorLineNr" , { fg = "#f0f0f0" , bg = "#6B717C" , italic = false , bold = false , underline = false })
 hl(0 , "QuickFixLine" , { fg = nil       , bg = "#3B4252" , italic = false , bold = false , underline = false })
-hl(0 , "Pmenu"        , { fg = "#373D49" , bg = "#1E2430" , italic = false , bold = false , underline = false })
+hl(0 , "Pmenu"        , { fg = "#373D49" , bg = "#28303a" , italic = false , bold = false , underline = false })
 hl(0 , "PmenuSbar"    , { fg = "#b16286" , bg = nil       , italic = false , bold = false , underline = false })
-hl(0 , "PmenuSel"     , { fg = nil 		 , bg = "#25384F" , italic = false , bold = false , underline = false })
-hl(0 , "PmenuThumb"   , { fg = "#b16286" , bg = "#1E2430" , italic = false , bold = false , underline = false })
+hl(0 , "PmenuSel"     , { fg = nil 		 , bg = "#434C5E" , italic = false , bold = false , underline = false })
+hl(0 , "PmenuThumb"   , { fg = "#BE6169" , bg = "#28303a" , italic = false , bold = false , underline = false })
 hl(0 , "TabLine"      , { fg = "#4C566A" , bg = "#3B4252" , italic = false , bold = false , underline = false })
 hl(0 , "TabLineFill"  , { fg = "#4C566A" , bg = "#3B4252" , italic = false , bold = false , underline = false })
 hl(0 , "TabLineSel"   , { fg = "#A3BE8C" , bg = "#e53a80" , italic = false , bold = true , underline = false  })
@@ -112,11 +112,11 @@ hl(0 , "DiffChange"  , { fg = "#4C566A" , bg = "#3B4252" , italic = false , bold
 hl(0 , "DiffAdd"     , { fg = "#A3BE8C" , bg = "#3B4252" , italic = false , bold = false , underline = false })
 hl(0 , "DiffDelete"  , { fg = "#D57780" , bg = "#3B4252" , italic = false , bold = false , underline = false })
 hl(0 , "DiffText"    , { fg = "#81A1C1" , bg = "#3B4252" , italic = false , bold = false , underline = false })
-hl(0 , "DiffAdded"   , { fg = "#A3BE8C" , bg = "#1E2430" , italic = false , bold = false , underline = false })
-hl(0 , "DiffFile"    , { fg = "#D57780" , bg = "#1E2430" , italic = false , bold = false , underline = false })
-hl(0 , "DiffNewFile" , { fg = "#A3BE8C" , bg = "#1E2430" , italic = false , bold = false , underline = false })
-hl(0 , "DiffLine"    , { fg = "#81A1C1" , bg = "#1E2430" , italic = false , bold = false , underline = false })
-hl(0 , "DiffRemoved" , { fg = "#D57780" , bg = "#1E2430" , italic = false , bold = false , underline = false })
+hl(0 , "DiffAdded"   , { fg = "#A3BE8C" , bg = "#28303a" , italic = false , bold = false , underline = false })
+hl(0 , "DiffFile"    , { fg = "#D57780" , bg = "#28303a" , italic = false , bold = false , underline = false })
+hl(0 , "DiffNewFile" , { fg = "#A3BE8C" , bg = "#28303a" , italic = false , bold = false , underline = false })
+hl(0 , "DiffLine"    , { fg = "#81A1C1" , bg = "#28303a" , italic = false , bold = false , underline = false })
+hl(0 , "DiffRemoved" , { fg = "#D57780" , bg = "#28303a" , italic = false , bold = false , underline = false })
 
 -- Git highlighting
 hl(0 , "gitcommitOverflow"      , { fg = "#D57780" , bg = nil , italic = false , bold = false , underline = false })
@@ -136,14 +136,14 @@ hl(0 , "gitcommitUnmergedFile"  , { fg = "#D57780" , bg = nil , italic = false ,
 hl(0 , "gitcommitDiscardedFile" , { fg = "#D57780" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "gitcommitSelectedFile"  , { fg = "#A3BE8C" , bg = nil , italic = false , bold = false , underline = false })
 
-hl(0 , "EndOfBuffer"				 		, { fg = "#1E2430" , bg = nil       , italic = false , bold = false , underline = false })
+hl(0 , "EndOfBuffer"				 		, { fg = "#28303a" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "NvimInternalError"	 		, { fg = "#BF616A" , bg = nil       , italic = false , bold = false , underline = false })
 
 -- Gitsigns
 -- sign column
-hl(0 , "GitSignsAdd"                , { fg = "#A3BE8C" , bg = "#2B3242" , italic = false , bold = true  , underline = false })
-hl(0 , "GitSignsChange"             , { fg = "#8457ad" , bg = "#2B3242" , italic = false , bold = true  , underline = false })
-hl(0 , "GitSignsDelete"             , { fg = "#D57780" , bg = "#2B3242" , italic = false , bold = true  , underline = false })
+hl(0 , "GitSignsAdd"                , { fg = "#A3BE8C" , bg = "#3C465A" , italic = false , bold = true  , underline = false })
+hl(0 , "GitSignsChange"             , { fg = "#9467bd" , bg = "#3C465A" , italic = false , bold = true  , underline = false })
+hl(0 , "GitSignsDelete"             , { fg = "#D57780" , bg = "#3C465A" , italic = false , bold = true  , underline = false })
 
 hl(0 , "GitSignsAddNr"              , { fg = "#a0a0a0" , bg = "#2a4a56" , italic = false , bold = false , underline = false })
 hl(0 , "GitSignsChangeNr"           , { fg = "#a0a0a0" , bg = "#2a4a56" , italic = false , bold = false , underline = false })
@@ -167,8 +167,12 @@ hl(0 , "GitSignsChangeInline"       , { fg = "#A3BE8C" , bg = "#606672" , italic
 hl(0 , "GitSignsDeleteInline"       , { fg = "#D57780" , bg = "#606672" , italic = false , bold = false , underline = false })
 
 hl(0 , "GitSignsAddLnInline"        , { fg = "#A3BE8C" , bg = "#606672" , italic = false , bold = false , underline = false })
-hl(0 , "GitSignsChangeLnInline"     , { fg = "#808682" , bg = "#606672" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsChangeLnInline"     , { fg = "#A3BE8C" , bg = "#606672" , italic = false , bold = false , underline = false })
 hl(0 , "GitSignsDeleteLnInline"     , { fg = "#D57780" , bg = "#606672" , italic = false , bold = false , underline = false })
+
+hl(0 , "GitSignsAddVirtLnInline"    , { fg = "#A3BE8C" , bg = "#606672" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsChangeVirtLnInline" , { fg = "#A3BE8C" , bg = "#606672" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsDeleteVirtLnInline" , { fg = "#D57780" , bg = "#606672" , italic = false , bold = false , underline = false })
 
 hl(0 , "GitSignsStagedAdd"          , { fg = "#A3BE8C" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "GitSignsStagedChange"       , { fg = "#808682" , bg = nil , italic = false , bold = false , underline = false })
@@ -181,7 +185,7 @@ hl(0 , "GitSignsStagedDeleteNr"   	, { fg = "#000000" , bg = "#D57780" , italic 
 -- nvim-cmp
 hl(0 , "CmpDocNormal"             , { fg = "#b0b0b0" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "CmpItemAbbr"           	  , { fg = "#909090" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "CmpItemAbbrMatchFuzzy" 	  , { fg = "#F06372" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemAbbrMatchFuzzy" 	  , { fg = "#D57780" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "CmpItemAbbrMatch"      	  , { fg = "#6888b4" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "CmpItemMatch"          	  , { fg = "#eeeeee" , bg = nil , italic = false , bold = false , underline = true  })
 hl(0 , "CmpItemAbbrDeprecated" 	  , { fg = "#eeeeee" , bg = nil , italic = false , bold = false , underline = false })
@@ -215,10 +219,10 @@ hl(0 , "CmpItemKindTypeParameter" , { fg = "#97B7D7" , bg = nil , italic = false
 hl(0 , "CmpGhostText"          	  , { fg = "#707080" , bg = nil , italic = true  , bold = false , underline = false })
 
 hl(0 , "IndentBlanklineChar" , { fg = "#3A404C" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "DiagnosticError"     , { fg = "#BF616A" , bg = '#2B3242', italic = false , bold = true , underline = false })
-hl(0 , "DiagnosticWarn"      , { fg = "#EBCB8B" , bg = '#2B3242', italic = false , bold = true , underline = false })
-hl(0 , "DiagnosticInfo"      , { fg = "#A3BE8C" , bg = '#2B3242', italic = false , bold = true , underline = false })
-hl(0 , "DiagnosticHint"      , { fg = "#8FBCBB" , bg = '#2B3242', italic = false , bold = true , underline = false })
+hl(0 , "DiagnosticError"     , { fg = "#BF616A" , bg = '#3C465A', italic = false , bold = true , underline = false })
+hl(0 , "DiagnosticWarn"      , { fg = "#EBCB8B" , bg = '#3C465A', italic = false , bold = true , underline = false })
+hl(0 , "DiagnosticInfo"      , { fg = "#A3BE8C" , bg = '#3C465A', italic = false , bold = true , underline = false })
+hl(0 , "DiagnosticHint"      , { fg = "#8FBCBB" , bg = '#3C465A', italic = false , bold = true , underline = false })
 hl(0 , "NotifyINFOBorder"    , { fg = "#A3BE8C" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "NotifyINFOTitle"     , { fg = "#A3BE8C" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "NotifyINFOIcon"      , { fg = "#A3BE8C" , bg = nil , italic = false , bold = false , underline = false })
@@ -240,39 +244,102 @@ hl(0 , "LspReferenceRead"  , { fg = nil , bg = "#3B4252" , italic = false , bold
 hl(0 , "LspReferenceWrite" , { fg = nil , bg = "#3B4252" , italic = false , bold = false , underline = false })
 
 -- Treesitter highlighting
-hl(0 , "@property"            , { fg = "#e1e1e1" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "@string"              , { fg = "#7d8590" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "@preproc"             , { fg = "#7d8590" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "@string.escape"       , { fg = "#a0a0a0" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "@number"              , { fg = "#1DAA89" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "@keyword"             , { fg = "#6272a4" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "@keyword.operator"    , { fg = "#6272a4" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "@function.call"       , { fg = "#c0c0c0" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "@function"            , { fg = "#c0c0c0" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "@type"                , { fg = "#277A9A" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "@function.builtin"    , { fg = "#bab0ab" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "@method"              , { fg = "#8da0cb" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "@boolean"             , { fg = "#a0a0a0" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "@float"               , { fg = "#a0a0a0" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "@field"               , { fg = "#a0a0a0" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "@parameter"           , { fg = "#B6819E" , bg = nil , italic = true  , bold = false , underline = false })
-hl(0 , "@conditional"         , { fg = "#B6819E" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "@repeat"              , { fg = "#B6819E" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "@constant.builtin"    , { fg = "#a0a0a0" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "@constant.macro"      , { fg = "#a0a0a0" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "@variable"            , { fg = "#BFC1C7" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "@include"             , { fg = "#BC70A4" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "@define"              , { fg = "#4b8a8d" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "@operator"            , { fg = "#C5B4C0" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "@punctuation"         , { fg = "#C5B4C0" , bg = nil , italic = false , bold = true  , underline = false })
-hl(0 , "@constructor"         , { fg = "#a0a0a0" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "@punctuation.bracket" , { fg = nil 		   , bg = nil , italic = false , bold = true  , underline = false })
--- hl(0 , "@constant"            , { fg = "#709081" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "@type.definition"     , { fg = "#a0a0a0" , bg = nil , italic = false , bold = false , underline = false })
+hl(0, "@boolean",                { fg = "#CEB69A", bg = nil, italic = true,  bold = false, underline = false })
+hl(0, "@character",              { fg = "#5fb4b4", bg = nil, italic = false, bold = false, underline = false })
+hl(0, "@character.special",      { fg = "#5fb4b4", bg = nil, italic = false, bold = false, underline = false })
+hl(0, "@comment",                { fg = "#a6acb8", bg = nil, italic = false, bold = false, underline = false })
+hl(0, "@conditional",            { fg = "#cc8ec6", bg = nil, italic = false, bold = false, underline = false })
+hl(0, "@constant",               { fg = "#f7f7f7", bg = nil, italic = false, bold = false, underline = false })
+hl(0, "@constant.builtin",       { fg = "#d8dee9", bg = nil, italic = true,  bold = false, underline = false })
+hl(0, "@constant.macro",         { fg = "#cc8ec6", bg = nil, italic = true,  bold = false, underline = false })
+hl(0, "@constructor.javascript", { fg = "#f9ae58", bg = nil, italic = true,  bold = false, underline = false })
+hl(0, "@constructor.lua",        { fg = "#f7f7f7", bg = nil, italic = false, bold = false, underline = false })
+hl(0, "@constructor.typescript", { fg = "#f9ae58", bg = nil, italic = true,  bold = false, underline = false })
+hl(0, "@enum",                   { fg = "#f9ae58", bg = nil, italic = true,  bold = false, underline = false })
+-- exception.rust
+hl(0, "@field",                  { fg = "#95b2d6", bg = nil, italic = false, bold = false, underline = false })
+-- field.toml
+-- field.toyaml
+hl(0, "@float",               			{ fg = "#fac761", bg = nil, 	  italic = false, bold = false, underline = false })
+hl(0, "@function",            			{ fg = "#5fb4b4", bg = nil, 	  italic = false, bold = false, underline = false })
+hl(0, "@function.builtin",    			{ fg = "#bab0ab", bg = nil, 	  italic = false, bold = false, underline = false })
+hl(0, "@function.call",       			{ fg = "#5c99d6", bg = nil, 	  italic = false, bold = false, underline = false })
+hl(0, "@function.css",        			{ fg = "#5c99d6", bg = nil, 	  italic = false, bold = false, underline = false })
+hl(0, "@function.macro",      			{ fg = "#5c99d6", bg = nil, 	  italic = false, bold = false, underline = false })
+hl(0, "@include",             			{ fg = "#cc8ec6", bg = nil, 	  italic = false, bold = false, underline = false })
+hl(0, "@interface",           			{ fg = "#f9ae58", bg = nil, 	  italic = false, bold = false, underline = false })
+hl(0, "@keyword",             			{ fg = "#cc8ec6", bg = nil, 	  italic = true,  bold = false, underline = false })
+hl(0, "@keyword.function",    			{ fg = "#cc8ec6", bg = nil, 	  italic = true,  bold = false, underline = false })
+hl(0, "@keyword.operator",    			{ fg = "#f97b58", bg = nil, 	  italic = false, bold = false, underline = false })
+hl(0, "@keyword.return",      			{ fg = "#cc8ec6", bg = nil, 	  italic = false, bold = false, underline = false })
+hl(0, "@label",               			{ fg = "#5fb4b4", bg = nil, 	  italic = false, bold = false, underline = false })
+hl(0, "@label.json",          			{ fg = "#5fb4b4", bg = nil, 	  italic = false, bold = false, underline = false })
+hl(0, "@label.toml",          			{ fg = "#5fb4b4", bg = nil, 	  italic = false, bold = false, underline = false })
+hl(0, "@label.vim",           			{ fg = "#95b2d6", bg = nil, 	  italic = false, bold = false, underline = false })
+hl(0, "@method",              			{ fg = "#5fb4b4", bg = nil, 	  italic = false, bold = false, underline = false })
+hl(0, "@method.call",         			{ fg = "#5c99d6", bg = nil, 	  italic = false, bold = false, underline = false })
+hl(0, "@namespace",           			{ fg = "#f9ae58", bg = nil, 	  italic = false, bold = false, underline = false })
+hl(0, "@number",              			{ fg = "#D19491", bg = nil, 	  italic = false, bold = false, underline = false })
+hl(0, "@number.bash",         			{ fg = "#f9ae58", bg = nil, 	  italic = false, bold = false, underline = false })
+hl(0, "@operator",            			{ fg = "#e96b48", bg = nil, 	  italic = false, bold = false, underline = false })
+hl(0, "@parameter",           			{ fg = "#E7839F", bg = nil, 	  italic = true,  bold = false, underline = false })
+hl(0, "@parameter.bash",      			{ fg = "#d8dee9", bg = nil, 	  italic = true,  bold = false, underline = false })
+hl(0, "@parameter.reference", 			{ fg = "#d8dee9", bg = nil, 	  italic = true,  bold = false, underline = false })
+hl(0, "@preproc",             			{ fg = "#5fb4b4", bg = nil, 	  italic = false, bold = false, underline = false })
+hl(0, "@property",            			{ fg = "#95b2d6", bg = nil, 	  italic = false, bold = false, underline = false })
+hl(0, "@property.toml",       			{ fg = "#5fb4b4", bg = nil, 	  italic = false, bold = false, underline = false })
+hl(0, "@punctuation",         			{ fg = "#a6acb8", bg = nil, 	  italic = false, bold = true,  underline = false })
+hl(0, "@punctuation.delimiter",         { fg = "#a6acb8", bg = nil,       italic = false, bold = true,  underline = false })
+hl(0, "@punctuation.bracket",           { fg = nil,       bg = nil,       italic = false, bold = true,  underline = false })
+hl(0, "@punctuation.delimiter.python",  { fg = "#f7f7f7", bg = nil,       italic = false, bold = true,  underline = false })
+hl(0, "@punctuation.delimiter.yaml",    { fg = "#5c99d6", bg = nil,       italic = false, bold = true,  underline = false })
+hl(0, "@punctuation.special",           { fg = "#5fb4b4", bg = nil,       italic = false, bold = true,  underline = false })
+hl(0, "@punctuation.special.markdown",  { fg = "#f97b58", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@repeat",                        { fg = "#cc8ec6", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@repeat.python",                 { fg = "#ec5f66", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@storageclass",                  { fg = "#ec5f66", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@storageclass.lifetime",         { fg = "#ec5f66", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@string",                        { fg = "#99c794", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@string.escape",                 { fg = "#5fb4b4", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@string.regex",                  { fg = "#5fb4b4", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@string.special",                { fg = "#5fb4b4", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@symbol",                        { fg = "#5fb4b4", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@tag",                           { fg = "#ec5f66", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@tag.attribute",                 { fg = "#cc8ec6", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@tag.delimiter",                 { fg = "#5fb4b4", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@tag.markdown",                  { fg = "#5c99d6", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@tag.markdown_inline",           { fg = "#5c99d6", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@tag.rust",                      { fg = "#5fb4b4", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@tag.rust.lua",                  { fg = "#5fb4b4", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@text",                          { fg = "#d8dee9", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@text.emphasis",                 { fg = nil,       bg = nil,       italic = true,  bold = true,  underline = false })
+hl(0, "@text.literal",                  { fg = "#99c794", bg = nil,       italic = true,  bold = false, underline = false })
+hl(0, "@text.literal.markdown_inline",  { fg = "#99c794", bg = "#3b454e", italic = false, bold = false, underline = false })
+hl(0, "@text.reference",                { fg = "#5fb4b4", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@text.strong",                   { fg = nil,       bg = nil,       italic = false, bold = true,  underline = false })
+hl(0, "@text.title",                    { fg = "#d8dee9", bg = nil,       italic = false, bold = true,  underline = false })
+hl(0, "@text.underline",                { fg = nil,       bg = nil,       italic = false, bold = false, underline = true  })
+hl(0, "@text.uri",                      { fg = "#5c99d6", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@type",                          { fg = "#5c99d6", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@type.builtin",                  { fg = "#5c99d6", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@type.definition",               { fg = "#f9ae58", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@type.qualifier",                { fg = "#ec5f66", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@variable",                      { fg = "#BFC1C7", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@variable.builtin",              { fg = "#BFC1C7", bg = nil,       italic = true,  bold = false, underline = false })
+hl(0, "@variable.javascript",           { fg = "#BFC1C7", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@variable",                      { fg = "#BFC1C7", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@define",                        { fg = "#4b8a8d", bg = nil,       italic = false, bold = false, underline = false })
+hl(0, "@constructor",                   { fg = "#a0a0a0", bg = nil,       italic = false, bold = false, underline = false })
 
-hl(0 , "cIncluded"            , { fg = "#7d8590" , bg = nil , italic = true , bold = false , underline = false })
-hl(0 , "cCppOutIf2"       		, { fg = "#3d4570" , bg = nil , italic = false, bold = false , underline = false })
-hl(0 , "pythonTSComment"      , { fg = "#909090" , bg = nil , italic = true , bold = false , underline = false })
+-- hl(0 , "@constant"            , { fg = "#709081" , bg = nil , italic = false , bold = false , underline = false })
+-- hl(0 , "@type.definition"     , { fg = "#a0a0a0" , bg = nil , italic = false , bold = false , underline = false })
+
+hl(0, "cIncluded",			 { fg = "#7d8590", bg = nil, italic = true,  bold = false, underline = false })
+hl(0, "cCppOutIf2",			 { fg = "#3d4570", bg = nil, italic = false, bold = false, underline = false })
+hl(0, "pythonTSComment",	 { fg = "#909090", bg = nil, italic = true,  bold = false, underline = false })
+
+-- javascript
+hl(0 , "javaScriptMember"    , { fg = "#5F9EA0" , bg = nil , italic = true  , bold = false , underline = false })
 
 -- jinja2
 hl(0 , "jinjaVarDelim"      , { fg = "#EB6D7F" , bg = nil , italic = false , bold = true  , underline = false })
@@ -280,6 +347,10 @@ hl(0 , "jinjaVariable"      , { fg = "#5F9EA0" , bg = nil , italic = true  , bol
 hl(0 , "jinjaTagDelim"      , { fg = "#EB6D7F" , bg = nil , italic = false , bold = true  , underline = false })
 hl(0 , "jinjaStatement"     , { fg = "#bd93f9" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "jinjaBlockName"     , { fg = "#5F9EA0" , bg = nil , italic = true  , bold = true  , underline = false })
+
+hl(0 , "djangoTagBlock"     , { fg = "#bd93f9" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "djangoStatement"    , { fg = "#BE6169" , bg = nil , italic = true , bold = false , underline = false })
+hl(0 , "djangoVarBlock"     , { fg = "#00AFDB" , bg = nil , italic = true , bold = false , underline = false })
 
 -- Fidget
 hl(0 , "FidgetTask"         , { fg = "#B6919E" , bg = nil , italic = false , bold = false , underline = false })
@@ -319,10 +390,10 @@ hl(0 , "NoiceLspProgressDone"   , { fg = "#A3BE8C" , bg = nil , italic = false ,
 hl(0 , "NoiceVirtualText"       , { fg = "#F7CAB8" , bg = nil , italic = true  , bold = false , underline = false })
 
 -- LeaderF
-hl(0 , "Lf_hl_popup_window"    , { fg = "#c0c0c0" , bg = "#1E2430" , italic = false , bold = false , underline = false })
-hl(0 , "Lf_hl_popup_inputText" , { fg = "#c0c0c0" , bg = "#1E2430" , italic = false , bold = false , underline = false })
-hl(0 , "Lf_hl_popupBorder"     , { fg = "#e79498" , bg = "#1E2430" , italic = false , bold = false , underline = false })
-hl(0 , "Lf_hl_popup_prompt"    , { fg = "#FA2C77" , bg = "#1E2430" , italic = false , bold = true  , underline = false })
+hl(0 , "Lf_hl_popup_window"    , { fg = "#c0c0c0" , bg = "#28303a" , italic = false , bold = false , underline = false })
+hl(0 , "Lf_hl_popup_inputText" , { fg = "#c0c0c0" , bg = "#28303a" , italic = false , bold = false , underline = false })
+hl(0 , "Lf_hl_popupBorder"     , { fg = "#e79498" , bg = "#28303a" , italic = false , bold = false , underline = false })
+hl(0 , "Lf_hl_popup_prompt"    , { fg = "#FA2C77" , bg = "#28303a" , italic = false , bold = true  , underline = false })
 hl(0 , "Lf_hl_cursorline"      , { fg = "#858ba8" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "Lf_hl_match"      	   , { fg = "#EB6D7F" , bg = nil       , italic = true  , bold = false , underline = false })
 
@@ -334,8 +405,8 @@ hl(0, "MiniSurround"         , { fg = "#ec7279", bg = nil, italic = false, bold 
 hl(0, "VirtColumn", { fg = "#393F4B", bg = nil, italic = false, bold = true, underline = false })
 
 -- nvim-treesitter-context
--- hl(0, "TreesitterContext", { fg = nil, bg = "#0B2038", italic = false, bold = false, underline = false })
-hl(0, "TreesitterContextBottom", { fg = nil, bg = "#1E2430", italic = false, bold = false, underline = true, sp = "#5E6169" })
+hl(0, "TreesitterContext", { fg = nil, bg = "#28303a", italic = false, bold = false, underline = false })
+hl(0, "TreesitterContextBottom", { fg = nil, bg = "#28303a", italic = false, bold = false, underline = true, sp = "#858ba8" })
 -- hi TreesitterContextBottom gui=underline guisp=Grey
 
 -- nvim-surround
@@ -360,13 +431,13 @@ hl(0 , "StartifySection" , { fg = "#00afcb" , bg = nil , italic = true  , bold =
 hl(0 , "StartifyFooter"  , { fg = "#a0a0a0" , bg = nil , italic = false , bold = false , underline = false })
 
 -- rainbow
--- hl(0, "rainbowcol1", { fg = "#BF616A", bg = nil, italic = false, bold = true, underline = false })
--- hl(0, "rainbowcol2", { fg = "#81A1C1", bg = nil, italic = false, bold = true, underline = false })
--- hl(0, "rainbowcol3", { fg = "#d5b07B", bg = nil, italic = false, bold = true, underline = false })
--- hl(0, "rainbowcol4", { fg = "#AA4499", bg = nil, italic = false, bold = true, underline = false })
--- hl(0, "rainbowcol5", { fg = "#FA2CA7", bg = nil, italic = false, bold = true, underline = false })
--- hl(0, "rainbowcol6", { fg = "#B3C1A9", bg = nil, italic = false, bold = true, underline = false })
--- hl(0, "rainbowcol7", { fg = "#bd93f9", bg = nil, italic = false, bold = true, underline = false })
+-- hl(0, "TSRainbowRed", { fg = "#BF616A", bg = nil, italic = false, bold = true, underline = false })
+-- hl(0, "TSRainbowBlue", { fg = "#81A1C1", bg = nil, italic = false, bold = true, underline = false })
+-- hl(0, "TSRainbowYellow", { fg = "#d5b07B", bg = nil, italic = false, bold = true, underline = false })
+-- hl(0, "TSRainbowOrange", { fg = "#AA4499", bg = nil, italic = false, bold = true, underline = false })
+-- hl(0, "TSRainbowGreen", { fg = "#FA2CA7", bg = nil, italic = false, bold = true, underline = false })
+-- hl(0, "TSRainbowViolet", { fg = "#B3C1A9", bg = nil, italic = false, bold = true, underline = false })
+-- hl(0, "TSRainbowCyan", { fg = "#bd93f9", bg = nil, italic = false, bold = true, underline = false })
 
 -- nvim-rainbow-ts - #65C3AD #E8C060 #33AFFF #2AA198
 hl(0, "rainbowcol1", { fg = "#4682B4", bg = nil, italic = false, bold = false, underline = false })

@@ -27,7 +27,7 @@ function M.setup(client, buffer)
 					{ vim.lsp.buf.code_action, "Code Action" },
 					{ "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action", mode = "v" },
 				},
-				-- d = { vim.diagnostic.open_float, "Line Diagnostics" },
+				d = { vim.diagnostic.open_float, "Line Diagnostics" },
 				l = {
 					name = "+lsp",
 					i = { "<cmd>LspInfo<cr>", "Lsp Info" },

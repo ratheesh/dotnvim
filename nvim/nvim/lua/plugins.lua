@@ -1,4 +1,12 @@
 return {
+	-- { 'navarasu/onedark.nvim' },
+	{
+		'kaiuri/nvim-juliana',
+		enabled=true,
+		config=function ()
+			-- require('nvim-juliana').colors
+		end
+	},
 	{
 		"folke/neodev.nvim",
 		enabled = false,
@@ -11,45 +19,12 @@ return {
 	{ "williamboman/mason-lspconfig.nvim", event = 'LspAttach' },
 	{ "tpope/vim-repeat", keys = "." },
 	{
-		"luukvbaal/statuscol.nvim",
-		enabled = false,
-		event = 'VeryLazy',
-		config = function()
-			local builtin = require('statuscol.builtin')
-			local cfg = {
-				separator   = true,
-				thousands   = false,
-				relculright = false,
-				lnumfunc    = nil,
-				reeval      = false,
-				setopt      = true,
-				order       = "FSNs",
-				-- Click actions
-				Lnum                   = builtin.lnum_click,
-				FoldPlus               = builtin.foldplus_click,
-				FoldMinus              = builtin.foldminus_click,
-				FoldEmpty              = builtin.foldempty_click,
-				DapBreakpointRejected  = builtin.toggle_breakpoint,
-				DapBreakpoint          = builtin.toggle_breakpoint,
-				DapBreakpointCondition = builtin.toggle_breakpoint,
-				DiagnosticSignError    = builtin.diagnostic_click,
-				DiagnosticSignHint     = builtin.diagnostic_click,
-				DiagnosticSignInfo     = builtin.diagnostic_click,
-				DiagnosticSignWarn     = builtin.diagnostic_click,
-				GitSignsTopdelete      = builtin.gitsigns_click,
-				GitSignsUntracked      = builtin.gitsigns_click,
-				GitSignsAdd            = builtin.gitsigns_click,
-				GitSignsChangedelete   = builtin.gitsigns_click,
-				GitSignsDelete         = builtin.gitsigns_click,
-			}
-			require('statuscol').setup(cfg)
-			-- vim.opt.statuscolumn   = '%=%{v:relnum?v:relnum:v:wrap ? "" : v:lnum} %#SignColumn#%s'
-			-- vim.opt.statuscolumn   = '%=%{v:relnum?v:relnum:v:wrap ? "" : v:lnum}▕%#SignColumn# %s%#FoldColumn#%{foldlevel(v:lnum) > 0 ? (foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "▼" : "▶") : "│") : " " }'
-		end
-	},
-	{
 		'winston0410/range-highlight.nvim',
+		enabled = false,
 		event = { 'CmdlineEnter' },
+		config=function ()
+			require("range-highlight").setup()
+		end,
 		dependencies = { "winston0410/cmd-parser.nvim"  }
 	},
 	{
@@ -65,7 +40,7 @@ return {
 	{ "folke/neoconf.nvim", enabled = false, cmd = "Neoconf" },
 	{
 		"lukas-reineke/virt-column.nvim",
-		enabled = true,
+		enabled = false,
 		event   = 'VeryLazy',
 		config = function ()
 			require("virt-column").setup({char = '▕', virtcolumn = '+1'})
@@ -84,9 +59,8 @@ return {
 		'NvChad/nvim-colorizer.lua',
 		event = 'VeryLazy',
 		config = function ()
-			require('colorizer').setup()
-			-- vim.cmd([[ColorizerAttachToBuffer]])
-		end
+			require('colorizer').setup({})
+		end,
 	},
 	-- { "EdenEast/nightfox.nvim", event = "VeryLazy" },
 	{
@@ -104,6 +78,7 @@ return {
 	},
 	{
 		"smjonas/inc-rename.nvim",
+		enabled =  false,
 		cmd = "IncRename",
 		config = function()
 			require("inc_rename").setup()
@@ -112,6 +87,28 @@ return {
 	{
 		"ojroques/vim-oscyank",
 		cmd = { "OSCYank", "OSCYankReg" },
+	},
+	{
+		'gbprod/yanky.nvim',
+		enabled=true,
+		config=function ()
+			require("yanky").setup({
+				ring = {
+					history_length = 100,
+					storage        = "shada",
+					cancel_event   = "update",
+					sync_with_numbered_registers = true,
+				},
+				system_clipboard = {
+					sync_with_ring = true,
+				},
+				highlight = {
+					on_put  = true,
+					on_yank = true,
+					timer   = 500,
+				},
+			})
+		end
 	},
 	-- { "NvChad/nvim-colorizer.lua", ft = { "css" } },
 	{ "stevearc/dressing.nvim", event = "VeryLazy" },
@@ -138,7 +135,7 @@ return {
 	},
 	{
 		"simrat39/symbols-outline.nvim",
-		enabled = false,
+		enabled = true,
 		cmd = "SymbolsOutline",
 		init = function()
 			vim.keymap.set("n", "<leader>cs", "<cmd>SymbolsOutline<cr>", { desc = "Symbols Outline" })
@@ -158,6 +155,16 @@ return {
 						lua = { "self", "use" },
 					},
 				},
+			})
+		end,
+	},
+	{
+		"LeonHeidelbach/trailblazer.nvim",
+		enabled = false,
+		event = 'VeryLazy',
+		config = function()
+			require("trailblazer").setup({
+				-- your custom config goes here
 			})
 		end,
 	},
@@ -194,7 +201,7 @@ return {
 		"andymass/vim-matchup",
 		event = "BufReadPost",
 		config = function()
-			vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
+			vim.g.matchup_matchparen_offscreen = { method = "popup" }
 		end,
 	},
 	{
@@ -208,6 +215,8 @@ return {
 					-- Require providers
 					require('hover.providers.lsp')
 					require('hover.providers.man')
+					require('hover.providers.LspAttach')
+					require('hover.providers.css')
 				end,
 				preview_opts = {
 					border = 'rounded',
@@ -280,6 +289,7 @@ return {
 	},
 	{
 		'lewis6991/spaceless.nvim',
+		enabled=false,
 		event = 'VeryLazy',
 		config = function()
 			require('spaceless').setup()
@@ -290,6 +300,36 @@ return {
 		enabled = true,
 		config = function ()
 			require('mini.move').setup()
+		end
+	},
+	{
+		'romgrk/kirby.nvim',
+		enabled = false,
+		dependencies = {
+			{ 'romgrk/fzy-lua-native', build = 'make install' },
+			{ 'romgrk/kui.nvim' },
+		},
+	},
+	{
+		'tamton-aquib/flirt.nvim',
+		enabled = false,
+		event = 'VeryLazy',
+		config=function ()
+			require("flirt").setup()
+		end
+	},
+	{
+		"github/copilot.vim",
+		enabled = true,
+	},
+	{
+		'IMOKURI/line-number-interval.nvim',
+		enabled = true,
+		event = 'BufReadPost',
+		config = function()
+			vim.g.line_number_interval_enable_at_startup=1
+			vim.g.line_number_interval=5
+			vim.cmd([[LineNumberIntervalEnable]])
 		end
 	}
 }

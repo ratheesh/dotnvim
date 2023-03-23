@@ -107,7 +107,8 @@ map({ "i", "s" }, "<C-h>", "<Plug>(vsnip-jump-prev)") ]]
 
 map({ "n", "x" }, "<leader>s", "<Plug>(sqls-execute-query)", { desc = "Exec SQL Query" })
 
-map("n", "<leader>d", '<cmd>lua require"popui.diagnostics-navigator"()<CR>')
+-- vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
+map("n", "<leader>d", '<cmd>lua vim.diagnostic.open_float(nil,{focus=false})<CR>')
 map("n", "<leader>m", '<cmd>lua require"popui.marks-manager"()<CR>')
 
 -- gitsigns

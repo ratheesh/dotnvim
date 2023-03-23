@@ -41,7 +41,7 @@ Hydra({
 			vim.cmd 'mkview'
 			vim.cmd 'silent! %foldopen!'
 			gitsigns.toggle_signs(true)
-			gitsigns.toggle_linehl(true)
+			-- gitsigns.toggle_linehl(true)
 			gitsigns.toggle_word_diff(true)
 		end,
 		on_exit = function()

@@ -2,13 +2,14 @@ local M = {
   "nvim-treesitter/nvim-treesitter",
   dev = false,
   build = ":TSUpdate",
-  event = "BufReadPost",
+  event = "BufReadPre",
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
     -- "RRethy/nvim-treesitter-textsubjects",
     -- "nvim-treesitter/nvim-treesitter-refactor",
     -- "mfussenegger/nvim-treehopper",
-		{ 'mrjones2014/nvim-ts-rainbow', event = 'LspAttach' },
+		-- { 'mrjones2014/nvim-ts-rainbow', event = 'LspAttach' },
+		{ 'HiPhish/nvim-ts-rainbow2', event = 'LspAttach' },
 		{ 'RRethy/nvim-treesitter-endwise', event = 'InsertEnter' },
 		"nvim-lua/plenary.nvim",
     -- { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
@@ -30,7 +31,7 @@ function M.config()
 		},
 		ensure_installed = {
 			"bash", "c", "cpp", "css", "html", "java", "javascript", "json",
-			"lua","python", "regex", "vim", "yaml", "norg",
+			"lua","python", "regex", "vim", "yaml", "norg", "vue", "htmldjango"
 		},
 		indent    = { enable = false },
 		matchup   = { enable = true  },
@@ -96,16 +97,18 @@ function M.config()
 			enable         = true,
 			extended_mode  = true,
 			max_file_lines = 2000,
-			-- colors         = {
-				-- 	"#e79498",
-				-- 	"#4682B4",
-				-- 	"#e7b898",
-				-- 	"#AA4499",
-				-- 	"#FA2CA7",
-				-- 	"#B3C1A9",
-				-- 	"#81A1C1"
-				-- }
+			query = 'rainbow-parens',
+			strategy = require 'ts-rainbow.strategy.global',
+			hlgroups = {
+				'rainbowcol1',
+				'rainbowcol2',
+				'rainbowcol3',
+				'rainbowcol4',
+				'rainbowcol5',
+				'rainbowcol6',
+				'rainbowcol7',
 			},
+		},
   })
   local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
   parser_config.markdown.filetype_to_parsername = "octo"

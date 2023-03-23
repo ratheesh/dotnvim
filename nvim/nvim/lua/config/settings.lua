@@ -24,7 +24,7 @@ vim.opt.smartcase      = true
 vim.opt.ignorecase     = true
 vim.opt.number         = true
 vim.opt.relativenumber = true
-vim.opt.colorcolumn    = "80"
+vim.opt.colorcolumn    = "11180"
 vim.opt.cursorline     = true
 vim.opt.splitbelow     = true
 vim.opt.splitright     = true
@@ -39,15 +39,16 @@ vim.opt.shell          = "/bin/bash"
 vim.opt.lazyredraw     = false
 vim.opt.mouse          = "a"
 vim.opt.mousemoveevent = true
-vim.opt.pumheight      = 12
-vim.opt.pumblend       = 8
+vim.opt.pumheight      = 10
+vim.opt.pumblend       = 0
 vim.opt.completeopt    = "menu,menuone,noselect"
 vim.opt.showmode       = false
 vim.opt.confirm        = true
-vim.opt.laststatus     = 0
+vim.opt.laststatus     = 3
 vim.opt.guicursor      = "n:block-nCursor-blinkon0,i-ci:ver30-iCursor-blinkon0,v-ve:block-vCursor-blinkon0,o:hor30-oCursor-blinkon0,r-cr:block-rCursor-blinkon0"
 vim.opt.wildignore     = { '*.o', '*.a', '__pycache__', '.git', '.svn' }
-vim.opt.statuscolumn   = '%=%{&nu?(&rnu&&v:relnum?v:relnum:v:lnum):""} %#SignColumn#%s'
+-- vim.opt.statuscolumn   = '%=%{&nu?(&rnu&&v:relnum?v:relnum:v:lnum):""}▕%#SignColumn#%s'
+vim.opt.statuscolumn   = '%=%{&rnu?(v:relnum?v:relnum:v:lnum):v:lnum}▕%#SignColumn#%s'
 -- require('util.status')
 -- vim.o.statuscolumn = "%!v:lua.get_statuscol()"
 

@@ -2,9 +2,11 @@ local M = {
 	"neovim/nvim-lspconfig",
 	name = "lsp",
 	event = "BufReadPre",
+	ft = { 'c', 'cpp', 'python', 'java', 'lua',
+	'html', 'javascript', 'vue', 'markdown', 'sh', 'css' },
 	dependencies = {
-		{ 'hrsh7th/cmp-nvim-lsp', event = 'LspAttach' },
-		{ 'ray-x/lsp_signature.nvim', enabled = true, event = 'InsertEnter' },
+		{ 'hrsh7th/cmp-nvim-lsp' },
+		{ 'ray-x/lsp_signature.nvim', event = 'InsertEnter' },
 		{
 			'Issafalcon/lsp-overloads.nvim',
 			event = 'InsertEnter'
@@ -35,6 +37,9 @@ local M = {
 		{
 			'lvimuser/lsp-inlayhints.nvim',
 			enabled = true,
+			pin=true,
+			branch = 'anticonceal',
+			event = 'LspAttach',
 			config = function ()
 				local default_config = {
 					inlay_hints = {
@@ -55,7 +60,7 @@ local M = {
 							return table.concat(labels or {}, ", ")
 						end,
 						virt_text_formatter = function(label, hint, opts, client_name)
-							if client_name == "sumneko_lua" then
+							if client_name == "lua_ls" then
 								if hint.kind == 2 then
 									hint.paddingLeft = false
 								else
@@ -73,7 +78,7 @@ local M = {
 
 						-- highlight group
 						highlight = "LspInlayHint",
-					},
+				},
 					enabled_at_startup = true,
 					debug_mode = false,
 				}
@@ -93,6 +98,32 @@ local M = {
 					end,
 				}) ]]
 			end
+		},
+		{
+			"glepnir/lspsaga.nvim",
+			enabled = false,
+			event = "BufRead",
+			config = function()
+				require("lspsaga").setup({
+					lightbulb = {
+						enable           = false,
+						enable_in_insert = true,
+						sign             = true,
+						sign_priority    = 40,
+						virtual_text     = true,
+					},
+					symbol_in_winbar = {
+						enable       = false,
+						separator    = "->",
+						hide_keyword = true,
+						show_file    = true,
+						folder_level = 2,
+						respect_root = false,
+						color_mode   = true,
+					},
+				})
+			end,
+			dependencies = { {"nvim-tree/nvim-web-devicons"} }
 		}
 	}
 }
@@ -118,7 +149,7 @@ function M.config()
 			wrap            = true,
 			floating_window = false,
 			doc_lines       = 0,
-			hint_enable     = true,
+			hint_enable     = false,
 			hint_prefix     = '🐼 ',
 			hint_scheme     = 'String',
 			hi_parameter    = 'LspSignatureActiveParameter',
@@ -156,7 +187,7 @@ function M.config()
 		end
 
 		-- require("nvim-navic").attach(client, bufnr)
-		require("plugins.lsp.formatting").setup(client, bufnr)
+		-- require("plugins.lsp.formatting").setup(client, bufnr)
 		require("plugins.lsp.keys").setup(client, bufnr)
 	end
 
@@ -188,7 +219,7 @@ function M.config()
 	-- Web Dev
 		cssls = {},
 		cssmodules_ls = {},
-		tailwindcss = {},
+		-- tailwindcss = {},
 		emmet_ls = {},
 		yamlls = {},
 		eslint = {},
@@ -215,7 +246,7 @@ function M.config()
 		tsserver = {},
 
 		-- lua
-		sumneko_lua = {
+		lua_ls = {
 			single_file_support = true,
 			settings = {
 				Lua = {

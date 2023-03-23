@@ -1,10 +1,16 @@
 local M = {
 	"hrsh7th/nvim-cmp",
 	disable = false,
+	pin = true,
 	event = { "InsertEnter", "CmdlineEnter" },
 	dependencies = {
 		'rafamadriz/friendly-snippets',
-		"L3MON4D3/LuaSnip",
+		{
+			"L3MON4D3/LuaSnip",
+			config= function ()
+				require("luasnip.loaders.from_vscode").lazy_load()
+			end
+		},
 		"hrsh7th/cmp-path",
 		-- "hrsh7th/cmp-buffer",
 		"ve5li/cmp-buffer",
@@ -12,7 +18,8 @@ local M = {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-nvim-lua",
-		'davidsierradz/cmp-conventionalcommits',
+		"amarakon/nvim-cmp-buffer-lines",
+		{'davidsierradz/cmp-conventionalcommits', ft='gitcommit'},
 		'dcampos/cmp-emmet-vim',
 		"saadparwaiz1/cmp_luasnip",
 		"onsails/lspkind-nvim",
@@ -44,12 +51,13 @@ function M.config()
 	end
 
 	local icons = {
-		Text     = ' ' , Method = 'ƒ ' , Function  = ' ' , Constructor = ' ' , Field         = ' ' ,
-		Variable = ' ' , Class  = ' ' , Interface = ' ' , Module      = ' ' , Property      = ' ' ,
-		Unit     = ' ' , Value  = ' ' , Enum      = ' ' , Keyword     = ' ' , Snippet       = ' ' ,
+		Text     = ' ' , Method = 'ƒ ' , Function  = ' ' , Constructor = ' ' , Field         = ' ' ,
+		Variable = ' ' , Class  = ' ' , Interface = ' ' , Module      = ' ' , Property      = ' ' ,
+		Unit     = ' ' , Value  = ' ' , Enum      = 'ℰ ' , Keyword     = ' ' , Snippet       = ' ' ,
 		color    = ' ' , File   = ' ' , Reference = ' ' , Folder      = ' ' , Enummember    = ' ' ,
-		Constant = ' ' , Struct = 'פּ ' , Event     = ' ' , Operator    = ' ' , Typeparameter = ' ' ,
+		Constant = ' ' , Struct = 'פּ ' , Event     = ' ' , Operator    = ' ' , Typeparameter = ' ' ,
         Array    = " " , Boolean= " " , Namespace = " " , Null        = "ﳠ " , Number        = " " ,
+		String   = "𝓐"  , Package= " " ,
 
 --[[     kinds = {
       Array = " ",
@@ -125,11 +133,12 @@ function M.config()
 		sources = {
 			-- { name = 'nvim_lsp_signature_help' },
 			-- { name = 'luasnip'  },
-			{ name = 'nvim_lsp' },
-			{ name = 'nvim_lua' },
-			{ name = 'path'     },
-			{ name = 'luasnip'  },
 			{ name = 'conventionalcommits' },
+			{ name = 'nvim_lsp' },
+			-- { name = 'nvim_lua' },
+			{ name = 'luasnip'  },
+			{ name = 'path'     },
+			-- { name = 'buffer-lines' },
 			-- { name = 'emmet_vim' },
 			{ name = 'emoji'  },
 			{
@@ -140,7 +149,6 @@ function M.config()
 					end
 				},
 			},
-			{ name = 'conventionalcommits' },
 		},
 		formatting = {
 			-- fields = { 'kind', 'abbr'},
@@ -237,8 +245,8 @@ function M.config()
 		},
 	})
 
-	local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-	cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done { map_char = { tex = '' } })
+	-- local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+	-- cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done { map_char = { tex = '' } })
 end
 
 return M

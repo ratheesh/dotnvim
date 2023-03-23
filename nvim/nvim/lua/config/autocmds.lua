@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd('Filetype', { pattern = 'gitcommit', group = colorco
 
 -- Change the current line number bg color in insert and non-insert mode
 local cursorGrp = vim.api.nvim_create_augroup('cursorGrp', { clear = true })
-vim.api.nvim_create_autocmd( 'InsertLeave' , { group = cursorGrp, command = 'hi CursorLineNr guifg=#f0f0f0 guibg=#b16286' })
+vim.api.nvim_create_autocmd( 'InsertLeave' , { group = cursorGrp, command = 'hi CursorLineNr guifg=#f0f0f0 guibg=#6B717C' })
 vim.api.nvim_create_autocmd( 'InsertEnter' , { group = cursorGrp, command = 'hi CursorLineNr guifg=#f0f0f0 guibg=#2AA198' })
 
 -- Enable relative number only in non-insert mode
@@ -44,7 +44,7 @@ end
 })
 
 -- jump to last point of current buffer when opened
---[[ vim.api.nvim_create_autocmd('BufReadPost', {
+vim.api.nvim_create_autocmd('BufReadPost', {
   callback = function()
     local mark = vim.api.nvim_buf_get_mark(0, '"')
     local lcount = vim.api.nvim_buf_line_count(0)
@@ -52,7 +52,7 @@ end
       pcall(vim.api.nvim_win_set_cursor, 0, mark)
     end
   end,
-}) ]]
+})
 
 -- create directories when needed, when saving a file
 vim.api.nvim_create_autocmd("BufWritePre", {

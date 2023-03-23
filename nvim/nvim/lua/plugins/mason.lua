@@ -1,5 +1,6 @@
 local M = {
   "williamboman/mason.nvim",
+  enabled = true,
 }
 
 M.tools = {
@@ -31,6 +32,9 @@ function M.config()
   M.check()
   require("mason-lspconfig").setup({
     automatic_installation = true,
+	ui = {
+		border = 'rounded',
+	}
   })
 end
 

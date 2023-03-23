@@ -1,52 +1,97 @@
 local M = {
   "jose-elias-alvarez/null-ls.nvim",
+  enabled=true,
+  event={ 'LspAttach', 'BufReadPost' },
 }
 
 function M.setup(options)
-  local nls = require("null-ls")
-  nls.setup({
-    debounce = 150,
-    save_after_format = false,
-    sources = {
+	local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+	local ls = require('null-ls')
+	local nls_utils = require('null-ls.utils')
+
+	local with_diagnostics_code = function(builtin)
+		return builtin.with {
+			diagnostics_format = '#{m} [#{c}]',
+		}
+	end
+
+	-- local with_root_file = function(builtin, file)
+	-- 	return builtin.with {
+	-- 		condition = function(utils)
+	-- 			return utils.root_has_file(file)
+	-- 		end,
+	-- 	}
+	-- end
+
+	local sources = {
 		-- formatting
-		nls.builtins.formatting.shfmt,
-		nls.builtins.formatting.black,
-		nls.builtins.formatting.autopep8,
-		nls.builtins.formatting.isort,
-		nls.builtins.formatting.trim_newlines,
-		nls.builtins.formatting.prettier.with({
+		ls.builtins.formatting.shfmt,
+		ls.builtins.formatting.autopep8,
+		ls.builtins.formatting.black,
+		ls.builtins.formatting.isort,
+		ls.builtins.formatting.trim_newlines,
+		ls.builtins.formatting.prettier.with({
 			filetypes = { 'html', 'css', 'yaml', 'markdown', 'json', 'javascript' },
 		}),
-		-- nls.builtins.formatting.stylelint,
-		-- nls.builtins.formatting.stylua,
+		-- ls.builtins.formatting.pyflyby,
+		-- ls.builtins.formatting.stylelint,
+		-- ls.builtins.formatting.stylua,
 
 		-- diagnostics
-		-- with_diagnostics_code(nls.builtins.diagnostics.shellcheck),
-		-- nls.builtins.diagnostics.djlint,
-		nls.builtins.diagnostics.curlylint,
-		nls.builtins.diagnostics.tidy,
-		-- nls.builtins.diagnostics.shellcheck,
-		nls.builtins.diagnostics.flake8,
-		-- nls.builtins.diagnostics.mypy,
-		nls.builtins.diagnostics.cmake_lint,
-		-- nls.builtins.diagnostics.stylelint,
-		nls.builtins.diagnostics.trail_space,
-		nls.builtins.diagnostics.gitlint.with {
+		-- with_diagnostics_code(ls.builtins.diagnostics.shellcheck),
+		-- ls.builtins.diagnostics.djlint,
+		ls.builtins.diagnostics.curlylint,
+		ls.builtins.diagnostics.tidy,
+		-- ls.builtins.diagnostics.shellcheck,
+		ls.builtins.diagnostics.flake8,
+		-- ls.builtins.diagnostics.mypy,
+		ls.builtins.diagnostics.cmake_lint,
+		-- ls.builtins.diagnostics.stylelint,
+		ls.builtins.diagnostics.trail_space,
+		ls.builtins.diagnostics.gitlint.with {
 			extra_args = { '--contrib=contrib-title-conventional-commits', '--ignore=body-is-missing' },
 		},
 
-		nls.builtins.hover.dictionary,
+		ls.builtins.hover.dictionary,
 
 		-- code actions
-		nls.builtins.code_actions.proselint,
-		nls.builtins.code_actions.eslint_d,
-		nls.builtins.code_actions.gitsigns,
-		nls.builtins.code_actions.gitrebase,
-		nls.builtins.code_actions.refactoring,
-	},
-    on_attach = options.on_attach,
-    root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", ".git"),
-  })
+		ls.builtins.code_actions.refactoring,
+		-- ls.builtins.code_actions.refactoring,
+		ls.builtins.code_actions.proselint,
+		ls.builtins.code_actions.eslint_d,
+		ls.builtins.code_actions.gitsigns,
+		ls.builtins.code_actions.gitrebase,
+	}
+
+	ls.setup({
+		debug             = false,
+		debounce          = 150,
+		timeout 		  = 3000,
+		save_after_format = false,
+		sources           = sources,
+		root_dir          = nls_utils.root_pattern ".git",
+		filetypes         = { 'python', 'lua', 'gitcommit', 'c', 'cpp', 'html',  },
+
+		on_init = function(new_client, _)
+			new_client.offset_encoding = 'utf-16'
+		end,
+
+		on_attach = function(client, bufnr)
+			if client.supports_method 'textDocument/formatting' then
+				vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
+				vim.api.nvim_create_autocmd('BufWritePre', {
+					group = augroup,
+					buffer = bufnr,
+					callback = function()
+						if vim.bo.filetype == 'python' or vim.bo.filetype == 'html' or
+							vim.bo.filetype == 'css' or vim.bo.filetype == 'gitcommit' then
+							vim.lsp.buf.format({bufnr = bufnr, async=true, timeout_ms=2000}) -- timeout_ms does not work with async
+						end
+					end,
+				})
+			end
+		end,
+	})
 end
 
 function M.has_formatter(ft)

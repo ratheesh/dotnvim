@@ -530,13 +530,13 @@ windline.setup({
 		colors.InActiveBg    = "#303244"
 
 		-- Mode
-		colors.ModeNormalFg  = "#000000"
+		colors.ModeNormalFg  = "#B32425"
 		colors.ModeInsertFg  = "#000000"
 		colors.ModeVisualFg  = "#000000"
 		colors.ModeReplaceFg = "#000000"
 		colors.ModeCommandFg = "#000000"
 
-		colors.ModeNormalBg  = "#8880aC"
+		colors.ModeNormalBg  = "#cccccc"
 		colors.ModeInsertBg  = "#2AA198"
 		colors.ModeVisualBg  = "#F7CAB8"
 		colors.ModeReplaceBg = "#D85A93"
@@ -577,7 +577,7 @@ windline.setup({
 		colors.IndentBg      = "#af7aa1"
 
 		colors.CursorChFg    = "#eeeeee"
-		colors.CursorChBg    = "#4d708c"
+		colors.CursorChBg    = "#595B83"
 		colors.SearchCntFg   = "#4EB899"
 
 		colors.LineNoFg      = "#eeeeee"
@@ -595,7 +595,7 @@ windline.setup({
 	},
 })
 
-vim.opt.laststatus = 3
+-- vim.opt.laststatus = 3
 end
 
 return M
