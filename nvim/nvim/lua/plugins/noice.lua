@@ -99,7 +99,7 @@ local focused = true
 				end,
 			},
 			view = "notify_send",
-			opts = { stop = false },
+			opts = { stop = true },
 		},
 		filter = {
 			event = 'msg_show',

@@ -85,7 +85,7 @@ function M.setup(options)
 					callback = function()
 						if vim.bo.filetype == 'python' or vim.bo.filetype == 'html' or
 							vim.bo.filetype == 'css' or vim.bo.filetype == 'gitcommit' then
-							vim.lsp.buf.format({bufnr = bufnr, async=true, timeout_ms=2000}) -- timeout_ms does not work with async
+							vim.lsp.buf.format({bufnr = bufnr, async=true, timeout_ms=2000}) -- timeout_ms does not work with async attr
 						end
 					end,
 				})
