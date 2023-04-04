@@ -1,5 +1,6 @@
 local M = {
 	'akinsho/bufferline.nvim',
+	enabled=false,
 	event = "BufReadPre",
 	dependencies = { 'nvim-tree/nvim-web-devicons' },
 }
