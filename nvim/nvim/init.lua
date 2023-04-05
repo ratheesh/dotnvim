@@ -37,7 +37,7 @@ hl(0, "BufferInactiveIcon"      ,{ fg = nil      , bg = "#243440", italic = fals
 hl(0, "BufferInactive"          ,{ fg = "#988C99", bg = "#243440", italic = false, bold = false, underline = false })
 hl(0, "BufferInactiveTarget"    ,{ fg = "#FA2C77", bg = "#243440", italic = true , bold = true , underline = true  })
 hl(0, "BufferInactiveMod"       ,{ fg = "#988C99", bg = "#243440", italic = false, bold = false, underline = false })
-hl(0, "BufferInactiveSign"      ,{ fg = "#ec7279", bg = "#243440", italic = false, bold = false, underline = false })
+hl(0, "BufferInactiveSign"      ,{ fg = "#4C5D79", bg = "#243440", italic = false, bold = false, underline = false })
 hl(0, "BufferInactiveERROR"     ,{ fg = "#FA2C77", bg = "#243440", italic = false, bold = false, underline = false })
 hl(0, "BufferInactiveHINT"      ,{ fg = nil      , bg = "#243440", italic = false, bold = false, underline = false })
 hl(0, "BufferInactiveINFO"      ,{ fg = nil      , bg = "#243440", italic = false, bold = false, underline = false })
