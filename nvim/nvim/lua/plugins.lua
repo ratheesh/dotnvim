@@ -245,7 +245,7 @@ return {
 	},
 	{
 		'lewis6991/satellite.nvim',
-		enabled = false,
+		enabled = true,
 		event = 'VeryLazy',
 		config = function ()
 			require('satellite').setup()
