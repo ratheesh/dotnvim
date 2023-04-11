@@ -25,6 +25,7 @@ local M = {
 		"onsails/lspkind-nvim",
 		"hrsh7th/cmp-cmdline",
 		"dmitmel/cmp-cmdline-history",
+		'buschco/nvim-cmp-ts-tag-close',
 	},
 }
 
@@ -135,6 +136,7 @@ function M.config()
 			-- { name = 'luasnip'  },
 			{ name = 'conventionalcommits' },
 			{ name = 'nvim_lsp' },
+			 { name = 'nvim-cmp-ts-tag-close' },
 			-- { name = 'nvim_lua' },
 			{ name = 'luasnip'  },
 			{ name = 'path'     },
@@ -152,12 +154,12 @@ function M.config()
 		},
 		formatting = {
 			-- fields = { 'kind', 'abbr'},
-			-- fields = { 'kind', 'abbr', 'menu'},
-			fields = { 'abbr', 'kind'},
+			fields = { 'kind', 'abbr', 'menu'},
+			-- fields = { 'abbr', 'kind'},
 			format = require('lspkind').cmp_format({
 				preset        = 'codicons',
 				ellipsis_char = '...',
-				mode          = 'symbol_text',
+				mode          = 'symbol',
 				symbol_map    = icons,
 				maxwidth      = 50,
 				before = function (entry, vim_item)
