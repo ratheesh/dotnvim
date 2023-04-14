@@ -10,6 +10,7 @@ function M.setup()
 		virtual_text     = false,
 		severity_sort    = true,
 		float = {
+			source    = 'always',
 			border    = 'rounded',
 			focusable = false,
 		},
