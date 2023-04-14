@@ -530,17 +530,17 @@ windline.setup({
 		colors.InActiveBg    = "#303244"
 
 		-- Mode
-		colors.ModeNormalFg  = "#B32425"
+		colors.ModeNormalFg  = "#FFFFFF"
 		colors.ModeInsertFg  = "#000000"
 		colors.ModeVisualFg  = "#000000"
 		colors.ModeReplaceFg = "#000000"
 		colors.ModeCommandFg = "#000000"
 
-		colors.ModeNormalBg  = "#cccccc"
-		colors.ModeInsertBg  = "#2AA198"
+		colors.ModeNormalBg  = "#0099D3"
+		colors.ModeInsertBg  = "#0DD3BB"
 		colors.ModeVisualBg  = "#F7CAB8"
-		colors.ModeReplaceBg = "#D85A93"
-		colors.ModeCommandBg = "#AE8A7E"
+		colors.ModeReplaceBg = "#FF66AC"
+		colors.ModeCommandBg = "#FFB000"
 
 		-- termguicolors
 		colors.FileFg        = "#F4C493"
