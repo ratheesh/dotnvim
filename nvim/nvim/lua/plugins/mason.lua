@@ -28,14 +28,21 @@ function M.check()
 end
 
 function M.config()
-  require("mason").setup()
-  M.check()
-  require("mason-lspconfig").setup({
-    automatic_installation = true,
-	ui = {
-		border = 'rounded',
-	}
-  })
+	require("mason").setup({
+		ui = {
+			border = 'rounded',
+			height = 0.8,
+			icons  = {
+				package_installed   = "✓",
+				package_pending     = "➜",
+				package_uninstalled = "✗"
+			}
+		},
+	})
+	M.check()
+	require("mason-lspconfig").setup({
+		automatic_installation = true,
+	})
 end
 
 return M
