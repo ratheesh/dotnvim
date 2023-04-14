@@ -2,7 +2,7 @@ return {
 	-- { 'navarasu/onedark.nvim' },
 	{
 		'kaiuri/nvim-juliana',
-		enabled=true,
+		enabled=false,
 		config=function ()
 			-- require('nvim-juliana').colors
 		end
@@ -59,7 +59,14 @@ return {
 		'NvChad/nvim-colorizer.lua',
 		event = 'VeryLazy',
 		config = function ()
-			require('colorizer').setup({})
+			require('colorizer').setup({
+				filetypes = { "*" },
+				user_default_options = {
+					names = false,
+					tailwind = "both",
+					mode = "background"
+				}
+			})
 		end,
 	},
 	-- { "EdenEast/nightfox.nvim", event = "VeryLazy" },
@@ -215,8 +222,10 @@ return {
 					-- Require providers
 					require('hover.providers.lsp')
 					require('hover.providers.man')
-					require('hover.providers.LspAttach')
-					require('hover.providers.css')
+					require('hover.providers.gh')
+					require('hover.providers.dictionary')
+					-- require('hover.providers.LspAttach')
+					-- require('hover.providers.css')
 				end,
 				preview_opts = {
 					border = 'rounded',
@@ -224,6 +233,7 @@ return {
 				title = true
 			}
 			vim.keymap.set('n', 'K', require('hover').hover, { desc = 'hover.nvim' })
+			vim.keymap.set("n", "gK", require("hover").hover_select, {desc = "hover.nvim (select)"})
 		end
 	},
 	{
