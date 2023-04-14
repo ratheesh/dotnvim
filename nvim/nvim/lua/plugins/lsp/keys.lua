@@ -50,7 +50,7 @@ function M.setup(client, buffer)
 			t = { "<cmd>Telescope lsp_type_definitions<cr>", "Goto Type Definition" },
 		},
 		["<C-k>"] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help", mode = { "n", "i" } },
-		["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
+		-- ["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
 		--[[ ["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Next Diagnostic" },
 		["]d"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Prev Diagnostic" }, ]]
 		["[e"] = { "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<CR>", "Next Error" },
