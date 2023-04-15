@@ -374,7 +374,7 @@ hl(0, "MarkSignNumHL", { fg = "#c0c0c0", bg = "#4a6470", italic = false, bold = 
 
 hl(0, "iCursor", { fg = "#ff5555", bg = "#ff5555", italic = false, bold = true, underline = false })
 hl(0, "nCursor", { fg = "#f2f2f2", bg = "#f2f2f2", italic = false, bold = true, underline = false })
-hl(0, "vCursor", { fg = "#1bb1e7", bg = "#1bb1e7", italic = false, bold = true, underline = false })
+hl(0, "vCursor", { fg = "#FCCC82", bg = "#FCCC82", italic = false, bold = true, underline = false })
 hl(0, "rCursor", { fg = "#d65b84", bg = "#d65b84", italic = false, bold = true, underline = false })
 hl(0, "oCursor", { fg = "#00ff00", bg = "#00ff00", italic = false, bold = true, underline = false })
 
