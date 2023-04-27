@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd('Filetype', { pattern = 'gitcommit', group = colorco
 
 -- Change the current line number bg color in insert and non-insert mode
 local cursorGrp = vim.api.nvim_create_augroup('cursorGrp', { clear = true })
-vim.api.nvim_create_autocmd( 'InsertLeave' , { group = cursorGrp, command = 'hi CursorLineNr guifg=#f0f0f0 guibg=#6B717C' })
+vim.api.nvim_create_autocmd( 'InsertLeave' , { group = cursorGrp, command = 'hi CursorLineNr guifg=#f0f0f0 guibg=#857073' })
 vim.api.nvim_create_autocmd( 'InsertEnter' , { group = cursorGrp, command = 'hi CursorLineNr guifg=#f0f0f0 guibg=#2AA198' })
 
 -- Enable relative number only in non-insert mode
