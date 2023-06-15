@@ -16,7 +16,7 @@ function M.config()
 		icons        = {
 			buffer_index = true,
 			buffer_number = false,
-			button = ' 󰅙',
+			button = ' ✗',
 			filetype = {enabled = true},
 			inactive = {button=' ✗', separator = {left = ' ', right = ''}},
 			modified = {button = ' ●'},
