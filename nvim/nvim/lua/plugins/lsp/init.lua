@@ -196,7 +196,7 @@ function M.config()
 	local servers = {
 		bashls = {},
 		clangd = {
-			cmd = { '/bin/clangd', '--background-index', '--header-insertion=iwyu',
+			cmd = { 'clangd', '--background-index', '--header-insertion=iwyu',
 			'--completion-style=bundled', '--function-arg-placeholders', '--malloc-trim',
 			'--pch-storage=memory', '--clang-tidy', '--header-insertion-decorators',
 			'--all-scopes-completion', '--offset-encoding=utf-16', '--inlay-hints=true'
@@ -262,6 +262,9 @@ function M.config()
 						parameters = {
 							"--log-level=trace",
 						},
+					},
+					hint = {
+						enable = true,
 					},
 					diagnostics = {
 						-- enable = false,
