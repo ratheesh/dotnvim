@@ -21,6 +21,10 @@ local M = {
 			end
 		},
 		{
+			'SmiteshP/nvim-navic',
+			enabled = false,
+		},
+		{
 			'dnlhc/glance.nvim',
 			disable = false,
 			event = 'LspAttach',
@@ -187,7 +191,10 @@ function M.config()
 			})
 		end
 
-		-- require("nvim-navic").attach(client, bufnr)
+		if client.server_capabilities.documentSymbolProvider then
+			require("nvim-navic").attach(client, bufnr)
+		end
+
 		-- require("plugins.lsp.formatting").setup(client, bufnr)
 		require("plugins.lsp.keys").setup(client, bufnr)
 	end
