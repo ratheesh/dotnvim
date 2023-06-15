@@ -1,7 +1,7 @@
 local M = {
 	"hrsh7th/nvim-cmp",
 	disable = false,
-	pin = true,
+	pin = false,
 	event = { "InsertEnter", "CmdlineEnter" },
 	dependencies = {
 		'rafamadriz/friendly-snippets',
