@@ -294,7 +294,7 @@ basic.lsp_diagnos = {
 	text = function(bufnr)
 		if lsp_comps.check_lsp(bufnr) then
 			return {
-				{ lsp_comps.lsp_hint({ format    = ' %s', show_zero = false  }), 'blue'   },
+				{ lsp_comps.lsp_hint({ format    = '  %s', show_zero = false  }), 'blue'   },
 				{ lsp_comps.lsp_warning({ format = '  %s', show_zero = false }), 'yellow' },
 				{ lsp_comps.lsp_error({ format   = '  %s', show_zero = false }), 'red'    },
 			}
@@ -399,7 +399,7 @@ basic.indent = {
 			-- {'│','sep'},
 			{'','sep1'},
 			-- {'','sep1'},
-			{ '𝒞𝒽:%02B𝒉', 'charcolor' },
+			{ ':%02Bh', 'charcolor' },
 			{ sep.right_rounded, 'sep_after' },
 		}
 	end,
