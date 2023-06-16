@@ -135,10 +135,14 @@ function M.config()
 			-- { name = 'nvim_lsp_signature_help' },
 			-- { name = 'luasnip'  },
 			{ name = 'conventionalcommits' },
-			{ name = 'nvim_lsp' },
-			 { name = 'nvim-cmp-ts-tag-close' },
-			-- { name = 'nvim_lua' },
 			{ name = 'luasnip'  },
+			{ name = 'nvim_lsp',
+			entry_filter = function(entry)
+				return require("cmp").lsp.CompletionItemKind.Snippet ~= entry:get_kind()
+			end,
+		},
+		{ name = 'nvim-cmp-ts-tag-close' },
+			-- { name = 'nvim_lua' },
 			{ name = 'path'     },
 			-- { name = 'buffer-lines' },
 			-- { name = 'emmet_vim' },
