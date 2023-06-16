@@ -48,7 +48,7 @@ return {
 	},
 	{
 		'xiyaowong/virtcolumn.nvim',
-		enabled = false,
+		enabled = true,
 		event = 'BufReadPost',
 		config = function ()
 			vim.g.virtcolumn_char = '▕'
