@@ -40,7 +40,7 @@ local M = {
 		},
 		{
 			'lvimuser/lsp-inlayhints.nvim',
-			enabled = true,
+			enabled = false,
 			pin=true,
 			branch = 'anticonceal',
 			event = 'LspAttach',
@@ -169,7 +169,12 @@ function M.config()
 			vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
 		end
 
-		require("lsp-inlayhints").on_attach(client, bufnr)
+		-- require("lsp-inlayhints").on_attach(client, bufnr)
+		if vim.lsp.buf.inlay_hint then
+			if client.server_capabilities.inlayHintProvider then
+				vim.lsp.buf.inlay_hint(bufnr, true)
+			end
+		end
 
 		client.server_capabilities.semanticTokensProvider = nil
 
