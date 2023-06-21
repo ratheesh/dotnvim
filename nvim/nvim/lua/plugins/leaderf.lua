@@ -1,6 +1,6 @@
 local M = {
 	'Yggdroot/LeaderF',
-	enabled = true,
+	enabled = false,
 	cmd = { 'Leaderf', 'LeaderfRgInteractive' },
 	run = '<cmd>LeaderfInstallCExtension<cr>',
 }

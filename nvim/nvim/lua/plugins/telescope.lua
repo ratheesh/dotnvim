@@ -145,6 +145,14 @@ function M.config()
 end
 
 function M.init()
+  	local function map(mode, l, r, opts)
+  		opts = opts or {}
+  		vim.keymap.set(mode, l, r, opts)
+  	end
+  	map('n', '<leader>fo', '<cmd>Telescope git_files<CR>')
+  	map('n', '<leader>fr', '<cmd>Telescope old_files<CR>')
+  	map('n', '<leader>ft', '<cmd>Leaderf current_buffer_tags<CR>')
+  	map('n', '<leader>/',  '<cmd>Telescope live_grep<CR>')
   --[[ vim.keymap.set("n", "<leader>fo", function()
     require("plugins.telescope").git_files()
   end, { desc = "Find File" })
