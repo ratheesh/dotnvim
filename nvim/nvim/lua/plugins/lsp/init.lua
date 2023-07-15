@@ -258,65 +258,64 @@ function M.config()
 		pylance = {},
 		tsserver = {},
 
-		-- lua
-		lua_ls = {
-			single_file_support = true,
-			settings = {
-				Lua = {
-					workspace = {
-						checkThirdParty = false,
+	-- lua
+	lua_ls = {
+		single_file_support = true,
+		settings = {
+			Lua = {
+				workspace = {
+					checkThirdParty = false,
+				},
+				completion = {
+					workspaceWord = true,
+					callSnippet = "Replace",
+				},
+				misc = {
+					parameters = {
+						"--log-level=trace",
 					},
-					completion = {
-						workspaceWord = true,
-						callSnippet = "Replace",
+				},
+				hint = {
+					enable = true,
+				},
+				diagnostics = {
+					-- enable = false,
+					globals = { 'vim' },
+					disable = {
+						"missing-parameter",
+						"cast-local-type",
+						"param-type-mismatch",
+						"assign-type-mismatch",
+						"undefined-field",
+						"redundant-parameter",
+						"no-unknown"
 					},
-					misc = {
-						parameters = {
-							"--log-level=trace",
-						},
+					groupSeverity = {
+						strong = "Warning",
+						strict = "Warning",
 					},
-					hint = {
-						enable = true,
+					groupFileStatus = {
+						["ambiguity"]  = "Opened",
+						["await"]      = "Opened",
+						["codestyle"]  = "None",
+						["duplicate"]  = "Opened",
+						["global"]     = "Opened",
+						["luadoc"]     = "Opened",
+						["redefined"]  = "Opened",
+						["strict"]     = "Opened",
+						["strong"]     = "Opened",
+						["type-check"] = "Opened",
+						["unbalanced"] = "Opened",
+						["unused"]     = "Opened",
 					},
-					diagnostics = {
-						-- enable = false,
-						globals = { 'vim' },
-						disable = {
-							"missing-parameter",
-							"cast-local-type",
-							"param-type-mismatch",
-							"assign-type-mismatch",
-							"undefined-field",
-							"redundant-parameter",
-							"no-unknown"
-						},
-						groupSeverity = {
-							strong = "Warning",
-							strict = "Warning",
-						},
-						groupFileStatus = {
-							["ambiguity"]  = "Opened",
-							["await"]      = "Opened",
-							["codestyle"]  = "None",
-							["duplicate"]  = "Opened",
-							["global"]     = "Opened",
-							["luadoc"]     = "Opened",
-							["redefined"]  = "Opened",
-							["strict"]     = "Opened",
-							["strong"]     = "Opened",
-							["type-check"] = "Opened",
-							["unbalanced"] = "Opened",
-							["unused"]     = "Opened",
-						},
-						unusedLocalExclude = { "_*" },
-					},
-					format = {
-						enable = false,
-						defaultConfig = {
-							indent_style = "space",
-							indent_size  = "2",
-							continuation_indent_size = "2",
-						},
+					unusedLocalExclude = { "_*" },
+				},
+				format = {
+					enable = false,
+					defaultConfig = {
+						indent_style = "space",
+						indent_size  = "2",
+						continuation_indent_size = "2",
 					},
 				},
 			},
