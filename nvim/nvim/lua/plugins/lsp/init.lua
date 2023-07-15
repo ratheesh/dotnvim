@@ -39,71 +39,6 @@ local M = {
 			end,
 		},
 		{
-			'lvimuser/lsp-inlayhints.nvim',
-			enabled = false,
-			pin=true,
-			branch = 'anticonceal',
-			event = 'LspAttach',
-			config = function ()
-				local default_config = {
-					inlay_hints = {
-						parameter_hints = {
-							show = true,
-						},
-						type_hints = {
-							show = true,
-						},
-						only_current_line = true,
-						label_formatter = function(labels, kind, opts, client_name)
-							if kind == 2 and not opts.parameter_hints.show then
-								return ""
-							elseif not opts.type_hints.show then
-								return ""
-							end
-
-							return table.concat(labels or {}, ", ")
-						end,
-						virt_text_formatter = function(label, hint, opts, client_name)
-							if client_name == "lua_ls" then
-								if hint.kind == 2 then
-									hint.paddingLeft = false
-								else
-									hint.paddingRight = false
-								end
-							end
-
-							local virt_text = {}
-							virt_text[#virt_text + 1] = hint.paddingLeft and { " ", "Normal" } or nil
-							virt_text[#virt_text + 1] = { label, opts.highlight }
-							virt_text[#virt_text + 1] = hint.paddingRight and { " ", "Normal" } or nil
-
-							return virt_text
-						end,
-
-						-- highlight group
-						highlight = "LspInlayHint",
-				},
-					enabled_at_startup = true,
-					debug_mode = false,
-				}
-				require("lsp-inlayhints").setup({default_config})
-
-				--[[ vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
-				vim.api.nvim_create_autocmd("LspAttach", {
-					group = "LspAttach_inlayhints",
-					callback = function(args)
-						if not (args.data and args.data.client_id) then
-							return
-						end
-
-						local bufnr = args.buf
-						local client = vim.lsp.get_client_by_id(args.data.client_id)
-						require("lsp-inlayhints").on_attach(client, bufnr)
-					end,
-				}) ]]
-			end
-		},
-		{
 			"glepnir/lspsaga.nvim",
 			enabled = false,
 			event = "BufRead",
@@ -134,18 +69,10 @@ local M = {
 
 function M.config()
 	require('plugins.lsp.pylance')
-
-	--[[ require("neodev").setup({
-		debug = true,
-		experimental = {
-			pathStrict = true,
-		},
-		library = {
-			runtime = "~/projects/neovim/runtime/",
-		},
-	}) ]]
 	require("mason")
 	require("plugins.lsp.diagnostics").setup()
+
+	local util = require("lspconfig/util")
 
 	local function on_attach(client, bufnr)
 		local lsp_signature_cfg = {
@@ -230,33 +157,35 @@ function M.config()
 	},
 
 	-- Web Dev
-		cssls = {},
-		cssmodules_ls = {},
-		-- tailwindcss = {},
-		emmet_ls = {},
-		yamlls = {},
-		eslint = {},
-		html = {
-			settings = {
-				html = {
-					format = {
-						templating     = true,
-						wrapLineLength = 120,
-						wrapAttributes = 'auto',
-					},
-					hover = {
-						documentation = true,
-						references    = true,
-					},
+	cssls = {},
+	cssmodules_ls = {},
+	-- tailwindcss = {},
+	emmet_ls = {},
+	yamlls = {},
+	eslint = {},
+	html = {
+		settings = {
+			html = {
+				format = {
+					templating     = true,
+					wrapLineLength = 120,
+					wrapAttributes = 'auto',
+				},
+				hover = {
+					documentation = true,
+					references    = true,
 				},
 			},
 		},
+	},
 
-		-- python
-		-- pyright = {},
-		jedi_language_server = {},
-		pylance = {},
-		tsserver = {},
+	-- python
+	-- pyright = {},
+	jedi_language_server = {},
+	-- ruff_lsp={},
+	pylyzer = {},
+	-- pylance = {},
+	tsserver = {},
 
 	-- lua
 	lua_ls = {
@@ -320,46 +249,47 @@ function M.config()
 				},
 			},
 		},
+	},
 
-		vimls = {},
-	}
+	vimls = {},
+}
 
-	local capabilities = vim.lsp.protocol.make_client_capabilities()
-	capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-	capabilities.textDocument.foldingRange = {
-		dynamicRegistration = false,
-		lineFoldingOnly = true,
-	}
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+capabilities.textDocument.foldingRange = {
+	dynamicRegistration = false,
+	lineFoldingOnly = true,
+}
 
-	local win = require("lspconfig.ui.windows")
-	local _default_opts = win.default_opts
-	win.default_opts = function(options)
-		local opts = _default_opts(options)
-		opts.border = "rounded"
-		return opts
-	end
+local win = require("lspconfig.ui.windows")
+local _default_opts = win.default_opts
+win.default_opts = function(options)
+	local opts = _default_opts(options)
+	opts.border = "rounded"
+	return opts
+end
 
-	---@type _.lspconfig.options
-	local options = {
-		debug             = false,
-		debounce          = 150,
-		save_after_format = false,
-		on_init = function(new_client, _)
-			new_client.offset_encoding = 'utf-16'
-		end,
-		on_attach = on_attach,
-		capabilities = capabilities,
-		flags = {
-			debounce_text_changes = 150,
-		},
-	}
+---@type _.lspconfig.options
+local options = {
+	debug             = false,
+	debounce          = 150,
+	save_after_format = false,
+	on_init = function(new_client, _)
+		new_client.offset_encoding = 'utf-16'
+	end,
+	on_attach = on_attach,
+	capabilities = capabilities,
+	flags = {
+		debounce_text_changes = 150,
+	},
+}
 
-	for server, opts in pairs(servers) do
-		opts = vim.tbl_deep_extend("force", {}, options, opts or {})
-		require("lspconfig")[server].setup(opts)
-	end
+for server, opts in pairs(servers) do
+	opts = vim.tbl_deep_extend("force", {}, options, opts or {})
+	require("lspconfig")[server].setup(opts)
+end
 
-	require("plugins.null-ls").setup(options)
+require("plugins.null-ls").setup(options)
 end
 
 return M
