@@ -170,9 +170,9 @@ function M.config()
 		end
 
 		-- require("lsp-inlayhints").on_attach(client, bufnr)
-		if vim.lsp.buf.inlay_hint then
+		if vim.lsp.inlay_hint then
 			if client.server_capabilities.inlayHintProvider then
-				vim.lsp.buf.inlay_hint(bufnr, true)
+				vim.lsp.inlay_hint(bufnr, true)
 			end
 		end
 
