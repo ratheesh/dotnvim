@@ -269,14 +269,6 @@ return {
 		end
 	},
 	{
-		'lewis6991/satellite.nvim',
-		enabled = true,
-		event = 'VeryLazy',
-		config = function ()
-			require('satellite').setup()
-		end
-	},
-	{
 		'echasnovski/mini.align',
 		enabled = true,
 		init = function ()

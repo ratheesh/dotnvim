@@ -19,6 +19,7 @@
 -- CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 return {
+	-- floating window title
 	{
 		"b0o/incline.nvim",
 		event   = "BufReadPre",
@@ -34,5 +35,32 @@ return {
 			})
 		end,
 	},
+	-- auto-resize windows
+	{
+		"anuvyklack/windows.nvim",
+		event = "WinNew",
+		dependencies = {
+			{ "anuvyklack/middleclass" },
+			{ "anuvyklack/animation.nvim", enabled = false },
+		},
+		keys = { { "<leader>m", "<cmd>WindowsMaximize<cr>", desc = "Zoom" } },
+		config = function()
+			vim.o.winwidth = 5
+			vim.o.equalalways = false
+			require("windows").setup({
+				animation = { enable = false, duration = 150 },
+			})
+		end,
+	},
+	-- right side scrollbar
+	{
+		'lewis6991/satellite.nvim',
+		enabled = true,
+		event = 'VeryLazy',
+		config = function ()
+			require('satellite').setup()
+		end
+	},
+
 }
 -- End of File
