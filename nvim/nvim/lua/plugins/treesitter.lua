@@ -9,7 +9,32 @@ local M = {
     -- "nvim-treesitter/nvim-treesitter-refactor",
     -- "mfussenegger/nvim-treehopper",
 		-- { 'mrjones2014/nvim-ts-rainbow', event = 'LspAttach' },
-		{ 'HiPhish/nvim-ts-rainbow2', event = 'LspAttach' },
+		-- { 'HiPhish/nvim-ts-rainbow2', event = 'LspAttach' },
+		{ 
+			'HiPhish/rainbow-delimiters.nvim',
+			config = function()
+				local rainbow_delimiters = require('rainbow-delimiters')
+				vim.g.rainbow_delimiters = {
+					strategy = {
+						[''] = rainbow_delimiters.strategy['global'],
+						vim = rainbow_delimiters.strategy['local'],
+					},
+					query = {
+						[''] = 'rainbow-delimiters',
+						lua = 'rainbow-blocks',
+					},
+					highlight = {
+						'RainbowDelimiterRed',
+						'RainbowDelimiterYellow',
+						'RainbowDelimiterBlue',
+						'RainbowDelimiterOrange',
+						'RainbowDelimiterGreen',
+						'RainbowDelimiterViolet',
+						'RainbowDelimiterCyan',
+					},
+				}
+			end
+		},
 		{ 'RRethy/nvim-treesitter-endwise', event = 'InsertEnter' },
 		"nvim-lua/plenary.nvim",
     -- { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
@@ -93,8 +118,8 @@ function M.config()
 				},
 			},
 		},
-		rainbow   = {
-			enable         = true,
+		--[[ rainbow   = {
+			enable         = false,
 			extended_mode  = true,
 			max_file_lines = 2000,
 			query = 'rainbow-parens',
@@ -108,7 +133,7 @@ function M.config()
 				'rainbowcol6',
 				'rainbowcol7',
 			},
-		},
+		}, ]]
   })
   local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
   parser_config.markdown.filetype_to_parsername = "octo"
