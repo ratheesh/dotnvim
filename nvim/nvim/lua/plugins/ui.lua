@@ -19,6 +19,20 @@
 -- CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 return {
+	-- buffers tab
+	{
+		'tomiis4/BufferTabs.nvim',
+		enabled = false,
+		dependencies = {
+			'nvim-tree/nvim-web-devicons', -- optional
+		},
+		lazy = false,
+		config = function()
+			require('buffertabs').setup({
+				-- config
+			})
+		end
+	},
 	-- floating window title
 	{
 		"b0o/incline.nvim",
