@@ -52,13 +52,13 @@ function M.config()
 	end
 
 	local icons = {
-		Text     = ' ' , Method = 'ƒ ' , Function  = ' ' , Constructor = ' ' , Field         = ' ' ,
-		Variable = ' ' , Class  = ' ' , Interface = ' ' , Module      = ' ' , Property      = ' ' ,
-		Unit     = ' ' , Value  = ' ' , Enum      = 'ℰ ' , Keyword     = ' ' , Snippet       = ' ' ,
-		color    = ' ' , File   = ' ' , Reference = ' ' , Folder      = ' ' , Enummember    = ' ' ,
-		Constant = ' ' , Struct = 'פּ ' , Event     = ' ' , Operator    = ' ' , Typeparameter = ' ' ,
-        Array    = " " , Boolean= " " , Namespace = " " , Null        = "ﳠ " , Number        = " " ,
-		String   = "𝓐"  , Package= " " ,
+        Array         = " " , Boolean       = " " , Class         = ' ' , Constant      = ' ' , Constructor   = ' ' ,
+		Enum          = 'ℰ ' , EnumMember    = ' ' , Event         = ' ' , Field         = ' ' , File          = ' ' ,
+		Folder        = ' ' , Function      = ' ' , Interface     = ' ' , Keyword       = ' ' , Method        = 'ƒ ' ,
+		Module        = ' ' , Namespace     = " " , Null          = "ﳠ " , Number        = " " , Operator      = ' ' ,
+		Package       = " " , Property      = ' ' , Reference     = ' ' , Snippet       = ' ' , String        = "𝓐"  ,
+		Struct        = 'פּ ' , Text          = ' ' , TypeParameter = ' ' , Unit          = ' ' , Value         = ' ' ,
+		Variable      = ' ' , color         = ' ' ,
 
 --[[     kinds = {
       Array = " ",
