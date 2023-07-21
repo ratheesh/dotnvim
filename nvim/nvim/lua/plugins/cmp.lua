@@ -118,7 +118,9 @@ function M.config()
 		},
 		window = {
 			completion    = cmp.config.window.bordered({
-				winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None',
+				side_padding = 0,
+				winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel",
+				-- winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None',
 				-- scrollbar = false,
 				scrollbar = {
 					thumb_char = "│",
@@ -159,25 +161,20 @@ function M.config()
 		formatting = {
 			-- fields = { 'kind', 'abbr'},
 			fields = { 'kind', 'abbr', 'menu'},
-			-- fields = { 'abbr', 'kind'},
-			format = require('lspkind').cmp_format({
-				preset        = 'codicons',
-				ellipsis_char = '...',
-				mode          = 'symbol',
-				symbol_map    = icons,
-				maxwidth      = 50,
-				before = function (entry, vim_item)
-					vim_item.menu = ({
-						luasnip     = 'SNP',
-						nvim_lsp    = 'LSP',
-						nvim_lua    = 'NVM',
-						buffer      = 'BUF',
-						path        = 'PATH',
-						cmp_tabnine = 'T9',
-					})[entry.source.name]
-					return vim_item
+			format = function(_, item)
+				local label = item.abbr
+				local truncated_label = vim.fn.strcharpart(label, 0, 50)
+
+				if truncated_label ~= label then
+					item.abbr = truncated_label .. '…'
 				end
-			})
+
+				local icon = icons[item.kind] or ''
+				icon = " " .. icon .. " "
+				item.menu = "   (" .. item.kind .. ")"
+				item.kind = icon
+				return item
+			end,
 		},
 		mapping = {
 			['<C-n>']     = mapping.select_next_item({ behavior = types.cmp.SelectBehavior.Insert }),
