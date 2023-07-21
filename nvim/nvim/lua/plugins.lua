@@ -40,7 +40,7 @@ return {
 	{ "folke/neoconf.nvim", enabled = false, cmd = "Neoconf" },
 	{
 		"lukas-reineke/virt-column.nvim",
-		enabled = false,
+		enabled = true,
 		event   = 'VeryLazy',
 		config = function ()
 			require("virt-column").setup({char = '▕', virtcolumn = '+1'})
@@ -48,7 +48,7 @@ return {
 	},
 	{
 		'xiyaowong/virtcolumn.nvim',
-		enabled = true,
+		enabled = false,
 		event = 'BufReadPost',
 		config = function ()
 			vim.g.virtcolumn_char = '▕'
