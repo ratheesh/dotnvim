@@ -28,11 +28,11 @@ function M.config()
 					highlight_grey = 'Comment',
 				},
 			})
-			require('nvim-autopairs').add_rules(require 'nvim-autopairs.rules.endwise-lua')
+			require('nvim-autopairs').add_rules(require('nvim-autopairs.rules.endwise-lua'))
 
-			local npairs = require'nvim-autopairs'
+			local npairs = require('nvim-autopairs')
 			local cond   = require('nvim-autopairs.conds')
-			local Rule   = require'nvim-autopairs.rule'
+			local Rule   = require('nvim-autopairs.rule')
 
 			npairs.add_rules({
 				-- add margin after cursor on space
