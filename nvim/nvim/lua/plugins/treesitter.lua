@@ -24,19 +24,20 @@ local M = {
 						lua = 'rainbow-blocks',
 					},
 					highlight = {
-						'RainbowDelimiterRed',
-						'RainbowDelimiterYellow',
-						'RainbowDelimiterBlue',
-						'RainbowDelimiterOrange',
-						'RainbowDelimiterGreen',
-						'RainbowDelimiterViolet',
-						'RainbowDelimiterCyan',
+						'rainbowcol1',
+						'rainbowcol2',
+						'rainbowcol3',
+						'rainbowcol4',
+						'rainbowcol5',
+						'rainbowcol6',
+						'rainbowcol7',
 					},
 				}
 			end
 		},
 		{ 'RRethy/nvim-treesitter-endwise', event = 'InsertEnter' },
-		"nvim-lua/plenary.nvim",
+		{ 'nvim-lua/plenary.nvim' },
+		{ 'David-Kunz/markid' }
     -- { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
   },
 }
@@ -77,47 +78,48 @@ function M.config()
       use_virtual_text = true,
       lint_events = { "BufWrite", "CursorHold" },
     },
-		textobjects = {
-			incremental_selection = {
-				enable = true,
-				keymaps = {
-					init_selection    = '<CR>',
-					scope_incremental = '<CR>',
-					node_incremental  = '<TAB>',
-					node_decremental  = '<S-TAB>',
-				},
-			},
-			select = {
-				enable    = true,
-				lookahead = true,
-				keymaps = {
-					-- You can use the capture groups defined in textobjects.scm
-					["af"] = "@function.outer",
-					["if"] = "@function.inner",
-					["ac"] = "@class.outer",
-					["ic"] = "@class.inner",
-					['al'] = '@loop.outer',
-					['il'] = '@loop.inner',
-					['aa'] = '@parameter.outer',
-					['ia'] = '@parameter.inner',
-					['uc'] = '@comment.outer',
-				},
-				selection_modes = {
-					['@function.outer']   = 'V',
-					['@sparameter.outer'] = 'v',
-					['@class.outer']      = '<c-v>',
-				},
-			},
-			swap = {
-				enable = false,
-				swap_next = {
-					["ap"] = "@parameter.inner",
-				},
-				swap_previous = {
-					-- ["an"] = "@parameter.inner",
-				},
+	textobjects = {
+		incremental_selection = {
+			enable = true,
+			keymaps = {
+				init_selection    = '<CR>',
+				scope_incremental = '<CR>',
+				node_incremental  = '<TAB>',
+				node_decremental  = '<S-TAB>',
 			},
 		},
+		select = {
+			enable    = true,
+			lookahead = true,
+			keymaps = {
+				-- You can use the capture groups defined in textobjects.scm
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
+				["ac"] = "@class.outer",
+				["ic"] = "@class.inner",
+				['al'] = '@loop.outer',
+				['il'] = '@loop.inner',
+				['aa'] = '@parameter.outer',
+				['ia'] = '@parameter.inner',
+				['uc'] = '@comment.outer',
+			},
+			selection_modes = {
+				['@function.outer']   = 'V',
+				['@sparameter.outer'] = 'v',
+				['@class.outer']      = '<c-v>',
+			},
+		},
+		swap = {
+			enable = false,
+			swap_next = {
+				["ap"] = "@parameter.inner",
+			},
+			swap_previous = {
+				-- ["an"] = "@parameter.inner",
+			},
+		},
+	},
+	markid = { enable = true },
 		--[[ rainbow   = {
 			enable         = false,
 			extended_mode  = true,
