@@ -119,7 +119,7 @@ function M.config()
 		window = {
 			completion    = cmp.config.window.bordered({
 				side_padding = 0,
-				winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel",
+				winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel",
 				-- winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None',
 				-- scrollbar = false,
 				scrollbar = {
