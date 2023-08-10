@@ -160,7 +160,8 @@ function M.config()
 	cssls = {},
 	cssmodules_ls = {},
 	-- tailwindcss = {},
-	emmet_ls = {},
+	-- emmet_ls = {},
+	emmet_language_server = {},
 	yamlls = {},
 	eslint = {},
 	html = {
@@ -183,7 +184,7 @@ function M.config()
 	-- pyright = {},
 	jedi_language_server = {},
 	-- ruff_lsp={},
-	pylyzer = {},
+	-- pylyzer = {},
 	-- pylance = {},
 	tsserver = {},
 
