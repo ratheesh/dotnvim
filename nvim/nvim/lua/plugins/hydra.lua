@@ -36,6 +36,8 @@ Hydra({
 		},
 		on_enter = function()
 			vim.cmd('echo')
+			vim.cmd('set nohlsearch')
+			vim.cmd('set nocursorline')
 			vim.cmd([[ColorizerDetachFromBuffer]])
 			-- vim.cmd([[CccHighlighterDisable]])
 			vim.cmd 'mkview'
@@ -56,6 +58,7 @@ Hydra({
 			gitsigns.toggle_word_diff(false)
 			-- vim.cmd([[CccHighlighterEnable]])
 			vim.cmd([[ColorizerAttachToBuffer]])
+			vim.cmd('set cursorline')
 		end
 	},
 	mode = { 'n', 'x' },
