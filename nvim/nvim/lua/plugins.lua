@@ -80,15 +80,24 @@ return {
 		event = 'BufReadPre',
 		config = function()
 			require('highlight-undo').setup({
-				hlgroup = 'HighlightUndo',
 				duration = 300,
-				keymaps = {
-					{'n', 'u', 'undo', {}},
-					{'n', '<C-r>', 'redo', {}},
-				}
+				undo = {
+					hlgroup = 'HighlightUndo',
+					mode = 'n',
+					lhs = 'u',
+					map = 'undo',
+					opts = {}
+				},
+				redo = {
+					hlgroup = 'HighlightRedo',
+					mode = 'n',
+					lhs = '<C-r>',
+					map = 'redo',
+					opts = {}
+				},
 			})
-			end
-		},
+		end
+	},
 	{
 		'echasnovski/mini.indentscope',
 		event = 'LspAttach',
