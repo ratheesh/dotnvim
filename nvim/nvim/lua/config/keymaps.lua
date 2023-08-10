@@ -105,7 +105,7 @@ map({ "i", "s" }, "<C-h>", "<cmd>lua require('luasnip').jump(-1)<CR>")
 --[[ map({ "i", "s" }, "<C-l>", "<Plug>(vsnip-jump-next)")
 map({ "i", "s" }, "<C-h>", "<Plug>(vsnip-jump-prev)") ]]
 
-map({ "n", "x" }, "<leader>s", "<Plug>(sqls-execute-query)", { desc = "Exec SQL Query" })
+-- map({ "n", "x" }, "<leader>s", "<Plug>(sqls-execute-query)", { desc = "Exec SQL Query" })
 
 -- vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
 map("n", "<leader>d", '<cmd>lua vim.diagnostic.open_float(nil,{focus=false})<CR>')

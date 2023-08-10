@@ -99,12 +99,12 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 -- sqls
-vim.api.nvim_create_autocmd('User', {
-	pattern = 'SqlsConnectionChoice',
-	callback = function(event)
-		vim.notify(event.data.choice)
-	end,
-})
+-- vim.api.nvim_create_autocmd('User', {
+-- 	pattern = 'SqlsConnectionChoice',
+-- 	callback = function(event)
+-- 		vim.notify(event.data.choice)
+-- 	end,
+-- })
 
 -- Utility functions
 _G.P = vim.pretty_print
