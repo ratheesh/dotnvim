@@ -1,7 +1,7 @@
 local M = {
 	"neovim/nvim-lspconfig",
 	name = "lsp",
-	event = "BufReadPre",
+	event = { "BufReadPre", "BufNewFile" },
 	ft = { 'c', 'cpp', 'python', 'java', 'lua',
 	'html', 'javascript', 'vue', 'markdown', 'sh', 'css' },
 	dependencies = {
