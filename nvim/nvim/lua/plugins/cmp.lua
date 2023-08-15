@@ -26,6 +26,15 @@ local M = {
 		"hrsh7th/cmp-cmdline",
 		"dmitmel/cmp-cmdline-history",
 		'buschco/nvim-cmp-ts-tag-close',
+		{
+            "zbirenbaum/copilot-cmp",
+            dependencies = "copilot.lua",
+            opts = {},
+            config = function(_, opts)
+                local copilot_cmp = require("copilot_cmp")
+                copilot_cmp.setup(opts)
+            end,
+        },
 	},
 }
 
