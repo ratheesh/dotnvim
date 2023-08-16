@@ -122,24 +122,34 @@ return {
 	{
 		'gbprod/yanky.nvim',
 		enabled=true,
-		config=function ()
-			require("yanky").setup({
-				ring = {
-					history_length = 100,
-					storage        = "shada",
-					cancel_event   = "update",
-					sync_with_numbered_registers = true,
-				},
-				system_clipboard = {
-					sync_with_ring = true,
-				},
-				highlight = {
-					on_put  = true,
-					on_yank = true,
-					timer   = 500,
-				},
-			})
-		end
+		cmd = { 'YankyCycleForward', 'YankyRingHistory' },
+		keys = { 'yy', "Y" },
+		opts = {
+			ring = {
+				history_length = 100,
+				storage        = "shada",
+				cancel_event   = "update",
+				sync_with_numbered_registers = true,
+			},
+			system_clipboard = {
+				sync_with_ring = true,
+			},
+			highlight = {
+				on_put  = true,
+				on_yank = true,
+				timer   = 500,
+			},
+		},
+		keys = {
+			vim.keymap.set("n", "<c-n>", "<Plug>(YankyCycleForward)"),
+			vim.keymap.set("n", "<c-p>", "<Plug>(YankyCycleBackward)")
+		}
+	},
+	{
+		'Bekaboo/dropbar.nvim',
+		enabled = true,
+		event = { 'VimEnter' },
+		opts = {}
 	},
 	-- { "NvChad/nvim-colorizer.lua", ft = { "css" } },
 	{ "stevearc/dressing.nvim", event = "VeryLazy" },
