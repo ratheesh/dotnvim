@@ -1,17 +1,14 @@
-local M = {
-	'folke/trouble.nvim',
+return {
+	"folke/trouble.nvim",
 	enabled = true,
-	-- event = 'LspAttach',
-	cmd = { 'Trouble' }
-}
-
-function M.config()
-	require('trouble').setup({
+	cmd = { "TroubleToggle", "Trouble" },
+	opts = {
+		use_diagnostic_signs = true,
 		auto_open    = false,
 		auto_close   = true,
 		padding      = false,
 		height       = 5,
-		signs        = { error = '', warning = '', hint = '', information = '', other = '', },
+		signs        = { error = '', warning = '', hint = '󰌶', information = '', other = '', },
 		track_cursor = true,
 
 		action_keys = {
@@ -30,7 +27,38 @@ function M.config()
 			previous       = 'k',
 			next           = 'j'
 		},
-	})
-end
-
-return M
+	},
+	keys = {
+		{ "gR", "<cmd>TroubleToggle lsp_references<cr>", desc = "LSP References (Trouble)" },
+		{ "<F3>", "<cmd>TroubleToggle<cr>", desc = "Toggle Trouble" },
+		{
+			"[q",
+			function()
+				if require("trouble").is_open() then
+					require("trouble").previous({ skip_groups = true, jump = true })
+				else
+					local ok, err = pcall(vim.cmd.cprev)
+					if not ok then
+						vim.notify(err, vim.log.levels.ERROR)
+					end
+				end
+			end,
+			desc = "Previous trouble/quickfix item",
+		},
+		{
+			"]q",
+			function()
+				if require("trouble").is_open() then
+					require("trouble").next({ skip_groups = true, jump = true })
+				else
+					local ok, err = pcall(vim.cmd.cnext)
+					if not ok then
+						vim.notify(err, vim.log.levels.ERROR)
+					end
+				end
+			end,
+			desc = "Next trouble/quickfix item",
+		},
+	},
+}
+-- End of File

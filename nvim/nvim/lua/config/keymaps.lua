@@ -87,7 +87,7 @@ map("n", "<F3>", "<cmd>TroubleToggle<CR>")
 -- map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<CR>")
 -- map("n", "<leader>xl", "<cmd>TroubleToggle loclist<CR>")
 -- map("n", "<leader>xg", "<cmd>lua vimgrepprompt()<CR>")
-map("n", "gR", "<cmd>TroubleToggle lsp_references<CR>")
+-- map("n", "gR", "<cmd>TroubleToggle lsp_references<CR>")
 map("n", "<C-A-j>", "<cmd>lua require('trouble').next({skip_groups = true, jump = true})<CR>")
 map("n", "<C-A-k>", "<cmd>lua require('trouble').previous({skip_groups = true, jump = true})<CR>")
 
