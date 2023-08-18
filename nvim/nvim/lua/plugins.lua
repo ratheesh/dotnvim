@@ -285,14 +285,12 @@ return {
 	},
 	{
 		'echasnovski/mini.align',
-		enabled = true,
-		init = function ()
-			require('mini.align').setup()
-		end
+		enabled = false,
+		opts = {}
 	},
 	{
 		'junegunn/vim-easy-align',
-		enabled = false,
+		enabled = true,
 		event   = "VeryLazy",
 		config  = function ()
 			vim.cmd([[
