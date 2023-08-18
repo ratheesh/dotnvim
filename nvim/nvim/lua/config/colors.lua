@@ -493,5 +493,5 @@ hl(0 , "HighlightedLineNr" , { fg = "#a0a0a0" , bg = "#3a5a66" , italic = false,
 hl(0 , "DimLineNr"         , { fg = "#a0a0a0" , bg = "#2a4a56" , italic = false , bold = false , underline = false })
 
 hl(0 , "HighlightUndo"     , { fg = "#D57780" , bg = "#3C465A" , italic = false , bold = true  , underline = false })
-hl(0 , "HighlightRdo"      , { fg = "#99c794" , bg = "#3C465A" , italic = false , bold = true  , underline = false })
+hl(0 , "HighlightRedo"     , { fg = "#99c794" , bg = "#3C465A" , italic = false , bold = true  , underline = false })
 -- End of File
