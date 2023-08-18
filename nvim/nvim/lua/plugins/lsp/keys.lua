@@ -1,8 +1,11 @@
-local wk = require("which-key")
+-- local wk = require("which-key")
 
 local M = {}
 
 function M.setup(client, buffer)
+	print('configuring which-key')
+	vim.cmd([[echomsg hello]])
+	local wk = require("which-key")
 	local cap = client.server_capabilities
 	local keymap = {
 		buffer = buffer,
@@ -24,8 +27,8 @@ function M.setup(client, buffer)
 					expr = true,
 				},
 				a = {
-					{ vim.lsp.buf.code_action, "Code Action" },
-					{ "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action", mode = "v" },
+					-- { vim.lsp.buf.code_action, "Code Action" },
+					{ "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action", mode = "n" },
 				},
 				d = { vim.diagnostic.open_float, "Line Diagnostics" },
 				l = {

@@ -25,6 +25,7 @@ return {
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
             "williamboman/mason-lspconfig.nvim",
+			{ 'ray-x/lsp_signature.nvim', event = 'InsertEnter' },
         },
         config = function(_, _)
             local utils = require("utils")
@@ -50,21 +51,72 @@ return {
 						capabilities = lsp_utils.capabilities,
 						settings = {
 							Lua = {
-								diagnostics = {
-									-- Get the language server to recognize the `vim` global
-									globals = { 'vim' },
+								workspace = {
+									checkThirdParty = false,
 								},
-								-- Do not send telemetry data containing a randomized but unique identifier
-								telemetry = {
+								completion = {
+									workspaceWord = true,
+									callSnippet = "Replace",
+								},
+								misc = {
+									parameters = {
+										"--log-level=trace",
+									},
+								},
+								hint = {
+									enable = true,
+								},
+								diagnostics = {
+									-- enable = false,
+									globals = { 'vim' },
+									disable = {
+										"missing-parameter",
+										"cast-local-type",
+										"param-type-mismatch",
+										"assign-type-mismatch",
+										"undefined-field",
+										"redundant-parameter",
+										"no-unknown"
+									},
+									groupSeverity = {
+										strong = "Warning",
+										strict = "Warning",
+									},
+									groupFileStatus = {
+										["ambiguity"]  = "Opened",
+										["await"]      = "Opened",
+										["codestyle"]  = "None",
+										["duplicate"]  = "Opened",
+										["global"]     = "Opened",
+										["luadoc"]     = "Opened",
+										["redefined"]  = "Opened",
+										["strict"]     = "Opened",
+										["strong"]     = "Opened",
+										["type-check"] = "Opened",
+										["unbalanced"] = "Opened",
+										["unused"]     = "Opened",
+									},
+									unusedLocalExclude = { "_*" },
+								},
+								format = {
 									enable = false,
+									defaultConfig = {
+										indent_style = "space",
+										indent_size  = "2",
+										continuation_indent_size = "2",
+									},
 								},
 							},
 						},
+
 					})
                 end,
                 ["pyright"] = function()
                     lspconfig.pyright.setup({
-                        on_attach = lsp_utils.on_attach,
+						on_attach = function(client)
+							client.server_capabilities.completionProvider = false
+							lsp_utils.on_attach(client)
+						end,
                         capabilities = lsp_utils.capabilities,
                         settings = {
                             python = {
@@ -81,6 +133,17 @@ return {
                     lspconfig.clangd.setup({
                         on_attach = lsp_utils.on_attach,
                         capabilities = capabilities_cpp,
+                    })
+                end,
+                ["pylyzer"] = function()
+                    local capabilities = lsp_utils.capabilities
+                    capabilities.offsetEncoding = { "uts-16" }
+                    lspconfig.pylyzer.setup({
+                        on_attach = lsp_utils.on_attach,
+                        capabilities = capabilities,
+						settings = {
+							inlayHints = true,
+						}
                     })
                 end,
             })

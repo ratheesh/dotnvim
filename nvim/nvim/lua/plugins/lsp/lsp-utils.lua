@@ -67,6 +67,36 @@ end
 M.on_attach = function(client, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+	if client.server_capabilities.definitionProvider then
+		vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
+	end
+
+	local lsp_signature_cfg = {
+		bind 			= true,
+		wrap            = true,
+		floating_window = false,
+		doc_lines       = 3,
+		hint_enable     = true,
+		hint_prefix     = '🐼 ',
+		hint_inline     = function() return false end,
+		hint_scheme     = 'String',
+		hi_parameter    = 'LspSignatureActiveParameter',
+		always_trigger  = true,
+		handler_opts    = {
+			border = 'rounded'
+		}
+	}
+	require('lsp_signature').on_attach(lsp_signature_cfg, bufnr)
+
+	if vim.lsp.inlay_hint then
+		if client.server_capabilities.inlayHintProvider then
+			vim.lsp.inlay_hint(bufnr, true)
+		end
+	end
+
+    client.server_capabilities.semanticTokensProvider = nil
+    -- Hide semantic highlights for functions
+    vim.api.nvim_set_hl(0, '@lsp.type.function', {})
 end
 
 return M
