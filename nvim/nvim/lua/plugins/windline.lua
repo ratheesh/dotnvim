@@ -98,8 +98,8 @@ basic.vi_mode = {
 
 basic.mode_rightsep = {
 	hl_colors = {
-		default  = {'FileNameFg', 'FileNameBg'},
-		sep_left = {'ProjectNameBg', 'FileNameBg'},
+		default  			= { 'FileNameFg'    , 'FileNameBg'    },
+		sep_left 			= { 'ProjectNameBg' , 'FileNameBg'    },
 		FileNormalAfter     = { 'FileNameBg'    , 'ModeNormalBg'  },
 		FileInsertAfter     = { 'FileNameBg'    , 'ModeInsertBg'  },
 		FileVisualAfter     = { 'FileNameBg'    , 'ModeVisualBg'  },
@@ -115,11 +115,11 @@ basic.mode_rightsep = {
 		ProjectVisualAfter  = { 'ProjectNameBg' , 'ModeVisualBg'  },
 		ProjectReplaceAfter = { 'ProjectNameBg' , 'ModeReplaceBg' },
 		ProjectCommandAfter = { 'ProjectNameBg' , 'ModeCommandBg' },
-		NormalAfter         = { 'ModeNormalBg'  , 'NormalBg' 		},
-		InsertAfter         = { 'ModeInsertBg'  , 'NormalBg' 		},
-		VisualAfter         = { 'ModeVisualBg'  , 'NormalBg' 		},
-		ReplaceAfter        = { 'ModeReplaceBg' , 'NormalBg' 		},
-		CommandAfter        = { 'ModeCommandBg' , 'NormalBg' 		},
+		NormalAfter         = { 'ModeNormalBg'  , 'NormalBg' 	  },
+		InsertAfter         = { 'ModeInsertBg'  , 'NormalBg' 	  },
+		VisualAfter         = { 'ModeVisualBg'  , 'NormalBg'   	  },
+		ReplaceAfter        = { 'ModeReplaceBg' , 'NormalBg'  	  },
+		CommandAfter        = { 'ModeCommandBg' , 'NormalBg'  	  },
 	},
 	text = function()
 		if vim.o.paste then
@@ -167,7 +167,7 @@ basic.projectname = {
 		if git_comps.is_git(bufnr) then
 			return {
 				{ sep.left_rounded, 'sep_left' },
-				{ git_comps.git_branch({icon = ' '}), 'project' },
+				{ git_comps.git_branch({icon = ' '}), 'project' },
 				-- { ' ', '' },
 				{ sep.right_rounded..' ', 'sep_right' }
 			}
@@ -210,9 +210,9 @@ basic.projectname = {
 
 local function is_file_ro()
 	if vim.bo.readonly then
-		return ' '
+		return ' '
 	else
-		return
+		return ' '
 	end
 end
 
@@ -223,7 +223,7 @@ basic.file = {
 		default      = hl_list.File,
 		FileName     = { 'FileFg', 'FileBg', 'italic'  },
 		FileModified = { 'FileNameModFg', 'FileNameBg' },
-		FileRO       = { 'FileNameROFg', 'FileNameBg'  },
+		FileRO       = { 'FileNameROFg', 'FileNameBg', 'bold'  },
 		FileIcon     = hl_list.FileIcon
 	},
 	text = function(bufnr)
@@ -272,7 +272,7 @@ basic.git = {
 			return {
 				{ '', ' ' },
 				{ git_comps.diff_added({ format   = '  %s', show_zero = false  }), 'added'  },
-				{ git_comps.diff_changed({ format = ' 柳%s', show_zero = false }), 'changed' },
+				{ git_comps.diff_changed({ format = '  %s', show_zero = false }), 'changed' },
 				{ git_comps.diff_removed({ format = '  %s', show_zero = false }), 'removed' },
 			}
 		end
@@ -294,7 +294,7 @@ basic.lsp_diagnos = {
 	text = function(bufnr)
 		if lsp_comps.check_lsp(bufnr) then
 			return {
-				{ lsp_comps.lsp_hint({ format    = '  %s', show_zero = false  }), 'blue'   },
+				{ lsp_comps.lsp_hint({ format    = ' 󰌶 %s', show_zero = false }), 'blue'   },
 				{ lsp_comps.lsp_warning({ format = '  %s', show_zero = false }), 'yellow' },
 				{ lsp_comps.lsp_error({ format   = '  %s', show_zero = false }), 'red'    },
 			}
@@ -399,13 +399,13 @@ basic.indent = {
 			-- {'│','sep'},
 			{'','sep1'},
 			-- {'','sep1'},
-			{ ':%02Bh', 'charcolor' },
+			{ 'Ch:%02Bh', 'charcolor' },
 			{ sep.right_rounded, 'sep_after' },
 		}
 	end,
 	width = 70
 }
---                  
+--                   
 
 basic.right = {
 	hl_colors = {
@@ -419,7 +419,7 @@ basic.right = {
 		return {
 			{ ' ', 'sep_before' },
 			{ sep.left_rounded, 'sep_before' },
-			{ '', 'text' },
+			{ '', 'text' },
 			{' %l:%v','text'},
 			{'│','sep'},
 			{'%p%%','text'},
