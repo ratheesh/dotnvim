@@ -78,8 +78,7 @@ return {
 		'tzachar/highlight-undo.nvim',
 		enabled = true,
 		event = 'BufReadPre',
-		config = function()
-			require('highlight-undo').setup({
+		opts = {
 				duration = 300,
 				undo = {
 					hlgroup = 'HighlightUndo',
@@ -95,8 +94,7 @@ return {
 					map = 'redo',
 					opts = {}
 				},
-			})
-		end
+		}
 	},
 	{
 		'echasnovski/mini.indentscope',
@@ -281,11 +279,9 @@ return {
 	{
 		'asiryk/auto-hlsearch.nvim',
 		enabled = false,
-		init = function ()
-			require("auto-hlsearch").setup({
-				remap_keys = { "/", "?", "*", "#", "n", "N" },
-			})
-		end
+		opts = {
+			remap_keys = { "/", "?", "*", "#", "n", "N" },
+		}
 	},
 	{
 		'echasnovski/mini.align',
@@ -334,9 +330,7 @@ return {
 	{
 		'echasnovski/mini.move',
 		enabled = true,
-		config = function ()
-			require('mini.move').setup()
-		end
+		opts = {}
 	},
 	{
 		'romgrk/kirby.nvim',
@@ -350,13 +344,7 @@ return {
 		'tamton-aquib/flirt.nvim',
 		enabled = false,
 		event = 'VeryLazy',
-		config=function ()
-			require("flirt").setup()
-		end
-	},
-	{
-		"github/copilot.vim",
-		enabled = true,
+		opts = {}
 	},
 	{
 		'IMOKURI/line-number-interval.nvim',
