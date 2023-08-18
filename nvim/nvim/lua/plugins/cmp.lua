@@ -9,7 +9,22 @@ local M = {
 			"L3MON4D3/LuaSnip",
 			config= function ()
 				require("luasnip.loaders.from_vscode").lazy_load()
-			end
+			end,
+			opts = {
+				history = true,
+				delete_check_events = "TextChanged",
+			},
+			keys = {
+				{
+					"<tab>",
+					function()
+						return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
+					end,
+					expr = true, silent = true, mode = "i",
+				},
+				{ "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
+				{ "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
+			},
 		},
 		"hrsh7th/cmp-path",
 		-- "hrsh7th/cmp-buffer",
@@ -120,7 +135,7 @@ function M.config()
 			expand = function(args) require('luasnip').lsp_expand(args.body) end,
 		},
 		experimental = {
-      ghost_text = { hl_group = "CmpGhostText" },
+			ghost_text = { hl_group = "CmpGhostText" },
 		},
 		performance = {
 			trigger_debounce_time = 50
@@ -194,12 +209,12 @@ function M.config()
 			-- ['<C-e>']     = mapping.abort(),
 			['<C-y>']     = mapping.confirm({ select = true }),
 			['<CR>']      = mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
-			['<C-l>'] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					return cmp.complete_common_string()
-				end
-				fallback()
-			end, { 'i', 'c' }),
+			-- ['<C-l>'] = cmp.mapping(function(fallback)
+			-- 	if cmp.visible() then
+			-- 		return cmp.complete_common_string()
+			-- 	end
+			-- 	fallback()
+			-- end, { 'i', 'c' }),
 			['<Tab>'] 		= mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item()
