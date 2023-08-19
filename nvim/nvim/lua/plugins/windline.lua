@@ -444,19 +444,31 @@ basic.lazy = {
 	end,
 }
 
+local function lazy_status()
+	local cond = require('lazy.status').has_updates
+	if cond then
+		return require("lazy.status").updates
+	else
+		return ''
+	end
+end
+
 basic.showcmd = {
 	hl_colors = {
-		sep  = { 'FileNameBg', 'NormalBg' },
-		text = { 'LazyFg'  , 'FileNameBg'},
+		left_sep  = { 'LSPClientBg', 'NormalBg'    },
+		cmd_text  = { 'NormalFg',    'LSPClientBg' },
+		sep       = { 'LSPClientBg', 'LazyBg'      },
+		lazy_text = { 'LazyFg',      'LazyBg'      },
+		right_sep = { 'LazyBg',      'NormalBg'    },
 	},
 	text = function()
 		if require("noice").api.status.command.has() then
 			return {
-				{ sep.left_rounded, 'sep' },
-				{ '⌨ ' .. require("noice").api.status.command.get() .. ' ', 'text' },
-				{ '', 'sep' },
-				{ ' ' .. require("lazy.status").updates(), 'text' },
-				{ sep.right_rounded, 'sep' },
+				{ sep.left_rounded, 'left_sep' },
+				{ '⌨ ' .. require("noice").api.status.command.get() .. '', 'cmd_text' },
+				{ '', 'sep' },
+				{ lazy_status() or '', 'lazy_text' },
+				{ sep.right_rounded, 'right_sep' },
 			}
 		end
 	end,
@@ -474,7 +486,7 @@ local default = {
 		basic.file,
 		basic.git,
 		basic.divider,
-		-- basic.showcmd,
+		basic.showcmd,
 		basic.divider,
 		basic.lsp_diagnos,
 		{ ' ', hl_list.Active },
@@ -584,7 +596,11 @@ windline.setup({
 		colors.LineNoBg      = "#A070C8"
 		colors.RightBg       = "#AE8A7E"
 
-		colors.LazyFg 		 = "#4eb899"
+		colors.ShowCmdFg 	 = "#4EB899"
+		colors.ShowCmdBg 	 = "#595B83"
+
+		colors.LazyFg 		 = "#fac863"
+		colors.LazyBg 		 = "#384C64"
 
 		return colors
 	end,
