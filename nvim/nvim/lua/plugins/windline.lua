@@ -446,10 +446,10 @@ basic.lazy = {
 
 local function lazy_status()
 	local cond = require('lazy.status').has_updates
-	if cond then
+	if cond == true then
 		return require("lazy.status").updates
 	else
-		return ''
+		return '✔ '
 	end
 end
 
