@@ -26,6 +26,13 @@ return {
             "hrsh7th/cmp-nvim-lsp",
             "williamboman/mason-lspconfig.nvim",
 			{ 'ray-x/lsp_signature.nvim', event = 'InsertEnter' },
+			{
+				'simrat39/symbols-outline.nvim',
+				cmd = 'SymbolOutline',
+				config = function()
+					require("symbols-outline").setup()
+				end,
+		},
         },
         config = function(_, _)
             local utils = require("utils")
