@@ -1,3 +1,6 @@
+-- Copyright (c) 2023 Ratheesh <ratheeshreddy@gmail.com>
+-- License: MIT
+
 local M = {
 	'goolord/alpha-nvim',
 	enabled  = true,

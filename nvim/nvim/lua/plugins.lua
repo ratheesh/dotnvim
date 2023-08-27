@@ -1,3 +1,7 @@
+-- Copyright (c) 2023 Ratheesh <ratheeshreddy@gmail.com>
+-- License: MIT
+-- General plugins
+
 return {
 	-- { 'navarasu/onedark.nvim' },
 	{
