@@ -156,13 +156,13 @@ hl(0 , "GitSignsChangeLn"     		, { fg = "#A3BE8C" , bg = "#2a384e" , italic = f
 hl(0 , "GitSignsDeleteLn"     		, { fg = "#D57780" , bg = "#2a384e" , italic = false , bold = false , underline = false })
 
 -- preview hunk
-hl(0 , "GitSignsAddPreview"         , { fg = "#A3BE8C" , bg = "#2a384e" , italic = false , bold = false , underline = false })
-hl(0 , "GitSignsChangePreview"      , { fg = "#A3BE8C" , bg = "#2a384e" , italic = false , bold = false , underline = false })
-hl(0 , "GitSignsDeletePreview"      , { fg = "#D57780" , bg = "#2a384e" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsAddPreview"         , { fg = "#A3BE8C" , bg = "#3C465A" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsChangePreview"      , { fg = "#A3BE8C" , bg = "#3C465A" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsDeletePreview"      , { fg = "#D57780" , bg = "#3C465A" , italic = false , bold = false , underline = false })
 -- buffer
-hl(0 , "GitSignsAddLine"        	, { fg = "#A3BE8C" , bg = "#606672" , italic = false , bold = false , underline = false })
-hl(0 , "GitSignsChangeLine"     	, { fg = "#A3BE8C" , bg = "#606672" , italic = false , bold = false , underline = false })
-hl(0 , "GitSignsDeleteLine"     	, { fg = "#D57780" , bg = "#606672" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsAddLine"        	, { fg = "#A3BE8C" , bg = "#3C465A" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsChangeLine"     	, { fg = "#A3BE8C" , bg = "#3C465A" , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsDeleteLine"     	, { fg = "#D57780" , bg = "#3C465A" , italic = false , bold = false , underline = false })
 
 hl(0 , "GitSignsAddInline"          , { fg = "#A3BE8C" , bg = "#606672" , italic = false , bold = false , underline = false })
 hl(0 , "GitSignsChangeInline"       , { fg = "#A3BE8C" , bg = "#606672" , italic = false , bold = false , underline = false })
