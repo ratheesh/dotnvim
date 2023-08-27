@@ -210,9 +210,9 @@ basic.projectname = {
 
 local function is_file_ro()
 	if vim.bo.readonly then
-		return ' '
+		return ' '
 	else
-		return ' '
+		return ' '
 	end
 end
 
@@ -445,7 +445,7 @@ basic.lazy = {
 }
 
 local function lazy_status()
-	local cond = require('lazy.status').has_updates
+	local cond = require('lazy.status').has_updates()
 	if cond == true then
 		return require("lazy.status").updates
 	else
