@@ -39,15 +39,15 @@ local M = {
 		"saadparwaiz1/cmp_luasnip",
 		"onsails/lspkind-nvim",
 		"hrsh7th/cmp-cmdline",
+		"fazibear/cmp-nerdfonts",
 		"dmitmel/cmp-cmdline-history",
 		'buschco/nvim-cmp-ts-tag-close',
 		{
             "zbirenbaum/copilot-cmp",
             dependencies = "copilot.lua",
-            opts = {},
-            config = function(_, opts)
+            config = function()
                 local copilot_cmp = require("copilot_cmp")
-                copilot_cmp.setup(opts)
+                copilot_cmp.setup()
             end,
         },
 	},
@@ -161,13 +161,21 @@ function M.config()
 			-- { name = 'nvim_lsp_signature_help' },
 			-- { name = 'luasnip'  },
 			{ name = 'conventionalcommits' },
-			{ name = 'luasnip'  },
+			{ name = 'nerdfonts' },
+			{ name = 'copilot' },
+			{
+				name = 'luasnip',
+				entry_filter = function()
+					local context = require("cmp.config.context")
+					return not context.in_treesitter_capture("string") and not context.in_syntax_group("String")
+				end,
+			},
 			{ name = 'nvim_lsp',
 			entry_filter = function(entry)
 				return require("cmp").lsp.CompletionItemKind.Snippet ~= entry:get_kind()
 			end,
 		},
-		{ name = 'nvim-cmp-ts-tag-close' },
+			{ name = 'nvim-cmp-ts-tag-close' },
 			-- { name = 'nvim_lua' },
 			{ name = 'path'     },
 			-- { name = 'buffer-lines' },
