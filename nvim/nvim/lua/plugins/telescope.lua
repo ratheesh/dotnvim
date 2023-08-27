@@ -27,7 +27,7 @@ function M.project_files(opts)
   opts = opts or {}
   opts.show_untracked = true
   if vim.loop.fs_stat(".git") then
-    require("telescope.builtin").git_files(opts)
+    require("telescope.builtin").find_files(opts)
   else
     local client = vim.lsp.get_active_clients()[1]
     if client then
