@@ -80,11 +80,11 @@ return {
             })
 
             mason_lspconfig.setup_handlers({
-                function(server_name)
-                    lspconfig[server_name].setup({
-                        on_attach = lsp_utils.on_attach,
-                        capabilities = lsp_utils.capabilities,
-                    })
+				function(server_name)
+					lspconfig[server_name].setup({
+						on_attach = lsp_utils.on_attach,
+						capabilities = lsp_utils.capabilities,
+					})
                 end,
                 ["lua_ls"] = function()
                     lspconfig.lua_ls.setup({
