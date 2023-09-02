@@ -34,6 +34,16 @@ return {
 		end
 	},
 	{
+		'winston0410/range-highlight.nvim',
+		enabled = true,
+		dependencies = {
+			'winston0410/cmd-parser.nvim'
+		},
+		config = function()
+		require('range-highlight').setup({})
+		end
+	},
+	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
 		cmd = "Neotree",
