@@ -28,6 +28,18 @@ return {
 		keys = {
 			{ "<leader>sr", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
 		},
-	}
+	},
+	{
+		'kevinhwang91/nvim-fundo',
+		enabled = true,
+		requires = 'kevinhwang91/promise-async',
+		run = function()
+			require('fundo').install()
+		end,
+		config = function()
+			require('fundo').setup()
+		end
+	},
+
 }
 -- End of File
