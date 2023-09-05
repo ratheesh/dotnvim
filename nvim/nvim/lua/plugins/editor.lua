@@ -30,6 +30,20 @@ return {
 		},
 	},
 	{
+		'ibhagwan/smartyank.nvim',
+		enabled = true,
+		keys = { 'y', 'Y', 'd', 'D', 'x' },
+		config = function()
+			require('smartyank').setup ({
+				highlight = {
+					enabled = true,
+					higroup = "IncSearch",
+					timeout = 200,
+				},
+			})
+		end
+	},
+	{
 		'kevinhwang91/nvim-fundo',
 		enabled = true,
 		requires = 'kevinhwang91/promise-async',

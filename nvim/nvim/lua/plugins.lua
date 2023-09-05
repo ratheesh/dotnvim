@@ -119,11 +119,12 @@ return {
 	},
 	{
 		"ojroques/vim-oscyank",
+		enabled = false,
 		cmd = { "OSCYank", "OSCYankReg" },
 	},
 	{
 		'gbprod/yanky.nvim',
-		enabled=true,
+		enabled=false,
 		cmd = { 'YankyCycleForward', 'YankyRingHistory' },
 		keys = { 'yy', "Y" },
 		opts = {
