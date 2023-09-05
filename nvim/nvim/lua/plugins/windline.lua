@@ -147,7 +147,7 @@ basic.paste_mode = {
 	text = function()
 		if vim.o.paste then
 			return {
-				{ 'ραstɛ', 'paste_mode', },
+				{ ' ραstɛ', 'paste_mode', },
 				{ sep.right_rounded.. ' ', 'sep_right_file' },
 			}
 		end
