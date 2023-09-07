@@ -182,7 +182,7 @@ local section = {
             {
                 type = "group",
                 val = function()
-                    return { mru(10) }
+                    return { mru(0) }
                 end,
             },
         },
@@ -196,9 +196,9 @@ local section = {
             {
                 type = "group",
                 val = function()
-                    return { mru(0, vim.fn.getcwd()) }
+                    return { mru(10, vim.fn.getcwd()) }
                 end,
-                opts = { shrink_margin = false },
+                opts = { shrink_margin = true },
             },
         },
     },

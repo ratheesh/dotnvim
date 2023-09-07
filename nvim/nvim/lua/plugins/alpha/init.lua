@@ -4,7 +4,7 @@
 local M = {
 	'goolord/alpha-nvim',
 	enabled  = true,
-	event    = 'VimEnter',
+	event    = { 'VimEnter' },
 	dependencies = {
 		{
 			'nvim-tree/nvim-web-devicons',
