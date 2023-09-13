@@ -150,7 +150,7 @@ return {
 	},
 	{
 		'Bekaboo/dropbar.nvim',
-		enabled = true,
+		enabled = false,
 		event = { 'VimEnter' },
 		opts = {}
 	},

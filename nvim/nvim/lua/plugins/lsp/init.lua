@@ -61,6 +61,23 @@ return {
 				end,
 			},
 			{
+				'nvimdev/lspsaga.nvim',
+				config = function()
+					require('lspsaga').setup({
+						breadcrumb = {
+							enable = true,
+							separator = ' -> ',
+							show_file = true,
+							folder_level = 0,
+						}
+					})
+				end,
+				dependencies = {
+					'nvim-treesitter/nvim-treesitter',
+					'nvim-tree/nvim-web-devicons'
+				}
+			},
+			{
 				'simrat39/symbols-outline.nvim',
 				cmd = 'SymbolOutline',
 				config = function()
