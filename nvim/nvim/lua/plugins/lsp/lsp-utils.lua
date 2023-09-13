@@ -35,7 +35,8 @@ M.setup = function()
 	local bufopts = { noremap = true, silent = true }
 
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-	vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>", bufopts)
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+	-- vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>", bufopts)
 	-- vim.keymap.set("n", "<leader>gr", "<cmd>Telescope lsp_references<cr>", bufopts)
 	-- vim.keymap.set("n", "<leader>gi", "<cmd>Telescope lsp_implementations<cr>", bufopts)
 	-- vim.keymap.set("n", "<leader>gt", "<cmd>Telescope lsp_type_definitions<cr>", bufopts)
