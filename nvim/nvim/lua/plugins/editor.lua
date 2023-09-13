@@ -54,6 +54,15 @@ return {
 			require('fundo').setup()
 		end
 	},
+	{
+		'nvimdev/hlsearch.nvim',
+		enabled = true,
+		event = 'VimEnter',
+		keys = { 'n', 'N', '*', '#', 'g*', 'g#' },
+		config = function()
+			require('hlsearch').setup()
+		end
+	},
 
 }
 -- End of File
