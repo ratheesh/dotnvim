@@ -35,7 +35,7 @@ return {
 	},
 	{
 		'winston0410/range-highlight.nvim',
-		enabled = true,
+		enabled = false,
 		dependencies = {
 			'winston0410/cmd-parser.nvim'
 		},
@@ -173,6 +173,5 @@ return {
 			require('satellite').setup()
 		end
 	},
-
 }
 -- End of File
