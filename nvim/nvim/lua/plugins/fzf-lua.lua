@@ -1,6 +1,6 @@
 local M = {
   'ibhagwan/fzf-lua',
-  enabled = false,
+  enabled = true,
   event = 'VimEnter',
   cmd = { 'Fz' },
 

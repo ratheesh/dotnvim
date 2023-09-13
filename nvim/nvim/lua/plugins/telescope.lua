@@ -1,6 +1,6 @@
 local M = {
   "nvim-telescope/telescope.nvim",
-  enabled = true,
+  enabled = false,
   name = 'telescope',
   cmd = { "Telescope" },
 
@@ -115,7 +115,7 @@ function M.config()
       -- file_sorter = require"telescope.sorters".get_fzy_file
       -- file_ignore_patterns = {},
       -- generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
-      -- shorten_path = true,
+      shorten_path = true,
       winblend = borderless and 0 or 10,
       -- width = 0.7,
       -- preview_cutoff = 120,
