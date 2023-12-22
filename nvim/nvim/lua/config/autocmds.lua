@@ -5,8 +5,7 @@
 local group = vim.api.nvim_create_augroup('AutoCommands', { clear = true })
 vim.api.nvim_create_autocmd('Filetype', { pattern = 'sh', group = group,
 command = 'setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4' })
-vim.api.nvim_create_autocmd('FocusLost,InsertLeave,CursorHold', { group = group,
-command = 'silent! update' })
+-- vim.api.nvim_create_autocmd('FocusLost,InsertLeave,CursorHold', { group = group, command = 'silent! update' })
 vim.api.nvim_create_autocmd('QuickFixCmdPost', { pattern = '[^l]*', group = group,
 callback = function() TroubleQuickFixPost('quickfix') end })
 vim.api.nvim_create_autocmd('QuickFixCmdPost', { pattern = 'l*', group = group,
