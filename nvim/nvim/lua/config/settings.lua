@@ -16,7 +16,7 @@ vim.opt.clipboard      = "unnamedplus"
 vim.opt.cmdheight      = 0
 vim.opt.smartindent    = true
 vim.opt.tabstop        = 4
-vim.opt.signcolumn     = "auto" -- "yes"
+vim.opt.signcolumn     = "yes" -- "yes"
 vim.opt.foldcolumn     = "auto" -- "yes"
 vim.opt.shiftwidth     = 4
 vim.opt.shortmess:append("sI")
