@@ -30,6 +30,17 @@ return {
     }
   },
   {
+    "code-biscuits/nvim-biscuits",
+    event = { 'VeryLazy' },
+    config = function()
+      require('nvim-biscuits').setup({
+        cursor_line_only = true,
+        prefix_string = " 📎 ",
+        min_distance = 5,
+      })
+    end,
+  },
+  {
     "j-hui/fidget.nvim",
     config=function()
       require('fidget').setup({
