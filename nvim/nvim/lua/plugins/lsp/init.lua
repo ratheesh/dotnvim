@@ -2,10 +2,10 @@ local Util = require("util")
 return {
   {
     "neovim/nvim-lspconfig",
-    event = "VimEnter",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      { "folke/neoconf.nvim", cmd = "Neoconf", config = false, dependencies = { "nvim-lspconfig" } },
-      { "folke/neodev.nvim", opts = {} },
+      -- { "folke/neoconf.nvim", cmd = "Neoconf", config = false, dependencies = { "nvim-lspconfig" } },
+      -- { "folke/neodev.nvim", opts = {} },
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       { 'ray-x/lsp_signature.nvim', event = 'InsertEnter' },
