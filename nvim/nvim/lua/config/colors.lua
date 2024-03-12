@@ -297,7 +297,7 @@ hl(0, "@field",                  { fg = "#95b2d6", bg = nil, italic = false, bol
 -- field.toml
 -- field.toyaml
 hl(0, "@float",               			{ fg = "#fac761", bg = nil, 	  italic = false, bold = false, underline = false })
-hl(0, "@function",            			{ fg = "#5fb4b4", bg = nil, 	  italic = false, bold = false, underline = false })
+hl(0, "@function",            			{ fg = "#c8c8c8", bg = nil, 	  italic = false, bold = false, underline = false })
 hl(0, "@function.builtin",    			{ fg = "#bab0ab", bg = nil, 	  italic = false, bold = false, underline = false })
 hl(0, "@function.call",       			{ fg = "#5c99d6", bg = nil, 	  italic = false, bold = false, underline = false })
 hl(0, "@function.css",        			{ fg = "#5c99d6", bg = nil, 	  italic = false, bold = false, underline = false })
@@ -318,9 +318,9 @@ hl(0, "@namespace",           			{ fg = "#f9ae58", bg = nil, 	  italic = false, 
 hl(0, "@number",              			{ fg = "#D19491", bg = nil, 	  italic = false, bold = false, underline = false })
 hl(0, "@number.bash",         			{ fg = "#f9ae58", bg = nil, 	  italic = false, bold = false, underline = false })
 hl(0, "@operator",            			{ fg = "#e96b48", bg = nil, 	  italic = false, bold = false, underline = false })
-hl(0, "@parameter",           			{ fg = "#E7839F", bg = nil, 	  italic = true,  bold = false, underline = false })
+hl(0, "@parameter.c",               { fg = "#E7839F", bg = nil, 	  italic = true,  bold = false, underline = false })
 hl(0, "@parameter.bash",      			{ fg = "#d8dee9", bg = nil, 	  italic = true,  bold = false, underline = false })
-hl(0, "@parameter.reference", 			{ fg = "#d8dee9", bg = nil, 	  italic = true,  bold = false, underline = false })
+-- hl(0, "@parameter.reference", 			{ fg = "#d8dee9", bg = nil, 	  italic = true,  bold = false, underline = false })
 hl(0, "@preproc",             			{ fg = "#5fb4b4", bg = nil, 	  italic = false, bold = false, underline = false })
 hl(0, "@property",            			{ fg = "#95b2d6", bg = nil, 	  italic = false, bold = false, underline = false })
 hl(0, "@property.toml",       			{ fg = "#5fb4b4", bg = nil, 	  italic = false, bold = false, underline = false })
