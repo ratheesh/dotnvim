@@ -462,15 +462,15 @@ basic.showcmd = {
 		right_sep = { 'LazyBg',      'NormalBg'    },
 	},
 	text = function()
-		if require("noice").api.status.command.has() then
-			return {
-				{ sep.left_rounded, 'left_sep' },
-				{ '⌨ ' .. require("noice").api.status.command.get() .. '', 'cmd_text' },
-				{ '', 'sep' },
-				{ lazy_status() or '', 'lazy_text' },
-				{ sep.right_rounded, 'right_sep' },
-			}
-		end
+		-- if require("noice").api.status.command.has() then
+		-- 	return {
+		-- 		{ sep.left_rounded, 'left_sep' },
+		-- 		{ '⌨ ' .. require("noice").api.status.command.get() .. '', 'cmd_text' },
+		-- 		{ '', 'sep' },
+		-- 		{ lazy_status() or '', 'lazy_text' },
+		-- 		{ sep.right_rounded, 'right_sep' },
+		-- 	}
+		-- end
 	end,
 }
 --                  

@@ -268,7 +268,7 @@ cmp.setup.cmdline(":", {
     { name = "cmdline_history" },
     { name = "cmdline" },
     { name = "path" },
-    { name = "noice_popupmenu" },
+    -- { name = "noice_popupmenu" },
   },
 })
 

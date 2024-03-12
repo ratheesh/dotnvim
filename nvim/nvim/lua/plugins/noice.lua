@@ -142,7 +142,7 @@ function M.config()
       },
     },
     notify = {
-      enabled = true,
+      enabled = false,
     },
     health = {
       checker = true,

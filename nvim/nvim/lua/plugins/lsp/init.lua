@@ -8,6 +8,7 @@ return {
       { "folke/neodev.nvim", opts = {} },
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
+      { 'ray-x/lsp_signature.nvim', event = 'InsertEnter' },
     },
     ---@class PluginLspOpts
     opts = {

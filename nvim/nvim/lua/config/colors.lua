@@ -89,7 +89,7 @@ hl(0 , "Constant"     , { fg = "#5E81AC" , bg = nil       , italic = false , bol
 hl(0 , "Define"       , { fg = "#B48EAD" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "Delimiter"    , { fg = "#B48EAD" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "Float"        , { fg = "#D08770" , bg = nil       , italic = false , bold = false , underline = false })
-hl(0 , "Function"     , { fg = "#EBCB8B" , bg = nil       , italic = false , bold = false , underline = false })
+hl(0 , "Function"     , { fg = "#EEEEEE" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "Identifier"   , { fg = "#97B7D7" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "Include"      , { fg = "#81A1C1" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "Keyword"      , { fg = "#A3BE8C" , bg = nil       , italic = false , bold = false , underline = false })

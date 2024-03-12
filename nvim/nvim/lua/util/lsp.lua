@@ -30,6 +30,24 @@ function M.on_attach(on_attach)
       local buffer = args.buf ---@type number
       local client = vim.lsp.get_client_by_id(args.data.client_id)
       on_attach(client, buffer)
+
+      local lsp_signature_cfg = {
+        bind 			= true,
+        wrap            = true,
+        floating_window = false,
+        doc_lines       = 3,
+        hint_enable     = true,
+        hint_prefix     = '🐼 ',
+        hint_inline     = function() return false end,
+        hint_scheme     = 'String',
+        hi_parameter    = 'LspSignatureActiveParameter',
+        always_trigger  = true,
+        handler_opts    = {
+          border = 'rounded'
+        }
+      }
+      require('lsp_signature').on_attach(lsp_signature_cfg, 0)
+
     end,
   })
 end
