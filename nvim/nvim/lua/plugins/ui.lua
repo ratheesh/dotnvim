@@ -1,6 +1,5 @@
 return {
   {
-  {
     "lukas-reineke/virt-column.nvim",
     enabled = true,
     event   = 'VeryLazy',
