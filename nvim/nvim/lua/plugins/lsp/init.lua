@@ -9,6 +9,25 @@ return {
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       { 'ray-x/lsp_signature.nvim', event = 'InsertEnter' },
+      {
+        "roobert/action-hints.nvim",
+        config = function()
+          require("action-hints").setup({
+            template = {
+              definition = { text = " ⊛", color = "#add8e6" },
+              references = { text = " ↱%s", color = "#ff6666" },
+            },
+            use_virtual_text = true,
+          })
+        end,
+      },
+      {
+        'simrat39/symbols-outline.nvim',
+        cmd = 'SymbolOutline',
+        config = function()
+          require("symbols-outline").setup()
+        end,
+      },
     },
     ---@class PluginLspOpts
     opts = {
