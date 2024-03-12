@@ -96,3 +96,12 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
   end,
 })
+
+-- automatically set colorcolumn on gitcommit
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("gitcommit"),
+  pattern = { "gitcommit" },
+  callback = function()
+    vim.opt.colorcolumn = "73"
+  end,
+})
