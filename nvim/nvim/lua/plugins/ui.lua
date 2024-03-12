@@ -1,5 +1,13 @@
 return {
   {
+  {
+    "lukas-reineke/virt-column.nvim",
+    enabled = true,
+    event   = 'VeryLazy',
+    config = function ()
+      require("virt-column").setup({char = '▕', virtcolumn = '+1'})
+    end
+  },
     "j-hui/fidget.nvim",
     config=function()
       require('fidget').setup({
