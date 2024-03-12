@@ -52,8 +52,8 @@ end
 function M.config()
   require("nvim-treesitter.configs").setup({
 		highlight = {
-			enable = true,
-			additional_vim_regex_highlighting = true,
+			enable = false,
+			additional_vim_regex_highlighting = false,
 		},
 		ensure_installed = {
 			"bash", "c", "cpp", "css", "html", "java", "javascript", "json",
