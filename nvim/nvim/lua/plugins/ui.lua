@@ -41,6 +41,13 @@ return {
     end,
   },
   {
+    "lewis6991/satellite.nvim",
+    event = "VeryLazy",
+    config = function()
+      require('satellite').setup({})
+    end
+  },
+  {
     "j-hui/fidget.nvim",
     config=function()
       require('fidget').setup({
