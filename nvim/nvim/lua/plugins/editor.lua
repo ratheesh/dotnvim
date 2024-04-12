@@ -54,4 +54,12 @@ return {
       })
     end
   },
+  {
+    "nvimdev/hlsearch.nvim",
+    enabled = true,
+    event = "VeryLazy",
+    config = function()
+      require("hlsearch").setup()
+    end
+  }
 }
