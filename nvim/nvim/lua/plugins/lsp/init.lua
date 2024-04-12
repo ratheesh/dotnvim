@@ -33,17 +33,19 @@ return {
     opts = {
       -- options for vim.diagnostic.config()
       diagnostics = {
+        virtual_text = false,
+        float = {
+          focusable = false,
+          style = "minimal",
+          border = "rounded",
+          source = "always",
+          header = "",
+          prefix = "",
+        },
+        signs = true,
         underline = true,
         update_in_insert = false,
-        virtual_text = {
-          spacing = 4,
-          source = "if_many",
-          prefix = "●",
-          -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
-          -- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
-          -- prefix = "icons",
-        },
-        severity_sort = true,
+        severity_sort = false,
       },
       -- Enable this to enable the builtin LSP inlay hints on Neovim >= 0.10.0
       -- Be aware that you also will need to properly configure your LSP server to
@@ -112,10 +114,11 @@ return {
       end
 
       -- diagnostics
-      -- for name, icon in pairs(require("lazyvim.config").icons.diagnostics) do
-      --   name = "DiagnosticSign" .. name
-      --   vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
-      -- end
+      local lsp_signs = { Error = "", Warn = "", Hint = "", Info = "" }
+      for type, icon in pairs(lsp_signs) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl })
+      end
 
       if opts.inlay_hints.enabled then
         Util.lsp.on_attach(function(client, buffer)
