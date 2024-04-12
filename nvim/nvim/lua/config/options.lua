@@ -77,6 +77,8 @@ opt.fillchars = {
   eob = " ",
 }
 
+opt.guicursor = "n:block-nCursor-blinkon0,i-ci:ver30-iCursor-blinkon0,v-ve:block-vCursor-blinkon0,o:hor30-oCursor-blinkon0,r-cr:block-rCursor-blinkon0"
+
 if vim.fn.has("nvim-0.10") == 1 then
   opt.smoothscroll = true
 end
