@@ -78,4 +78,8 @@ map("v", ">", ">gv")
 -- quit
 map("n", "<leader>x", "<cmd>qa<cr>", { desc = "Quit all" })
 
+-- luasnip jump during the pmenu
+map({ "i", "s" }, "<C-l>", "<cmd>lua require('luasnip').jump(1)<CR>")
+map({ "i", "s" }, "<C-h>", "<cmd>lua require('luasnip').jump(-1)<CR>")
+
 
