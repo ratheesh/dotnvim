@@ -82,7 +82,7 @@ function M.open(file, opts)
   vim.opt_local.spell = false
   vim.opt_local.wrap = false
   vim.opt_local.signcolumn = "yes"
-  vim.opt_local.statuscolumn = " "
+  -- vim.opt_local.statuscolumn = " "
   vim.opt_local.conceallevel = 3
   vim.diagnostic.disable(float.buf)
 end
