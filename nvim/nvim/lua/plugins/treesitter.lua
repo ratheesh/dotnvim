@@ -57,7 +57,8 @@ function M.config()
 		},
 		ensure_installed = {
 			"bash", "c", "cpp", "css", "html", "java", "javascript", "json",
-			"lua","python", "regex", "vim", "yaml", "norg", "vue", "htmldjango"
+			"lua","python", "regex", "vim", "yaml", "norg", "vue", "htmldjango",
+      "markdown", "markdown_inline",
 		},
 		indent    = { enable = false },
 		matchup   = { enable = true  },
