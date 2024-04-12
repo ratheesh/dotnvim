@@ -158,4 +158,24 @@ return {
       })
     end,
   }
+  {
+    "shellRaining/hlchunk.nvim",
+    event = { "UIEnter" },
+    config = function()
+      require("hlchunk").setup({
+        chunk={
+          style = "#40586c",
+        },
+        indent = {
+          enable = false,
+        },
+        blank = {
+          enable = false,
+        },
+        line_num = {
+          enable = false;
+        },
+      })
+    end
+  },
 }
