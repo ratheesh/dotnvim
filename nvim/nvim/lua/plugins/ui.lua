@@ -198,4 +198,42 @@ return {
       })
     end
   },
+  -- floating window title
+  {
+    "b0o/incline.nvim",
+    event   = "BufReadPre",
+    enabled = true,
+    config  = function()
+      local function get_diagnostic_label(props)
+        local icons = { error = '', warn = '', info = '', hint = '󰌶', }
+        local label = {}
+
+        for severity, icon in pairs(icons) do
+          local n = #vim.diagnostic.get(props.buf, { severity = vim.diagnostic.severity[string.upper(severity)] })
+          if n > 0 then
+            table.insert(label, { icon .. ' ' .. n .. ' ', group = 'DiagnosticSign' .. severity })
+          end
+        end
+        if #label > 0 then
+          table.insert(label, {'| '})
+        end
+        return label
+      end
+
+      require("incline").setup({
+        window = { margin = { vertical = 0, horizontal = 3 } },
+        render = function(props)
+          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+          local icon, color = require("nvim-web-devicons").get_icon_color(filename)
+          local modified = vim.api.nvim_buf_get_option(props.buf, "modified") and "bold,italic" or "bold"
+          return {
+            { get_diagnostic_label(props) },
+            { icon, guifg = color }, { " " },
+            { filename, gui = modified },
+          }
+        end,
+      })
+    end,
+  },
+
 }
