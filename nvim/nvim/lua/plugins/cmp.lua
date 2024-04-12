@@ -146,7 +146,10 @@ function M.config()
       documentation = cmp.config.window.bordered({ winhighlight = 'Normal:CmpDocNormal' }),
     },
     view = {
-      entries = "custom", -- can be "custom", "wildmenu" or "native"
+      entries = {
+        name = "custom",
+        follow_cursor = true,
+      }, -- can be "custom", "wildmenu" or "native"
       winhighlight = 'Normal:WildStatus,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None',
     },
     sources = {
