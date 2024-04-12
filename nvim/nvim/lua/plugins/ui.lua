@@ -49,6 +49,7 @@ return {
   },
   {
     "j-hui/fidget.nvim",
+    enabled = false,
     config=function()
       require('fidget').setup({
         -- Options related to LSP progress subsystem
@@ -178,6 +179,7 @@ return {
   },
   {
     "shellRaining/hlchunk.nvim",
+    enabled=false,
     event = { "UIEnter" },
     config = function()
       require("hlchunk").setup({
