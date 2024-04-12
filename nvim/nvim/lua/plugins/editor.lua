@@ -30,6 +30,17 @@ return {
 		cmd = { "UndotreeShow", "UndotreeToggle", "UndotreeHide", "UndotreeFocus" },
 	},
   {
+    'winston0410/range-highlight.nvim',
+    enabled = true,
+    event = { "BufReadPre" },
+    dependencies = {
+      'winston0410/cmd-parser.nvim'
+    },
+    config = function()
+      require('range-highlight').setup({})
+    end
+  },
+  {
     'ibhagwan/smartyank.nvim',
     enabled = true,
     keys = { 'y', 'Y', 'd', 'D', 'x' },
