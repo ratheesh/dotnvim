@@ -4,7 +4,11 @@ return {
     enabled = true,
     event   = 'VeryLazy',
     config = function ()
-      require("virt-column").setup({char = '▕', virtcolumn = '+1'})
+      require("virt-column").setup({
+        char = '│',
+        virtcolumn = '+1',
+        highlight = "VirtColumn",
+    }) --▕
     end
   },
   {
