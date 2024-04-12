@@ -22,6 +22,16 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+-- Enable relative number only in non-insert mode
+local cursorGrp = vim.api.nvim_create_augroup('cursorGrp', { clear = true })
+vim.api.nvim_create_autocmd(
+{ 'InsertLeave', 'WinEnter' },
+{ pattern = '*', command = 'set relativenumber', group = cursorGrp })
+
+vim.api.nvim_create_autocmd(
+{ 'InsertEnter', 'WinLeave' },
+{ pattern = '*', command = 'set norelativenumber', group = cursorGrp })
+
 -- resize splits if window got resized
 vim.api.nvim_create_autocmd({ "VimResized" }, {
   group = augroup("resize_splits"),
@@ -119,6 +129,28 @@ vim.api.nvim_create_autocmd("CursorHold", {
     }
     vim.diagnostic.open_float(nil, opts)
   end
+})
+
+-- Fix cursor jumps upon tab after non completion of previous snippet
+vim.api.nvim_create_autocmd('ModeChanged', {
+  pattern = '*',
+  callback = function()
+    if ((vim.v.event.old_mode == 's' and vim.v.event.new_mode == 'n') or vim.v.event.old_mode == 'i')
+        and require('luasnip').session.current_nodes[vim.api.nvim_get_current_buf()]
+        and not require('luasnip').session.jump_active
+    then
+      require('luasnip').unlink_current()
+    end
+  end
+})
+
+-- Fix conceallevel for json & help files
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "json", "jsonc" },
+  callback = function()
+    vim.wo.spell = false
+    vim.wo.conceallevel = 0
+  end,
 })
 
 -- End of File
