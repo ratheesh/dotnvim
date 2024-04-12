@@ -442,7 +442,7 @@ hl(0, "MiniIndentscopeSymbol", { fg = "#3F4F5B", bg = nil, italic = false, bold 
 hl(0, "MiniSurround"         , { fg = "#ec7279", bg = nil, italic = false, bold = false, underline = false })
 
 -- VirtColumn
-hl(0, "VirtColumn", { fg = "#393F4B", bg = nil, italic = false, bold = true, underline = false })
+hl(0, "VirtColumn", { fg = "#304044", bg = nil, italic = false, bold = true, underline = false })
 
 -- nvim-treesitter-context
 hl(0, "TreesitterContext", { fg = nil, bg = "#28303a", italic = false, bold = false, underline = false })
