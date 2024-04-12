@@ -105,3 +105,20 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt.colorcolumn = "73"
   end,
 })
+
+-- Show LSP diagnostics upon cursor hold event
+vim.api.nvim_create_autocmd("CursorHold", {
+  callback = function()
+    local opts = {
+      focusable    = false,
+      close_events = { "BufLeave", "CursorMoved", "InsertEnter" },
+      border       = "rounded",
+      source       = "always",
+      prefix       = " ",
+      scope        = "cursor",
+    }
+    vim.diagnostic.open_float(nil, opts)
+  end
+})
+
+-- End of File
