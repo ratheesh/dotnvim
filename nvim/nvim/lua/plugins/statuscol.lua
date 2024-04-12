@@ -20,13 +20,13 @@ return {
 							-- namespace = { ".*diagnostic.*" },
 							-- name = { "todo%-sign.*" }, -- WARN: escape the dash `-`
 							maxwidth = 1,
-							colwidth = 2,
-							auto = false,
+							-- colwidth = 2,
+							auto = true,
 							wrap = true,
 						},
 					},
 					{
-						text = { ' ', builtin.lnumfunc, ' ' },
+						text = { builtin.lnumfunc },
 						colwidth = 1,
 						click = 'v:lua.ScLa',
 					},
@@ -41,7 +41,7 @@ return {
 						click = 'v:lua.ScSa',
 					},
 					{
-						text = { builtin.foldfunc, ' ' },
+						text = { builtin.foldfunc, },
 						hl = 'FoldColumn',
 						wrap = true,
 						colwidth = 1,

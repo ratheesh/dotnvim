@@ -172,7 +172,7 @@ return {
   },
   {
     'IMOKURI/line-number-interval.nvim',
-    enabled = true,
+    enabled = false,
     event = 'BufReadPost',
     config = function()
       vim.g.line_number_interval_enable_at_startup=1
