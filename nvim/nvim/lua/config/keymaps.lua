@@ -4,7 +4,25 @@
 -- This file is automatically loaded by lazyvim.config.init
 -- local Util = require("lazyvim.util")
 
-local map = vim.keymap.set
+-- works only with NVIM 0.7+
+local function map(mode, new_keys, to_do, options)
+  local keymap = vim.keymap.set
+  local default_options = {
+    noremap = true,
+    silent = true,
+    expr = false,
+  }
+  if options then
+    default_options = vim.tbl_extend('force', default_options, options)
+  end
+  local ok, _ = pcall(keymap, mode, new_keys, to_do, default_options)
+  if not ok then
+    local msg = 'Fail to map ' .. new_keys .. ' for ' .. to_do
+    vim.notify(msg, vim.log.levels.ERROR, {
+      title = 'Keymap',
+    })
+  end
+end
 
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
