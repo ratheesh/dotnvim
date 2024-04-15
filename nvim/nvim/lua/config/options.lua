@@ -63,6 +63,7 @@ opt.virtualedit = "block" -- Allow cursor to move where there is no text in visu
 opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = true -- Disable line wrap
+opt.showbreak='↪ '
 opt.listchars={
   trail = "•",
   tab = "  ",
