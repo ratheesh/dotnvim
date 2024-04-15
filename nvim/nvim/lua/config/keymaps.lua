@@ -24,6 +24,13 @@ local function map(mode, new_keys, to_do, options)
   end
 end
 
+map({ "i" }, "<S-CR>", "<C-o>o", { expr = true, silent = true })
+map({ "n", "x" }, "<Leader>;", ":", { expr = true, silent = true })
+
+map({ "n" }, "<A-o>", "<cmd>call append(line('.'), '')<CR>", {  silent = true })
+map({ "n" }, "<A-O>", "<cmd>call append(line('.')-1, '')<CR>", {  silent = true })
+map({ "n" }, "<F2>", "<cmd>echomsg expand('%:p')<CR>", {  silent = true })
+
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -100,4 +107,4 @@ map("n", "<leader>x", "<cmd>qa<cr>", { desc = "Quit all" })
 map({ "i", "s" }, "<C-l>", "<cmd>lua require('luasnip').jump(1)<CR>")
 map({ "i", "s" }, "<C-h>", "<cmd>lua require('luasnip').jump(-1)<CR>")
 
-
+-- End of File
