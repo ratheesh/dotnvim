@@ -8,4 +8,13 @@ return {
       vim.g.licenses_default_commands       = { 'Gplv2', 'Apache', 'Mit' }
     end
   },
+  {
+    "preservim/tagbar",
+    cmd = { "Tagbar" },
+    config = function()
+
+    end
+  },
 }
+
+-- End of File
