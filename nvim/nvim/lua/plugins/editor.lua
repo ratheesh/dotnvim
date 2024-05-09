@@ -61,5 +61,9 @@ return {
     config = function()
       require("hlsearch").setup()
     end
-  }
+  },
+  {
+    'coderifous/textobj-word-column.vim',
+    event = "VeryLazy",
+  },
 }
