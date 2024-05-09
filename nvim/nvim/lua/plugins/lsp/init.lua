@@ -114,7 +114,7 @@ return {
       end
 
       -- diagnostics
-      local lsp_signs = { Error = "", Warn = "", Hint = "", Info = "" }
+      local lsp_signs = { Error = "●", Warn = "●", Hint = "", Info = "" }
       for type, icon in pairs(lsp_signs) do
         local hl = "DiagnosticSign" .. type
         vim.fn.sign_define(hl, { text = icon, texthl = hl })
