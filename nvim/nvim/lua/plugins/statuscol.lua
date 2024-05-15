@@ -20,7 +20,7 @@ return {
               -- namespace = { ".*diagnostic.*" },
               -- name = { "todo%-sign.*" }, -- WARN: escape the dash `-`
               maxwidth = 1,
-              -- colwidth = 2,
+              colwidth = 1,
               auto = true,
               wrap = true,
             },
@@ -29,7 +29,7 @@ return {
             sign = {
               namespace = { "diagnostic" },
               maxwidth = 1,
-              -- colwidth = 2,
+              colwidth = 1,
               auto = true,
               wrap = true,
             }
