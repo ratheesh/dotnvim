@@ -4,7 +4,8 @@ local M = {
   keys = { '<space>g' },
   dependencies = {
     'anuvyklack/keymap-layer.nvim',
-    'NvChad/nvim-colorizer.lua',
+    -- 'NvChad/nvim-colorizer.lua',
+    'brenoprata10/nvim-highlight-colors',
   },
 }
 
@@ -38,7 +39,8 @@ function M.config()
         vim.cmd('echo')
         vim.cmd('set nohlsearch')
         vim.cmd('set nocursorline')
-        vim.cmd([[ColorizerDetachFromBuffer]])
+        -- vim.cmd([[ColorizerDetachFromBuffer]])
+        vim.cmd([[HighlightColors off]])
         -- vim.cmd([[CccHighlighterDisable]])
         vim.cmd 'mkview'
         vim.cmd 'silent! %foldopen!'
@@ -57,7 +59,8 @@ function M.config()
         gitsigns.toggle_deleted(false)
         gitsigns.toggle_word_diff(false)
         -- vim.cmd([[CccHighlighterEnable]])
-        vim.cmd([[ColorizerAttachToBuffer]])
+        -- vim.cmd([[ColorizerAttachToBuffer]])
+        vim.cmd([[HighlightColors on]])
         vim.cmd('set cursorline')
       end
     },
