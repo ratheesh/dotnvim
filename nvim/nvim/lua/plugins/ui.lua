@@ -182,4 +182,24 @@ return {
       end, { expr = true })
     end
   },
+  {
+    'brenoprata10/nvim-highlight-colors',
+    enabled = true,
+    event = "VeryLazy",
+    config = function()
+      require("nvim-highlight-colors").setup {
+        ---Render style
+        ---@usage 'background'|'foreground'|'virtual'
+        render = 'virtual',
+
+        ---Set virtual symbol (requires render to be set to 'virtual')
+        virtual_symbol = '■',
+        virtual_symbol_position = 'inline',
+        enable_named_colors = true,
+        enable_tailwind = false,
+        custom_colors = {
+        }
+      }
+    end
+  },
 }

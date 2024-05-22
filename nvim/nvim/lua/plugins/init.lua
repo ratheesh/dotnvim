@@ -19,7 +19,7 @@ return {
   },
   {
     'NvChad/nvim-colorizer.lua',
-    enabled=true,
+    enabled=false,
     event = 'VimEnter',
     config = function ()
       require('colorizer').setup({
