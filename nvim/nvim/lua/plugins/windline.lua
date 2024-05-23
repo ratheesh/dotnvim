@@ -307,7 +307,7 @@ basic.lsp_diagnos = {
 local function lsp_client_names(component)
 	local clients = {}
 	local icon = component.icon or ' '
-	for _, client in pairs(vim.lsp.get_active_clients({bufnr = 0})) do
+	for _, client in pairs(vim.lsp.get_clients({bufnr = 0})) do
 		if client.name ==  'jedi_language_server' then
 			client.name = 'jedi'
 		elseif client.name ==  'sumneko_lua' then
