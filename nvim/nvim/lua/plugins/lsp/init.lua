@@ -11,6 +11,7 @@ return {
       { 'ray-x/lsp_signature.nvim', event = 'InsertEnter' },
       {
         "roobert/action-hints.nvim",
+        enabled = false,
         config = function()
           require("action-hints").setup({
             template = {
@@ -23,6 +24,7 @@ return {
       },
       {
         'simrat39/symbols-outline.nvim',
+        enabled = false,
         cmd = 'SymbolOutline',
         config = function()
           require("symbols-outline").setup()
@@ -42,7 +44,22 @@ return {
           header = "",
           prefix = "",
         },
-        signs = true,
+        -- signs = true,
+      -- local lsp_signs = { Error = "●", Warn = "●", Hint = "", Info = "" }
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = '●',
+            [vim.diagnostic.severity.WARN]  = '●',
+            [vim.diagnostic.severity.HINT]  = '',
+            [vim.diagnostic.severity.INFO]  = '',
+          },
+          linehl = {
+            -- [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+          },
+          numhl = {
+            -- [vim.diagnostic.severity.WARN] = 'WarningMsg',
+          },
+        },
         underline = true,
         update_in_insert = false,
         severity_sort = false,
@@ -114,11 +131,11 @@ return {
       end
 
       -- diagnostics
-      local lsp_signs = { Error = "●", Warn = "●", Hint = "", Info = "" }
+      --[[ local lsp_signs = { Error = "●", Warn = "●", Hint = "", Info = "" }
       for type, icon in pairs(lsp_signs) do
         local hl = "DiagnosticSign" .. type
         vim.fn.sign_define(hl, { text = icon, texthl = hl })
-      end
+      end ]]
 
       if opts.inlay_hints.enabled then
         Util.lsp.on_attach(function(client, buffer)
