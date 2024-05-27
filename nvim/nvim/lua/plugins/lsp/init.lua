@@ -30,6 +30,16 @@ return {
           require("symbols-outline").setup()
         end,
       },
+      {
+        "luckasRanarison/clear-action.nvim",
+        enabled = true,
+        event = "LspAttach",
+        opts = {
+            mappings = {
+                code_action = "<leader>ca"
+            }
+        }
+      },
     },
     ---@class PluginLspOpts
     opts = {
