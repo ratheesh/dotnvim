@@ -1,6 +1,6 @@
 local M = {
   'romgrk/barbar.nvim',
-  enabled=true,
+  enabled=false,
   event = "BufReadPre",
   dependencies = { 'nvim-tree/nvim-web-devicons' },
 }
