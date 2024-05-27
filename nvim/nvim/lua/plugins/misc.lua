@@ -15,6 +15,14 @@ return {
 
     end
   },
+  {
+    "tris203/precognition.nvim",
+    enabled = false,
+    event = "VeryLazy",
+    config = function()
+      require("precognition").setup({})
+    end
+  },
 }
 
 -- End of File
