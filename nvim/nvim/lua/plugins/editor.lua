@@ -20,7 +20,7 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
-    event = "BufReadPre",
+    event = "VeryLazy",
     config = function()
       require("treesitter-context").setup()
     end,
@@ -32,7 +32,7 @@ return {
   {
     'winston0410/range-highlight.nvim',
     enabled = true,
-    event = { "BufReadPre" },
+    event =  "VeryLazy",
     dependencies = {
       'winston0410/cmd-parser.nvim'
     },
@@ -43,6 +43,7 @@ return {
   {
     'ibhagwan/smartyank.nvim',
     enabled = true,
+    event = "VeryLazy",
     keys = { 'y', 'Y', 'd', 'D', 'x' },
     config = function()
       require('smartyank').setup ({
@@ -57,7 +58,7 @@ return {
   {
     "nvimdev/hlsearch.nvim",
     enabled = true,
-    event = "BufRead",
+    event = "VeryLazy",
     config = function()
       require("hlsearch").setup()
     end
