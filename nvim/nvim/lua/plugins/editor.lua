@@ -67,4 +67,33 @@ return {
     'coderifous/textobj-word-column.vim',
     event = "VeryLazy",
   },
+  {
+    "folke/ts-comments.nvim",
+    enabled = vim.fn.has("nvim-0.10.0") == 1,
+    event = "VeryLazy",
+    opts = {
+      lang = {
+        c = "/* %s */",
+        cpp = "// %s",
+        css = "/* %s */",
+        html = "<!-- %s -->",
+        ini = "; %s",
+        javascript = {
+          "// %s", -- default commentstring when no treesitter node matches
+          "/* %s */",
+          call_expression = "// %s", -- specific commentstring for call_expression
+          jsx_attribute = "// %s",
+          jsx_element = "{/* %s */}",
+          jsx_fragment = "{/* %s */}",
+          spread_element = "// %s",
+          statement_block = "// %s",
+        },
+        lua = { "-- %s", "--- %s" }, -- langs can have multiple commentstrings
+        typescript = "// %s",
+        vim = '" %s',
+        vue = "<!-- %s -->",
+        xml = "<!-- %s -->",
+      },
+    }
+  },
 }
