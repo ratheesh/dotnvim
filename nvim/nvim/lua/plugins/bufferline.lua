@@ -84,7 +84,7 @@ return {
         indicator_selected = {
           fg = '#F7CAB8',
           bg = '#1E2430',
-          sp = '#FF80A0',
+          sp = '#E23D75',
           bold = true,
           underdouble = true,
           underline = true,
