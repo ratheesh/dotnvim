@@ -5,6 +5,7 @@ local M = {
   event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
     'rafamadriz/friendly-snippets',
+    'hrsh7th/cmp-nvim-lsp-document-symbol',
     {
       "L3MON4D3/LuaSnip",
       config= function ()
@@ -259,6 +260,7 @@ cmp.setup.cmdline({ '/', '?' }, {
   sources = {
     { name = 'buffer' },
     { name = "cmdline_history" },
+    { name = "nvim_lsp_document_symbol" },
   }
 })
 
