@@ -189,18 +189,31 @@ function M.config()
   formatting = {
     -- fields = { 'kind', 'abbr'},
     fields = { 'kind', 'abbr', 'menu'},
-    format = function(_, item)
+
+    format = function(entry, item)
       local label = item.abbr
+      local color_item = require("nvim-highlight-colors").format(entry, { kind = item.kind })
       local truncated_label = vim.fn.strcharpart(label, 0, 50)
 
       if truncated_label ~= label then
         item.abbr = truncated_label .. '…'
       end
 
-      local icon = icons[item.kind] or ''
+      -- local icon = icons[item.kind] or ''
+      local icon, _ = require("mini.icons").get("lsp", item.kind)
+      if icon ~= nil then
+        item.kind = icon
+      else
+        icon = icons[item.kind] or ''
+      end
+
       icon = " " .. icon .. " "
-      item.menu = "   (" .. item.kind .. ")"
-      item.kind = icon
+      color_item.menu = "   (" .. item.kind .. ")"
+      color_item.kind = icon
+
+      item.kind_hl_group = color_item.abbr_hl_group
+      item.kind = color_item.kind .. color_item.abbr
+
       return item
     end,
   },
