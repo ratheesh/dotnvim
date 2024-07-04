@@ -6,6 +6,7 @@ local M = {
   dependencies = {
     'rafamadriz/friendly-snippets',
     'hrsh7th/cmp-nvim-lsp-document-symbol',
+    'f3fora/cmp-spell',
     {
       "L3MON4D3/LuaSnip",
       config= function ()
@@ -185,6 +186,16 @@ function M.config()
         end
       },
     },
+    {
+      name = "spell",
+      option = {
+        keep_all_entries = false,
+        enable_in_context = function()
+          return true
+        end,
+        preselect_correct_word = true,
+      },
+    },
   },
   formatting = {
     -- fields = { 'kind', 'abbr'},
@@ -274,6 +285,16 @@ cmp.setup.cmdline({ '/', '?' }, {
     { name = 'buffer' },
     { name = "cmdline_history" },
     { name = "nvim_lsp_document_symbol" },
+    {
+      name = "spell",
+      option = {
+        keep_all_entries = false,
+        enable_in_context = function()
+          return true
+        end,
+        preselect_correct_word = true,
+      },
+    },
   }
 })
 
