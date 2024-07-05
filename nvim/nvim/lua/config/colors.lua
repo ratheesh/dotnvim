@@ -210,9 +210,9 @@ hl(0 , "GitSignsAddVirtLnInline"    , { fg = "#A3BE8C" , bg = "#606672" , italic
 hl(0 , "GitSignsChangeVirtLnInline" , { fg = "#A3BE8C" , bg = "#606672" , italic = false , bold = false , underline = false })
 hl(0 , "GitSignsDeleteVirtLnInline" , { fg = "#D57780" , bg = "#606672" , italic = false , bold = false , underline = false })
 
-hl(0 , "GitSignsStagedAdd"          , { fg = "#A3BE8C" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "GitSignsStagedChange"       , { fg = "#808682" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "GitSignsStagedDelete"       , { fg = "#D57780" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "GitSignsStagedAdd"          , { fg = "#A3BE8C" , bg = nil , italic = false , bold = true , underline = false })
+hl(0 , "GitSignsStagedChange"       , { fg = "#808682" , bg = nil , italic = false , bold = true , underline = false })
+hl(0 , "GitSignsStagedDelete"       , { fg = "#D57780" , bg = nil , italic = false , bold = true , underline = false })
 --
 hl(0 , "GitSignsStagedAddNr"      	, { fg = "#000000" , bg = "#CBAA91" , italic = false , bold = false , underline = false })
 hl(0 , "GitSignsStagedChangeNr"   	, { fg = "#F0F0F0" , bg = "#4C5D79" , italic = false , bold = false , underline = false })
