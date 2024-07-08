@@ -72,6 +72,12 @@ return {
       end,
     },
   },
+  {
+    'akinsho/git-conflict.nvim',
+    enabled = true,
+    event   = "BufReadPre",
+    config  = true,
+  }
 }
 
 -- End of File
