@@ -63,7 +63,11 @@ return {
   },
   {
     'SuperBo/fugit2.nvim',
-    opts = {},
+    opts = {
+        rocks = {
+            enabled = false,
+        }
+    },
     dependencies = {
       'MunifTanjim/nui.nvim',
       'nvim-tree/nvim-web-devicons',
