@@ -23,6 +23,13 @@ return {
         end,
       },
       {
+        "rachartier/tiny-inline-diagnostic.nvim",
+        event = "VeryLazy",
+        config = function()
+          require('tiny-inline-diagnostic').setup()
+        end
+      },
+      {
         'simrat39/symbols-outline.nvim',
         enabled = false,
         cmd = 'SymbolOutline',
