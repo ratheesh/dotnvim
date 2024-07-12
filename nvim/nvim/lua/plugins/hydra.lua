@@ -14,14 +14,16 @@ function M.config()
   local gitsigns = require('gitsigns')
 
   local hint = [[
-  _j_: next hunk       _k_: prev hunk       ^ ^
-  _d_: show deleted    _D_: Word diff       ^ ^
-  _u_: undo stage hunk _r_: reset hunk      ^ ^
-  _b_: blame line      _B_: blame show full ^ ^
-  _s_: stage hunk      _S_: stage buffer    ^ ^
-  _/_: show base file  _p_: preview hunk    ^ ^
+  _0_: First Hunk      _$_: Last Hunk       ^ ^
+  _j_: Next Hunk       _k_: Prev Hunk       ^ ^
+  _d_: Show Deleted    _D_: Word Diff       ^ ^
+  _u_: Undo Stage Hunk _r_: reset Hunk      ^ ^
+  _b_: Blame Line      _B_: Blame Show Full ^ ^
+  _s_: Stage Hunk      _S_: Stage Buffer    ^ ^
+  _i_: inline Preview  _p_: Preview Hunk    ^ ^
+  _/_: Show Base File
   ^
-  ^_<Enter>_: Neogit    q_/<Esc>: exit
+  ^_<Enter>_: Neogit    q_/<Esc>: Exit
   ]]
   Hydra({
     name = "Git",
@@ -69,14 +71,24 @@ function M.config()
     heads = {
       { 'j', function()
         if vim.wo.diff then return ']c' end
-        gitsigns.next_hunk()
+        gitsigns.nav_hunk('next', { wrap = false })
         return '<Ignore>'
       end, { expr = true }},
       { 'k', function()
         if vim.wo.diff then return '[c' end
-        gitsigns.prev_hunk()
+        gitsigns.nav_hunk('prev', { wrap = false })
         return '<Ignore>'
-      end, { expr = true                                               }},
+      end, { expr = true }},
+      { '0', function()
+        if vim.wo.diff then return '[H' end
+        gitsigns.nav_hunk('first', { wrap = false })
+        return '<Ignore>'
+      end, { expr = true }},
+      { '$', function()
+        if vim.wo.diff then return ']H' end
+        gitsigns.nav_hunk('last', { wrap = false })
+        return '<Ignore>'
+      end, { expr = true }},
       { 's', gitsigns.stage_hunk,          { silent = true                 }},
       { 'u', gitsigns.undo_stage_hunk,     { desc = 'Undo Staged Hunk'     }},
       { 'S', gitsigns.stage_buffer,        { desc = 'Stage buffer'         }},
