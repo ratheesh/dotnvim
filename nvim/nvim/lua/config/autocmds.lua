@@ -120,7 +120,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Show LSP diagnostics upon cursor hold event
-vim.api.nvim_create_autocmd("CursorHold", {
+--[[ vim.api.nvim_create_autocmd("CursorHold", {
   callback = function()
     local opts = {
       focusable    = false,
@@ -132,7 +132,7 @@ vim.api.nvim_create_autocmd("CursorHold", {
     }
     vim.diagnostic.open_float(nil, opts)
   end
-})
+}) ]]
 
 -- Fix cursor jumps upon tab after non completion of previous snippet
 vim.api.nvim_create_autocmd('ModeChanged', {
