@@ -268,6 +268,9 @@ hl(0 , "NotifyWARNIcon"      , { fg = "#EBCB8B" , bg = nil , italic = false , bo
 hl(0 , "NotifyERRORBorder"   , { fg = "#BF616A" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "NotifyERRORTitle"    , { fg = "#BF616A" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "NotifyERRORIcon"     , { fg = "#BF616A" , bg = nil , italic = false , bold = false , underline = false })
+
+hl(0 , "WhichKey"            , { fg = "#FA2C77" , bg = nil , italic = false , bold = true , underline = false })
+hl(0 , "WhichKeyGroup"       , { fg = "#9467bd" , bg = nil , italic = false , bold = true , underline = false })
 hl(0 , "WhichKeyValue"       , { fg = "#8FBCBB" , bg = nil , italic = false , bold = false , underline = false })
 
 -- special attribute which require sp and undercurl attributes only
@@ -446,7 +449,7 @@ hl(0, "VirtColumn", { fg = "#304044", bg = nil, italic = false, bold = true, und
 
 -- nvim-treesitter-context
 hl(0, "TreesitterContext", { fg = nil, bg = "#28303a", italic = false, bold = false, underline = false })
-hl(0, "TreesitterContextBottom", { fg = nil, bg = "#28303a", italic = false, bold = false, underline = true, sp = "#858ba8" })
+hl(0, "TreesitterContextBottom", { fg = nil, bg = "#28303a", italic = false, bold = false, underline = true, sp = "#28303a" })
 -- hi TreesitterContextBottom gui=underline guisp=Grey
 
 -- nvim-surround
