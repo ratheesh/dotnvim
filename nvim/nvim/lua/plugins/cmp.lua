@@ -2,9 +2,11 @@ local M = {
   "hrsh7th/nvim-cmp",
   disable = false,
   pin = false,
+  lazy = true,
   event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
     'rafamadriz/friendly-snippets',
+    'garymjr/nvim-snippets',
     'hrsh7th/cmp-nvim-lsp-document-symbol',
     'f3fora/cmp-spell',
     {
@@ -18,6 +20,47 @@ local M = {
       },
       keys = {
         {
+          "<Tab>",
+          function()
+            if vim.snippet.active({ direction = 1 }) then
+              vim.schedule(function()
+                vim.snippet.jump(1)
+              end)
+              return
+            end
+            return "<Tab>"
+          end,
+          expr = true,
+          silent = true,
+          mode = "i",
+        },
+        {
+          "<Tab>",
+          function()
+            vim.schedule(function()
+              vim.snippet.jump(1)
+            end)
+          end,
+          expr = true,
+          silent = true,
+          mode = "s",
+        },
+        {
+          "<S-Tab>",
+          function()
+            if vim.snippet.active({ direction = -1 }) then
+              vim.schedule(function()
+                vim.snippet.jump(-1)
+              end)
+              return
+            end
+            return "<S-Tab>"
+          end,
+          expr = true,
+          silent = true,
+          mode = { "i", "s" },
+        },
+        --[[ {
           "<tab>",
           function()
             return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
@@ -25,7 +68,7 @@ local M = {
           expr = true, silent = true, mode = "i",
         },
         { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
-        { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
+        { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } }, ]]
       },
     },
     "hrsh7th/cmp-path",
@@ -69,14 +112,15 @@ function M.config()
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
   end
 
-  local icons = {
+  --[[ local icons = {
     Array         = " " , Boolean       = " " , Class         = ' ' , Constant      = ' ' , Constructor   = ' ' ,
     Enum          = 'ℰ ' , EnumMember    = ' ' , Event         = ' ' , Field         = ' ' , File          = ' ' ,
     Folder        = ' ' , Function      = ' ' , Interface     = ' ' , Keyword       = ' ' , Method        = 'ƒ ' ,
     Module        = ' ' , Namespace     = " " , Null          = "ﳠ " , Number        = " " , Operator      = ' ' ,
     Package       = " " , Property      = ' ' , Reference     = ' ' , Snippet       = ' ' , String        = "𝓐"  ,
-    Struct        = 'פּ ' , Text          = ' ' , TypeParameter = ' ' , Unit          = ' ' , Value         = ' ' ,
+    Struct        = ' ' , Text          = ' ' , TypeParameter = ' ' , Unit          = ' ' , Value         = ' ' ,
     Variable      = ' ' , color         = ' ' ,
+  } ]]
 
     --[[     kinds = {
     Array = " ",
@@ -119,7 +163,7 @@ function M.config()
     Unit     = '塞', Value  = '', Enum      = '', Keyword     = '', Snippet       = '',
     Color    = '',  File   = '', Reference = '', Folder      = '', EnumMember    = '',
     Constant = '',  Struct = 'פּ', Event     = '', Operator    = '', TypeParameter = '', ]]
-  }
+  -- }
 
   cmp.setup({
     --[[ completion = {
@@ -302,17 +346,13 @@ cmp.setup.cmdline({ '/', '?' }, {
 cmp.setup.cmdline(":", {
   mapping = cmp.mapping.preset.cmdline(),
   view = cmdline_view,
-  -- sources = cmp.config.sources({
   sources = {
     { name = "cmdline_history" },
     { name = "cmdline" },
     { name = "path" },
-    -- { name = "noice_popupmenu" },
   },
 })
 
--- local cmp_autopairs = require('nvim-autopairs.completion.cmp')
--- cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done { map_char = { tex = '' } })
 end
 
 return M
