@@ -14,15 +14,20 @@ return {
       breadcrumb = "»",
       separator  = "➜",
       group      = " ",
+      ellipsis   = "…",
     },
-    window = {
-      border   = "rounded",
-      position = "bottom",
-      margin   = { 1, 0, 1, 0 },
-      padding  = { 1, 2, 1, 2 },
-      winblend = 0,
-      zindex   = 1000,
-    },
-  }
+    win = {
+      no_overlap = true,
+      border     = "rounded",
+      padding    = { 1, 1 },
+      title      = true,
+      title_pos  = "center",
+      zindex     = 1000,
+
+      bo = {},
+      wo = {
+        winblend = 5,
+      },
+    },}
 }
 -- End of File
