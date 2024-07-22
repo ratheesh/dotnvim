@@ -101,13 +101,6 @@ return {
     end
   },
   {
-    "nvim-treesitter/nvim-treesitter-context",
-    event = "BufReadPre",
-    config = function()
-      require("treesitter-context").setup()
-    end,
-  },
-  {
     "andymass/vim-matchup",
     event = "BufReadPost",
     config = function()
