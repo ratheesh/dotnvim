@@ -63,6 +63,7 @@ return {
   },
   {
     'SuperBo/fugit2.nvim',
+    enabled = false,
     opts = {
         rocks = {
             enabled = false,
@@ -85,24 +86,13 @@ return {
   },
   {
     "shellRaining/hlchunk.nvim",
-    enabled=false,
-    event = { "UIEnter" },
-    config = function()
-      require("hlchunk").setup({
-        chunk={
-          style = "#40586c",
-        },
-        indent = {
-          enable = false,
-        },
-        blank = {
-          enable = false,
-        },
-        line_num = {
-          enable = false;
-        },
-      })
-    end
+    enabled = true,
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+        chunk = {
+            enabled = true,
+        }
+    },
   },
   -- floating window title
   {
