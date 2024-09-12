@@ -178,7 +178,7 @@ hl(0 , "NvimInternalError"	 		, { fg = "#BF616A" , bg = nil       , italic = fal
 -- Gitsigns
 -- sign column
 hl(0 , "GitSignsAdd"                , { fg = "#0BC294" , bg = "#28303a" , italic = false , bold = true  , underline = false })
-hl(0 , "GitSignsChange"             , { fg = "#656D81" , bg = "#28303a" , italic = false , bold = true  , underline = false })
+hl(0 , "GitSignsChange"             , { fg = "#7f7f7f" , bg = "#28303a" , italic = false , bold = true  , underline = false })
 hl(0 , "GitSignsDelete"             , { fg = "#E23D75" , bg = "#28303a" , italic = false , bold = true  , underline = false })
 
 hl(0 , "GitSignsAddNr"              , { fg = "#a0a0a0" , bg = "#2a4a56" , italic = false , bold = false , underline = false })
