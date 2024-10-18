@@ -114,7 +114,7 @@ return {
   },
   {
     'junegunn/vim-easy-align',
-    enabled = true,
+    enabled = false,
     event   = "VeryLazy",
     config  = function ()
       vim.cmd([[
@@ -122,6 +122,13 @@ return {
       nmap ga <Plug>(EasyAlign)
       ]])
     end
+  },
+  {
+      'echasnovski/mini.align',
+      enabled = true,
+      version = false,
+      event   = { 'InsertEnter' },
+      opts    = {},
   },
   {
     'dhruvasagar/vim-table-mode',
