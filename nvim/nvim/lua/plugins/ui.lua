@@ -5,10 +5,10 @@ return {
     event   = 'VeryLazy',
     config = function ()
       require("virt-column").setup({
-        char = '│',
+        char = '▕',
         virtcolumn = '+1',
         highlight = "VirtColumn",
-    }) --▕
+      }) --▕│
     end
   },
   {
