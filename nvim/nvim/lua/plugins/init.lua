@@ -37,28 +37,6 @@ return {
     cmd = { "UndotreeShow", "UndotreeToggle", "UndotreeHide", "UndotreeFocus" },
   },
   {
-    'tzachar/highlight-undo.nvim',
-    enabled = true,
-    event = 'BufReadPre',
-    opts = {
-      duration = 300,
-      undo = {
-        hlgroup = 'HighlightUndo',
-        mode = 'n',
-        lhs = 'u',
-        map = 'undo',
-        opts = {}
-      },
-      redo = {
-        hlgroup = 'HighlightRedo',
-        mode = 'n',
-        lhs = '<C-r>',
-        map = 'redo',
-        opts = {}
-      },
-    }
-  },
-  {
     'echasnovski/mini.indentscope',
     event = 'LspAttach',
     config = function()
