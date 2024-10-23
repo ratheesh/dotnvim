@@ -127,7 +127,7 @@ return {
       'echasnovski/mini.align',
       enabled = true,
       version = false,
-      event   = { 'InsertEnter' },
+      event   = { 'VeryLazy' },
       opts    = {},
   },
   {
