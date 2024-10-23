@@ -323,5 +323,24 @@ return {
 
       })
     end
+  },
+  {
+    "nvchad/showkeys",
+    enabled = true,
+    event   = "VeryLazy",
+    cmd     = "ShowkeysToggle",
+    opts    = {
+      timeout = 1,
+      maxkeys = 5,
+      winopts = {
+        focusable = false,
+        relative  = "editor",
+        style     = "minimal",
+        border    = "rounded",
+        height    = 1,
+        row       = 1,
+        col       = 0,
+      },
+    }
   }
 }
