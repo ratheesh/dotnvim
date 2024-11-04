@@ -329,16 +329,22 @@ return {
     enabled = true,
     event   = "VeryLazy",
     cmd     = "ShowkeysToggle",
+    init    = function()
+        require("showkeys").open() -- Enable on startup
+    end,
     opts    = {
-      timeout = 1,
-      maxkeys = 5,
-      winopts = {
+      timeout        = 1,
+      maxkeys        = 5,
+      show_count     = false,
+      excluded_modes = { "i" },
+      position       = "top-right",
+      winopts        = {
         focusable = false,
         relative  = "editor",
         style     = "minimal",
         border    = "rounded",
         height    = 1,
-        row       = 1,
+        row       = 3,
         col       = 0,
       },
     }
