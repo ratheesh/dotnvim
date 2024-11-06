@@ -7,7 +7,7 @@ local M = {
   }
 }
 
-M.enabled = true
+M.enabled = false
 
 function M.config()
   local focused = true
