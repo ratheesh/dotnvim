@@ -152,7 +152,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- Fix cursor jumps upon tab after non completion of previous snippet
-vim.api.nvim_create_autocmd('ModeChanged', {
+--[[ vim.api.nvim_create_autocmd('ModeChanged', {
   pattern = '*',
   callback = function()
     if ((vim.v.event.old_mode == 's' and vim.v.event.new_mode == 'n') or vim.v.event.old_mode == 'i')
@@ -162,7 +162,7 @@ vim.api.nvim_create_autocmd('ModeChanged', {
       require('luasnip').unlink_current()
     end
   end
-})
+}) ]]
 
 -- Fix conceallevel for json & help files
 vim.api.nvim_create_autocmd({ "FileType" }, {
