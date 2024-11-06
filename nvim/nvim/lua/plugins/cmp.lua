@@ -1,6 +1,6 @@
 local M = {
   "hrsh7th/nvim-cmp",
-  disable = false,
+  enabled = false,
   pin = false,
   lazy = true,
   event = { "InsertEnter", "CmdlineEnter" },
