@@ -518,6 +518,9 @@ hl(0 , "GlanceWinBarFilepath" , { fg = "#E0E0E0" , bg = "#444864" , italic = tru
 hl(0 , "GlanceListFilename"   , { fg = "#E0E0E0" , bg = "#444864" , italic = true , bold = false , underline = false })
 hl(0 , "GlanceListFilepath"   , { fg = "#E0E0E0" , bg = "#444864" , italic = true , bold = false , underline = false })
 
+hl(0 , "SatelliteSearch"        , { fg = "#D57780" , bg = "#444864" , italic = true , bold = false , underline = false })
+hl(0 , "SatelliteSearchCurrent" , { fg = "#E0E030" , bg = "#444864" , italic = true , bold = false , underline = false })
+
 -- vim notifer
 hl(0 , "NotifierContent"   , { fg = "#6B717C" , bg = nil , italic = false, bold = false , underline = false })
 hl(0 , "NotifierContentDim", { fg = "#6B717C" , bg = nil , italic = true , bold = false , underline = false })
