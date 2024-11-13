@@ -41,6 +41,7 @@ function M.config()
         vim.cmd('echo')
         vim.cmd('set nohlsearch')
         vim.cmd('set nocursorline')
+        vim.cmd('ShowkeysToggle')
         -- vim.cmd([[ColorizerDetachFromBuffer]])
         vim.cmd([[HighlightColors off]])
         -- vim.cmd([[CccHighlighterDisable]])
@@ -64,6 +65,7 @@ function M.config()
         -- vim.cmd([[ColorizerAttachToBuffer]])
         vim.cmd([[HighlightColors on]])
         vim.cmd('set cursorline')
+        vim.cmd('ShowkeysToggle')
       end
     },
     mode = { 'n', 'x' },
