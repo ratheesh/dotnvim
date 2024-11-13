@@ -1,5 +1,5 @@
 local M = {
-  'anuvyklack/hydra.nvim',
+  'nvimtools/hydra.nvim',
   -- event = 'VeryLazy',
   keys = { '<space>g' },
   dependencies = {
@@ -35,7 +35,10 @@ function M.config()
       hint = {
         offset   = 1,
         position = 'middle-right',
+        -- border   = "rounded"
+        float_opts = {
         border   = "rounded"
+        },
       },
       on_enter = function()
         vim.cmd('echo')
