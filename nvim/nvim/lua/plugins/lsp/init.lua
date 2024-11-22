@@ -180,17 +180,17 @@ return {
       vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
       local servers = opts.servers
-      --[[ local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+      local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
       local capabilities = vim.tbl_deep_extend(
       "force",
       {},
       vim.lsp.protocol.make_client_capabilities(),
       has_cmp and cmp_nvim_lsp.default_capabilities() or {},
       opts.capabilities or {}
-  ) ]]
+  )
 
       local capabilities = {}
-      capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
+      -- capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
 
       local function setup(server)
         local server_opts = vim.tbl_deep_extend("force", {
