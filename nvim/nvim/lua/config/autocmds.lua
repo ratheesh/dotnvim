@@ -173,4 +173,23 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
+-- Set the cmdheight to 1 upon cmdline enter and restore upon mode exit
+local cmdlineGrp = vim.api.nvim_create_augroup('Cmdline', { clear = true })
+vim.api.nvim_create_autocmd(
+  { 'CmdlineEnter' },
+  { pattern = '*',
+  command = 'setlocal cmdheight=1',
+  group = cmdlineGrp
+})
+
+vim.api.nvim_create_autocmd(
+  { 'CmdlineLeave' },
+  { pattern = '*',
+  callback = function()
+    vim.cmd([[setlocal cmdheight=0]])
+  end,
+})
+
+-- au CmdlineLeave * call timer_start(1, { tid -> execute('setlocal cmdheight=0')})
+
 -- End of File
