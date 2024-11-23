@@ -116,4 +116,15 @@ return {
           vim.api.nvim_create_autocmd('TextYankPost', {callback = copy})
       end
   },
+  {
+    {
+      "atiladefreitas/lazyclip",
+      config = function()
+        require("lazyclip").setup()
+      end,
+      keys = {
+        { "<leader>y", ":lua require('lazyclip').show_clipboard()<CR>", desc = "Open Clipboard Manager" },
+      },
+    },
+  },
 }
