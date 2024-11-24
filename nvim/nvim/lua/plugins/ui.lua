@@ -346,5 +346,11 @@ return {
         col       = 0,
       },
     }
+  },
+  {
+    "sphamba/smear-cursor.nvim",
+    enabled= true,
+    event = "VeryLazy",
+    opts = {},
   }
 }
