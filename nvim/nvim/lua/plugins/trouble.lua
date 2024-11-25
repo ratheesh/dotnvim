@@ -1,7 +1,7 @@
 return {
 	"folke/trouble.nvim",
 	enabled = true,
-	cmd = { "TroubleToggle", "Trouble" },
+	cmd = { "Trouble", "Trouble" },
 	opts = {
 		use_diagnostic_signs = true,
 		auto_open    = false,
@@ -29,8 +29,8 @@ return {
 		},
 	},
 	keys = {
-		{ "gR", "<cmd>TroubleToggle lsp_references<cr>", desc = "LSP References (Trouble)" },
-		{ "<F3>", "<cmd>TroubleToggle<cr>", desc = "Toggle Trouble" },
+		{ "gR", "<cmd>Trouble lsp_references toggle<cr>", desc = "Toggle LSP References (Trouble)" },
+		{ "<F3>", "<cmd>Trouble diagnostics toggle<cr>", desc = "Toggle Trouble diagnostics" },
 		{
 			"[q",
 			function()
