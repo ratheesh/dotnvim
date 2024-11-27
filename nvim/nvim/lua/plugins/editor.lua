@@ -1,7 +1,7 @@
 return {
   {
     'altermo/ultimate-autopair.nvim',
-    enabled=true,
+    enabled=false,
     branch = "v0.6",
     event={'InsertEnter', 'CmdlineEnter'},
     config=function ()
@@ -9,6 +9,12 @@ return {
         --Config goes here
       })
     end
+  },
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true,
+    opts = {},
   },
   {
     'kylechui/nvim-surround',
