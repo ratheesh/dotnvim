@@ -527,7 +527,7 @@ hl(0 , "NotifierContentDim", { fg = "#6B717C" , bg = nil , italic = true , bold 
 hl(0 , "NotifierTitle"     , { fg = "#99c794" , bg = nil , italic = false, bold = false , underline = false })
 hl(0 , "NotifierIcon"      , { fg = "#E23D75" , bg = nil , italic = true , bold = false , underline = false })
 
-hl(0 , "markdownError"     , { fg = nil , bg = nil , italic = false, bold = false , underline = false })
+hl(0 , "markdownError"     , { fg = nil , bg = "#28303a" , italic = false, bold = false , underline = false })
 
 hl(0 , "HighlightedLineNr" , { fg = "#607070" , bg = "#384046" , italic = false, bold = false , underline = false })
 hl(0 , "DimLineNr"         , { fg = "#607070" , bg = "#28303a" , italic = false, bold = false , underline = false })
