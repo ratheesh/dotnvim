@@ -12,6 +12,24 @@ return {
     end
   },
   {
+    "yamatsum/nvim-cursorline",
+    cond = #vim.api.nvim_list_uis() > 0,
+    config = function()
+      require("nvim-cursorline").setup({
+        cursorline = {
+          enable   = true,
+          timeout  = 500,
+          number   = false,
+        },
+        cursorword   = {
+          enable     = false,
+          min_length = 3,
+          hl         = { underline = true },
+        },
+      })
+    end,
+  },
+  {
     'tzachar/highlight-undo.nvim',
     enabled = true,
     event = 'BufReadPre',
