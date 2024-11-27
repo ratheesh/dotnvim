@@ -4,6 +4,14 @@
 
 return {
   {
+    "rhysd/committia.vim",
+    lazy = false, -- just in case
+    init = function()
+      vim.g.committia_open_only_vim_starting = 0
+      vim.g.committia_use_singlecolumn       = "always"
+    end,
+  },
+  {
     "lewis6991/gitsigns.nvim",
     lazy = true,
     opts = {
