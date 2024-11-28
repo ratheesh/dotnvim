@@ -369,6 +369,11 @@ return {
     "sphamba/smear-cursor.nvim",
     enabled= true,
     event = "VeryLazy",
-    opts = {},
+    opts = {
+      stiffness          = 0.6,
+      trailing_stiffness = 0.3,
+      trailing_exponent  = 3,
+      gamma              = 1,
+    },
   }
 }
