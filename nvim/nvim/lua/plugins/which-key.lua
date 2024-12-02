@@ -28,6 +28,10 @@ return {
       wo = {
         winblend = 5,
       },
-    },}
+    },
+    plugins = {
+      marks = false,
+    },
+  }
 }
 -- End of File
