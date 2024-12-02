@@ -31,7 +31,7 @@ return {
   },
   {
     'tzachar/highlight-undo.nvim',
-    enabled = true,
+    enabled = false,
     event = 'BufReadPre',
     opts = {
       duration = 300,
@@ -50,6 +50,52 @@ return {
         opts = {}
       },
     }
+  },
+  {
+    "aileot/emission.nvim",
+    enabled = true,
+    event = "VeryLazy",
+    config = function()
+      require("emission").setup({
+        attach = {
+          delay = 150,
+          excluded_buftypes = {
+            "help",
+            "nofile",
+            "terminal",
+            "prompt"
+          },
+          excluded_filetypes = {
+          },
+        },
+        highlight = {
+          duration = 200,
+          min_byte = 2,
+          filter = function(buf)
+            return true
+          end,
+          additional_recache_events = { "InsertLeave" },
+        },
+        added = {
+          priority = 102,
+          hl_map = {
+            default = true,
+            bold = true,
+            fg = "#99c794",
+            bg = "#3C465A",
+          },
+        },
+        removed = {
+          priority = 101,
+          hl_map = {
+            default = true,
+            bold = true,
+            fg = "#D57780",
+            bg = "#3C465A",
+          },
+        },
+      })
+    end
   },
   {
     "code-biscuits/nvim-biscuits",
