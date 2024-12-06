@@ -1,5 +1,10 @@
 return {
   {
+    "tpope/vim-sleuth",
+    enabled = true,
+    event = "VeryLazy"
+  },
+  {
     'altermo/ultimate-autopair.nvim',
     enabled=false,
     branch = "v0.6",
