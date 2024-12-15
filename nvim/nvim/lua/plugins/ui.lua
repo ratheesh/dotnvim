@@ -31,7 +31,7 @@ return {
   },
   {
     'tzachar/highlight-undo.nvim',
-    enabled = false,
+    enabled = true,
     event = 'BufReadPre',
     opts = {
       duration = 300,
@@ -53,7 +53,7 @@ return {
   },
   {
     "aileot/emission.nvim",
-    enabled = true,
+    enabled = false,
     event = "VeryLazy",
     config = function()
       require("emission").setup({
