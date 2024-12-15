@@ -35,7 +35,7 @@ local M = {
 				}
 			end
 		},
-		{ 'RRethy/nvim-treesitter-endwise', event = 'InsertEnter' },
+		{ 'RRethy/nvim-treesitter-endwise', event = 'InsertEnter', pin = true },
 		{ 'nvim-lua/plenary.nvim' },
 		-- { 'David-Kunz/markid' }
     -- { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
