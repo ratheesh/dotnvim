@@ -2,6 +2,7 @@ local M = {
   'nvimtools/hydra.nvim',
   -- event = 'VeryLazy',
   keys = { '<space>g' },
+  pin = true,
   dependencies = {
     'anuvyklack/keymap-layer.nvim',
     -- 'NvChad/nvim-colorizer.lua',
