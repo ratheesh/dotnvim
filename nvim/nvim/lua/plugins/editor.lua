@@ -155,4 +155,19 @@ return {
       require("timber").setup(opts)
     end
   },
+  {
+    "aidancz/lfsp.nvim",
+    enabled = true,
+    event   = "VeryLazy",
+    config  = function()
+      require("lfsp").setup({
+        {
+          type     = "lf",
+          follow   = false,
+          backward = "<M>",
+          forward  = "<CR>",
+        },
+      })
+    end,
+  },
 }

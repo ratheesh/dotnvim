@@ -27,8 +27,8 @@ end
 map({ "i" }, "<S-CR>", "<C-o>o", { expr = true, silent = true })
 map({ "n", "x" }, "<Leader>;", ":", { expr = true, silent = true })
 
-map({ "n" }, "<A-o>", "<cmd>call append(line('.'), '')<CR>", {  silent = true })
-map({ "n" }, "<A-O>", "<cmd>call append(line('.')-1, '')<CR>", {  silent = true })
+--[[ map({ "n" }, "<A-o>", "<cmd>call append(line('.'), '')<CR>", {  silent = true })
+map({ "n" }, "<A-O>", "<cmd>call append(line('.')-1, '')<CR>", {  silent = true }) ]]
 map({ "n" }, "<F2>", "<cmd>echomsg expand('%:p')<CR>", {  silent = true })
 
 -- better up/down
