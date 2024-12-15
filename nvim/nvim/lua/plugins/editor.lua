@@ -139,4 +139,20 @@ return {
       },
     },
   },
+  {
+    "Goose97/timber.nvim",
+    enabled = true,
+    event = "VeryLazy",
+    config = function()
+      local opts = {
+        log_templates = {
+          default = {
+            c = [[printf("%s:%s():%line_number:===== %%log_target =====\n", __FILE__, __func__, %log_target);]],
+          },
+        },
+      }
+
+      require("timber").setup(opts)
+    end
+  },
 }
