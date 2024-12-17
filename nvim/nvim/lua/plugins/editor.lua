@@ -147,7 +147,7 @@ return {
       local opts = {
         log_templates = {
           default = {
-            c = [[printf("%s:%s():%line_number:===== %%log_target =====\n", __FILE__, __func__, %log_target);]],
+            c = [[printf("%s:%s():%d:===== %%log_target =====\n", __FILE__, __func__, __LINE__, %log_target);]],
           },
         },
       }
