@@ -422,13 +422,15 @@ return {
     enabled= true,
     event = "VeryLazy",
     opts = {
-      cursor_color       = "#e0e0e0",
-      normal_bg          = "#28303a",
-      stiffness          = 0.6,
-      trailing_stiffness = 0.3,
-      trailing_exponent  = 3,
-      gamma              = 2.2,
-      color_levels       = 256,
+      cursor_color        = "#e0e0e0",
+      normal_bg           = "#28303a",
+      cterm_cursor_colors = { 231, 233, 235, 237 },
+      cterm_bg            = 235,
+      stiffness           = 0.6,
+      trailing_stiffness  = 0.3,
+      trailing_exponent   = 3,
+      gamma               = 2.2,
+      color_levels        = 256,
       volume_reduction_component = -0.3;
     },
   }
