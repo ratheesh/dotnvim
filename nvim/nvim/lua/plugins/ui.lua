@@ -119,7 +119,13 @@ return {
     enabled = true,
     event = "VeryLazy",
     config = function()
-      require("fidget").setup({})
+      require("fidget").setup({
+        progress = {
+          display = {
+            progress_icon = { "moon" },
+          },
+        },
+      })
       vim.notify = require("fidget").notify
     end
   },
