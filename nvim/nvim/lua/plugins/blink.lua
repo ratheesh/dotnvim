@@ -65,37 +65,18 @@ return {
         },
         sources = {
           default = { 'lsp', 'path', 'snippets', 'buffer' },
-          cmdline = { 'lsp', 'path', 'buffer' },
+          cmdline = {},
         },
 
       appearance = {
         use_nvim_cmp_as_default = true,
         nerd_font_variant = 'normal',
       },
-
-      -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-      -- adjusts spacing to ensure icons are aligned
-      nerd_font_variant = 'normal',
-
-      -- experimental auto-brackets support
-      accept = { auto_brackets = { enabled = true } },
-
-      -- experimental signature help support
-      -- trigger = { signature_help = { enabled = true } },
-      windows = {
-        autocomplete = {
-          border = "rounded",
-        },
-        documentation = {
-          border             = 'rounded',
-          auto_show          = true,
-          auto_show_delay_ms = 500,
-          update_delay_ms    = 50,
-        },
-      },
       completion = {
         menu = {
-          border = 'rounded',
+          max_height = 12,
+          min_width  = 60,
+          border     = 'rounded',
           draw = {
             columns = { { 'item_idx' }, { 'kind_icon' }, { 'label', 'label_description', gap = 1 } },
             components = {
@@ -108,6 +89,12 @@ return {
         },
         list = {
           selection = 'manual',
+        },
+        documentation = {
+          auto_show = true,
+          window = {
+            border = "rounded",
+          }
         },
         ghost_text = {
           enabled = true,
