@@ -254,6 +254,11 @@ hl(0 , "CmpItemKindOperator"      , { fg = "#bf8da7" , bg = nil , italic = false
 hl(0 , "CmpItemKindTypeParameter" , { fg = "#97B7D7" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "CmpGhostText"          	  , { fg = "#707080" , bg = nil , italic = true  , bold = false , underline = false })
 
+-- Blink.cmp
+hl(0 , "BlinkCmpMenu"          	  , { fg = "#707070" , bg = nil , italic = false  , bold = false , underline = false })
+hl(0 , "BlinkCmpDocBorder"    	  , { fg = "#505050" , bg = nil , italic = false  , bold = false , underline = false })
+hl(0 , "BlinkCmpDocSeparator"  	  , { fg = "#BF616A" , bg = nil , italic = false  , bold = false , underline = false })
+
 hl(0 , "IndentBlanklineChar" , { fg = "#3A404C" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "DiagnosticError"     , { fg = "#BF616A" , bg = nil , italic = false , bold = true , underline = false })
 hl(0 , "DiagnosticWarn"      , { fg = "#EBCB8B" , bg = nil , italic = false , bold = true , underline = false })
