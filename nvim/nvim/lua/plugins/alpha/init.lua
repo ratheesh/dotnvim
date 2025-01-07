@@ -3,7 +3,7 @@
 
 local M = {
 	'goolord/alpha-nvim',
-	enabled  = true,
+	enabled  = false,
 	event    = { 'VimEnter' },
 	dependencies = {
 		{
