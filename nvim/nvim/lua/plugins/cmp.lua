@@ -1,6 +1,6 @@
 local M = {
   "hrsh7th/nvim-cmp",
-  enabled = false,
+  enabled = true,
   pin = false,
   lazy = true,
   event = { "InsertEnter", "CmdlineEnter" },
@@ -243,10 +243,11 @@ function M.config()
   },
   formatting = {
     -- fields = { 'kind', 'abbr'},
-    fields = { 'kind', 'abbr', 'menu'},
+    fields = { 'kind', 'abbr'},
 
     format = function(entry, item)
       local label = item.abbr
+      local highlights_info = require("colorful-menu").cmp_highlights(entry)
       local color_item = require("nvim-highlight-colors").format(entry, { kind = item.kind })
       local truncated_label = vim.fn.strcharpart(label, 0, 50)
 
@@ -268,6 +269,11 @@ function M.config()
 
       item.kind_hl_group = color_item.abbr_hl_group
       item.kind = color_item.kind .. color_item.abbr
+
+      if highlights_info ~= nil then
+        item.abbr_hl_group = highlights_info.highlights
+        item.abbr = highlights_info.text
+      end
 
       return item
     end,

@@ -1,7 +1,7 @@
 return {
   {
     'saghen/blink.cmp',
-    enabled = true,
+    enabled = false,
     event = "VeryLazy",
     lazy = false,
     dependencies ={ 
@@ -13,28 +13,20 @@ return {
     version = 'v0.*',
     opts = function(_, opts)
       opts.sources = vim.tbl_deep_extend("force", opts.sources or {}, {
-        default = { "lsp", "path", "snippets", "buffer", "luasnip" },
+        default = { "lsp", "snippets", "path", "buffer" },
         providers = {
           lsp = {
             name = "lsp",
             enabled = true,
             module = "blink.cmp.sources.lsp",
-            fallbacks = { "snippets", "luasnip", "buffer" },
+            fallbacks = { "snippets", "buffer" },
             score_offset = 90,
-          },
-          luasnip = {
-            name = "luasnip",
-            enabled = true,
-            module = "blink.cmp.sources.luasnip",
-            min_keyword_length = 2,
-            fallbacks = { "snippets" },
-            score_offset = 85,
           },
           path = {
             name = "Path",
             module = "blink.cmp.sources.path",
             score_offset = 3,
-            fallbacks = { "snippets", "luasnip", "buffer" },
+            fallbacks = { "snippets", "buffer" },
             opts = {
               trailing_slash = false,
               label_trailing_slash = true,
@@ -49,24 +41,8 @@ return {
             module = "blink.cmp.sources.buffer",
             min_keyword_length = 2,
           },
-          snippets = {
-            name = "snippets",
-            enabled = true,
-            module = "blink.cmp.sources.snippets",
-            score_offset = 80,
-          },
         },
       })
-      opts.snippets = {
-        expand = function(snippet) require('luasnip').lsp_expand(snippet) end,
-        active = function(filter)
-          if filter and filter.direction then
-            return require('luasnip').jumpable(filter.direction)
-          end
-          return require('luasnip').in_snippet()
-        end,
-        jump = function(direction) require('luasnip').jump(direction) end,
-      }
       opts.appearance = {
         use_nvim_cmp_as_default = true,
         nerd_font_variant = 'normal',
@@ -116,7 +92,10 @@ return {
           } ]]
         },
         list = {
-          selection = 'manual',
+          selection = {
+            preselect = false,
+            auto_insert = true,
+          },
         },
         documentation = {
           auto_show = true,
