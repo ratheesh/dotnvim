@@ -31,7 +31,7 @@ return {
   },
   {
     'tzachar/highlight-undo.nvim',
-    enabled = true,
+    enabled = false,
     event = 'BufReadPre',
     opts = {
       duration = 300,
@@ -490,5 +490,10 @@ return {
         max_width = 60,
       })
     end,
-  }
+  },
+  {
+    "rachartier/tiny-glimmer.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
 }
