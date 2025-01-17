@@ -141,7 +141,7 @@ return {
   },
   {
     "Goose97/timber.nvim",
-    enabled = true,
+    enabled = false,
     event = "VeryLazy",
     config = function()
       local opts = {
