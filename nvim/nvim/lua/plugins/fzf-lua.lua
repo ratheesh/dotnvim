@@ -1,7 +1,6 @@
 local M = {
   'ibhagwan/fzf-lua',
-  enabled = true,
-  event = 'VimEnter',
+  enabled = false,
   cmd = { 'Fz' },
 
   dependencies = {
