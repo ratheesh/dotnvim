@@ -429,9 +429,11 @@ return {
       stiffness           = 0.6,
       trailing_stiffness  = 0.3,
       trailing_exponent   = 3,
-      gamma               = 2.2,
+      hide_target_hack    = true,
+      gamma               = 1,
       color_levels        = 256,
       volume_reduction_component = -0.3;
+      legacy_computing_symbols_support = true,
     },
   },
   {
