@@ -40,7 +40,8 @@ return {
     keys = {
       -- File management
       { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
-      { "<leader>fo", function() Snacks.picker.files() end, desc = "Files" },
+      { "<leader>ff", function() Snacks.picker.files() end, desc = "Files" },
+      { "<leader>fo", function() Snacks.picker.smart() end, desc = "Files" },
       { "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
       { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent Files" },
       { "<leader>fR", function() Snacks.picker.resume() end, desc = "Resume" },
