@@ -170,4 +170,10 @@ return {
       })
     end,
   },
+  {
+      'lewis6991/spaceless.nvim',
+      enabled = true,
+      event   = "VeryLazy",
+      opts    = {}
+  },
 }
