@@ -494,8 +494,26 @@ return {
     end,
   },
   {
-    "rachartier/tiny-glimmer.nvim",
-    event = "VeryLazy",
-    opts = {},
-  },
+      "rachartier/tiny-glimmer.nvim",
+      enabled = true,
+      event = "VeryLazy",
+      opts = {
+          overwrite = {
+              search = { enabled = false },
+              paste = {
+                  enabled = true,
+                  paste_mapping = {
+                      lhs = "p",
+                      rhs = "p",
+                  },
+                  Paste_mapping = {
+                      lhs = "P",
+                      rhs = "P",
+                  },
+              },
+              undo = { enabled = true },
+              redo = { enabled = true }
+          }
+      },
+  }
 }
