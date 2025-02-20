@@ -99,6 +99,7 @@ return {
   },
   {
     "code-biscuits/nvim-biscuits",
+    enabled = true,
     event = { 'VeryLazy' },
     config = function()
       require('nvim-biscuits').setup({
