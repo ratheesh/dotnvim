@@ -395,7 +395,7 @@ return {
   },
   {
     "nvchad/showkeys",
-    enabled = false,
+    enabled = true,
     event   = "VeryLazy",
     cmd     = "ShowkeysToggle",
     init    = function()
