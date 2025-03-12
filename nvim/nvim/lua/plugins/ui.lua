@@ -405,7 +405,7 @@ return {
       timeout        = 1,
       maxkeys        = 5,
       show_count     = false,
-      excluded_modes = { "i" },
+      excluded_modes = { "i", "c" },
       position       = "top-right",
       winopts        = {
         focusable = false,
