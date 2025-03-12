@@ -4,7 +4,7 @@ return {
     enabled = true,
     event = "VeryLazy",
     lazy = false,
-    dependencies ={ 
+    dependencies ={
       'rafamadriz/friendly-snippets',
       'L3MON4D3/LuaSnip',
       'xzbdmw/colorful-menu.nvim',
@@ -43,6 +43,7 @@ return {
           },
         },
       })
+      opts.fuzzy = { implementation = "lua" }
       opts.appearance = {
         use_nvim_cmp_as_default = true,
         nerd_font_variant = 'normal',
@@ -53,10 +54,13 @@ return {
           min_width  = 60,
           border     = 'rounded',
           draw = {
-            columns = { { "kind_icon" }, { "label", gap = 1 } },
+            align_to = "label",
+            padding  = 1,
+            gap      = 1,
+            columns = { { "kind_icon" }, { "label", "label_description", gap = 1, "kind" } },
             components = {
               label = {
-                width = { fill = true, max = 60 },
+                width = { fill = true, max = 50 },
                 text = function(ctx)
                   local highlights_info = require("colorful-menu").blink_highlights(ctx)
                   if highlights_info ~= nil then
@@ -79,6 +83,23 @@ return {
                   return highlights
                 end,
               },
+              label_description = {
+                width = { max = 30 },
+                text = function(ctx) return ctx.label_description end,
+                highlight = 'BlinkCmpLabelDescription',
+              },
+
+              source_name = {
+                width = { max = 30 },
+                text = function(ctx) return ctx.source_name end,
+                highlight = 'BlinkCmpSource',
+              },
+
+              source_id = {
+                width = { max = 30 },
+                text = function(ctx) return ctx.source_id end,
+                highlight = 'BlinkCmpSource',
+              },
             },
           },
           --[[ draw = {
@@ -99,12 +120,14 @@ return {
         },
         documentation = {
           auto_show = true,
+          auto_show_delay_ms = 500,
           window = {
             border = "rounded",
           }
         },
         ghost_text = {
           enabled = true,
+          show_without_selection = true,
         },
       }
       opts.keymap = {
