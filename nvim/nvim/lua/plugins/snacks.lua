@@ -38,6 +38,7 @@ return {
       },
       words = {
           enabled = true,
+          modes   = {'n', 'c'},
       },
     },
     keys = {
