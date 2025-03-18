@@ -41,6 +41,7 @@ return {
       },
       {
         "oskarrrrrrr/symbols.nvim",
+        enabled = false,
         config = function()
           local r = require("symbols.recipes")
           require("symbols").setup(r.DefaultFilters, r.AsciiSymbols, {
