@@ -53,14 +53,12 @@ return {
         end
       },
       {
-        "luckasRanarison/clear-action.nvim",
+        'Chaitanyabsprip/fastaction.nvim',
         enabled = true,
-        event = "LspAttach",
-        opts = {
-            mappings = {
-                code_action = "<leader>ca"
-            }
-        }
+        opts = {},
+        keys = {
+          { "<leader>ca", function()  require("fastaction").code_action() end, desc = "Buffers" },
+        },
       },
       {
         'nvimdev/lspsaga.nvim',
