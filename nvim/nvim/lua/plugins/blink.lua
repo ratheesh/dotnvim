@@ -51,7 +51,7 @@ return {
       opts.completion = {
         menu = {
           max_height = 12,
-          min_width  = 60,
+          min_width  = 50,
           border     = 'rounded',
           draw = {
             align_to = "label",
@@ -60,7 +60,7 @@ return {
             columns = { { "kind_icon" }, { "label", "label_description", gap = 1, "kind" } },
             components = {
               label = {
-                width = { fill = true, max = 50 },
+                width = { fill = true, max = 40 },
                 text = function(ctx)
                   local highlights_info = require("colorful-menu").blink_highlights(ctx)
                   if highlights_info ~= nil then
