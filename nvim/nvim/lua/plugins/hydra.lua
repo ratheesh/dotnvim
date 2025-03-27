@@ -1,6 +1,6 @@
 local M = {
-  -- 'nvimtools/hydra.nvim',
-  'cathyprime/hydra.nvim',
+  'nvimtools/hydra.nvim',
+  -- 'cathyprime/hydra.nvim',
   -- event = 'VeryLazy',
   keys = { '<space>g' },
   pin = true,
