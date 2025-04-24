@@ -12,6 +12,8 @@ local M = {
 		-- { 'HiPhish/nvim-ts-rainbow2', event = 'LspAttach' },
 		{
 			'HiPhish/rainbow-delimiters.nvim',
+            enabled = true,
+            submodules = false,
 			config = function()
 				local rainbow_delimiters = require('rainbow-delimiters')
 				vim.g.rainbow_delimiters = {
