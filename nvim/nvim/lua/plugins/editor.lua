@@ -43,10 +43,20 @@ return {
       })
     end,
   },
-	{
-		"mbbill/undotree",
-		cmd = { "UndotreeShow", "UndotreeToggle", "UndotreeHide", "UndotreeFocus" },
-	},
+  {
+      "mbbill/undotree",
+      enabled = false,
+      cmd = { "UndotreeShow", "UndotreeToggle", "UndotreeHide", "UndotreeFocus" },
+  },
+  {
+      "ruskei/undotree",
+      enabled = true,
+      dependencies = "nvim-lua/plenary.nvim",
+      config = true,
+      keys = {
+          { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
+      },
+  },
   {
     'winston0410/range-highlight.nvim',
     enabled = true,
