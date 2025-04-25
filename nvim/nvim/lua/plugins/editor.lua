@@ -159,16 +159,56 @@ return {
     "aidancz/lfsp.nvim",
     enabled = true,
     event   = "VeryLazy",
-    config  = function()
-      require("lfsp").setup({
-        {
-          type     = "lf",
-          follow   = false,
-          backward = "<M>",
-          forward  = "<CR>",
-        },
-      })
-    end,
+    config = function()
+      vim.keymap.set(
+        {"n", "x", "o"},
+        "<CR>",
+        function()
+          return
+          require("lf").expr({
+            direction = "next",
+            follow = false,
+          })
+        end,
+        {expr = true}
+      )
+      vim.keymap.set(
+        {"n", "x", "o"},
+        "<M>",
+        function()
+          return
+          require("lf").expr({
+            direction = "prev",
+            follow = false,
+          })
+        end,
+        {expr = true}
+      )
+      vim.keymap.set(
+        {"n", "x", "o"},
+        "<left>",
+        function()
+          return
+          require("sp").expr({
+            direction = "prev",
+            follow = false,
+          })
+        end,
+        {expr = true}
+      )
+      vim.keymap.set(
+        {"n", "x", "o"},
+        "<right>",
+        function()
+          return
+          require("sp").expr({
+            direction = "next",
+            follow = false,
+          })
+        end,
+        {expr = true}
+      )
+    end
   },
   {
       "bassamsdata/namu.nvim",
