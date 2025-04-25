@@ -453,6 +453,34 @@ local function lazy_status()
 	end
 end
 
+local function getSearchCount()
+	local vim_components_exits, vim_components = pcall(require, "windline.components.vim")
+	if vim_components_exits then
+		local search_count = vim_components.search_count()
+		return search_count
+	end
+
+	return ""
+end
+
+basic.searchcount = {
+	hl_colors = {
+		search    = { 'FileNameModFg' , 'NormalBg' },
+		cmd_text  = { 'NormalFg',    'LSPClientBg' },
+		sep       = { 'LSPClientBg', 'LazyBg'      },
+		lazy_text = { 'LazyFg',      'LazyBg'      },
+		right_sep = { 'LazyBg',      'NormalBg'    },
+	},
+	text = function()
+		if getSearchCount() ~= "" then
+			return {
+				-- { ' ', "search" },
+				{ getSearchCount(), "search" },
+			}
+		end
+	end,
+}
+
 basic.showcmd = {
 	hl_colors = {
 		left_sep  = { 'LSPClientBg', 'NormalBg'    },
@@ -484,6 +512,7 @@ local default = {
 		basic.paste_mode,
 		basic.projectname,
 		basic.file,
+		basic.searchcount,
 		basic.git,
 		basic.divider,
 		basic.showcmd,
