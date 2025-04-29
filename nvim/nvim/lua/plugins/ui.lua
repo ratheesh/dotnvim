@@ -395,19 +395,18 @@ return {
   },
   {
     "nvchad/showkeys",
-    enabled = false,
+    enabled = true,
     event   = "VeryLazy",
     cmd     = "ShowkeysToggle",
     init    = function()
         require("showkeys").open() -- Enable on startup
     end,
-    opts    = {
-      timeout        = 1,
-      maxkeys        = 5,
-      show_count     = false,
-      excluded_modes = { "i", "c" },
-      position       = "top-right",
-      winopts        = {
+    opts = {
+      -- timeout    = 1,
+      maxkeys    = 5,
+      -- show_count = true,
+      position   = "top-right",
+      winopts    = {
         focusable = false,
         relative  = "editor",
         style     = "minimal",
@@ -416,7 +415,7 @@ return {
         row       = 3,
         col       = 0,
       },
-    }
+    },
   },
   {
     "sphamba/smear-cursor.nvim",
