@@ -287,9 +287,9 @@ basic.git = {
 basic.lsp_diagnos = {
 	name = 'diagnostic',
 	hl_colors = {
-		red    = { 'red'    , 'ActiveBg' },
-		yellow = { 'yellow' , 'ActiveBg' },
-		blue   = { 'blue'   , 'ActiveBg' },
+		red    = { 'LSPDiagErrFg'  , 'ActiveBg' },
+		yellow = { 'LSPDiagWarnFg' , 'ActiveBg' },
+		blue   = { 'LSPDiagHintFg' , 'ActiveBg' },
 	},
 	text = function(bufnr)
 		if lsp_comps.check_lsp(bufnr) then
@@ -599,8 +599,8 @@ windline.setup({
 		colors.GitRemovedFg  = "#EA4050"
 
 		colors.LSPDiagErrFg  = "#FD5866"
-		colors.LSPDiagWarnFg = "#729FCF"
-		colors.LSPDiagHintFg = "#9987A4"
+		colors.LSPDiagWarnFg = "#F4C493"
+		colors.LSPDiagHintFg = "#8FBCBB"
 
 		colors.NavicFg       = "#FEFEFE"
 		colors.NavicBg       = "#984ea3"
