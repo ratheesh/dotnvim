@@ -394,7 +394,7 @@ return {
     end
   },
   {
-    "nvchad/showkeys",
+    "nvzone/showkeys",
     enabled = true,
     event   = "VeryLazy",
     cmd     = "ShowkeysToggle",
