@@ -367,7 +367,7 @@ basic.fileinfo = {
 			{ b_components.file_type(), 'file_type' },
 			{'│','sep'},
 			{ b_components.file_format({icon = true}), 'file_type' },
-			{ ' ', '' },
+			-- { ' ', '' },
 			{ sep.right_rounded, 'sep_after' },
 		}
 	end,
