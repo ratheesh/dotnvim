@@ -395,7 +395,7 @@ basic.indent = {
 		return {
 			{ ' ', 'sep_before' },
 			{ sep.left_rounded, 'sep_before' },
-			{string.format('%s%s≡', sw, im), 'indentcolor'},
+			{string.format('%s%s󰦪', sw, im), 'indentcolor'},
 			-- {'│','sep'},
 			{'','sep1'},
 			-- {'','sep1'},
