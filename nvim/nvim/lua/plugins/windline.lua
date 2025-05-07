@@ -68,16 +68,16 @@ basic.vi_mode = {
 		Visual        = hl_list.ModeVisual,
 		Replace       = hl_list.ModeReplace,
 		Command       = hl_list.ModeCommand,
-		NormalBefore  = { 'ModeNormalBg', 'black' },
-		InsertBefore  = { 'ModeInsertBg', 'black' },
-		VisualBefore  = { 'ModeVisualBg', 'black' },
-		ReplaceBefore = { 'ModeReplaceBg', 'black' },
-		CommandBefore = { 'ModeCommandBg', 'black' },
-		NormalAfter   = { 'FileNameBg', 'ModeNormalBg' },
-		InsertAfter   = { 'FileNameBg', 'ModeInsertBg' },
-		VisualAfter   = { 'FileNameBg', 'ModeVisualBg' },
-		ReplaceAfter  = { 'FileNameBg', 'ModeReplaceBg' },
-		CommandAfter  = { 'FileNameBg', 'ModeCommandBg' },
+		NormalBefore  = { 'ModeNormalBg' , 'ActiveBg'     },
+		InsertBefore  = { 'ModeInsertBg' , 'ActiveBg'     },
+		VisualBefore  = { 'ModeVisualBg' , 'ActiveBg'     },
+		ReplaceBefore = { 'ModeReplaceBg', 'ActiveBg'     },
+		CommandBefore = { 'ModeCommandBg', 'ActiveBg'     },
+		NormalAfter   = { 'FileNameBg'   , 'ModeNormalBg' },
+		InsertAfter   = { 'FileNameBg'   , 'ModeInsertBg' },
+		VisualAfter   = { 'FileNameBg'   , 'ModeVisualBg' },
+		ReplaceAfter  = { 'FileNameBg'   , 'ModeReplaceBg'},
+		CommandAfter  = { 'FileNameBg'   , 'ModeCommandBg'},
 	},
 
 	text = function()
@@ -367,7 +367,7 @@ basic.fileinfo = {
 			{ b_components.file_type(), 'file_type' },
 			{'│','sep'},
 			{ b_components.file_format({icon = true}), 'file_type' },
-			-- { ' ', '' },
+			{ ' ', '' },
 			{ sep.right_rounded, 'sep_after' },
 		}
 	end,
@@ -506,7 +506,7 @@ basic.showcmd = {
 local default = {
 	filetypes = { 'default' },
 	active = {
-		{ ' ', hl_list.Black },
+		{ ' ', hl_list.Active },
 		basic.vi_mode,
 		basic.mode_rightsep,
 		basic.paste_mode,
@@ -523,7 +523,7 @@ local default = {
 		basic.fileinfo,
 		basic.indent,
 		basic.right,
-		{ ' ', hl_list.Black },
+		{ ' ', hl_list.Active },
 	},
 
 	inactive = {
