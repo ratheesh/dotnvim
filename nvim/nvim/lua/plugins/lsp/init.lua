@@ -4,8 +4,8 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      "mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
+      "mason-core/mason.nvim",
+      "mason-core/mason-lspconfig.nvim",
       { 'ray-x/lsp_signature.nvim', event = 'InsertEnter' },
       {
         "roobert/action-hints.nvim",
@@ -97,8 +97,8 @@ return {
           text = {
             [vim.diagnostic.severity.ERROR] = '●',
             [vim.diagnostic.severity.WARN]  = '●',
-            [vim.diagnostic.severity.HINT]  = '',
-            [vim.diagnostic.severity.INFO]  = '',
+            [vim.diagnostic.severity.HINT]  = '●',
+            [vim.diagnostic.severity.INFO]  = '●',
           },
           linehl = {
             -- [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
@@ -111,6 +111,7 @@ return {
         update_in_insert = false,
         severity_sort = false,
       },
+
       inlay_hints = {
         enabled = true,
       },
@@ -121,31 +122,6 @@ return {
         formatting_options = nil,
         timeout_ms = nil,
       },
-      -- LSP Server Settings
-      ---@type lspconfig.options
-      servers = {
-        lua_ls = {
-          -- mason = false, -- set to false if you don't want this server to be installed with mason
-          -- Use this to add any additional keymaps
-          -- for specific lsp servers
-          -- keys = {},
-          settings = {
-            Lua = {
-              workspace = {
-                checkThirdParty = false,
-              },
-              completion = {
-                callSnippet = "Replace",
-              },
-              diagnostics = {
-                globals = {'vim', 'Snacks'},
-              },
-            },
-          },
-        },
-      },
-      setup = {
-      },
     },
     ---@param opts PluginLspOpts
     config = function(_, opts)
@@ -153,9 +129,9 @@ return {
 
       vim.lsp.handlers["client/registerCapability"] = function(err, res, ctx)
         local ret = register_capability(err, res, ctx)
-        local client_id = ctx.client_id
-        local client = vim.lsp.get_client_by_id(client_id)
-        local buffer = vim.api.nvim_get_current_buf()
+        -- local client_id = ctx.client_id
+        -- local client = vim.lsp.get_client_by_id(client_id)
+        -- local buffer = vim.api.nvim_get_current_buf()
         -- require("lazyvim.plugins.lsp.keymaps").on_attach(client, buffer)
         return ret
       end
@@ -192,82 +168,64 @@ return {
         capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
       end
 
-      local function setup(server)
-        local server_opts = vim.tbl_deep_extend("force", {
-          capabilities = vim.deepcopy(capabilities),
-        }, servers[server] or {})
+      -- Global settings
+      vim.lsp.config('*', {
+        root_markers = { '.git', '.hg', '.svn', '.root' },
+        capabilities = {
+          textDocument = {
+            semanticTokens = {
+              multilineTokenSupport = true,
+            }
+          }
+        },
+      })
 
-        if opts.setup[server] then
-          if opts.setup[server](server, server_opts) then
-            return
+      -- clangd
+      vim.lsp.config('clangd', {
+        root_markers = { '.clang-format', 'compile_commands.json' },
+        filetypes = { 'c', 'cpp' },
+        cmd = {
+          'clangd',
+          '--clang-tidy',
+          '--background-index',
+          '--offset-encoding=utf-8',
+          '--completion-style=detailed',
+          '--header-insertion=iwyu',
+          '--header-insertion-decorators',
+        },
+        capabilities = {
+          textDocument = {
+            completion = {
+              completionItem = {
+                snippetSupport = true,
+              }
+            }
+          }
+        }
+      })
+
+      -- lua_ls
+      vim.lsp.config('lua_ls', {
+        root_dir = function(bufnr, on_dir)
+          if not vim.fn.bufname(bufnr):match('%.txt$') then
+            on_dir(vim.fn.getcwd())
           end
-        elseif opts.setup["*"] then
-          if opts.setup["*"](server, server_opts) then
-            return
-          end
-        end
-        require("lspconfig")[server].setup(server_opts)
-      end
+        end,
+        settings = {
+          Lua = {
+            workspace = {
+              checkThirdParty = false,
+            },
+            completion = {
+              callSnippet = "Replace",
+            },
+            diagnostics = {
+              globals = {'vim', 'Snacks'},
+            },
+          },
+        },
+      })
 
-      -- get all the servers that are available through mason-lspconfig
-      local have_mason, mlsp = pcall(require, "mason-lspconfig")
-      local all_mslp_servers = {}
-      if have_mason then
-        all_mslp_servers = vim.tbl_keys(require("mason-lspconfig.mappings.server").lspconfig_to_package)
-      end
-
-      local ensure_installed = {} ---@type string[]
-      for server, server_opts in pairs(servers) do
-        if server_opts then
-          server_opts = server_opts == true and {} or server_opts
-          -- run manual setup if mason=false or if this is a server that cannot be installed with mason-lspconfig
-          if server_opts.mason == false or not vim.tbl_contains(all_mslp_servers, server) then
-            setup(server)
-          else
-            ensure_installed[#ensure_installed + 1] = server
-          end
-        end
-      end
-
-      if have_mason then
-        mlsp.setup({ ensure_installed = ensure_installed, handlers = { setup } })
-      end
     end,
   },
-  {
-        "williamboman/mason.nvim",
-        build = ":MasonUpdate",
-        opts = {
-            pip = {
-                upgrade_pip = true,
-            },
-            ui = {
-                border = "rounded",
-                icons = {
-                    package_installed = "✓",
-                    package_pending = "➜",
-                    package_uninstalled = "✗",
-                },
-            },
-        },
-        config = function(_, opts)
-            require("mason").setup(opts)
-            local utils = require("utils")
-            local mr = require("mason-registry")
-            local packages = utils.mason_packages
-            local function ensure_installed()
-                for _, package in ipairs(packages) do
-                    local p = mr.get_package(package)
-                    if not p:is_installed() then
-                        p:install()
-                    end
-                end
-            end
-            if mr.refresh then
-                mr.refresh(ensure_installed)
-            else
-                ensure_installed()
-            end
-        end,
-    },
 }

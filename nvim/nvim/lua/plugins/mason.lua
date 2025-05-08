@@ -1,6 +1,6 @@
 return {
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     cmd = "Mason",
     keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
     build = ":MasonUpdate",
@@ -40,5 +40,12 @@ return {
         ensure_installed()
       end
     end,
+  },
+  {
+    'mason-org/mason-lspconfig.nvim',
+    enabled = true,
+    opts = {
+      ensure_installed = { "clangd", "lua_ls" }
+    },
   }
 }
