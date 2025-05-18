@@ -10,7 +10,7 @@ return {
       'xzbdmw/colorful-menu.nvim',
     },
 
-    version = 'v0.*',
+    version = 'v1.*',
     opts = function(_, opts)
       opts.sources = vim.tbl_deep_extend("force", opts.sources or {}, {
         default = { "lsp", "snippets", "path", "buffer" },
