@@ -130,6 +130,19 @@ return {
           show_without_selection = true,
         },
       }
+      opts.cmdline = {
+        completion = {
+          menu = {
+            auto_show = true
+          },
+          list = {
+            selection = {
+              preselect   = false,
+              auto_insert = true,
+            },
+          },
+        },
+      }
       opts.keymap = {
         ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
         ['<C-e>'] = { 'hide', 'fallback' },
