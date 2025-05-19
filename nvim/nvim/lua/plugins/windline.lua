@@ -68,16 +68,16 @@ basic.vi_mode = {
 		Visual        = hl_list.ModeVisual,
 		Replace       = hl_list.ModeReplace,
 		Command       = hl_list.ModeCommand,
-		NormalBefore  = { 'ModeNormalBg' , 'ActiveBg'     },
-		InsertBefore  = { 'ModeInsertBg' , 'ActiveBg'     },
-		VisualBefore  = { 'ModeVisualBg' , 'ActiveBg'     },
-		ReplaceBefore = { 'ModeReplaceBg', 'ActiveBg'     },
-		CommandBefore = { 'ModeCommandBg', 'ActiveBg'     },
+		NormalBefore  = { 'ModeNormalBg' , 'ActiveBg' },
+		InsertBefore  = { 'ModeInsertBg' , 'ActiveBg' },
+		VisualBefore  = { 'ModeVisualBg' , 'ActiveBg' },
+		ReplaceBefore = { 'ModeReplaceBg', 'ActiveBg' },
+		CommandBefore = { 'ModeCommandBg', 'ActiveBg' },
 		NormalAfter   = { 'FileNameBg'   , 'ModeNormalBg' },
 		InsertAfter   = { 'FileNameBg'   , 'ModeInsertBg' },
 		VisualAfter   = { 'FileNameBg'   , 'ModeVisualBg' },
-		ReplaceAfter  = { 'FileNameBg'   , 'ModeReplaceBg'},
-		CommandAfter  = { 'FileNameBg'   , 'ModeCommandBg'},
+		ReplaceAfter  = { 'FileNameBg'   , 'ModeReplaceBg' },
+		CommandAfter  = { 'FileNameBg'   , 'ModeCommandBg' },
 	},
 
 	text = function()
@@ -575,13 +575,13 @@ windline.setup({
 		colors.ModeInsertFg  = "#000000"
 		colors.ModeVisualFg  = "#000000"
 		colors.ModeReplaceFg = "#000000"
-		colors.ModeCommandFg = "#000000"
+		colors.ModeCommandFg = "#EEEEEE"
 
-		colors.ModeNormalBg  = "#0099D3"
-		colors.ModeInsertBg  = "#0DD3BB"
-		colors.ModeVisualBg  = "#F7CAB8"
+		colors.ModeNormalBg  = "#14a1e7"
+		colors.ModeInsertBg  = "#99c794"
+		colors.ModeVisualBg  = "#f7d97f"
 		colors.ModeReplaceBg = "#FF66AC"
-		colors.ModeCommandBg = "#FFB000"
+		colors.ModeCommandBg = "#527596"
 
 		-- termguicolors
 		colors.FileFg        = "#F4C493"
