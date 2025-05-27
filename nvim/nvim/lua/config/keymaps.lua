@@ -107,4 +107,12 @@ map("n", "<leader>x", "<cmd>qa<cr>", { desc = "Quit all" })
 map({ "i", "s" }, "<C-l>", "<cmd>lua require('luasnip').jump(1)<CR>")
 map({ "i", "s" }, "<C-h>", "<cmd>lua require('luasnip').jump(-1)<CR>")
 
+-- When lines are on, text is off. Text on, lines off. Minimize clutter.
+vim.keymap.set('', '<f4>', function()
+  vim.diagnostic.config({
+    virtual_lines = not vim.diagnostic.config().virtual_lines,
+    virtual_text = not vim.diagnostic.config().virtual_text,
+  })
+end, { desc = 'Toggle diagnostic [l]ines' })
+
 -- End of File

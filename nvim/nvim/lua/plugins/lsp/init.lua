@@ -79,50 +79,108 @@ return {
         end,
       },
     },
-    opts = {
-      -- options for vim.diagnostic.config()
-      diagnostics = {
-        virtual_text = false,
-        float = {
-          focusable = false,
-          style = "minimal",
-          border = "rounded",
-          source = "always",
-          header = "",
-          prefix = "",
-        },
-        -- signs = true,
-      -- local lsp_signs = { Error = "●", Warn = "●", Hint = "", Info = "" }
-        signs = {
-          text = {
-            [vim.diagnostic.severity.ERROR] = '●',
-            [vim.diagnostic.severity.WARN]  = '●',
-            [vim.diagnostic.severity.HINT]  = '●',
-            [vim.diagnostic.severity.INFO]  = '●',
+    opts = function(_,opts)
+      local ret = {
+        -- options for vim.diagnostic.config()
+        diagnostics = {
+          underline = true,
+          update_in_insert = false,
+          virtual_text = {
+            spacing = 4,
+            source = "if_many",
+            -- prefix = "󰧞",
+            prefix = "icons",
           },
-          linehl = {
-            -- [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
-          },
-          numhl = {
-            -- [vim.diagnostic.severity.WARN] = 'WarningMsg',
+          severity_sort = true,
+          signs = {
+            text = {
+              [vim.diagnostic.severity.ERROR] = '󰧞',
+              [vim.diagnostic.severity.WARN]  = '󰧞',
+              [vim.diagnostic.severity.HINT]  = '󰧞',
+              [vim.diagnostic.severity.INFO]  = '󰧞',
+            },
           },
         },
-        underline = true,
-        update_in_insert = false,
-        severity_sort = false,
-      },
+        -- Enable this to enable the builtin LSP inlay hints on Neovim >= 0.10.0
+        -- Be aware that you also will need to properly configure your LSP server to
+        -- provide the inlay hints.
+        inlay_hints = {
+          enabled = true,
+          exclude = { "vue" }, -- filetypes for which you don't want to enable inlay hints
+        },
+        -- Enable this to enable the builtin LSP code lenses on Neovim >= 0.10.0
+        -- Be aware that you also will need to properly configure your LSP server to
+        -- provide the code lenses.
+        codelens = {
+          enabled = false,
+        },
+        -- add any global capabilities here
+        capabilities = {
+          workspace = {
+            fileOperations = {
+              didRename = true,
+              willRename = true,
+            },
+          },
+        },
+        -- options for vim.lsp.buf.format
+        -- `bufnr` and `filter` is handled by the LazyVim formatter,
+        -- but can be also overridden when specified
+        format = {
+          formatting_options = nil,
+          timeout_ms = nil,
+        },
+        -- LSP Server Settings
+        ---@type lspconfig.options
+        servers = {
+          lua_ls = {
+            -- mason = false, -- set to false if you don't want this server to be installed with mason
+            -- Use this to add any additional keymaps
+            -- for specific lsp servers
+            -- ---@type LazyKeysSpec[]
+            -- keys = {},
+            settings = {
+              Lua = {
+                workspace = {
+                  checkThirdParty = false,
+                },
+                codeLens = {
+                  enable = true,
+                },
+                completion = {
+                  callSnippet = "Replace",
+                },
+                doc = {
+                  privateName = { "^_" },
+                },
+                hint = {
+                  enable = true,
+                  setType = false,
+                  paramType = true,
+                  paramName = "Disable",
+                  semicolon = "Disable",
+                  arrayIndex = "Disable",
+                },
+              },
+            },
+          },
+        },
+        -- you can do any additional lsp server setup here
+        -- return true if you don't want this server to be setup with lspconfig
+        ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
+        setup = {
+          -- example to setup with typescript.nvim
+          -- tsserver = function(_, opts)
+            --   require("typescript").setup({ server = opts })
+            --   return true
+            -- end,
+            -- Specify * to use this function as a fallback for any server
+            -- ["*"] = function(server, opts) end,
+          },
+        }
+        return ret
+    end,
 
-      inlay_hints = {
-        enabled = true,
-      },
-
-      capabilities = {},
-
-      format = {
-        formatting_options = nil,
-        timeout_ms = nil,
-      },
-    },
     ---@param opts PluginLspOpts
     config = function(_, opts)
       local register_capability = vim.lsp.handlers["client/registerCapability"]
@@ -151,7 +209,7 @@ return {
 
       vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
-      local servers = opts.servers
+      -- local servers = opts.servers
       local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
       local has_blink, blink_lsp = pcall(require, "blink.cmp")
       local capabilities = vim.tbl_deep_extend(
