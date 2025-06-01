@@ -1,6 +1,6 @@
 local M = {
   "hrsh7th/nvim-cmp",
-  enabled = false,
+  enabled = true,
   pin = false,
   lazy = true,
   event = { "InsertEnter", "CmdlineEnter" },
@@ -250,16 +250,27 @@ function M.config()
   },
   formatting = {
     -- fields = { 'kind', 'abbr'},
-    fields = { 'kind', 'abbr'},
+    fields = { 'kind', 'abbr', 'menu'},
 
     format = function(entry, item)
+      local ELLIPSIS_CHAR = "…"
+      local MAX_LABEL_WIDTH = 40
+      local MIN_LABEL_WIDTH = 20
       local label = item.abbr
       local highlights_info = require("colorful-menu").cmp_highlights(entry)
       local color_item = require("nvim-highlight-colors").format(entry, { kind = item.kind })
-      local truncated_label = vim.fn.strcharpart(label, 0, 50)
+      local truncated_label = vim.fn.strcharpart(label, 0, MAX_LABEL_WIDTH)
+
+      -- if truncated_label ~= label then
+      --   item.abbr = truncated_label .. ELLIPSIS_CHAR
+      -- end
 
       if truncated_label ~= label then
-        item.abbr = truncated_label .. '…'
+        item.abbr = truncated_label .. ELLIPSIS_CHAR
+      elseif string.len(label) < MIN_LABEL_WIDTH then
+        local padding =
+        string.rep(" ", MIN_LABEL_WIDTH - string.len(label))
+        item.abbr = label .. padding
       end
 
       -- local icon = icons[item.kind] or ''
@@ -271,7 +282,15 @@ function M.config()
       end
 
       icon = " " .. icon .. " "
-      color_item.menu = "   (" .. item.kind .. ")"
+      -- color_item.menu = "   (" .. item.kind .. ")"
+      color_item.menu = ({
+                luasnip  = "[SNP]",
+                nvim_lua = "[LUA]",
+                nvim_lsp = "[LSP]",
+                buffer   = "[BUF]",
+                path     = "[PTH]",
+                emoji    = "[EMO]",
+              })[entry.source.name]
       color_item.kind = icon
 
       item.kind_hl_group = color_item.abbr_hl_group
