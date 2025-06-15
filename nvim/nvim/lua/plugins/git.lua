@@ -5,6 +5,7 @@
 return {
   {
     "rhysd/committia.vim",
+    enabled = false,
     lazy = false, -- just in case
     init = function()
       vim.g.committia_open_only_vim_starting = 0
