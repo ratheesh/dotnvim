@@ -63,7 +63,7 @@ hl(0 , "NonText"      , { fg = "#4C566A" , bg = nil       , italic = false , bol
 hl(0 , "LineNr"       , { fg = "#607070" , bg = "#28303a" , italic = false , bold = false , underline = false })
 hl(0 , "StatusLineNC" , { fg = "#4C566A" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "SignColumn"   , { fg = nil 	 , bg = "#28303a" , italic = false , bold = false , underline = false })
-hl(0 , "StatusLine"   , { fg = "#434C5E" , bg = nil       , italic = false , bold = false , underline = false })
+hl(0 , "StatusLine"   , { fg = "#6B717C" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "VertSplit"    , { fg = "#434C5E" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "ColorColumn"  , { fg = nil       , bg = '#3B4252' , italic = false , bold = false , underline = false })
 hl(0 , "CursorColumn" , { fg = nil       , bg = nil 	  , italic = false , bold = false , underline = false })
