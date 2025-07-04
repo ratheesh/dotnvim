@@ -9,10 +9,13 @@ local windline = require('windline')
 local helper   = require('windline.helpers')
 local sep      = helper.separators
 local Hydra    = require("hydra.statusline")
+local animation = require('wlanimation')
+local efffects = require('wlanimation.effects')
 
 local b_components = require('windline.components.basic')
 local state = _G.WindLine.state
 
+local luffy_text = ""
 local lsp_comps = require('windline.components.lsp')
 local git_comps = require('windline.components.git')
 
@@ -28,11 +31,11 @@ local hl_list = {
 	StatusLine  = {'StatusLine'  , 'ActiveBg' },
 
 	-- Mode
-	ModeNormal  = {'ModeNormalFg'  , 'ModeNormalBg'  },
-	ModeInsert  = {'ModeInsertFg'  , 'ModeInsertBg'  },
-	ModeVisual  = {'ModeVisualFg'  , 'ModeVisualBg'  },
-	ModeReplace = {'ModeReplaceFg' , 'ModeReplaceBg' },
-	ModeCommand = {'ModeCommandFg' , 'ModeCommandBg' },
+	ModeNormal  = {'ModeNormalFg'  , 'ModeNormalBg', 'bold'  },
+	ModeInsert  = {'ModeInsertFg'  , 'ModeInsertBg' , 'bold' },
+	ModeVisual  = {'ModeVisualFg'  , 'ModeVisualBg' , 'bold' },
+	ModeReplace = {'ModeReplaceFg' , 'ModeReplaceBg' , 'bold'},
+	ModeCommand = {'ModeCommandFg' , 'ModeCommandBg' , 'bold'},
 
 	-- File
 	File      = { 'FileNameBg',  'ActiveBg',     'italic' },
@@ -70,16 +73,16 @@ basic.vi_mode = {
 		Visual        = hl_list.ModeVisual,
 		Replace       = hl_list.ModeReplace,
 		Command       = hl_list.ModeCommand,
-		NormalBefore  = { 'ModeNormalBg' , 'ActiveBg' },
-		InsertBefore  = { 'ModeInsertBg' , 'ActiveBg' },
-		VisualBefore  = { 'ModeVisualBg' , 'ActiveBg' },
-		ReplaceBefore = { 'ModeReplaceBg', 'ActiveBg' },
-		CommandBefore = { 'ModeCommandBg', 'ActiveBg' },
-		NormalAfter   = { 'FileNameBg'   , 'ModeNormalBg' },
-		InsertAfter   = { 'FileNameBg'   , 'ModeInsertBg' },
-		VisualAfter   = { 'FileNameBg'   , 'ModeVisualBg' },
-		ReplaceAfter  = { 'FileNameBg'   , 'ModeReplaceBg' },
-		CommandAfter  = { 'FileNameBg'   , 'ModeCommandBg' },
+		NormalBefore  = { 'ModeNormalBg' , 'ActiveBg' , 'bold' },
+		InsertBefore  = { 'ModeInsertBg' , 'ActiveBg' , 'bold' },
+		VisualBefore  = { 'ModeVisualBg' , 'ActiveBg' , 'bold' },
+		ReplaceBefore = { 'ModeReplaceBg', 'ActiveBg' , 'bold' },
+		CommandBefore = { 'ModeCommandBg', 'ActiveBg' , 'bold' },
+		NormalAfter   = { 'FileNameBg'   , 'ModeNormalBg' , 'bold' },
+		InsertAfter   = { 'FileNameBg'   , 'ModeInsertBg' , 'bold' },
+		VisualAfter   = { 'FileNameBg'   , 'ModeVisualBg' , 'bold' },
+		ReplaceAfter  = { 'FileNameBg'   , 'ModeReplaceBg' , 'bold' },
+		CommandAfter  = { 'FileNameBg'   , 'ModeCommandBg' , 'bold' },
 	},
 
 	text = function()
@@ -93,7 +96,7 @@ basic.vi_mode = {
 			return {
 				{ '󰫍─', hl_list.StatusLine },
 				{ sep.left_rounded, state.mode[2] .. 'Before' },
-				{ state.mode[1], state.mode[2] },
+				{ luffy_text..' '..state.mode[1], state.mode[2] },
 				-- { sep.left_rounded, state.mode[2] .. 'After' },
 			}
 		end
@@ -584,7 +587,7 @@ windline.setup({
 		-- Common colors
 		-- colors.black_light   = "#595B83"
 		-- colors.green_light   = "#99c794"
-		colors.NormalFg      = "#c5cdd9"
+		colors.NormalFg      = "#404C64"
 		colors.NormalBg      = "#28303a"
 		colors.ActiveFg      = "#c5cdd9"
 		colors.ActiveBg      = "#28303a"
@@ -592,17 +595,17 @@ windline.setup({
 		colors.InActiveBg    = "#28303a"
 
 		-- Mode
-		colors.ModeNormalFg  = "#FFFFFF"
-		colors.ModeInsertFg  = "#000000"
-		colors.ModeVisualFg  = "#000000"
-		colors.ModeReplaceFg = "#000000"
-		colors.ModeCommandFg = "#EEEEEE"
+		colors.ModeNormalBg  = "#404C64"
+		colors.ModeInsertBg  = "#404C64"
+		colors.ModeVisualBg  = "#404C64"
+		colors.ModeReplaceBg = "#404C64"
+		colors.ModeCommandBg = "#404C64"
 
-		colors.ModeNormalBg  = "#14a1e7"
-		colors.ModeInsertBg  = "#99c794"
-		colors.ModeVisualBg  = "#f7d97f"
-		colors.ModeReplaceBg = "#FF66AC"
-		colors.ModeCommandBg = "#527596"
+		colors.ModeNormalFg  = "#14c1f7"
+		colors.ModeInsertFg  = "#99f794"
+		colors.ModeVisualFg  = "#f7c99f"
+		colors.ModeReplaceFg = "#FF86BC"
+		colors.ModeCommandFg = "#a497fd"
 
 		-- termguicolors
 		colors.FileFg        = "#F4C493"
@@ -661,6 +664,21 @@ windline.setup({
 		default,
 		quickfix,
 	},
+})
+
+-- local luffy = { '🌍', '🌎', '🌏' }
+local luffy = { '🌑', '🌒', '🌓', '🌔', '🌕', '🌖', '🌗', '🌘' }
+-- local luffy = { '􏾾', '􏾿', '􏿀', '􏿁', '􏿂', '􏿃' }
+animation.stop_all()
+animation.basic_animation({
+    timeout = nil,
+    delay = 200,
+    interval = 200,
+    effect = efffects.list_text(luffy),
+    on_tick = function(value)
+        luffy_text = value
+        vim.cmd.redrawstatus()
+    end
 })
 
 -- vim.opt.laststatus = 3
