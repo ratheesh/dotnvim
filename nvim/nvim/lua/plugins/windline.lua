@@ -9,13 +9,10 @@ local windline = require('windline')
 local helper   = require('windline.helpers')
 local sep      = helper.separators
 local Hydra    = require("hydra.statusline")
-local animation = require('wlanimation')
-local efffects = require('wlanimation.effects')
 
 local b_components = require('windline.components.basic')
 local state = _G.WindLine.state
 
-local luffy_text = ""
 local lsp_comps = require('windline.components.lsp')
 local git_comps = require('windline.components.git')
 
@@ -31,23 +28,23 @@ local hl_list = {
 	StatusLine  = {'StatusLine'  , 'ActiveBg' },
 
 	-- Mode
-	ModeNormal  = {'ModeNormalFg'  , 'ModeNormalBg', 'bold'  },
-	ModeInsert  = {'ModeInsertFg'  , 'ModeInsertBg' , 'bold' },
-	ModeVisual  = {'ModeVisualFg'  , 'ModeVisualBg' , 'bold' },
-	ModeReplace = {'ModeReplaceFg' , 'ModeReplaceBg' , 'bold'},
-	ModeCommand = {'ModeCommandFg' , 'ModeCommandBg' , 'bold'},
+	ModeNormal  = {'ModeNormalFg'  , 'ModeNormalBg'  },
+	ModeInsert  = {'ModeInsertFg'  , 'ModeInsertBg'  },
+	ModeVisual  = {'ModeVisualFg'  , 'ModeVisualBg'  },
+	ModeReplace = {'ModeReplaceFg' , 'ModeReplaceBg' },
+	ModeCommand = {'ModeCommandFg' , 'ModeCommandBg' },
 
 	-- File
-	File      = { 'FileNameBg',  'ActiveBg',     'italic' },
+	File      = { 'FileBg',  'ActiveBg',     'italic' },
 	FileIcon  = { 'FileNameFg',  'FileNameBg' },
 	SearchCnt = { 'SearchCntFg', 'FileNameBg' },
 
 	-- Navic     = { 'NavicBg', 'ActiveBg' },
 
 	-- Git status
-	GitDiffAdded   = { 'GitAddedFg',   'FileNameBg' },
-	GitDiffRemoved = { 'GitRemovedFg', 'FileNameBg' },
-	GitDiffChanged = { 'GitChangedFg', 'FileNameBg' },
+	GitDiffAdded   = { 'GitAddedFg',   'GitInfoBg' },
+	GitDiffRemoved = { 'GitRemovedFg', 'GitInfoBg' },
+	GitDiffChanged = { 'GitChangedFg', 'GitInfoBg' },
 
 -- spell right sep
 	PasteRightProjSep = { 'PasteModeBg', 'NormalBg' },
@@ -73,12 +70,12 @@ basic.vi_mode = {
 		Visual        = hl_list.ModeVisual,
 		Replace       = hl_list.ModeReplace,
 		Command       = hl_list.ModeCommand,
-		NormalBefore  = { 'ModeNormalBg' , 'ActiveBg' , 'bold' },
-		InsertBefore  = { 'ModeInsertBg' , 'ActiveBg' , 'bold' },
-		VisualBefore  = { 'ModeVisualBg' , 'ActiveBg' , 'bold' },
-		ReplaceBefore = { 'ModeReplaceBg', 'ActiveBg' , 'bold' },
-		CommandBefore = { 'ModeCommandBg', 'ActiveBg' , 'bold' },
-		NormalAfter   = { 'FileNameBg'   , 'ModeNormalBg' , 'bold' },
+		NormalBefore  = { 'ModeNormalBg' , 'NormalBg' , 'bold' },
+		InsertBefore  = { 'ModeInsertBg' , 'NormalBg' , 'bold' },
+		VisualBefore  = { 'ModeVisualBg' , 'NormalBg' , 'bold' },
+		ReplaceBefore = { 'ModeReplaceBg', 'NormalBg' , 'bold' },
+		CommandBefore = { 'ModeCommandBg', 'NormalBg' , 'bold' },
+		NormalAfter   = { 'FileNameBg'   , 'NormalBg' , 'bold' },
 		InsertAfter   = { 'FileNameBg'   , 'ModeInsertBg' , 'bold' },
 		VisualAfter   = { 'FileNameBg'   , 'ModeVisualBg' , 'bold' },
 		ReplaceAfter  = { 'FileNameBg'   , 'ModeReplaceBg' , 'bold' },
@@ -96,7 +93,7 @@ basic.vi_mode = {
 			return {
 				{ '󰫍─', hl_list.StatusLine },
 				{ sep.left_rounded, state.mode[2] .. 'Before' },
-				{ luffy_text..' '..state.mode[1], state.mode[2] },
+				{ state.mode[1], state.mode[2] },
 				-- { sep.left_rounded, state.mode[2] .. 'After' },
 			}
 		end
@@ -196,27 +193,6 @@ basic.projectname = {
 	width = 75
 }
 
---[[ basic.file_leftsep = {
-	hl_colors = {
-		default   = {'FileNameFg',    'FileNameBg' },
-		sep_right = {'ProjectNameBg', 'NormalBg'   },
-		sep_left  = {'ProjectNameBg', 'NormalBg'   },
-	},
-	text = function(bufnr)
-		if git_comps.is_git(bufnr) then
-			return {
-				{ sep.right_rounded, 'sep_left' },
-				{ '', 'default' },
-			}
-		else
-			return {
-				{ sep.left_rounded, 'sep_left' },
-				-- { '', 'default' },
-			}
-		end
-	end,
-} ]]
-
 local function is_file_ro()
 	if vim.bo.readonly then
 		return ' '
@@ -225,15 +201,16 @@ local function is_file_ro()
 	end
 end
 
-local icon_comp = b_components.cache_file_icon({ default = '', hl_colors = {'FileNameFg','FileNameBg'} })
+local icon_comp = b_components.cache_file_icon({ default = '', hl_colors = {'FileNameFg','FileBg'} })
 basic.file = {
 	name = 'file',
 	hl_colors = {
-		default      = hl_list.File,
-		FileName     = { 'FileFg', 'FileBg', 'italic'  },
-		FileModified = { 'FileNameModFg', 'FileNameBg' },
-		FileRO       = { 'FileNameROFg', 'FileNameBg', 'bold'  },
-		FileIcon     = hl_list.FileIcon
+		sep_left_file = { 'FileBg', 'ActiveBg' },
+		default       = hl_list.File,
+		FileName      = { 'FileFg', 'FileBg', 'italic' },
+		FileModified  = { 'FileNameROFg', 'FileBg'},
+		FileRO        = { 'FileNameROFg', 'FileBg', 'bold' },
+		FileIcon      = hl_list.FileIcon
 	},
 	text = function(bufnr)
 		if vim.bo.filetype == 'alpha' then
@@ -241,6 +218,7 @@ basic.file = {
 		else
 			return {
 				-- { ' ', 'FileName' },
+				{ sep.left_rounded, 'sep_left_file' },
 				icon_comp(bufnr),
 				{ ' ', 'FileModified' },
 				{ b_components.cache_file_name('Keine!', 'unique'), 'FileName' },
@@ -273,21 +251,28 @@ basic.file_rightsep = {
 basic.git = {
 	name = 'git',
 	hl_colors = {
-		added     = hl_list.GitDiffAdded,
-		changed   = hl_list.GitDiffChanged,
-		removed   = hl_list.GitDiffRemoved,
-		left_sep  = { 'FileNameBg',   'ActiveBg' },
-		right_sep = { 'FileNameBg',   'ActiveBg' },
+		sep_left_project  = { 'ProjectNameBg', 'NormalBg'      },
+		project           = { 'ProjectNameFg', 'ProjectNameBg' },
+		sep_right_project = { 'ProjectNameBg', 'FileNameBg'    },
+
+		left_sep_git  = { 'FileNameBg',   'ActiveBg' },
+		added		      = hl_list.GitDiffAdded,
+		changed   	      = hl_list.GitDiffChanged,
+		removed   	      = hl_list.GitDiffRemoved,
+		right_sep_git = { 'FileNameBg',   'ActiveBg' },
 	},
 	text = function(bufnr)
 		if git_comps.is_git(bufnr) then
 			return {
+				--      ◉ 🞊 ● 󱘹  
 				-- { '─', hl_list.StatusLine },
-				{ sep.left_rounded, 'left_sep' },
-				{ git_comps.diff_added({ format   = ' %s' , show_zero = true }), 'added'  },
-				{ git_comps.diff_changed({ format = '  %s', show_zero = true }), 'changed' },
-				{ git_comps.diff_removed({ format = '  %s', show_zero = true }), 'removed' },
-	 			{ sep.right_rounded, 'right_sep' },
+				{ sep.left_rounded, 'sep_left_project' },
+				{ git_comps.git_branch({icon = ' '}), 'project' },
+				{ sep.right_rounded, 'sep_right_project' },
+				{ git_comps.diff_added({ format   = '  %s', show_zero = false }), 'added'   },
+				{ git_comps.diff_changed({ format = ' ◉ %s', show_zero = false }), 'changed' },
+				{ git_comps.diff_removed({ format = '  %s', show_zero = false }), 'removed' },
+	 			{ sep.right_rounded, 'right_sep_git' },
 				{ '─', hl_list.StatusLine },
 			}
 		end
@@ -313,8 +298,8 @@ basic.lsp_diagnos = {
 			return {
 				{ '─', hl_list.StatusLine },
 				{ sep.left_rounded, 'left_sep' },
-				{ lsp_comps.lsp_hint({ format    = ' %s' , show_zero = true }), 'blue'   },
-				{ lsp_comps.lsp_info({ format    = '  %s' , show_zero = true }), 'blue'   },
+				{ lsp_comps.lsp_hint({ format    = ' %s' , show_zero = true }), 'blue'   },
+				{ lsp_comps.lsp_info({ format    = '  %s', show_zero = true }), 'blue'   },
 				{ lsp_comps.lsp_warning({ format = '  %s', show_zero = true }), 'yellow' },
 				{ lsp_comps.lsp_error({ format   = '  %s', show_zero = true }), 'red'    },
 				{ sep.right_rounded, 'left_sep' },
@@ -349,21 +334,32 @@ local function lsp_client_names(component)
 end
 
 -- local lsp_server_name = lsp_comps.lsp_name()
-basic.lsp_client = {
+basic.lsp = {
 	hl_colors = {
-		sep_before       = { 'LSPClientBg', 'NormalBg' },
-		sep_before_empty = { 'FileInfoBg', 'NormalBg' },
+		sep_before       = { 'LSPClientBg', 'FileNameBg' },
+		sep_before_empty = { 'FileInfoBg' , 'NormalBg' },
 		lsp_cl           = { 'LSPClientFg', 'LSPClientBg', 'italic' },
-		sep_after        = { 'LSPClientBg', 'NormalBg' },
+		sep_after        = { 'LSPClientBg', 'ActiveBg' },
+
+		red			     = { 'LSPDiagErrFg' , 'FileNameBg' },
+		yellow 		     = { 'LSPDiagWarnFg', 'FileNameBg' },
+		blue   		     = { 'LSPDiagHintFg', 'FileNameBg' },
+		left_sep_diag    = { 'FileNameBg'   , 'ActiveBg' },
+		right_sep_diag   = { 'FileNameBg'   , 'ActiveBg' },
 	},
-	text = function()
-		if lsp_client_names({}) ~= nil then
+	text = function(bufnr)
+		if lsp_comps.check_lsp(bufnr) and lsp_client_names({}) ~= nil then
 			return {
 				-- { '─', hl_list.StatusLine },
+				{ sep.left_rounded, 'left_sep_diag' },
+				{ lsp_comps.lsp_hint({ format    = ' %s ' , show_zero = false }), 'blue'   },
+				{ lsp_comps.lsp_info({ format    = ' %s ' , show_zero = false }), 'blue'   },
+				{ lsp_comps.lsp_warning({ format = ' %s ' ,  how_zero = false }), 'yellow' },
+				{ lsp_comps.lsp_error({ format   = ' %s ' , show_zero = false }), 'red'    },
 				{ sep.left_rounded, 'sep_before' },
 				{ lsp_client_names({}), 'lsp_cl' },
 				{ sep.right_rounded, 'sep_after' },
-				-- { '─', 'StatusLine' },
+				-- { '─', hl_list.StatusLine },
 			}
 		else
 			return
@@ -400,12 +396,13 @@ basic.fileinfo = {
 
 basic.indent = {
 	hl_colors = {
-		sep_before  = { 'IndentBg',   'NormalBg'     },
-		sep_after   = { 'CursorChBg', 'NormalBg'     },
-		sep         = { 'black',      'IndentBg'     },
-		sep1        = { 'IndentBg',   'CursorChBg'   },
-		indentcolor = { 'IndentFg',   'IndentBg'     },
-		charcolor   = { 'CursorChFg', 'CursorChBg'   },
+		sep_before_indent  = { 'IndentBg',   'NormalBg'   },
+		sep_after_indent   = { 'IndentBg', 'CursorChBg'   },
+		sep_after          = { 'CursorChBg', 'NormalBg'   },
+		sep                = { 'black',      'IndentBg'   },
+		sep1               = { 'IndentBg',   'CursorChBg' },
+		indentcolor        = { 'IndentFg',   'IndentBg'   },
+		charcolor          = { 'CursorChFg', 'CursorChBg' },
 	},
 	text = function()
 		local sw = vim.bo.shiftwidth
@@ -418,12 +415,13 @@ basic.indent = {
 		end
 		return {
 			{ '─', hl_list.StatusLine },
-			{ sep.left_rounded, 'sep_before' },
+			{ sep.left_rounded, 'sep_before_indent' },
 			{string.format('%s%s󰦪', sw, im), 'indentcolor'},
+			{ sep.right_rounded, 'sep_after_indent' },
 			-- {'│','sep'},
-			{'','sep1'},
+			-- {'','sep1'},
 			-- {'','sep1'},
-			{ 'Ch:%02Bh', 'charcolor' },
+			{ ' Ch:%02B𝒽', 'charcolor' },
 			{ sep.right_rounded, 'sep_after' },
 		}
 	end,
@@ -443,7 +441,7 @@ basic.right = {
 		return {
 			{ '─', hl_list.StatusLine },
 			{ sep.left_rounded, 'sep_before' },
-			{ '', 'text' },
+			{ '', 'text' },
 			{' %l:%v','text'},
 			{'│','sep'},
 			{'%p%%','text'},
@@ -534,16 +532,16 @@ local default = {
 		basic.vi_mode,
 		basic.mode_rightsep,
 		basic.paste_mode,
-		basic.projectname,
-		basic.file,
+		-- basic.projectname,
 		-- basic.searchcount,
+		basic.file,
 		basic.git,
 		basic.divider,
 		basic.lazy,
 		basic.divider,
-		basic.lsp_diagnos,
+		-- basic.lsp_diagnos,
 		-- { ' ', hl_list.Active },
-		basic.lsp_client,
+		basic.lsp,
 		basic.fileinfo,
 		basic.indent,
 		basic.right,
@@ -595,21 +593,21 @@ windline.setup({
 		colors.InActiveBg    = "#28303a"
 
 		-- Mode
-		colors.ModeNormalBg  = "#404C64"
-		colors.ModeInsertBg  = "#404C64"
-		colors.ModeVisualBg  = "#404C64"
-		colors.ModeReplaceBg = "#404C64"
-		colors.ModeCommandBg = "#404C64"
+		colors.ModeNormalBg  = "#527596"
+		colors.ModeInsertBg  = "#B3C1A9"
+		colors.ModeVisualBg  = "#ECD4A6"
+		colors.ModeReplaceBg = "#b16286"
+		colors.ModeCommandBg = "#756969"
 
-		colors.ModeNormalFg  = "#14c1f7"
-		colors.ModeInsertFg  = "#99f794"
-		colors.ModeVisualFg  = "#f7c99f"
-		colors.ModeReplaceFg = "#FF86BC"
-		colors.ModeCommandFg = "#a497fd"
+		colors.ModeNormalFg  = "#eeeeee"
+		colors.ModeInsertFg  = "#000000"
+		colors.ModeVisualFg  = "#000000"
+		colors.ModeReplaceFg = "#eeeeee"
+		colors.ModeCommandFg = "#eeeeee"
 
 		-- termguicolors
-		colors.FileFg        = "#F4C493"
-		colors.FileBg        = "#404C64"
+		colors.FileFg        = "#fdcdac"
+		colors.FileBg        = "#2C4868"
 		colors.FileNameFg    = "#FEFEFE"
 		colors.FileNameBg    = "#404C64"
 		colors.FileNameModFg = "#00AFDB"
@@ -621,6 +619,7 @@ windline.setup({
 		colors.GitAddedFg    = "#99c794"
 		colors.GitChangedFg  = "#B99AB9"
 		colors.GitRemovedFg  = "#FD5866"
+		colors.GitInfoBg     = "#404C64"
 
 		colors.LSPDiagErrFg  = "#FD5866"
 		colors.LSPDiagWarnFg = "#F4C493"
@@ -633,18 +632,18 @@ windline.setup({
 		colors.LSPClientBg   = "#bab0ab"
 
 		colors.ProjectNameFg = "#F0F0F0"
-		colors.ProjectNameBg = "#907aa9"
+		colors.ProjectNameBg = "#5d7277"
 
 		colors.StatusLine    = "#6B717C"
 
-		colors.FileInfoFg    = "#000000"
-		colors.FileInfoBg    = "#94789B"
+		colors.FileInfoFg    = "#eeeeee"
+		colors.FileInfoBg    = "#5E6169"
 
 		colors.IndentFg      = "#eeeeee"
 		colors.IndentBg      = "#d76062"
 
 		colors.CursorChFg    = "#eeeeee"
-		colors.CursorChBg    = "#5d7277"
+		colors.CursorChBg    = "#465672"
 		colors.SearchCntFg   = "#4EB899"
 
 		colors.LineNoFg      = "#eeeeee"
@@ -664,21 +663,6 @@ windline.setup({
 		default,
 		quickfix,
 	},
-})
-
--- local luffy = { '🌍', '🌎', '🌏' }
-local luffy = { '🌑', '🌒', '🌓', '🌔', '🌕', '🌖', '🌗', '🌘' }
--- local luffy = { '􏾾', '􏾿', '􏿀', '􏿁', '􏿂', '􏿃' }
-animation.stop_all()
-animation.basic_animation({
-    timeout = nil,
-    delay = 200,
-    interval = 200,
-    effect = efffects.list_text(luffy),
-    on_tick = function(value)
-        luffy_text = value
-        vim.cmd.redrawstatus()
-    end
 })
 
 -- vim.opt.laststatus = 3
