@@ -20,7 +20,7 @@ return {
           style   = 'underline'
         },
         separator_style = 'none',
-        buffer_close_icon = '✗',
+        buffer_close_icon = '',
         -- diagnostics       = 'nvim_lsp',
         diagnostics       = false,
         hover = {
@@ -61,7 +61,7 @@ return {
           bg = '#1E2430'
         },
         close_button_selected = {
-          fg = '#988C99',
+          fg = '#da627d',
           bg = '#1E2430',
         },
         separator_selected = {
