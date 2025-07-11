@@ -11,8 +11,11 @@ return {
         -- numbers   = 'ordinal',
         numbers = function(opts)
           local tmpid = opts.ordinal > 9 and 10 or opts.ordinal
-          local icons = {"೧", "೨", "೩", "೪", "೫", "೬", "೭", "೮", "೯", "0"}
+          -- local icons = {"೧", "೨", "೩", "೪", "೫", "೬", "೭", "೮", "೯", "0"}
+          -- local icons = {"೧", "೨", "೩", "೪", "೫", "೬", "೭", "೮", "೯", "0"}
           -- local icons = {"1", "2", "3", "4", "5", "6", "7", "8", "", ""}
+          local icons={ "𝟏", "𝟐", "𝟑", "𝟒", "𝟓", "𝟔", "𝟕", "𝟖", "𝟗", "𝟎" }
+
           return icons[tmpid] --         
         end,
         indicator = {
