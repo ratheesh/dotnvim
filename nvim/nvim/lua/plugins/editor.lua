@@ -39,7 +39,7 @@ return {
           multiline_threshold = 2;
           line_numbers = true,
           mode         = 'topline',
-          separator    = '━',
+          separator    = '─',
       })
     end,
   },
