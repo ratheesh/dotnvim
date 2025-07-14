@@ -44,7 +44,7 @@ hl(0 , "Folded"       , { fg = "#4C566A" , bg = "#2B3242" , italic = false , bol
 hl(0 , "IncSearch"    , { fg = nil       , bg = "#485568" , italic = false , bold = false , underline = false })
 hl(0 , "Search"       , { fg = nil       , bg = "#485568" , italic = false , bold = false , underline = false })
 hl(0 , "Macro"        , { fg = "#D57780" , bg = nil       , italic = false , bold = true  , underline = false })
-hl(0 , "MatchParen"   , { fg = nil       , bg = nil 	  , italic = false , bold = false , underline = true  })
+hl(0 , "MatchParen"   , { fg = nil       , bg = "#28303a" , italic = false , bold = false , underline = true  })
 hl(0 , "ModeMsg"      , { fg = "#A3BE8C" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "MoreMsg"      , { fg = "#A3BE8C" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "Question"     , { fg = "#81A1C1" , bg = nil       , italic = false , bold = false , underline = false })
