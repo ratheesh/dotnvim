@@ -12,7 +12,7 @@ return {
   opts = {
     icons = {
       breadcrumb = "»",
-      separator  = "➜",
+      separator  = "➜ ",
       group      = " ",
       ellipsis   = "…",
     },
@@ -23,6 +23,7 @@ return {
       title      = true,
       title_pos  = "center",
       zindex     = 1000,
+      height = { min = 4, max = 10 },
 
       bo = {},
       wo = {
