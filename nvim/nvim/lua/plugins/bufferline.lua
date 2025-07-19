@@ -124,17 +124,17 @@ return {
         },
         numbers = {
           bg = '#1E2430',
-          bold = true,
+          bold = false,
         },
         numbers_visible = {
           bg = '#1E2430',
-          bold = true,
+          bold = false,
         },
         numbers_selected = {
           fg = '#F2A490',
           bg = '#1E2430',
           italic = false,
-          bold = true,
+          bold = false,
         },
         modified = {
           bg = '#1E2430'
