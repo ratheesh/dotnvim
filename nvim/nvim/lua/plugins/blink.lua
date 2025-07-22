@@ -43,7 +43,7 @@ return {
           },
         },
       })
-      opts.fuzzy = { implementation = "lua" }
+      opts.fuzzy = { implementation = "prefer_rust" }
       opts.appearance = {
         use_nvim_cmp_as_default = true,
         nerd_font_variant = 'normal',
@@ -51,7 +51,7 @@ return {
       opts.completion = {
         menu = {
           max_height = 12,
-          min_width  = 50,
+          -- min_width  = 10,
           border     = 'rounded',
           draw = {
             align_to = "label",
@@ -112,10 +112,23 @@ return {
             }
           } ]]
         },
+        trigger = {
+          show_on_keyword = true,
+          show_on_backspace = true,
+          show_on_backspace_in_keyword = true,
+          show_on_backspace_after_accept = true,
+          show_on_backspace_after_insert_enter = true,
+          show_on_trigger_character = true,
+          show_on_insert = true,
+        },
         list = {
           selection = {
             preselect = false,
             auto_insert = true,
+          },
+          cycle = {
+            from_bottom = true,
+            from_top = true,
           },
         },
         documentation = {
@@ -127,9 +140,11 @@ return {
         },
         ghost_text = {
           enabled = true,
+          show_with_menu = true,
           show_without_selection = true,
         },
       }
+
       opts.cmdline = {
         completion = {
           menu = {
