@@ -8,6 +8,9 @@ return {
         char = '▕',
         virtcolumn = '+1',
         highlight = "VirtColumn",
+        exclude = {
+          filetypes = { 'gitsendemail' },
+        },
       }) --▕│
     end
   },
