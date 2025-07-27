@@ -586,11 +586,11 @@ windline.setup({
 		-- colors.black_light   = "#595B83"
 		-- colors.green_light   = "#99c794"
 		colors.NormalFg      = "#404C64"
-		colors.NormalBg      = "#28303a"
+		colors.NormalBg      = "#202832"
 		colors.ActiveFg      = "#c5cdd9"
-		colors.ActiveBg      = "#28303a"
+		colors.ActiveBg      = "#202832"
 		colors.InActiveFg    = "#c5cdd9"
-		colors.InActiveBg    = "#28303a"
+		colors.InActiveBg    = "#202832"
 
 		-- Mode
 		colors.ModeNormalBg  = "#527596"
