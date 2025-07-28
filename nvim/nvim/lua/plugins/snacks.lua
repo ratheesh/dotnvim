@@ -45,7 +45,20 @@ return {
       -- File management
       { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
       { "<leader>ff", function() Snacks.picker.files() end, desc = "Files" },
-      { "<leader>fo", function() Snacks.picker.smart() end, desc = "Files" },
+      { "<leader>fo", function()
+        Snacks.picker.smart(
+          {
+            multi   = { "buffers", "recent", "files" },
+            format  = "file",
+            matcher = {
+              cwd_bonus  = true,
+              frecency   = true,
+              sort_empty = true,
+            },
+            transform = "unique_file",
+          }
+        )
+      end, desc = "Files" },
       { "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
       { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent Files" },
       { "<leader>fR", function() Snacks.picker.resume() end, desc = "Resume" },
