@@ -129,6 +129,17 @@ return {
             progress_icon = { "moon" },
           },
         },
+        notification = {
+          view = {
+            icon_separator = " ",
+            group_separator = "────",
+          },
+          window = {
+            border    = "none",
+            x_padding = 3,
+            y_padding = 1,
+          },
+        },
       })
       vim.notify = require("fidget").notify
     end
