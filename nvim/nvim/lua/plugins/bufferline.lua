@@ -23,7 +23,7 @@ return {
           style   = 'underline'
         },
         separator_style = 'none',
-        buffer_close_icon = '',
+        buffer_close_icon = '',
         -- diagnostics       = 'nvim_lsp',
         diagnostics       = false,
         hover = {
