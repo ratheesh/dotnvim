@@ -51,6 +51,40 @@ return {
         end
       },
       {
+          'oribarilan/lensline.nvim',
+          enabled = false,
+          event = 'LspAttach',
+          opts = {
+            style = {
+                prefix = ' ',
+            },
+          },
+          config = function()
+            require("lensline").setup({
+              -- Profile definitions, first is default
+              profiles = {
+                {
+                  name = "basic",
+                  providers = {
+                    { name = "references", enabled = true },
+                    { name = "last_author", enabled = true }
+                  },
+                  style = { render = "all", placement = "above" }
+                },
+                {
+                  name = "informative",
+                  providers = {
+                    { name = "references", enabled = true },
+                    { name = "diagnostics", enabled = true, min_level = "HINT" },
+                    { name = "complexity", enabled = true }
+                  },
+                  style = { render = "focused", placement = "inline" }
+                }
+              },
+            })
+          end
+      },
+      {
         'Chaitanyabsprip/fastaction.nvim',
         enabled = true,
         opts = {},
