@@ -51,6 +51,15 @@ return {
         end
       },
       {
+          'oribarilan/lensline.nvim',
+          event = 'LspAttach',
+          opts = {
+            style = {
+                prefix = ' ',
+            },
+          },
+      },
+      {
         'Chaitanyabsprip/fastaction.nvim',
         enabled = true,
         opts = {},
