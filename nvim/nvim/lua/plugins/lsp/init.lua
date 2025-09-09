@@ -22,10 +22,11 @@ return {
       },
       {
         "rachartier/tiny-inline-diagnostic.nvim",
+        enabled = true,
         event = "VeryLazy",
         config = function()
           require('tiny-inline-diagnostic').setup({
-            preset = "modern",
+            preset = "amongus",
           })
         end
       },
@@ -119,12 +120,12 @@ return {
         diagnostics = {
           underline = true,
           update_in_insert = false,
-          virtual_text = {
-            spacing = 4,
-            source = "if_many",
-            -- prefix = "󰧞",
-            prefix = "icons",
-          },
+          -- virtual_text = {
+          --   spacing = 4,
+          --   source = "if_many",
+          --   -- prefix = "󰧞",
+          --   prefix = "icons",
+          -- },
           severity_sort = true,
           signs = {
             text = {
