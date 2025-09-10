@@ -8,13 +8,30 @@ return {
       'rafamadriz/friendly-snippets',
       'L3MON4D3/LuaSnip',
       'xzbdmw/colorful-menu.nvim',
+      {
+        "fang2hou/blink-copilot",
+        opts = {
+          max_completions = 1,
+          max_attempts = 2,
+        }
+      },
     },
 
     version = 'v1.*',
     opts = function(_, opts)
       opts.sources = vim.tbl_deep_extend("force", opts.sources or {}, {
-        default = { "lsp", "snippets", "path", "buffer" },
+        default = { "copilot", "lsp", "snippets", "path", "buffer" },
         providers = {
+          copilot = {
+            name = "copilot",
+            module = "blink-copilot",
+            score_offset = 100,
+            async = true,
+            opts = {
+              max_completions = 5,
+              max_attempts    = 3,
+            }
+          },
           lsp = {
             name = "lsp",
             enabled = true,
