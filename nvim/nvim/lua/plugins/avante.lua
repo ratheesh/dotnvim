@@ -1,6 +1,7 @@
 return {
   {
     "yetone/avante.nvim",
+    enabled = true,
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = vim.fn.has("win32") ~= 0
     and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
@@ -15,11 +16,15 @@ return {
       provider = "copilot",
       providers = {
         copilot = {
-          model = "gpt-4o-2024-08-06",
+          model = "gpt-5",
           endpoint = "https://api.githubcopilot.com",
           allow_insecure = false,
           timeout = 10 * 60 * 1000,
-          temperature = 0,
+          -- temperature = 1,
+          extra_request_body = { -- Other request parameters go here
+              temperature = 0.8, -- Set your desired temperature value
+              max_tokens = 1024,
+          },
           max_completion_tokens = 1000000,
           reasoning_effort = "high",
         },
