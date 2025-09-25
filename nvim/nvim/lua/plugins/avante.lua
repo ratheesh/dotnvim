@@ -16,7 +16,7 @@ return {
       provider = "copilot",
       providers = {
         copilot = {
-          model = "gpt-5",
+          model = "gpt-4o",
           endpoint = "https://api.githubcopilot.com",
           allow_insecure = false,
           timeout = 10 * 60 * 1000,
