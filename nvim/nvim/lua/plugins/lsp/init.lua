@@ -53,13 +53,8 @@ return {
       },
       {
           'oribarilan/lensline.nvim',
-          enabled = false,
+          enabled = true,
           event = 'LspAttach',
-          opts = {
-            style = {
-                prefix = ' ',
-            },
-          },
           config = function()
             require("lensline").setup({
               -- Profile definitions, first is default
@@ -67,10 +62,20 @@ return {
                 {
                   name = "basic",
                   providers = {
+                    breakdown = true,
+                    show_zero = true,
+                    include = { "refs", "defs", "impls" },
                     { name = "references", enabled = true },
-                    { name = "last_author", enabled = true }
+                    { name = "last_author", enabled = true },
+                    { name = "diagnostics", enabled = true, min_level = "HINT" },
                   },
-                  style = { render = "all", placement = "above" }
+                  style = {
+                    prefix       = ' ',
+                    use_nerdfont = true,
+                    separator    = " • ",
+                    render       = "all",
+                    placement    = "inline"
+                  }
                 },
                 {
                   name = "informative",
