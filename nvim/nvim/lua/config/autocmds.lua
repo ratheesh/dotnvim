@@ -15,12 +15,12 @@ vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 })
 
 -- Highlight on yank
-vim.api.nvim_create_autocmd("TextYankPost", {
+--[[ vim.api.nvim_create_autocmd("TextYankPost", {
   group = augroup("highlight_yank"),
   callback = function()
     vim.highlight.on_yank()
   end,
-})
+}) ]]
 
 -- Enable relative number only in non-insert mode
 local cursorGrp = vim.api.nvim_create_augroup('cursorGrp', { clear = true })

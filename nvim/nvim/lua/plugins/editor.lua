@@ -70,7 +70,7 @@ return {
   },
   {
     'ibhagwan/smartyank.nvim',
-    enabled = true,
+    enabled = false,
     event = "VeryLazy",
     keys = { 'y', 'Y', 'd', 'D', 'x' },
     config = function()
@@ -135,7 +135,7 @@ return {
               end
           end
 
-          vim.api.nvim_create_autocmd('TextYankPost', {callback = copy})
+          -- vim.api.nvim_create_autocmd('TextYankPost', {callback = copy})
       end
   },
   {
