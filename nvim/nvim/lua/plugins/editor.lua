@@ -44,9 +44,10 @@ return {
     end,
   },
   {
-      "mbbill/undotree",
-      enabled = false,
-      cmd = { "UndotreeShow", "UndotreeToggle", "UndotreeHide", "UndotreeFocus" },
+    "XXiaoA/atone.nvim",
+    enabled = true,
+    cmd = "Atone",
+    opts = {},
   },
   {
       "ruskei/undotree",

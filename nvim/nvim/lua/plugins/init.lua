@@ -34,6 +34,7 @@ return {
   },
   {
     "mbbill/undotree",
+    enabled = false,
     cmd = { "UndotreeShow", "UndotreeToggle", "UndotreeHide", "UndotreeFocus" },
   },
   {
