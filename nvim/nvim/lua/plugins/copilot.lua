@@ -1,6 +1,7 @@
 return {
   {
     "zbirenbaum/copilot.lua",
+    enabled = true,
     cmd = "Copilot",
     build = ":Copilot auth",
     event = "BufReadPost",
@@ -12,5 +13,5 @@ return {
         help = true,
       },
     },
-  }
+  },
 }
