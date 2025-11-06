@@ -1,7 +1,7 @@
 return {
   {
     "yetone/avante.nvim",
-    enabled = true,
+    enabled = false,
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = vim.fn.has("win32") ~= 0
     and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
