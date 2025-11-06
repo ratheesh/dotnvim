@@ -10,6 +10,7 @@ return {
     vim.o.timeoutlen = 700
   end,
   opts = {
+    reset = 'helix',
     icons = {
       breadcrumb = "»",
       separator  = "➜ ",
