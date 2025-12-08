@@ -114,7 +114,7 @@ return {
   },
   {
     "lewis6991/satellite.nvim",
-    enabled = false,
+    enabled = true,
     event = "VeryLazy",
     opts = {},
   },
@@ -437,19 +437,21 @@ return {
     enabled= true,
     event = "VeryLazy",
     opts = {
-      cursor_color        = "#e0e0e0",
+      -- cursor_color        = "#e0e0e0",
       normal_bg           = "#28303a",
       cterm_cursor_colors = { 231, 233, 235, 237 },
       cterm_bg            = 235,
       stiffness           = 0.6,
       trailing_stiffness  = 0.3,
       trailing_exponent   = 3,
-      hide_target_hack    = false,
+      hide_target_hack    = true,
       never_draw_over_target = true,
       gamma               = 1,
       color_levels        = 256,
       volume_reduction_component = -0.3;
       legacy_computing_symbols_support = true,
+      -- hide_target_hack = true,
+      cursor_color = "none",
     },
   },
   {
