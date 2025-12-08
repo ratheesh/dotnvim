@@ -1,6 +1,6 @@
 local M = {
   'romgrk/barbar.nvim',
-  enabled=false,
+  enabled=true,
   event = "BufReadPre",
   dependencies = { 'nvim-tree/nvim-web-devicons' },
 }
@@ -16,9 +16,9 @@ function M.config()
     icons        = {
       buffer_index = true,
       buffer_number = false,
-      button = ' ✗',
+      button = ' ',
       filetype = {enabled = true},
-      inactive = {button=' ✗', separator = {left = ' ', right = ''}},
+      inactive = {button=' ', separator = {left = ' ', right = ''}},
       modified = {button = ' ●'},
       pinned   = {button = ' 車'},
       -- separator = {left = '▎', right = ''},
