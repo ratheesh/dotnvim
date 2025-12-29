@@ -44,7 +44,7 @@ local hl_list = {
 	-- Git status
 	GitDiffAdded   = { 'GitAddedFg',   'GitInfoBg' },
 	GitDiffRemoved = { 'GitRemovedFg', 'GitInfoBg' },
-	GitDiffChanged = { 'GitChangedFg', 'GitInfoBg' },
+	GitDiffChanged = { 'GitChangedFg', 'GitInfoBg', 'bold' },
 
 -- spell right sep
 	PasteRightProjSep = { 'PasteModeBg', 'NormalBg' },
@@ -255,23 +255,23 @@ basic.git = {
 		project           = { 'ProjectNameFg', 'ProjectNameBg' },
 		sep_right_project = { 'ProjectNameBg', 'FileNameBg'    },
 
-		left_sep_git  = { 'FileNameBg',   'ActiveBg' },
-		added		      = hl_list.GitDiffAdded,
-		changed   	      = hl_list.GitDiffChanged,
-		removed   	      = hl_list.GitDiffRemoved,
-		right_sep_git = { 'FileNameBg',   'ActiveBg' },
+		left_sep_git      = { 'FileNameBg',   'ActiveBg' },
+		added             = hl_list.GitDiffAdded,
+		changed           = hl_list.GitDiffChanged,
+		removed           = hl_list.GitDiffRemoved,
+		right_sep_git     = { 'FileNameBg',   'ActiveBg' },
 	},
 	text = function(bufnr)
 		if git_comps.is_git(bufnr) then
 			return {
-				--      ◉ 🞊 ● 󱘹  
+				--      ◉ 🞊 ● 󱘹   󰜥
 				-- { '─', hl_list.StatusLine },
 				{ sep.left_rounded, 'sep_left_project' },
 				{ git_comps.git_branch({icon = ' '}), 'project' },
 				{ sep.right_rounded, 'sep_right_project' },
-				{ git_comps.diff_added({ format   = '  %s', show_zero = false }), 'added'   },
-				{ git_comps.diff_changed({ format = ' ◉ %s', show_zero = false }), 'changed' },
-				{ git_comps.diff_removed({ format = '  %s', show_zero = false }), 'removed' },
+				{ git_comps.diff_added({ format   = '  %s', show_zero = false }), 'added'   },
+				{ git_comps.diff_changed({ format = ' 󰜥 %s', show_zero = false }), 'changed' },
+				{ git_comps.diff_removed({ format = '  %s', show_zero = false }), 'removed' },
 	 			{ sep.right_rounded, 'right_sep_git' },
 				{ '─', hl_list.StatusLine },
 			}
@@ -281,7 +281,7 @@ basic.git = {
 	width = 70
 }
 
--- Right side segment
+-- Right side segment 🟰 󰜥      
 ---------------------------------------------
 -- local check_lsp_status = lsp_comps.check_lsp({})
 basic.lsp_diagnos = {
@@ -421,7 +421,7 @@ basic.indent = {
 			-- {'│','sep'},
 			-- {'','sep1'},
 			-- {'','sep1'},
-			{ ' Ch:%02B𝒽', 'charcolor' },
+			{ '𝓒𝓱:%02B𝒽', 'charcolor' },
 			{ sep.right_rounded, 'sep_after' },
 		}
 	end,
@@ -616,8 +616,8 @@ windline.setup({
 		colors.PasteModeFg   = "#000000"
 		colors.PasteModeBg   = "#db8a89"
 
-		colors.GitAddedFg    = "#99c794"
-		colors.GitChangedFg  = "#B99AB9"
+		colors.GitAddedFg    = "#4EB899"
+		colors.GitChangedFg  = "#e7b898"
 		colors.GitRemovedFg  = "#FD5866"
 		colors.GitInfoBg     = "#404C64"
 
