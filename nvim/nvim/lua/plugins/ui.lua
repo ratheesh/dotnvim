@@ -102,8 +102,11 @@ return {
   },
   {
     "code-biscuits/nvim-biscuits",
-    enabled = true,
+    enabled = false,
     event = { 'VeryLazy' },
+    pendencies = {
+    'nvim-treesitter/nvim-treesitter',
+    },
     config = function()
       require('nvim-biscuits').setup({
         cursor_line_only = true,
@@ -385,12 +388,6 @@ return {
         end,
       })
     end
-  },
-  {
-    "mawkler/demicolon.nvim",
-    enabled = true,
-    event = "VeryLazy",
-    opts = {},
   },
   {
     "OXY2DEV/bars-N-lines.nvim",
