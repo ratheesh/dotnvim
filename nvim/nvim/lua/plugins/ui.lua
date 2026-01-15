@@ -102,8 +102,11 @@ return {
   },
   {
     "code-biscuits/nvim-biscuits",
-    enabled = true,
+    enabled = false,
     event = { 'VeryLazy' },
+    pendencies = {
+    'nvim-treesitter/nvim-treesitter',
+    },
     config = function()
       require('nvim-biscuits').setup({
         cursor_line_only = true,
