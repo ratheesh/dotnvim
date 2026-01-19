@@ -182,14 +182,16 @@ function M.config()
       completion    = cmp.config.window.bordered({
         side_padding = 0,
         winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel",
-        -- winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None',
-        -- scrollbar = false,
         scrollbar = {
           thumb_char = "│",
-          position = "edge",
+          position   = "edge",
         },
+        border = "rounded",
       }),
-      documentation = cmp.config.window.bordered({ winhighlight = 'Normal:CmpDocNormal' }),
+      documentation = cmp.config.window.bordered({
+        winhighlight = 'Normal:CmpDocNormal',
+        border       = "rounded"
+      }),
     },
     view = {
       entries = {
