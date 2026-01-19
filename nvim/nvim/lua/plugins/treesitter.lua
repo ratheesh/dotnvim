@@ -276,6 +276,10 @@ return {
     "mawkler/demicolon.nvim",
     enabled = true,
     event = "VeryLazy",
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    },
     opts = {},
   },
 }
