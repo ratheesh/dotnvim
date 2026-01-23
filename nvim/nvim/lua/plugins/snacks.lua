@@ -75,6 +75,15 @@ return {
       { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
       -- { "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
     },
+  },
+  {
+    '2kabhishek/seeker.nvim',
+    dependencies = { 'folke/snacks.nvim' },
+    cmd = { 'Seeker' },
+    keys = {
+      { '<leader>/', ':Seeker grep<CR>', desc = 'Seek Grep' },
+    },
+    opts = { }, -- Required unless you call seeker.setup() manually, add your configs here
   }
 }
 
