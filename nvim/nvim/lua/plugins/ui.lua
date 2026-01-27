@@ -140,7 +140,7 @@ return {
           window = {
             border    = "none",
             x_padding = 3,
-            y_padding = 1,
+            y_padding = 3,
           },
         },
       })
@@ -417,7 +417,7 @@ return {
       maxkeys    = 5,
       -- show_count = true,
       -- excluded_modes = { 'i', 'c' },
-      position   = "top-right",
+      position   = "bottom-right",
       winopts    = {
         focusable = false,
         relative  = "editor",
