@@ -403,6 +403,8 @@ cmp.setup.cmdline(":", {
   matching = { disallow_symbol_nonprefix_matching = false },
 })
 
+  cmp.setup.filetype("namu_prompt", { enabled = false })
+  cmp.setup.filetype("namu_sidebar", { enabled = false })
 end
 
 return M
