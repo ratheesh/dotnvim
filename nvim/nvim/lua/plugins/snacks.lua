@@ -62,6 +62,7 @@ return {
       { "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
       { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent Files" },
       { "<leader>fR", function() Snacks.picker.resume() end, desc = "Resume" },
+      { "<leader>ft", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
       { "<leader>/", function() Snacks.picker.grep() end, desc = "Resume" },
 
       -- Search
