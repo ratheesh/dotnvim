@@ -9,7 +9,10 @@ return {
         "stylua",
         "shfmt",
         "clangd",
-        "lua-language-server"
+        "lua-language-server",
+        "neocmakelsp",
+        "bash-language-server",
+        "basedpyright",
         -- "flake8",
       },
    },
