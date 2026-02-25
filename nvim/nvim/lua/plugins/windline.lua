@@ -44,7 +44,7 @@ local hl_list = {
 	-- Git status
 	GitDiffAdded   = { 'GitAddedFg',   'GitInfoBg' },
 	GitDiffRemoved = { 'GitRemovedFg', 'GitInfoBg' },
-	GitDiffChanged = { 'GitChangedFg', 'GitInfoBg', 'bold' },
+	GitDiffChanged = { 'GitChangedFg', 'GitInfoBg' },
 
 -- spell right sep
 	PasteRightProjSep = { 'PasteModeBg', 'NormalBg' },
@@ -269,9 +269,9 @@ basic.git = {
 				{ sep.left_rounded, 'sep_left_project' },
 				{ git_comps.git_branch({icon = ' '}), 'project' },
 				{ sep.right_rounded, 'sep_right_project' },
-				{ git_comps.diff_added({ format   = '  %s', show_zero = false }), 'added'   },
-				{ git_comps.diff_changed({ format = ' 󰜥 %s', show_zero = false }), 'changed' },
-				{ git_comps.diff_removed({ format = '  %s', show_zero = false }), 'removed' },
+				{ git_comps.diff_added({ format   = '  %s', show_zero = false }), 'added'   },
+				{ git_comps.diff_changed({ format = ' %s', show_zero = false }), 'changed' },
+				{ git_comps.diff_removed({ format = '  %s', show_zero = false }), 'removed' },
 	 			{ sep.right_rounded, 'right_sep_git' },
 				{ '─', hl_list.StatusLine },
 			}
