@@ -25,10 +25,10 @@ function M.config()
       separator = {left = ' ', right=''},
 
       diagnostics = {
-        [vim.diagnostic.severity.ERROR] = {enabled = true},
+        [vim.diagnostic.severity.ERROR] = {enabled = false},
         [vim.diagnostic.severity.WARN]  = {enabled = false},
         [vim.diagnostic.severity.INFO]  = {enabled = false},
-        [vim.diagnostic.severity.HINT]  = {enabled = true},
+        [vim.diagnostic.severity.HINT]  = {enabled = false},
       },
     },
     insert_at_end           = false,
