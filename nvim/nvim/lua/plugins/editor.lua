@@ -244,4 +244,21 @@ return {
       event   = "VeryLazy",
       opts    = {}
   },
+  {
+    "leblocks/toggle.nvim",
+    keys = { '+', '-' },
+    config = function()
+      require('toggle').setup({
+        defaults = true,
+        keep_cursor_position = true,
+        mappings = {
+          { 'yes', 'no' },
+          { 'foo', 'bar', 'baz' },
+          { '<<', '>>' },
+        },
+        vim.keymap.set('n', '-', require('toggle').toggle, { desc = 'Toggle word' }),
+        vim.keymap.set('n', '+', require('toggle').toggle, { desc = 'Toggle word' })
+      })
+    end
+  },
 }
