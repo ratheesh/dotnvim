@@ -5,6 +5,8 @@ local M = {
   keys = { '-', '+' }
 }
 
+M.enabled = false
+
 function M.config()
   local options = { noremap = true, silent = true }
   vim.api.nvim_set_keymap("n", "+", "<Plug>CycleNext", options)
