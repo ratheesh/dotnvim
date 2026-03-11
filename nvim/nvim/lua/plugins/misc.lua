@@ -23,6 +23,16 @@ return {
       require("precognition").setup({})
     end
   },
+  {
+    "Lachignol/time-bomb.nvim",
+    cmd = { 'TimeBomb' },
+    config = function()
+      require("time-bomb").setup({
+        enable_default_keymaps = true,
+        timer_color = "lime",
+      })
+    end,
+  },
 }
 
 -- End of File
