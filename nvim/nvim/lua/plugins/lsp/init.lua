@@ -53,7 +53,7 @@ return {
       },
       {
           'oribarilan/lensline.nvim',
-          enabled = true,
+          enabled = false,
           event = 'LspAttach',
           config = function()
             require("lensline").setup({
