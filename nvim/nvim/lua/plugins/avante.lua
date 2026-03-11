@@ -2,6 +2,7 @@ return {
   {
     "yetone/avante.nvim",
     enabled = false,
+
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = vim.fn.has("win32") ~= 0
     and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
@@ -13,22 +14,14 @@ return {
       -- this file can contain specific instructions for your project
       instructions_file = "avante.md",
       -- for example
-      provider = "copilot",
+      provider = "gemini",
       providers = {
-        copilot = {
-          model = "gpt-4o",
-          endpoint = "https://api.githubcopilot.com",
-          allow_insecure = false,
-          timeout = 10 * 60 * 1000,
-          -- temperature = 1,
-          extra_request_body = { -- Other request parameters go here
-              temperature = 0.8, -- Set your desired temperature value
-              max_tokens = 1024,
-          },
-          max_completion_tokens = 1000000,
-          reasoning_effort = "high",
+        gemini = {
+          model = "gemini-2.0-flash",
+          api_key = os.getenv("GEMINI_API_KEY"),
         },
       },
+
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
