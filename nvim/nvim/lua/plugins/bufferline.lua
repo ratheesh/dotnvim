@@ -6,6 +6,7 @@ return {
   config = function()
     require('bufferline').setup({
       options = {
+        padding = 0,
         always_show_bufferline = true,
         mode      = 'buffers',
         -- numbers   = 'ordinal',
@@ -16,7 +17,7 @@ return {
           -- local icons = {"1", "2", "3", "4", "5", "6", "7", "8", "", ""}
           local icons={ "𝟏", "𝟐", "𝟑", "𝟒", "𝟓", "𝟔", "𝟕", "𝟖", "𝟗", "𝟎" }
 
-          return icons[tmpid] --         
+          return icons[tmpid] --        
         end,
         indicator = {
           -- icon = '▌',
@@ -172,15 +173,17 @@ return {
     map('n', '<Leader>l', '<Cmd>BufferLineCycleNext<CR>',    { desc = 'Goto Next Buffer'     })
 
     -- Jump to buffer index
-    map('n', '<Leader>1', '<Cmd>BufferLineGoToBuffer 1<CR>', { desc = 'Goto Buffer 1'        })
-    map('n', '<Leader>2', '<Cmd>BufferLineGoToBuffer 2<CR>', { desc = 'Goto Buffer 2'        })
-    map('n', '<Leader>3', '<Cmd>BufferLineGoToBuffer 3<CR>', { desc = 'Goto Buffer 3'        })
-    map('n', '<Leader>4', '<Cmd>BufferLineGoToBuffer 4<CR>', { desc = 'Goto Buffer 4'        })
-    map('n', '<Leader>5', '<Cmd>BufferLineGoToBuffer 5<CR>', { desc = 'Goto Buffer 5'        })
-    map('n', '<Leader>6', '<Cmd>BufferLineGoToBuffer 6<CR>', { desc = 'Goto Buffer 6'        })
-    map('n', '<Leader>7', '<Cmd>BufferLineGoToBuffer 7<CR>', { desc = 'Goto Buffer 7'        })
-    map('n', '<Leader>8', '<Cmd>BufferLineGoToBuffer 8<CR>', { desc = 'Goto Buffer 8'        })
-    map('n', '<Leader>9', '<Cmd>BufferLineGoToBuffer 9<CR>', { desc = 'Goto Buffer 9'        })
+    -- nnoremap <silent><leader>1 <cmd>lua require("bufferline").go_to(1, true)<cr>
+
+    map('n', '<Leader>1', '<Cmd>lua require("bufferline").go_to(1, true)<CR>',  { desc = 'Goto Buffer 1' })
+    map('n', '<Leader>2', '<Cmd>lua require("bufferline").go_to(2, true)<CR>',  { desc = 'Goto Buffer 2' })
+    map('n', '<Leader>3', '<Cmd>lua require("bufferline").go_to(3, true)<CR>',  { desc = 'Goto Buffer 3' })
+    map('n', '<Leader>4', '<Cmd>lua require("bufferline").go_to(4, true)<CR>',  { desc = 'Goto Buffer 4' })
+    map('n', '<Leader>5', '<Cmd>lua require("bufferline").go_to(5, true)<CR>',  { desc = 'Goto Buffer 5' })
+    map('n', '<Leader>6', '<Cmd>lua require("bufferline").go_to(6, true)<CR>',  { desc = 'Goto Buffer 6' })
+    map('n', '<Leader>7', '<Cmd>lua require("bufferline").go_to(7, true)<CR>',  { desc = 'Goto Buffer 7' })
+    map('n', '<Leader>8', '<Cmd>lua require("bufferline").go_to(8, true)<CR>',  { desc = 'Goto Buffer 8' })
+    map('n', '<Leader>9', '<Cmd>lua require("bufferline").go_to(9, true)<CR>',  { desc = 'Goto Buffer 9' })
 
     map('n', '<A-p>',    '<Cmd>BufferLineTogglePin<CR>',     { desc = 'Pin Buffer'           })
     map('n', '<A-d>',    '<Cmd>bdelete<CR>',                 { desc = 'Delete Current Buf'   })
