@@ -220,8 +220,8 @@ return {
     "nvim-treesitter/nvim-treesitter-context",
     event = { "BufReadPost", "BufWritePost", "BufNewFile" },
     opts = {
-      max_lines = 0,
-      multiline_threshold = 2,
+      max_lines = 1,
+      multiline_threshold = 1,
       enable       = true,
       line_numbers = true,
       mode         = 'topline',
