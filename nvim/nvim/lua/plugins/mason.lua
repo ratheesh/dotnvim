@@ -13,6 +13,8 @@ return {
         "neocmakelsp",
         "bash-language-server",
         "basedpyright",
+        "docker-compose-language-service",
+        "dockerfile-language-server"
         -- "flake8",
       },
    },
