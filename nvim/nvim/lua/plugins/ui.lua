@@ -405,29 +405,35 @@ return {
     end
   },
   {
-    "nvzone/showkeys",
+    "ratheesh/showkeys",
     enabled = true,
     event   = "VeryLazy",
     cmd     = "ShowkeysToggle",
-    init    = function()
-        require("showkeys").open() -- Enable on startup
-    end,
-    opts = {
-      -- timeout    = 1,
-      maxkeys    = 5,
-      -- show_count = true,
-      -- excluded_modes = { 'i', 'c' },
-      position   = "bottom-right",
-      winopts    = {
+    opts    = {
+      timeout        = 1,
+      maxkeys        = 5,
+      show_count     = false,
+      excluded_modes = { 'i', 'c' },
+      position       = "top-right",
+      winopts        = {
         focusable = false,
         relative  = "editor",
         style     = "minimal",
         border    = "rounded",
         height    = 1,
-        row       = 3,
-        col       = 0,
+        row       = 5,
+        col       = -1,
       },
     },
+    config  = function(_, opts)
+      local showkeys = require("showkeys")
+      showkeys.setup(opts)
+
+      vim.defer_fn(function()
+        showkeys.open()
+      end, 120)
+
+    end,
   },
   {
     "sphamba/smear-cursor.nvim",
