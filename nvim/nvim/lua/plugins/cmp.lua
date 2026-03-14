@@ -1,9 +1,9 @@
 local M = {
   "hrsh7th/nvim-cmp",
   enabled = true,
-  pin = false,
-  lazy = true,
-  event = { "InsertEnter", "CmdlineEnter" },
+  pin     = false,
+  lazy    = true,
+  event   = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
     'rafamadriz/friendly-snippets',
     'garymjr/nvim-snippets',
@@ -60,15 +60,6 @@ local M = {
           silent = true,
           mode = { "i", "s" },
         },
-        --[[ {
-          "<tab>",
-          function()
-            return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
-          end,
-          expr = true, silent = true, mode = "i",
-        },
-        { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
-        { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } }, ]]
       },
     },
     "hrsh7th/cmp-path",
@@ -122,53 +113,7 @@ function M.config()
     Variable      = ' ' , color         = ' ' ,
   }
 
-    --[[     kinds = {
-    Array = " ",
-    Boolean = " ",
-    Class = " ",
-    Color = " ",
-    Constant = " ",
-    Constructor = " ",
-    Enum = " ",
-    EnumMember = " ",
-    Event = " ",
-    Field = " ",
-    File = " ",
-    Folder = " ",
-    Function = " ",
-    Interface = " ",
-    Key = " ",
-    Keyword = " ",
-    Method = " ",
-    Module = " ",
-    Namespace = " ",
-    Null = "ﳠ ",
-    Number = " ",
-    Object = " ",
-    Operator = " ",
-    Package = " ",
-    Property = " ",
-    Reference = " ",
-    Snippet = " ",
-    String = " ",
-    Struct = " ",
-    Text = " ",
-    TypeParameter = " ",
-    Unit = " ",
-    Value = " ",
-    Variable = " ",
-    }, ]]
-    --[[ Text     = '',  Method = '', Function  = '', Constructor = '', Field         = 'ﰠ',
-    Variable = '',  Class  = 'ﴯ', Interface = '', Module      = '', Property      = 'ﰠ',
-    Unit     = '塞', Value  = '', Enum      = '', Keyword     = '', Snippet       = '',
-    Color    = '',  File   = '', Reference = '', Folder      = '', EnumMember    = '',
-    Constant = '',  Struct = 'פּ', Event     = '', Operator    = '', TypeParameter = '', ]]
-  -- }
-
   cmp.setup({
-    --[[ completion = {
-    completeopt = "menu,menuone,noinsert",
-    }, ]]
     snippet = {
       expand = function(args) require('luasnip').lsp_expand(args.body) end,
     },
@@ -251,29 +196,35 @@ function M.config()
     },
   },
   formatting = {
-    -- fields = { 'kind', 'abbr'},
-    fields = { 'kind', 'abbr'},
+    fields = { "kind", "abbr", "menu" },
 
     format = function(entry, item)
       local label = item.abbr
       local highlights_info = require("colorful-menu").cmp_highlights(entry)
       local color_item = require("nvim-highlight-colors").format(entry, { kind = item.kind })
-      local truncated_label = vim.fn.strcharpart(label, 0, 50)
 
+      local truncated_label = vim.fn.strcharpart(label, 0, 50)
       if truncated_label ~= label then
-        item.abbr = truncated_label .. '…'
+        item.abbr = truncated_label .. "…"
       end
 
-      -- local icon = icons[item.kind] or ''
       local icon, _ = require("mini.icons").get("lsp", item.kind)
       if icon ~= nil then
         item.kind = icon
       else
-        icon = icons[item.kind] or ''
+        icon = icons[item.kind] or ""
       end
 
       icon = " " .. icon .. " "
-      color_item.menu = "   (" .. item.kind .. ")"
+
+      -- set menu source label
+      item.menu = ({
+        nvim_lsp = "[LSP ]",
+        buffer   = "[BUF ]",
+        path     = "[PATH]",
+        luasnip  = "[SNIP]",
+      })[entry.source.name] or ""
+
       color_item.kind = icon
 
       item.kind_hl_group = color_item.abbr_hl_group
@@ -286,6 +237,19 @@ function M.config()
 
       return item
     end,
+  },
+  sorting = {
+    priority_weight = 2,
+    comparators = {
+      cmp.config.compare.offset,
+      cmp.config.compare.exact,
+      cmp.config.compare.score,
+      cmp.config.compare.recently_used,
+      cmp.config.compare.kind,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+      cmp.config.compare.order,
+    },
   },
   mapping = {
     ['<C-n>']     = mapping.select_next_item({ behavior = types.cmp.SelectBehavior.Insert }),
