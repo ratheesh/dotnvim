@@ -21,9 +21,9 @@ return {
           })
         end,
       },
-
       {
         "Chaitanyabsprip/fastaction.nvim",
+        enabled = false,
         opts = {},
         keys = {
           {
@@ -33,6 +33,19 @@ return {
           },
         },
       },
+      {
+        "rachartier/tiny-code-action.nvim",
+        enabled = true,
+        event = "LspAttach",
+        dependencies = {
+          {"nvim-lua/plenary.nvim"},
+          { "folke/snacks.nvim", opts = { terminal = {}, } }
+        },
+        opts = {},
+        vim.keymap.set({ "n", "x" }, "<leader>ca", function()
+          require("tiny-code-action").code_action()
+        end, { noremap = true, silent = true })
+      }
     },
 
     config = function()
