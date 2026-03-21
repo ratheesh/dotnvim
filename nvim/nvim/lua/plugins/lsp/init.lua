@@ -13,6 +13,7 @@ return {
 
       {
         "rachartier/tiny-inline-diagnostic.nvim",
+        enabled = false,
         event = "VeryLazy",
         config = function()
           require("tiny-inline-diagnostic").setup({
@@ -39,11 +40,11 @@ return {
       ----------------------------------------------------------------
       -- Diagnostics
       ----------------------------------------------------------------
+      ---
 
       vim.diagnostic.config({
-        underline = true,
-        update_in_insert = false,
-        severity_sort = true,
+        virtual_text  = { current_line = true },
+        virtual_lines = false,
 
         signs = {
           text = {
@@ -53,7 +54,40 @@ return {
             [vim.diagnostic.severity.HINT]  = "󰧞",
           },
         },
+        underline        = true,
+        update_in_insert = false,
+        severity_sort    = true,
       })
+
+      vim.keymap.set("n", "<f4>", function()
+        local cfg = vim.diagnostic.config()
+
+        if cfg.virtual_lines then
+          vim.diagnostic.config({
+            virtual_lines = false,
+            virtual_text = {
+              current_line = true,
+              spacing      = 2,
+              prefix       = "●",
+            },
+            underline        = true,
+            update_in_insert = false,
+            severity_sort    = true,
+          })
+        else
+          vim.diagnostic.config({
+            virtual_lines = {
+              current_line = true,
+              spacing      = 2,
+              prefix       = "●",
+            },
+            virtual_text     = false,
+            underline        = true,
+            update_in_insert = false,
+            severity_sort    = true,
+          })
+        end
+      end, { desc = "Toggle diagnostic style" })
 
       ----------------------------------------------------------------
       -- Capabilities
