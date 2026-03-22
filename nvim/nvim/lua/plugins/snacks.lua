@@ -3,7 +3,7 @@ return {
   {
     "folke/snacks.nvim",
     enabled = true,
-    event   = "VeryLazy",
+    lazy = false,
     opts    = {
       bigfile = { enabled = true },
       notifier = { enabled = true, timeout = 2000 },
