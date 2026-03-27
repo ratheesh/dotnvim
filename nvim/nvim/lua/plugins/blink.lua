@@ -3,7 +3,7 @@ return {
     "saghen/blink.cmp",
     enabled = false,
     version = '1.*',
-    event = "VeryLazy",
+    event = { "InsertEnter", "CmdlineEnter" },
 
     dependencies = {
       "rafamadriz/friendly-snippets",
@@ -13,7 +13,7 @@ return {
       {
         "fang2hou/blink-copilot",
         opts = {
-          max_completions = 1,
+          max_completions = 3,
           max_attempts = 2,
         },
       },
@@ -183,21 +183,14 @@ return {
       ------------------------------------------------
 
       opts.completion.trigger = {
-
         show_on_keyword = true,
-        show_on_backspace = true,
-        show_on_backspace_in_keyword = true,
-        show_on_backspace_after_accept = true,
-        show_on_backspace_after_insert_enter = true,
         show_on_trigger_character = true,
-        show_on_insert = true,
       }
 
       opts.completion.list = {
 
         selection = {
           preselect = false,
-          auto_insert = true,
           auto_insert = false,
         },
 
@@ -279,8 +272,6 @@ return {
           function(cmp)
             if cmp.snippet_active() then
               return cmp.snippet_forward()
-            else
-              return cmp.select_next()
             end
           end,
           "select_next",
@@ -289,13 +280,29 @@ return {
 
         ["<S-Tab>"] = {
           function(cmp)
-            if cmp.snippet_backward() then
+            if cmp.snippet_active() then
               return cmp.snippet_backward()
-            else
-              return cmp.select_prev()
             end
           end,
           "select_prev",
+          "fallback",
+        },
+
+        ["<C-l>"] = {
+          function(cmp)
+            if cmp.snippet_active() then
+              return cmp.snippet_forward()
+            end
+          end,
+          "fallback",
+        },
+
+        ["<C-h>"] = {
+          function(cmp)
+            if cmp.snippet_active() then
+              return cmp.snippet_backward()
+            end
+          end,
           "fallback",
         },
 

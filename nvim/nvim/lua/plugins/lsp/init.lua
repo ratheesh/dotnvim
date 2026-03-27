@@ -6,8 +6,8 @@ return {
     event = { "BufReadPre", "BufNewFile" },
 
     dependencies = {
-      "mason-core/mason.nvim",
-      "mason-core/mason-lspconfig.nvim",
+      "mason-org/mason.nvim",
+      "mason-org/mason-lspconfig.nvim",
 
       { "ray-x/lsp_signature.nvim", event = "InsertEnter" },
 
@@ -38,13 +38,20 @@ return {
         enabled = true,
         event = "LspAttach",
         dependencies = {
-          {"nvim-lua/plenary.nvim"},
-          { "folke/snacks.nvim", opts = { terminal = {}, } }
+          { "nvim-lua/plenary.nvim" },
+          { "folke/snacks.nvim", opts = { terminal = {} } },
         },
         opts = {},
-        vim.keymap.set({ "n", "x" }, "<leader>ca", function()
-          require("tiny-code-action").code_action()
-        end, { noremap = true, silent = true })
+        keys = {
+          {
+            "<leader>ca",
+            function() require("tiny-code-action").code_action() end,
+            mode = { "n", "x" },
+            noremap = true,
+            silent = true,
+            desc = "Code Actions",
+          },
+        },
       }
     },
 
@@ -72,7 +79,7 @@ return {
         severity_sort    = true,
       })
 
-      vim.keymap.set("n", "<f4>", function()
+      vim.keymap.set("n", "<F4>", function()
         local cfg = vim.diagnostic.config()
 
         if cfg.virtual_lines then
@@ -91,8 +98,6 @@ return {
           vim.diagnostic.config({
             virtual_lines = {
               current_line = true,
-              spacing      = 2,
-              prefix       = "●",
             },
             virtual_text     = false,
             underline        = true,
@@ -169,15 +174,6 @@ return {
           "--pch-storage=memory",
         },
 
-        capabilities = {
-          textDocument = {
-            completion = {
-              completionItem = {
-                snippetSupport = true,
-              },
-            },
-          },
-        },
       })
 
       ----------------------------------------------------------------
@@ -187,7 +183,7 @@ return {
       vim.lsp.config("lua_ls", {
 
         root_dir = function(bufnr, on_dir)
-          if not vim.fn.bufname(bufnr):match("%.txt$") then
+          if vim.fn.bufname(bufnr) == "" then
             on_dir(vim.fn.getcwd())
           end
         end,
@@ -223,6 +219,8 @@ return {
 
       vim.lsp.config("pyright", {})
       vim.lsp.config("rust_analyzer", {})
+
+      vim.lsp.enable({ "pyright", "rust_analyzer" })
 
     end,
   }

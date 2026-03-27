@@ -53,11 +53,6 @@ function M.config()
 
     -- preselect = cmp.PreselectMode.None,
 
-    confirm_opts = {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select   = false,
-    },
-
     completion = {
       completeopt = "menu,menuone,noinsert,noselect",
     },
@@ -110,6 +105,15 @@ function M.config()
 
       ["<C-Space>"] = cmp.mapping.complete(),
 
+      ["<BS>"] = cmp.mapping(function(fallback)
+        fallback()
+        vim.schedule(function()
+          if has_words_before() then
+            cmp.complete()
+          end
+        end)
+      end, { "i" }),
+
       ["<CR>"] = cmp.mapping(function(fallback)
         if cmp.visible() and cmp.get_selected_entry() then
           cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
@@ -141,9 +145,7 @@ function M.config()
       end, { "i", "s" }),
 
       ["<C-l>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item()
-        elseif luasnip.expand_or_jumpable() then
+        if luasnip.expand_or_jumpable() then
           luasnip.expand_or_jump()
         else
           fallback()
@@ -151,9 +153,7 @@ function M.config()
       end, { "i", "s" }),
 
       ["<C-h>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item()
-        elseif luasnip.jumpable(-1) then
+        if luasnip.jumpable(-1) then
           luasnip.jump(-1)
         else
           fallback()
@@ -170,7 +170,6 @@ function M.config()
       { name = "copilot" },
       { name = "nvim_lsp" },
       { name = "luasnip" },
-      { name = 'conventionalcommits' },
       { name = 'nerdfonts' },
 
     }, {
@@ -220,7 +219,7 @@ function M.config()
           copilot  = "[ AI ]",
         }
 
-        kind.menu = string.format("%s", source_map[entry.source.name] or "?")
+        kind.menu = source_map[entry.source.name] or ("[" .. entry.source.name .. "]")
 
         --[[ local highlights_info = require("colorful-menu").cmp_highlights(entry)
         if highlights_info ~= nil then
@@ -263,7 +262,7 @@ function M.config()
 
   local function is_big(buf)
     local max = 100 * 1024
-    local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+    local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(buf))
     return ok and stats and stats.size > max
   end
 
@@ -313,7 +312,7 @@ function M.config()
     }, {
         { name = "cmdline", priority = 1000 },
         { name = "cmdline_history", priority = 750 },
-        { name = "nvim-lsp_document_symbol", priority = 500 },
+        { name = "nvim_lsp_document_symbol", priority = 500 },
         {
           name = "spell",
           priority = 250,
@@ -326,10 +325,24 @@ function M.config()
           },
         },
       }),
-
-    cmp.setup.filetype("namu_prompt", { enabled = false }),
-    cmp.setup.filetype("namu_sidebar", { enabled = false })
   })
+
+  --------------------------------------------------
+  -- filetype overrides
+  --------------------------------------------------
+
+  cmp.setup.filetype("gitcommit", {
+    sources = cmp.config.sources({
+      { name = "conventionalcommits" },
+      { name = "nvim_lsp" },
+      { name = "luasnip" },
+    }, {
+      { name = "buffer" },
+    }),
+  })
+
+  cmp.setup.filetype("namu_prompt", { enabled = false })
+  cmp.setup.filetype("namu_sidebar", { enabled = false })
 
 end
 
