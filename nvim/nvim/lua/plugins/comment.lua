@@ -1,7 +1,7 @@
 local M = {
   'numToStr/Comment.nvim',
   event = 'VeryLazy',
-  keys = { 'gc', 'gcc', 'gb', 'gbc', '<A-;>' },
+  keys = { 'gc', 'gcc', 'gb', 'gbc', '<M-;>', '<M-:>' },
 }
 
 function M.config()
@@ -34,5 +34,9 @@ function M.config()
     pre_hook = nil,
     post_hook = nil,
   })
+
+  vim.keymap.set('n', '<M-:>', function()
+    require('Comment.api').insert.blockwise.eol()
+  end, { desc = 'Block comment at end of line' })
 end
 return M
