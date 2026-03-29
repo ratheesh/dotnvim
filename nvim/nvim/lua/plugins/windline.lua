@@ -76,8 +76,8 @@ basic.vi_mode = {
 		ReplaceBefore = { 'ModeReplaceBg', 'NormalBg' , 'bold' },
 		CommandBefore = { 'ModeCommandBg', 'NormalBg' , 'bold' },
 		NormalAfter   = { 'FileNameBg'   , 'NormalBg' , 'bold' },
-		InsertAfter   = { 'FileNameBg'   , 'ModeInsertBg' , 'bold' },
-		VisualAfter   = { 'FileNameBg'   , 'ModeVisualBg' , 'bold' },
+		InsertAfter   = { 'FileNameBg'   , 'ModeInsertBg' , 'bold'  },
+		VisualAfter   = { 'FileNameBg'   , 'ModeVisualBg' , 'bold'  },
 		ReplaceAfter  = { 'FileNameBg'   , 'ModeReplaceBg' , 'bold' },
 		CommandAfter  = { 'FileNameBg'   , 'ModeCommandBg' , 'bold' },
 	},
@@ -102,8 +102,8 @@ basic.vi_mode = {
 
 basic.mode_rightsep = {
 	hl_colors = {
-		default  			= { 'FileNameFg'    , 'FileNameBg'    },
-		sep_left 			= { 'ProjectNameBg' , 'FileNameBg'    },
+		default             = { 'FileNameFg'    , 'FileNameBg'    },
+		sep_left            = { 'ProjectNameBg' , 'FileNameBg'    },
 		FileNormalAfter     = { 'FileNameBg'    , 'ModeNormalBg'  },
 		FileInsertAfter     = { 'FileNameBg'    , 'ModeInsertBg'  },
 		FileVisualAfter     = { 'FileNameBg'    , 'ModeVisualBg'  },
@@ -119,8 +119,8 @@ basic.mode_rightsep = {
 		ProjectVisualAfter  = { 'ProjectNameBg' , 'ModeVisualBg'  },
 		ProjectReplaceAfter = { 'ProjectNameBg' , 'ModeReplaceBg' },
 		ProjectCommandAfter = { 'ProjectNameBg' , 'ModeCommandBg' },
-		NormalAfter         = { 'ModeNormalBg'  , 'NormalBg' 	  },
-		InsertAfter         = { 'ModeInsertBg'  , 'NormalBg' 	  },
+		NormalAfter         = { 'ModeNormalBg'  , 'NormalBg' 	    },
+		InsertAfter         = { 'ModeInsertBg'  , 'NormalBg' 	    },
 		VisualAfter         = { 'ModeVisualBg'  , 'NormalBg'   	  },
 		ReplaceAfter        = { 'ModeReplaceBg' , 'NormalBg'  	  },
 		CommandAfter        = { 'ModeCommandBg' , 'NormalBg'  	  },
@@ -264,13 +264,13 @@ basic.git = {
 	text = function(bufnr)
 		if git_comps.is_git(bufnr) then
 			return {
-				--      ◉ 🞊 ● 󱘹   󰜥
+				--   󰙧    ◉  🞊 ● 󱘹   󰜥 󰐖 ▣ 󰍵
 				-- { '─', hl_list.StatusLine },
 				{ sep.left_rounded, 'sep_left_project' },
 				{ git_comps.git_branch({icon = ' '}), 'project' },
 				{ sep.right_rounded, 'sep_right_project' },
 				{ git_comps.diff_added({ format   = '  %s', show_zero = false }), 'added'   },
-				{ git_comps.diff_changed({ format = ' %s', show_zero = false }), 'changed' },
+				{ git_comps.diff_changed({ format = ' %s', show_zero = false  }), 'changed' },
 				{ git_comps.diff_removed({ format = '  %s', show_zero = false }), 'removed' },
 	 			{ sep.right_rounded, 'right_sep_git' },
 				{ '─', hl_list.StatusLine },
@@ -287,11 +287,11 @@ basic.git = {
 basic.lsp_diagnos = {
 	name = 'diagnostic',
 	hl_colors = {
-		red    = { 'LSPDiagErrFg'  , 'FileNameBg' },
-		yellow = { 'LSPDiagWarnFg' , 'FileNameBg' },
-		blue   = { 'LSPDiagHintFg' , 'FileNameBg' },
-		left_sep  = { 'FileNameBg',   'ActiveBg' },
-		right_sep = { 'FileNameBg',   'ActiveBg' },
+		red       = { 'LSPDiagErrFg'  , 'FileNameBg' },
+		yellow    = { 'LSPDiagWarnFg' , 'FileNameBg' },
+		blue      = { 'LSPDiagHintFg' , 'FileNameBg' },
+		left_sep  = { 'FileNameBg',   'ActiveBg'     },
+		right_sep = { 'FileNameBg',   'ActiveBg'     },
 	},
 	text = function(bufnr)
 		if lsp_comps.check_lsp(bufnr) then
