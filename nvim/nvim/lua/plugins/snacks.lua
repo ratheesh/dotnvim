@@ -44,7 +44,11 @@ return {
     keys = {
       -- File management
       { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
-      { "<leader>ff", function() Snacks.picker.files() end, desc = "Files" },
+      { "<leader>ff", function()
+        local buf_dir = vim.fn.expand("%:p:h")
+        local git = vim.fs.find(".git", { path = buf_dir, upward = true })[1]
+        Snacks.picker.files({ cwd = git and vim.fs.dirname(git) or buf_dir })
+      end, desc = "Files" },
       { "<leader>fo", function()
         Snacks.picker.smart(
           {
@@ -63,7 +67,11 @@ return {
       { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent Files" },
       { "<leader>fR", function() Snacks.picker.resume() end, desc = "Resume" },
       { "<leader>ft", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
-      { "<leader>/", function() Snacks.picker.grep() end, desc = "Resume" },
+      { "<leader>/", function()
+        local buf_dir = vim.fn.expand("%:p:h")
+        local git = vim.fs.find(".git", { path = buf_dir, upward = true })[1]
+        Snacks.picker.grep({ cwd = git and vim.fs.dirname(git) or buf_dir })
+      end, desc = "Grep" },
 
       -- Search
       { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
@@ -71,10 +79,14 @@ return {
 
       -- LSP
       { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
+      { "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
       { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
       { "gI", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
       { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
-      -- { "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
+      { "gai", function() Snacks.picker.lsp_incoming_calls() end, desc = "C[a]lls Incoming" },
+      { "gao", function() Snacks.picker.lsp_outgoing_calls() end, desc = "C[a]lls Outgoing" },
+      { "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
+      { "<leader>S", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
     },
   },
   {
