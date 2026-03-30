@@ -11,17 +11,6 @@ return {
   {
     "preservim/tagbar",
     cmd = { "Tagbar" },
-    config = function()
-
-    end
-  },
-  {
-    "tris203/precognition.nvim",
-    enabled = false,
-    event = "VeryLazy",
-    config = function()
-      require("precognition").setup({})
-    end
   },
   {
     "Lachignol/time-bomb.nvim",

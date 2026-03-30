@@ -85,7 +85,6 @@ return {
       { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
       { "gai", function() Snacks.picker.lsp_incoming_calls() end, desc = "C[a]lls Incoming" },
       { "gao", function() Snacks.picker.lsp_outgoing_calls() end, desc = "C[a]lls Outgoing" },
-      { "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
       { "<leader>S", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
     },
   },
@@ -93,10 +92,7 @@ return {
     '2kabhishek/seeker.nvim',
     dependencies = { 'folke/snacks.nvim' },
     cmd = { 'Seeker' },
-    keys = {
-      { '<leader>/', ':Seeker grep<CR>', desc = 'Seek Grep' },
-    },
-    opts = { }, -- Required unless you call seeker.setup() manually, add your configs here
+    opts = {},
   }
 }
 

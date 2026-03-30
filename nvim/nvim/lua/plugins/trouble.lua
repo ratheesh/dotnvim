@@ -1,7 +1,7 @@
 return {
 	"folke/trouble.nvim",
 	enabled = true,
-	cmd = { "Trouble", "Trouble" },
+	cmd = { "Trouble" },
 	opts = {
 		use_diagnostic_signs = true,
 		auto_open    = false,
@@ -30,8 +30,6 @@ return {
 	},
 	keys = {
 		{ "gR", "<cmd>Trouble lsp_references toggle<cr>", desc = "Toggle LSP References (Trouble)" },
-		{ "gd", "<cmd>Trouble lsp_declarations<cr>", desc = "LSP Definition (Trouble)" },
-		{ "gD", "<cmd>Trouble lsp_definitions<cr>", desc = "LSP Definition (Trouble)" },
 		{ "<F3>", "<cmd>Trouble diagnostics toggle<cr>", desc = "Toggle Trouble diagnostics" },
 		{
 			"[q",

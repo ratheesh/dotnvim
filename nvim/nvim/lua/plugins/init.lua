@@ -10,34 +10,6 @@ return {
   },
   { 'psliwka/vim-smoothie', keys = { '<c-u>', '<c-d>' }},
   {
-    "lukas-reineke/virt-column.nvim",
-    enabled = true,
-    event   = 'VeryLazy',
-    config = function ()
-      require("virt-column").setup({char = '▕', virtcolumn = '+1'})
-    end
-  },
-  {
-    'NvChad/nvim-colorizer.lua',
-    enabled=false,
-    event = 'VimEnter',
-    config = function ()
-      require('colorizer').setup({
-        filetypes = { "*" },
-        user_default_options = {
-          names = false,
-          tailwind = "both",
-          mode = "background"
-        }
-      })
-    end,
-  },
-  {
-    "mbbill/undotree",
-    enabled = false,
-    cmd = { "UndotreeShow", "UndotreeToggle", "UndotreeHide", "UndotreeFocus" },
-  },
-  {
     'echasnovski/mini.indentscope',
     event = 'LspAttach',
     config = function()
@@ -94,13 +66,10 @@ return {
     config = function()
       require('hover').setup {
         init = function()
-          -- Require providers
           require('hover.providers.lsp')
           require('hover.providers.man')
           require('hover.providers.gh')
           require('hover.providers.dictionary')
-          -- require('hover.providers.LspAttach')
-          -- require('hover.providers.css')
         end,
         preview_opts = {
           border = 'rounded',
@@ -111,17 +80,6 @@ return {
       vim.keymap.set("n", "gK", require("hover").hover_select, {desc = "hover.nvim (select)"})
       vim.keymap.set("n", "<C-p>", function() require("hover").hover_switch("previous") end, {desc = "hover.nvim (previous source)"})
       vim.keymap.set("n", "<C-n>", function() require("hover").hover_switch("next") end, {desc = "hover.nvim (next source)"})
-    end
-  },
-  {
-    'junegunn/vim-easy-align',
-    enabled = false,
-    event   = "VeryLazy",
-    config  = function ()
-      vim.cmd([[
-      xmap ga <Plug>(EasyAlign)
-      nmap ga <Plug>(EasyAlign)
-      ]])
     end
   },
   {
@@ -140,24 +98,5 @@ return {
       vim.b.table_mode_corner          = '+'
     end
   },
-  {
-    'antoyo/vim-licenses',
-    cmd = { 'Gplv2', 'Apache', 'Mit' },
-    config = function ()
-      vim.g.licenses_copyright_holders_name = 'Ratheesh <ratheeshreddy@gmail.com>'
-      vim.g.licenses_authors_name           = 'Ratheesh'
-      vim.g.licenses_default_commands       = { 'Gplv2', 'Apache', 'Mit' }
-    end
-  },
-  {
-    'IMOKURI/line-number-interval.nvim',
-    enabled = false,
-    event = 'BufReadPost',
-    config = function()
-      vim.g.line_number_interval_enable_at_startup=1
-      vim.g.line_number_interval=5
-      vim.cmd([[LineNumberIntervalEnable]])
-    end
-  }
 }
 -- End of File

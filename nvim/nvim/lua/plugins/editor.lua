@@ -5,29 +5,10 @@ return {
     event = "VeryLazy"
   },
   {
-    'altermo/ultimate-autopair.nvim',
-    enabled=false,
-    branch = "v0.6",
-    event={'InsertEnter', 'CmdlineEnter'},
-    config=function ()
-      require('ultimate-autopair').setup({
-        --Config goes here
-      })
-    end
-  },
-  {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
     config = true,
     opts = {},
-  },
-  {
-    'kylechui/nvim-surround',
-    event = 'VeryLazy',
-    keys = { n = { 'ds', 'cs' }, x = { 'S' } },
-    config = function ()
-      require('nvim-surround').setup()
-    end
   },
   {
     "XXiaoA/atone.nvim",
@@ -56,21 +37,6 @@ return {
     end
   },
   {
-    'ibhagwan/smartyank.nvim',
-    enabled = false,
-    event = "VeryLazy",
-    keys = { 'y', 'Y', 'd', 'D', 'x' },
-    config = function()
-      require('smartyank').setup ({
-        highlight = {
-          enabled = true,
-          higroup = "IncSearch",
-          timeout = 200,
-        },
-      })
-    end
-  },
-  {
     "nvimdev/hlsearch.nvim",
     enabled = true,
     event = "VeryLazy",
@@ -94,36 +60,22 @@ return {
         html = "<!-- %s -->",
         ini = "; %s",
         javascript = {
-          "// %s", -- default commentstring when no treesitter node matches
+          "// %s",
           "/* %s */",
-          call_expression = "// %s", -- specific commentstring for call_expression
+          call_expression = "// %s",
           jsx_attribute = "// %s",
           jsx_element = "{/* %s */}",
           jsx_fragment = "{/* %s */}",
           spread_element = "// %s",
           statement_block = "// %s",
         },
-        lua = { "-- %s", "--- %s" }, -- langs can have multiple commentstrings
+        lua = { "-- %s", "--- %s" },
         typescript = "// %s",
         vim = '" %s',
         vue = "<!-- %s -->",
         xml = "<!-- %s -->",
       },
     }
-  },
-  {
-      'ojroques/nvim-osc52',
-      enabled = true,
-      event = "VeryLazy",
-      init = function()
-          local copy = function()
-              if vim.v.event.operator == 'y' and vim.v.event.regname == '+' then
-                  require('osc52').copy_register('+')
-              end
-          end
-
-          -- vim.api.nvim_create_autocmd('TextYankPost', {callback = copy})
-      end
   },
   {
     {
@@ -137,75 +89,8 @@ return {
     },
   },
   {
-    "Goose97/timber.nvim",
-    enabled = false,
-    event = "VeryLazy",
-    config = function()
-      local opts = {
-        log_templates = {
-          default = {
-            c = [[printf("%s:%s():%d:===== %%log_target =====\n", __FILE__, __func__, __LINE__, %log_target);]],
-          },
-        },
-      }
-
-      require("timber").setup(opts)
-    end
-  },
-  {
     "aidancz/lfsp.nvim",
-    enabled = true,
-    event   = "VeryLazy",
-    config = function()
-      vim.keymap.set(
-        {"n", "x", "o"},
-        "<CR>",
-        function()
-          return
-          require("lf").expr({
-            direction = "next",
-            follow = false,
-          })
-        end,
-        {expr = true}
-      )
-      vim.keymap.set(
-        {"n", "x", "o"},
-        "<M>",
-        function()
-          return
-          require("lf").expr({
-            direction = "prev",
-            follow = false,
-          })
-        end,
-        {expr = true}
-      )
-      vim.keymap.set(
-        {"n", "x", "o"},
-        "<left>",
-        function()
-          return
-          require("sp").expr({
-            direction = "prev",
-            follow = false,
-          })
-        end,
-        {expr = true}
-      )
-      vim.keymap.set(
-        {"n", "x", "o"},
-        "<right>",
-        function()
-          return
-          require("sp").expr({
-            direction = "next",
-            follow = false,
-          })
-        end,
-        {expr = true}
-      )
-    end
+    enabled = false,
   },
   {
       "bassamsdata/namu.nvim",
@@ -215,7 +100,7 @@ return {
           require("namu").setup({
               namu_symbols = {
                   enable = true,
-                  options = {}, -- here you can configure namu
+                  options = {},
               },
               colorscheme = {
                   enable = false,
@@ -256,9 +141,9 @@ return {
           { 'foo', 'bar', 'baz' },
           { '<<', '>>' },
         },
-        vim.keymap.set('n', '-', require('toggle').toggle, { desc = 'Toggle word' }),
-        vim.keymap.set('n', '+', require('toggle').toggle, { desc = 'Toggle word' })
       })
+      vim.keymap.set('n', '-', require('toggle').toggle, { desc = 'Toggle word' })
+      vim.keymap.set('n', '+', require('toggle').toggle, { desc = 'Toggle word' })
     end
   },
 }
