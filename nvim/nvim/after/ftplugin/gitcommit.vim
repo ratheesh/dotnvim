@@ -9,7 +9,7 @@ setlocal expandtab      " Expand tabs in git commit mode
 setlocal scrolloff=0
 setlocal spell
 
-call setpos('.', [0, 1, 1, 0]) " set cursor position to starting on gitcommit buffers
+autocmd BufWinEnter <buffer> call setpos('.', [0, 1, 1, 0]) " set cursor position to line 1 on gitcommit buffers (runs after shada restore)
 execute "set colorcolumn=" . join(range(73,335), ',')
 
 autocmd BufNewFile,BufRead .stgit* set filetype=gitcommit

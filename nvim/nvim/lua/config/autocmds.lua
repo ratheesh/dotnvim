@@ -49,7 +49,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
     local exclude = { "gitcommit", "gitrebase" }
     local buf = event.buf
     if vim.tbl_contains(exclude, vim.bo[buf].filetype) then
-      pcall(vim.api.nvim_win_set_cursor, 0, {1, 1})
+      pcall(vim.api.nvim_win_set_cursor, 0, {1, 0})
       -- print("setting the cursor to beginning of the buffer")
       return
     end
