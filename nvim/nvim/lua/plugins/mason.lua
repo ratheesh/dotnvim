@@ -9,6 +9,8 @@ return {
         "stylua",
         "shfmt",
         "clangd",
+        "cspell-lsp",
+        "codespell",
         "lua-language-server",
         "neocmakelsp",
         "bash-language-server",
