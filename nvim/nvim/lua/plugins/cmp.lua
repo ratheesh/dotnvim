@@ -124,7 +124,7 @@ function M.config()
 
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
-          cmp.select_next_item()
+          cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
         elseif luasnip.expand_or_jumpable() then
           luasnip.expand_or_jump()
         elseif has_words_before() then
@@ -136,7 +136,7 @@ function M.config()
 
       ["<S-Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
-          cmp.select_prev_item()
+          cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
         elseif luasnip.jumpable(-1) then
           luasnip.jump(-1)
         else
@@ -166,15 +166,15 @@ function M.config()
     --------------------------------------------------
 
     sources = cmp.config.sources({
-      { name = "path" },
-      { name = "copilot" },
-      { name = "nvim_lsp" },
-      { name = "luasnip" },
-      { name = 'nerdfonts' },
+      { name = "copilot",   priority = 1000 },
+      { name = "path",      priority = 999  },
+      { name = "nvim_lsp",  priority = 998  },
+      { name = 'nerdfonts', priority = 997  },
+      { name = "luasnip",   priority = 996  },
 
     }, {
         {
-          name = 'buffer',
+          name = 'buffer', priority = 1000,
           option = {
             get_bufnrs = function()
               local bufs = {}
