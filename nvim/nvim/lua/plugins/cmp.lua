@@ -292,12 +292,14 @@ function M.config()
   --------------------------------------------------
 
   cmp.setup.cmdline({ "/", "?" }, {
-    mapping = cmp.mapping.preset.cmdline(),
-    view = cmdline_view,
-    sources = {
-      { name = "buffer", priority = 1000 },
-      { name = "cmdline_history", priority = 500 },
-    },
+    mapping    = cmp.mapping.preset.cmdline(),
+    view       = cmdline_view,
+    completion = { keyword_length = 1 },
+    sources    = cmp.config.sources({
+      { name = "buffer",          priority = 1000 },
+    }, {
+      { name = "cmdline_history", priority = 500  },
+    }),
   })
 
   --------------------------------------------------
@@ -305,26 +307,25 @@ function M.config()
   --------------------------------------------------
 
   cmp.setup.cmdline(":", {
-    mapping = cmp.mapping.preset.cmdline(),
-    view    = cmdline_view,
-    sources = cmp.config.sources({
-      { name = "path", priority = 2000 },
+    mapping    = cmp.mapping.preset.cmdline(),
+    view       = cmdline_view,
+    completion = { keyword_length = 1 },
+    sources    = cmp.config.sources({
+      { name = "path",    priority = 2000 },
+      { name = "cmdline", priority = 1000 },
     }, {
-        { name = "cmdline", priority = 1000 },
-        { name = "cmdline_history", priority = 750 },
-        { name = "nvim_lsp_document_symbol", priority = 500 },
-        {
-          name = "spell",
-          priority = 250,
-          option = {
-            keep_all_entries = false,
-            enable_in_context = function()
-              return true
-            end,
-            preselect_correct_word = true,
-          },
+      { name = "cmdline_history",           priority = 750 },
+      { name = "nvim_lsp_document_symbol",  priority = 500 },
+      {
+        name = "spell",
+        priority = 250,
+        option = {
+          keep_all_entries      = false,
+          enable_in_context     = function() return true end,
+          preselect_correct_word = true,
         },
-      }),
+      },
+    }),
   })
 
   --------------------------------------------------
