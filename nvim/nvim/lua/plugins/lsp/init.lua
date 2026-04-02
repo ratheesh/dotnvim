@@ -182,11 +182,7 @@ return {
 
       vim.lsp.config("lua_ls", {
 
-        root_dir = function(bufnr, on_dir)
-          if vim.fn.bufname(bufnr) == "" then
-            on_dir(vim.fn.getcwd())
-          end
-        end,
+        root_markers = { ".luarc.json", ".luarc.jsonc", ".git" },
 
         settings = {
 
@@ -220,7 +216,7 @@ return {
       vim.lsp.config("pyright", {})
       vim.lsp.config("rust_analyzer", {})
 
-      vim.lsp.enable({ "pyright", "rust_analyzer" })
+      vim.lsp.enable({ "clangd", "lua_ls", "pyright", "rust_analyzer" })
 
     end,
   }
