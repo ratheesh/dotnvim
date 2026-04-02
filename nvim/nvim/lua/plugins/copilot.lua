@@ -14,4 +14,12 @@ return {
       },
     },
   },
+  {
+    "zbirenbaum/copilot-cmp",
+    dependencies = { "zbirenbaum/copilot.lua" },
+    event = "BufReadPost",
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+  },
 }
