@@ -185,4 +185,26 @@ vim.api.nvim_create_autocmd('CmdlineLeave', {
   callback = function() vim.defer_fn(function() vim.opt.cmdheight = 0 end, 1) end,
 })
 
+-- Clear search highlight on cursor move; restore when using search keys (n/N/*/#/?//)
+local _search_key_pressed = false
+vim.on_key(function(char)
+  if vim.fn.mode() == 'n' then
+    if vim.tbl_contains({ 'n', 'N', '*', '#', '?', '/' }, vim.fn.keytrans(char)) then
+      _search_key_pressed = true
+    end
+  end
+end, vim.api.nvim_create_namespace('auto_hlsearch'))
+
+vim.api.nvim_create_autocmd('CursorMoved', {
+  group = augroup('auto_hlsearch'),
+  callback = function()
+    if _search_key_pressed then
+      _search_key_pressed = false
+      vim.opt.hlsearch = true
+    else
+      vim.opt.hlsearch = false
+    end
+  end,
+})
+
 -- End of File
