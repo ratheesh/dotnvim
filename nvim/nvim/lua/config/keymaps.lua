@@ -1,8 +1,8 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- Copyright (c) 2026 Ratheesh. All Rights Reserved.
+-- License: MiT
+
 -- Add any additional keymaps here
--- This file is automatically loaded by lazyvim.config.init
--- local Util = require("lazyvim.util")
+-- Keymaps are automatically loaded on the VeryLazy event
 
 -- works only with NVIM 0.7+
 local function map(mode, new_keys, to_do, options)
@@ -27,9 +27,13 @@ end
 map({ "i" }, "<S-CR>", "<C-o>o", { expr = true, silent = true })
 map({ "n", "x" }, "<Leader>;", ":", { expr = true, silent = true })
 
---[[ map({ "n" }, "<A-o>", "<cmd>call append(line('.'), '')<CR>", {  silent = true })
-map({ "n" }, "<A-O>", "<cmd>call append(line('.')-1, '')<CR>", {  silent = true }) ]]
+map({ "n" }, "<CR>", "<cmd>call append(line('.'), '')<CR>", {  silent = true })
+map({ "n" }, "<A-o>", "<cmd>call append(line('.')-1, '')<CR>", {  silent = true })
+
 map({ "n" }, "<F2>", "<cmd>echomsg expand('%:p')<CR>", {  silent = true })
+
+-- Select previously pasted text
+map("n", "gV", "`[V`]", { desc = "Select previously pasted text" })
 
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -115,5 +119,4 @@ vim.keymap.set('', '<f4>', function()
     virtual_text = not vim.diagnostic.config().virtual_text,
   })
 end, { desc = 'Toggle diagnostic [l]ines' })
-
 -- End of File
