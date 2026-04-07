@@ -174,7 +174,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 -- Set cmdheight=1 while the command line is active, 0 otherwise.
-local cmdlineGrp = vim.api.nvim_create_augroup('Cmdline', { clear = true })
+--[[ local cmdlineGrp = vim.api.nvim_create_augroup('Cmdline', { clear = true })
 vim.api.nvim_create_autocmd('CmdlineEnter', {
   group    = cmdlineGrp,
   callback = function() vim.opt.cmdheight = 1 end,
@@ -183,7 +183,7 @@ vim.api.nvim_create_autocmd('CmdlineLeave', {
   group    = cmdlineGrp,
   -- Defer so the command output (if any) is displayed before shrinking.
   callback = function() vim.defer_fn(function() vim.opt.cmdheight = 0 end, 1) end,
-})
+}) ]]
 
 -- Clear search highlight on cursor move; restore when using search keys (n/N/*/#/?//)
 local _search_key_pressed = false
