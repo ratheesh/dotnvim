@@ -14,14 +14,6 @@ vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
   command = "checktime",
 })
 
--- Highlight on yank
---[[ vim.api.nvim_create_autocmd("TextYankPost", {
-  group = augroup("highlight_yank"),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-}) ]]
-
 -- Enable relative number only in non-insert mode
 local cursorGrp = vim.api.nvim_create_augroup('cursorGrp', { clear = true })
 vim.api.nvim_create_autocmd(
@@ -119,21 +111,6 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- Show LSP diagnostics upon cursor hold event
---[[ vim.api.nvim_create_autocmd("CursorHold", {
-  callback = function()
-    local opts = {
-      focusable    = false,
-      close_events = { "BufLeave", "CursorMoved", "InsertEnter" },
-      border       = "rounded",
-      source       = "always",
-      prefix       = " ",
-      scope        = "cursor",
-    }
-    vim.diagnostic.open_float(nil, opts)
-  end
-}) ]]
-
 -- Toggle inline hints on a shortcut
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
@@ -152,7 +129,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- Fix cursor jumps upon tab after non completion of previous snippet
---[[ vim.api.nvim_create_autocmd('ModeChanged', {
+vim.api.nvim_create_autocmd('ModeChanged', {
   pattern = '*',
   callback = function()
     if ((vim.v.event.old_mode == 's' and vim.v.event.new_mode == 'n') or vim.v.event.old_mode == 'i')
@@ -162,7 +139,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       require('luasnip').unlink_current()
     end
   end
-}) ]]
+})
 
 -- Fix conceallevel for json & help files
 vim.api.nvim_create_autocmd({ "FileType" }, {
@@ -172,18 +149,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     vim.wo.conceallevel = 0
   end,
 })
-
--- Set cmdheight=1 while the command line is active, 0 otherwise.
---[[ local cmdlineGrp = vim.api.nvim_create_augroup('Cmdline', { clear = true })
-vim.api.nvim_create_autocmd('CmdlineEnter', {
-  group    = cmdlineGrp,
-  callback = function() vim.opt.cmdheight = 1 end,
-})
-vim.api.nvim_create_autocmd('CmdlineLeave', {
-  group    = cmdlineGrp,
-  -- Defer so the command output (if any) is displayed before shrinking.
-  callback = function() vim.defer_fn(function() vim.opt.cmdheight = 0 end, 1) end,
-}) ]]
 
 -- Clear search highlight on cursor move; restore when using search keys (n/N/*/#/?//)
 local _search_key_pressed = false

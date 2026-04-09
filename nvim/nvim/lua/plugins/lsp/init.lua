@@ -213,8 +213,32 @@ return {
         },
       })
 
-      vim.lsp.config("pyright", {})
-      vim.lsp.config("rust_analyzer", {})
+      vim.lsp.config("pyright", {
+        settings = {
+          python = {
+            analysis = {
+              autoSearchPaths = true,
+              diagnosticMode = "openFilesOnly",
+              useLibraryCodeForTypes = true,
+              typeCheckingMode = "basic",
+            },
+          },
+        },
+      })
+
+      vim.lsp.config("rust_analyzer", {
+        settings = {
+          ["rust-analyzer"] = {
+            cargo = {
+              buildScripts = { enable = true },
+              features = "all",
+            },
+            checkOnSave = {
+              command = "clippy",
+            },
+          },
+        },
+      })
 
       vim.lsp.enable({ "clangd", "lua_ls", "pyright", "rust_analyzer" })
 

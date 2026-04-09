@@ -38,7 +38,7 @@ return {
   },
   {
     "nvimdev/hlsearch.nvim",
-    enabled = true,
+    enabled = false,
     event = "VeryLazy",
     config = function()
       require("hlsearch").setup()

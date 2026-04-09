@@ -16,8 +16,7 @@ return {
         "bash-language-server",
         "basedpyright",
         "docker-compose-language-service",
-        "dockerfile-language-server"
-        -- "flake8",
+        "dockerfile-language-server",
       },
    },
     ---@param opts MasonSettings | {ensure_installed: string[]}

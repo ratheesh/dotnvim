@@ -20,7 +20,7 @@ return {
   },
   {
     "simrat39/symbols-outline.nvim",
-    enabled = true,
+    enabled = false,
     cmd = "SymbolsOutline",
     init = function()
       vim.keymap.set("n", "<leader>cs", "<cmd>SymbolsOutline<cr>", { desc = "Symbols Outline" })

@@ -34,19 +34,19 @@ map({ "n" }, "<F2>", "<cmd>echomsg expand('%:p')<CR>", {  silent = true })
 
 map({ "x", "o" }, "v", function()
   if vim.treesitter.get_parser(nil, nil, { error = false }) then
-    require("vim.treesitter._select").select_parent(vim.v.count1)
-  else
-    vim.lsp.buf.selection_range(vim.v.count1)
-  end
-end)
-
-map({ "x", "o" }, "v", function()
-  if vim.treesitter.get_parser(nil, nil, { error = false }) then
     require("vim.treesitter._select").select_child(vim.v.count1)
   else
     vim.lsp.buf.selection_range(-vim.v.count1)
   end
-end)
+end, { desc = "Select child (inside)" })
+
+map({ "x", "o", "o" }, "V", function()
+  if vim.treesitter.get_parser(nil, nil, { error = false }) then
+    require("vim.treesitter._select").select_parent(vim.v.count1)
+  else
+    vim.lsp.buf.selection_range(vim.v.count1)
+  end
+end, { desc = "Select parent (outside)" })
 
 -- Select previously pasted text
 map("n", "gV", "`[V`]", { desc = "Select previously pasted text" })
