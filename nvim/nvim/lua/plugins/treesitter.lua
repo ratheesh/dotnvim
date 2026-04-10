@@ -1,27 +1,12 @@
 return {
+  -- Parser installer only — all highlighting/folding/indentation handled by
+  -- Neovim's built-in treesitter (vim.treesitter.*).
   {
     'nvim-treesitter/nvim-treesitter',
     lazy = false,
     build = ':TSUpdate',
-    dependencies = {
-      "RRethy/nvim-treesitter-endwise",
-    },
-    opts = {
-        highlight        = { enable = true  },
-        indent           = { enable = true  },
-        matchup          = { enable = true  },
-        autopairs        = { enable = true  },
-        autotag          = { enable = false },
-        endwise          = { enable = true  },
-        swap = {
-          enable = false,
-          swap_next = {
-            ["ap"] = "@parameter.inner",
-          },
-          swap_previous = {
-            -- ["an"] = "@parameter.inner",
-          },
-        },
+    config = function()
+      require('nvim-treesitter.config').setup({
         ensure_installed = {
           "bash",
           "c",
@@ -48,9 +33,7 @@ return {
           "yaml",
           "zsh",
         },
-    },
-    config = function(_, opts)
-      require('nvim-treesitter.config').setup (opts)
+      })
 
       local ignore_filetype = {
         "checkhealth",
@@ -76,20 +59,15 @@ return {
       local group = vim.api.nvim_create_augroup("TreesitterSetup", { clear = true })
       vim.api.nvim_create_autocmd("FileType", {
         group = group,
-        desc = "Enable TreeSitter highlighting and indentation",
+        desc = "Enable built-in TreeSitter highlighting and folding",
         callback = function(ev)
-          local ft = ev.match
-
-          if vim.tbl_contains(ignore_filetype, ft) then
+          if vim.tbl_contains(ignore_filetype, ev.match) then
             return
           end
 
-          local lang = vim.treesitter.language.get_lang(ft) or ft
-          local buf = ev.buf
-          pcall(vim.treesitter.start, buf, lang)
-
-          vim.wo.foldexpr   = "v:lua.vim.treesitter.foldexpr()"
-          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          local lang = vim.treesitter.language.get_lang(ev.match) or ev.match
+          pcall(vim.treesitter.start, ev.buf, lang)
+          vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
         end,
       })
     end,
@@ -115,7 +93,7 @@ return {
       local ts_select = require("nvim-treesitter-textobjects.select")
 
       ---- MOVE ---------------------------------------------------------------
-      --------- got_next_start
+      --------- goto_next_start
       vim.keymap.set({ "n", "x", "o" }, "]f", function()
         ts_move.goto_next_start("@function.outer", "textobjects")
       end, { desc = "Next function start", silent = true })
@@ -136,9 +114,6 @@ return {
       vim.keymap.set({ "n", "x", "o" }, "]C", function()
         ts_move.goto_next_end("@class.outer", "textobjects")
       end, { desc = "Next class end", silent = true })
-      -- vim.keymap.set({ "n", "x", "o" }, "]A", function()
-      --   ts_move.goto_next_end("@parameter.inner", "textobjects")
-      -- end, { desc = "Next parameter end", silent = true })
 
       --------- goto_previous_start
       vim.keymap.set({ "n", "x", "o" }, "[f", function()
@@ -206,11 +181,9 @@ return {
       vim.keymap.set({ "x", "o" }, "ib", function()
         ts_select.select_textobject("@block.inner", "textobjects")
       end, { desc = "Select inside block", silent = true })
-
       vim.keymap.set({ "x", "o" }, "aa", function()
         ts_select.select_textobject("@parameter.outer", "textobjects")
       end, { desc = "Select outside parameter", silent = true })
-
       vim.keymap.set({ "x", "o" }, "ia", function()
         ts_select.select_textobject("@parameter.inner", "textobjects")
       end, { desc = "Select inside parameter", silent = true })
@@ -220,28 +193,25 @@ return {
     "nvim-treesitter/nvim-treesitter-context",
     event = { "BufReadPost", "BufWritePost", "BufNewFile" },
     opts = {
-      max_lines = 1,
+      max_lines           = 1,
       multiline_threshold = 1,
-      enable       = true,
-      line_numbers = true,
-      mode         = 'topline',
-      separator    = '─',
+      enable              = true,
+      line_numbers        = true,
+      mode                = 'topline',
+      separator           = '─',
     },
   },
+  -- Replaces treesj; uses built-in treesitter queries, no nvim-treesitter dependency
   {
-    {
-      "Wansmer/treesj",
-      keys = {
-        { "<leader>mS", "", desc = "TreeSJ" },
-        { "<leader>mSt", "<CMD>TSJToggle<CR>", desc = "Toggle" },
-        { "<leader>mSj", "<CMD>TSJJoin<CR>", desc = "Join" },
-        { "<leader>mSs", "<CMD>TSJSplit<CR>", desc = "Split" },
-      },
-      dependencies = { "nvim-treesitter/nvim-treesitter" },
-      opts = {
-        use_default_keymaps = false,
-      },
-      config = true,
+    "echasnovski/mini.splitjoin",
+    keys = {
+      { "<leader>mS",  "",                                                 desc = "SplitJoin" },
+      { "<leader>mSt", function() require("mini.splitjoin").toggle() end,  desc = "Toggle"    },
+      { "<leader>mSj", function() require("mini.splitjoin").join()   end,  desc = "Join"      },
+      { "<leader>mSs", function() require("mini.splitjoin").split()  end,  desc = "Split"     },
+    },
+    opts = {
+      mappings = { toggle = '' },
     },
   },
   {
@@ -253,12 +223,12 @@ return {
       local rainbow_delimiters = require('rainbow-delimiters')
       vim.g.rainbow_delimiters = {
         strategy = {
-          [''] = rainbow_delimiters.strategy['global'],
-          vim = rainbow_delimiters.strategy['local'],
+          ['']  = rainbow_delimiters.strategy['global'],
+          vim   = rainbow_delimiters.strategy['local'],
         },
         query = {
-          [''] = 'rainbow-delimiters',
-          lua = 'rainbow-blocks',
+          ['']  = 'rainbow-delimiters',
+          lua   = 'rainbow-blocks',
         },
         highlight = {
           'rainbowcol1',
@@ -277,10 +247,8 @@ return {
     enabled = true,
     event = "VeryLazy",
     dependencies = {
-      'nvim-treesitter/nvim-treesitter',
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     opts = {},
   },
 }
-

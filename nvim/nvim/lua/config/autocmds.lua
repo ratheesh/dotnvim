@@ -172,4 +172,20 @@ vim.api.nvim_create_autocmd('CursorMoved', {
   end,
 })
 
+-- Filetype-specific indent widths (global default: sw=4 ts=4 et)
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("indent"),
+  pattern = {
+    "css", "html", "javascript", "javascriptreact",
+    "json", "jsonc", "lua", "markdown",
+    "scss", "toml", "typescript", "typescriptreact",
+    "vim", "xml", "yaml",
+  },
+  callback = function()
+    vim.opt_local.shiftwidth  = 2
+    vim.opt_local.tabstop     = 2
+    vim.opt_local.softtabstop = 2
+  end,
+})
+
 -- End of File

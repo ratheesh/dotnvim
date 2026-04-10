@@ -10,6 +10,11 @@ return {
     config = true,
     opts = {},
   },
+  -- Endwise via built-in treesitter (replaces nvim-treesitter-endwise)
+  {
+    "brianhuster/treesitter-endwise.nvim",
+    event = "InsertEnter",
+  },
   {
     "XXiaoA/atone.nvim",
     enabled = true,
