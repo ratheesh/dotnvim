@@ -9,10 +9,6 @@ return {
     end
   },
   {
-    "preservim/tagbar",
-    cmd = { "Tagbar" },
-  },
-  {
     "Lachignol/time-bomb.nvim",
     cmd = { 'TimeBomb' },
     config = function()

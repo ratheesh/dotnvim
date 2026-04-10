@@ -102,12 +102,13 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   end,
 })
 
--- automatically set colorcolumn on gitcommit
+-- gitcommit: set colorcolumn and position cursor at top
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("gitcommit"),
   pattern = { "gitcommit" },
   callback = function()
-    vim.opt.colorcolumn = "73"
+    vim.opt_local.colorcolumn = "73"
+    vim.api.nvim_win_set_cursor(0, { 1, 0 })
   end,
 })
 

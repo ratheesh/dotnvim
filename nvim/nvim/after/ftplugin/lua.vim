@@ -8,5 +8,6 @@ setlocal sw=2
 setlocal ts=2
 setlocal expandtab
 setlocal iskeyword-=#
+setlocal nospell
 
 " End of File

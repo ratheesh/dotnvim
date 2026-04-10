@@ -62,5 +62,6 @@ setlocal cinoptions+=)20    " Unclosed parens up to 20 lines away
 setlocal cinoptions+=*30    " Unclosed comments up to 30 lines away
 
 setlocal foldmethod=syntax
+setlocal nospell
 
 " End of file
