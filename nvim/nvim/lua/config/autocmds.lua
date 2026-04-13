@@ -40,16 +40,14 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
   callback = function(event)
     local exclude = { "gitcommit", "gitrebase" }
     local buf = event.buf
-    if vim.tbl_contains(exclude, vim.bo[buf].filetype) then
+    if vim.list_contains(exclude, vim.bo[buf].filetype) then
       pcall(vim.api.nvim_win_set_cursor, 0, {1, 0})
-      -- print("setting the cursor to beginning of the buffer")
       return
     end
     vim.b[buf].lazyvim_last_loc = true
     local mark = vim.api.nvim_buf_get_mark(buf, '"')
     local lcount = vim.api.nvim_buf_line_count(buf)
     if mark[1] > 0 and mark[1] <= lcount then
-      -- print("restoring previous co-ordinates")
       pcall(vim.api.nvim_win_set_cursor, 0, mark)
     end
   end,
@@ -97,7 +95,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     if event.match:match("^%w%w+://") then
       return
     end
-    local file = vim.loop.fs_realpath(event.match) or event.match
+    local file = vim.uv.fs_realpath(event.match) or event.match
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
   end,
 })
@@ -117,15 +115,16 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
     local bufnr = args.buf ---@type number
     local client = vim.lsp.get_client_by_id(args.data.client_id)
-    if client:supports_method('textDocument/inlayHint') then
-      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-      vim.keymap.set('n', '<leader>i', function()
-        vim.lsp.inlay_hint.enable(
-          not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }),
-          { bufnr = bufnr }
-        )
-      end, { buffer = bufnr })
+    if not client or not client:supports_method('textDocument/inlayHint') then
+      return
     end
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    vim.keymap.set('n', '<leader>i', function()
+      vim.lsp.inlay_hint.enable(
+        not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }),
+        { bufnr = bufnr }
+      )
+    end, { buffer = bufnr, noremap = true, silent = true })
   end,
 })
 
@@ -133,11 +132,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
 vim.api.nvim_create_autocmd('ModeChanged', {
   pattern = '*',
   callback = function()
-    if ((vim.v.event.old_mode == 's' and vim.v.event.new_mode == 'n') or vim.v.event.old_mode == 'i')
-        and require('luasnip').session.current_nodes[vim.api.nvim_get_current_buf()]
-        and not require('luasnip').session.jump_active
-    then
-      require('luasnip').unlink_current()
+    if ((vim.v.event.old_mode == 's' and vim.v.event.new_mode == 'n') or vim.v.event.old_mode == 'i') then
+      local ok, luasnip = pcall(require, 'luasnip')
+      if ok and luasnip.session.current_nodes[vim.api.nvim_get_current_buf()] and not luasnip.session.jump_active then
+        luasnip.unlink_current()
+      end
     end
   end
 })
@@ -152,14 +151,15 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 -- Clear search highlight on cursor move; restore when using search keys (n/N/*/#/?//)
+local search_ns = vim.api.nvim_create_namespace('auto_hlsearch')
 local _search_key_pressed = false
 vim.on_key(function(char)
   if vim.fn.mode() == 'n' then
-    if vim.tbl_contains({ 'n', 'N', '*', '#', '?', '/' }, vim.fn.keytrans(char)) then
+    if vim.list_contains({ 'n', 'N', '*', '#', '?', '/' }, vim.fn.keytrans(char)) then
       _search_key_pressed = true
     end
   end
-end, vim.api.nvim_create_namespace('auto_hlsearch'))
+end, search_ns)
 
 vim.api.nvim_create_autocmd('CursorMoved', {
   group = augroup('auto_hlsearch'),
