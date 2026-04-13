@@ -8,20 +8,12 @@
 local function map(mode, new_keys, to_do, options)
   local keymap = vim.keymap.set
   local default_options = {
-    noremap = true,
     silent = true,
-    expr = false,
   }
   if options then
     default_options = vim.tbl_extend('force', default_options, options)
   end
-  local ok, _ = pcall(keymap, mode, new_keys, to_do, default_options)
-  if not ok then
-    local msg = 'Fail to map ' .. new_keys .. ' for ' .. to_do
-    vim.notify(msg, vim.log.levels.ERROR, {
-      title = 'Keymap',
-    })
-  end
+  keymap(mode, new_keys, to_do, default_options)
 end
 
 map({ "i" }, "<S-CR>", "<C-o>o", { expr = true, silent = true })
@@ -33,19 +25,27 @@ map({ "n" }, "<A-o>", "<cmd>call append(line('.')-1, '')<CR>", {  silent = true 
 map({ "n" }, "<F2>", "<cmd>echomsg expand('%:p')<CR>", {  silent = true })
 
 map({ "x", "o" }, "v", function()
-  if vim.treesitter.get_parser(nil, nil, { error = false }) then
-    require("vim.treesitter._select").select_child(vim.v.count1)
-  else
-    vim.lsp.buf.selection_range(-vim.v.count1)
+  local ok, parser = pcall(vim.treesitter.get_parser, vim.api.nvim_get_current_buf())
+  if ok and parser then
+    local ok_ts, ts_select = pcall(require, "vim.treesitter._select")
+    if ok_ts then
+      ts_select.select_child(vim.v.count1)
+      return
+    end
   end
+  vim.lsp.buf.selection_range(-vim.v.count1)
 end, { desc = "Select child (inside)" })
 
 map({ "x", "o", "o" }, "V", function()
-  if vim.treesitter.get_parser(nil, nil, { error = false }) then
-    require("vim.treesitter._select").select_parent(vim.v.count1)
-  else
-    vim.lsp.buf.selection_range(vim.v.count1)
+  local ok, parser = pcall(vim.treesitter.get_parser, vim.api.nvim_get_current_buf())
+  if ok and parser then
+    local ok_ts, ts_select = pcall(require, "vim.treesitter._select")
+    if ok_ts then
+      ts_select.select_parent(vim.v.count1)
+      return
+    end
   end
+  vim.lsp.buf.selection_range(vim.v.count1)
 end, { desc = "Select parent (outside)" })
 
 -- Select previously pasted text
@@ -125,14 +125,23 @@ map("n", "<leader>x", "<cmd>qa<cr>", { desc = "Quit all" })
 map("n", "<A-x>", "<cmd>xall<cr>", { desc = "Save All and exit" })
 
 -- luasnip jump during the pmenu
-map({ "i", "s" }, "<C-l>", "<cmd>lua require('luasnip').jump(1)<CR>")
-map({ "i", "s" }, "<C-h>", "<cmd>lua require('luasnip').jump(-1)<CR>")
+map({ "i", "s" }, "<C-l>", function()
+  local ok, luasnip = pcall(require, 'luasnip')
+  if ok then luasnip.jump(1) end
+end)
+map({ "i", "s" }, "<C-h>", function()
+  local ok, luasnip = pcall(require, 'luasnip')
+  if ok then luasnip.jump(-1) end
+end)
 
 -- When lines are on, text is off. Text on, lines off. Minimize clutter.
-vim.keymap.set('', '<f4>', function()
+map("n", "<F4>", function()
+  local config = vim.diagnostic.config()
+  local virtual_lines = config.virtual_lines
+  local virtual_text = config.virtual_text
   vim.diagnostic.config({
-    virtual_lines = not vim.diagnostic.config().virtual_lines,
-    virtual_text = not vim.diagnostic.config().virtual_text,
+    virtual_lines = not virtual_lines,
+    virtual_text = not virtual_text,
   })
-end, { desc = 'Toggle diagnostic [l]ines' })
+end, { desc = 'Toggle diagnostic lines' })
 -- End of File
