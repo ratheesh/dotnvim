@@ -2,12 +2,12 @@ local M = {
   'nvimtools/hydra.nvim',
   -- 'cathyprime/hydra.nvim',
   -- event = 'VeryLazy',
-  keys = { '<space>g' },
-  pin = true,
+  keys = { '<leader>g' },
   dependencies = {
     'anuvyklack/keymap-layer.nvim',
     -- 'NvChad/nvim-colorizer.lua',
     'brenoprata10/nvim-highlight-colors',
+    'lewis6991/gitsigns.nvim',
   },
 }
 
@@ -25,7 +25,7 @@ function M.config()
   _i_: inline Preview  _p_: Preview Hunk    ^ ^
   _/_: Show Base File
   ^
-  ^_<Enter>_: Neogit    q_/<Esc>: Exit
+  ^_<Enter>_: Neogit    _q_/_<Esc>_: Exit
   ]]
   Hydra({
     name = "Git",
