@@ -8,7 +8,7 @@ function M.config()
 local windline = require('windline')
 local helper   = require('windline.helpers')
 local sep      = helper.separators
-local Hydra    = require("hydra.statusline")
+local hydra_ok, Hydra = pcall(require, "hydra.statusline")
 
 local b_components = require('windline.components.basic')
 local state = _G.WindLine.state
@@ -83,7 +83,7 @@ basic.vi_mode = {
 	},
 
 	text = function()
-		if Hydra.is_active() then
+		if hydra_ok and Hydra.is_active() then
 			return {
 				{ '󰫍─', hl_list.StatusLine },
 				{ sep.left_rounded, state.mode[2] .. 'Before' },
