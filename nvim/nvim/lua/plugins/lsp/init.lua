@@ -205,27 +205,27 @@ return {
         settings = {
 
           Lua = {
-
             workspace = {
               checkThirdParty = false,
+              library = { vim.env.VIMRUNTIME },
             },
-
             completion = {
               callSnippet = "Replace",
             },
-
             diagnostics = {
               globals = { "vim", "Snacks" },
             },
             codeLens = {
               enable = true,
             },
-              paramType = true,
-              paramName = "Disable",
-              semicolon = "Disable",
+            hint = {
+              enable     = true,
+              setType    = false,
+              paramType  = true,
+              paramName  = "Disable",
+              semicolon  = "Disable",
               arrayIndex = "Disable",
             },
-
           },
         },
       })
@@ -234,10 +234,10 @@ return {
         settings = {
           python = {
             analysis = {
-              autoSearchPaths = true,
-              diagnosticMode = "openFilesOnly",
+              autoSearchPaths        = true,
+              diagnosticMode         = "openFilesOnly",
               useLibraryCodeForTypes = true,
-              typeCheckingMode = "basic",
+              typeCheckingMode       = "basic",
             },
           },
         },
