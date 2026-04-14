@@ -27,6 +27,7 @@ function M.config()
   local types = require("cmp.types")
   local luasnip = require("luasnip")
   local lspkind = require("lspkind")
+  local ok_clangd, clangd_cmp = pcall(require, "clangd_extensions.cmp_scores")
 
   require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -241,17 +242,16 @@ function M.config()
 
     sorting = {
       priority_weight = 2,
-      comparators = {
-
+      comparators = vim.tbl_filter(function(v) return v ~= nil end, {
         cmp.config.compare.offset,
         cmp.config.compare.exact,
+        ok_clangd and clangd_cmp or nil,
         cmp.config.compare.score,
         cmp.config.compare.recently_used,
         cmp.config.compare.kind,
         cmp.config.compare.length,
         cmp.config.compare.order,
-
-      },
+      }),
     },
 
   })

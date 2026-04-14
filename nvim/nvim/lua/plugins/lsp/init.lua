@@ -9,7 +9,7 @@ return {
       "mason-org/mason.nvim",
       "mason-org/mason-lspconfig.nvim",
 
-      { "p00f/clangd_extensions.nvim", lazy = true },
+      { "dchinmay2/clangd_extensions.nvim", lazy = true },
 
       { "ray-x/lsp_signature.nvim", event = "InsertEnter" },
 
@@ -264,9 +264,7 @@ return {
 
       local ok_ext, clangd_ext = pcall(require, "clangd_extensions")
       if ok_ext then
-        clangd_ext.setup({
-          inlay_hints = { inline = false },
-        })
+        clangd_ext.setup({})
       end
 
       vim.lsp.enable({ "clangd", "lua_ls", "pyright", "rust_analyzer", "neocmake", "bashls" })
