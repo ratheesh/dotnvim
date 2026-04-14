@@ -41,7 +41,9 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
     local exclude = { "gitcommit", "gitrebase" }
     local buf = event.buf
     if vim.list_contains(exclude, vim.bo[buf].filetype) then
-      pcall(vim.api.nvim_win_set_cursor, 0, {1, 0})
+      vim.schedule(function()
+        pcall(vim.api.nvim_win_set_cursor, 0, { 1, 0 })
+      end)
       return
     end
     vim.b[buf].lazyvim_last_loc = true
@@ -106,7 +108,9 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = { "gitcommit" },
   callback = function()
     vim.opt_local.colorcolumn = "73"
-    vim.api.nvim_win_set_cursor(0, { 1, 0 })
+    vim.schedule(function()
+      pcall(vim.api.nvim_win_set_cursor, 0, { 1, 0 })
+    end)
   end,
 })
 
