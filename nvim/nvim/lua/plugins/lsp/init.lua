@@ -25,7 +25,8 @@ return {
       },
       {
         "Chaitanyabsprip/fastaction.nvim",
-        enabled = false,
+        enabled = true,
+        event = { "LspAttach" },
         opts = {},
         keys = {
           {
@@ -37,7 +38,7 @@ return {
       },
       {
         "rachartier/tiny-code-action.nvim",
-        enabled = true,
+        enabled = false,
         event = "LspAttach",
         dependencies = {
           { "nvim-lua/plenary.nvim" },
