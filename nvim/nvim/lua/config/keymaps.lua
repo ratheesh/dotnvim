@@ -144,4 +144,8 @@ map("n", "<F4>", function()
     virtual_text = not virtual_text,
   })
 end, { desc = 'Toggle diagnostic lines' })
+-- CodeLens toggle
+map("n", "<F6>", function()
+  vim.lsp.codelens.enable(not vim.lsp.codelens.is_enabled())
+end, { desc = "Toggle CodeLens" })
 -- End of File

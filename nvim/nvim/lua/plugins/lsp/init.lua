@@ -152,6 +152,22 @@ return {
       end)
 
       ----------------------------------------------------------------
+      -- CodeLens
+      ----------------------------------------------------------------
+
+      vim.lsp.codelens.enable(true)
+
+      Util.lsp.on_attach(function(client, buffer)
+        if client:supports_method("textDocument/codeLens") then
+          vim.keymap.set("n", "<leader>cl", vim.lsp.codelens.run, {
+            buffer = buffer,
+            silent = true,
+            desc   = "Run CodeLens",
+          })
+        end
+      end)
+
+      ----------------------------------------------------------------
       -- clangd
       ----------------------------------------------------------------
 
@@ -201,10 +217,9 @@ return {
             diagnostics = {
               globals = { "vim", "Snacks" },
             },
-
-            hint = {
+            codeLens = {
               enable = true,
-              setType = false,
+            },
               paramType = true,
               paramName = "Disable",
               semicolon = "Disable",
@@ -237,6 +252,9 @@ return {
             },
             checkOnSave = {
               command = "clippy",
+            },
+            lens = {
+              enable = true,
             },
           },
         },
