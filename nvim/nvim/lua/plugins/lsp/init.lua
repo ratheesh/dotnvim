@@ -217,7 +217,7 @@ return {
               globals = { "vim", "Snacks" },
             },
             codeLens = {
-              enable = true,
+              enable = false,
             },
             hint = {
               enable     = true,
