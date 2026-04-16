@@ -1,11 +1,8 @@
--- Copyright (c) 2026 Ratheesh<ratheeshreddy@gmail.com>. All Rights Reserved.
--- License:MiT
--- pulse plugin config
---
-
+-- pulse.nvim plugin settings
 return {
   {
     "willyelm/pulse.nvim",
+    enabled = true,
     opts = {
       cmdline         = false,
       position        = "center",
@@ -26,11 +23,19 @@ return {
       },
     },
     keys = {
-      { "<leader>fo", "<cmd>Pulse<cr>", desc = "Open Pulse" },
-      { "<leader>ff", "<cmd>Pulse git<cr>", desc = "Open git files" },
-      { "<leader>ft", "<cmd>Pulse symbols<cr>", desc = "Open buffer symbols" },
-      { "<leader>fT", "<cmd>Pulse workspace_symbols<cr>", desc = "Open workspace symbols" },
-      { "<leader>/", "<cmd>Pulse live_grep<cr>", desc = "Live Grep" },
+      -- File management
+      { "<leader>fo",  "<cmd>Pulse<cr>",                  desc = "Files" },
+      { "<leader>ff",  "<cmd>Pulse git<cr>",              desc = "Git Files" },
+      { "<leader>ft",  "<cmd>Pulse symbols<cr>",          desc = "LSP Symbols" },
+      { "<leader>fT",  "<cmd>Pulse workspace_symbols<cr>", desc = "Workspace Symbols" },
+
+      -- Search
+      { "<leader>/",   "<cmd>Pulse live_grep<cr>",        desc = "Live Grep" },
+      { "<leader>sf",  "<cmd>Pulse fuzzy_search<cr>",     desc = "Fuzzy Search" },
+
+      -- Diagnostics / LSP
+      { "<leader>sd",  "<cmd>Pulse diagnostics<cr>",      desc = "Diagnostics" },
+      { "<leader>sc",  "<cmd>Pulse code_actions<cr>",     desc = "Code Actions" },
     },
   }
 }
