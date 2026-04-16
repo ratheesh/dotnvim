@@ -27,7 +27,6 @@ return {
         },
       },
       picker = {
-        enabled = false,
         win = {
           input = {
             keys ={
@@ -42,7 +41,7 @@ return {
           modes   = {'n', 'c'},
       },
     },
-    --[[ keys = {
+    keys = {
       -- File management
       { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
       { "<leader>ff", function()
@@ -87,7 +86,7 @@ return {
       { "gai", function() Snacks.picker.lsp_incoming_calls() end, desc = "C[a]lls Incoming" },
       { "gao", function() Snacks.picker.lsp_outgoing_calls() end, desc = "C[a]lls Outgoing" },
       { "<leader>S", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
-    }, ]]
+    },
   },
   {
     '2kabhishek/seeker.nvim',

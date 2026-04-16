@@ -2,7 +2,7 @@
 return {
   {
     "willyelm/pulse.nvim",
-    enabled = true,
+    enabled = false,
     opts = {
       cmdline         = false,
       position        = "center",
