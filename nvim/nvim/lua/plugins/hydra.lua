@@ -1,11 +1,8 @@
 local M = {
   'nvimtools/hydra.nvim',
-  -- 'cathyprime/hydra.nvim',
-  -- event = 'VeryLazy',
-  keys = { '<leader>g' },
+  keys = { '<leader>,' },
   dependencies = {
     'anuvyklack/keymap-layer.nvim',
-    -- 'NvChad/nvim-colorizer.lua',
     'brenoprata10/nvim-highlight-colors',
     'lewis6991/gitsigns.nvim',
   },
@@ -33,27 +30,19 @@ function M.config()
     config = {
       color = "pink",
       invoke_on_body = true,
-      -- buffer = bufnr,
       hint = {
-        offset   = 1,
-        position = 'middle-right',
-        -- border   = "rounded"
-        float_opts = {
-        border   = "rounded"
-        },
+        offset     = 1,
+        position   = 'middle-right',
+        float_opts = { border = "rounded" },
       },
       on_enter = function()
         vim.cmd('echo')
         vim.cmd('set nohlsearch')
         vim.cmd('set nocursorline')
-        -- vim.cmd('ShowkeysToggle')
-        -- vim.cmd([[ColorizerDetachFromBuffer]])
         vim.cmd([[HighlightColors off]])
-        -- vim.cmd([[CccHighlighterDisable]])
         vim.cmd 'mkview'
         vim.cmd 'silent! %foldopen!'
         gitsigns.toggle_signs(true)
-        -- gitsigns.toggle_linehl(true)
         gitsigns.toggle_word_diff(true)
       end,
       on_exit = function()
@@ -66,15 +55,13 @@ function M.config()
         gitsigns.toggle_linehl(false)
         gitsigns.toggle_deleted(false)
         gitsigns.toggle_word_diff(false)
-        -- vim.cmd([[CccHighlighterEnable]])
-        -- vim.cmd([[ColorizerAttachToBuffer]])
         vim.cmd([[HighlightColors on]])
+        vim.cmd('set hlsearch')
         vim.cmd('set cursorline')
-        -- vim.cmd('ShowkeysToggle')
       end
     },
     mode = { 'n', 'x' },
-    body = '<leader>g',
+    body = '<leader>,',
     heads = {
       { 'j', function()
         if vim.wo.diff then return ']c' end
@@ -96,17 +83,17 @@ function M.config()
         gitsigns.nav_hunk('last', { wrap = false })
         return '<Ignore>'
       end, { expr = true }},
-      { 's', gitsigns.stage_hunk,          { silent = true                 }},
-      { 'u', gitsigns.undo_stage_hunk,     { desc = 'Undo Staged Hunk'     }},
-      { 'S', gitsigns.stage_buffer,        { desc = 'Stage buffer'         }},
-      { 'r', gitsigns.reset_hunk,          { desc = 'Reset Hunk'           }},
-      { 'p', gitsigns.preview_hunk,        { desc = 'Preview Hunk'         }},
-      { 'i', gitsigns.preview_hunk_inline, { desc = 'Preview Hunk'         }},
-      { 'd', gitsigns.toggle_deleted,      { nowait = true                 }},
-      { 'D', gitsigns.toggle_word_diff,    { nowait = true                 }},
-      { 'b', gitsigns.blame_line,          { desc = "Blame Line"           }},
-      { 'B', function() gitsigns.blame_line { full = true              }end },
-      { '/',       gitsigns.show,         { exit = true                    }},
+      { 's', gitsigns.stage_hunk,          { silent = true, desc = 'Stage Hunk'         }},
+      { 'u', gitsigns.undo_stage_hunk,     { desc = 'Undo Staged Hunk'                  }},
+      { 'S', gitsigns.stage_buffer,        { desc = 'Stage Buffer'                      }},
+      { 'r', gitsigns.reset_hunk,          { desc = 'Reset Hunk'                        }},
+      { 'p', gitsigns.preview_hunk,        { desc = 'Preview Hunk'                      }},
+      { 'i', gitsigns.preview_hunk_inline, { desc = 'Preview Hunk Inline'               }},
+      { 'd', gitsigns.toggle_deleted,      { nowait = true                               }},
+      { 'D', gitsigns.toggle_word_diff,    { nowait = true                               }},
+      { 'b', gitsigns.blame_line,          { desc = 'Blame Line'                        }},
+      { 'B', function() gitsigns.blame_line{ full = true } end, { desc = 'Blame Full'   }},
+      { '/', gitsigns.show,                { exit = true,   desc = 'Show Base File'     }},
       { '<Enter>', '<cmd>Neogit<CR>',     { exit = true                    }},
       { '<Esc>',   nil,                   { exit = true,     nowait = true }},
       { 'q',       nil,                   { exit = true,     nowait = true }},
