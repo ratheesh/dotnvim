@@ -5,7 +5,7 @@ local Util = require("lazyvim.util")
 local M = {}
 
 function M.hash(file)
-  local stat = vim.loop.fs_stat(file)
+  local stat = vim.uv.fs_stat(file)
   if not stat then
     return
   end
@@ -84,7 +84,7 @@ function M.open(file, opts)
   vim.opt_local.signcolumn = "yes"
   -- vim.opt_local.statuscolumn = " "
   vim.opt_local.conceallevel = 3
-  vim.diagnostic.disable(float.buf)
+  vim.diagnostic.enable(false, { bufnr = float.buf })
 end
 
 return M

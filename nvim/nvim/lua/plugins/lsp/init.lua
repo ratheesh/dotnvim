@@ -231,7 +231,7 @@ return {
         },
       })
 
-      vim.lsp.config("pyright", {
+      vim.lsp.config("basedpyright", {
         settings = {
           python = {
             analysis = {
@@ -239,6 +239,13 @@ return {
               diagnosticMode         = "openFilesOnly",
               useLibraryCodeForTypes = true,
               typeCheckingMode       = "basic",
+              inlayHints = {
+                callArgumentNames = "all",
+                functionReturnTypes = true,
+                variableTypes = true,
+                genericTypes = true,
+                useTypingExtensions = true,
+              },
             },
           },
         },
@@ -286,7 +293,7 @@ return {
         clangd_ext.setup({})
       end
 
-      vim.lsp.enable({ "clangd", "lua_ls", "pyright", "rust_analyzer", "neocmake", "bashls" })
+      vim.lsp.enable({ "clangd", "lua_ls", "basedpyright", "rust_analyzer", "neocmake", "bashls" })
 
     end,
   }

@@ -101,7 +101,7 @@ return {
         render = function(props)
           local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
           local icon, color = require("nvim-web-devicons").get_icon_color(filename)
-          local modified = vim.api.nvim_buf_get_option(props.buf, "modified") and "bold,italic" or "bold"
+          local modified = vim.bo[props.buf].modified and "bold,italic" or "bold"
           return {
             { get_diagnostic_label(props) },
             { icon, guifg = color }, { " " },
@@ -248,7 +248,7 @@ return {
       never_draw_over_target = true,
       gamma               = 1,
       color_levels        = 256,
-      volume_reduction_component = -0.3;
+      volume_reduction_component = -0.3,
       legacy_computing_symbols_support = true,
       cursor_color = "none",
     },

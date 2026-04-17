@@ -141,15 +141,13 @@ end
 
 function M.fg(name)
   ---@type {foreground?:number}?
-  ---@diagnostic disable-next-line: deprecated
-  local hl = vim.api.nvim_get_hl and vim.api.nvim_get_hl(0, { name = name }) or vim.api.nvim_get_hl_by_name(name, true)
-  ---@diagnostic disable-next-line: undefined-field
-  local fg = hl and (hl.fg or hl.foreground)
+  local hl = vim.api.nvim_get_hl(0, { name = name })
+  local fg = hl and hl.fg
   return fg and { fg = string.format("#%06x", fg) } or nil
 end
 
 M.skip_foldexpr = {} ---@type table<number,boolean>
-local skip_check = assert(vim.loop.new_check())
+local skip_check = assert(vim.uv.new_check())
 
 function M.foldexpr()
   local buf = vim.api.nvim_get_current_buf()
