@@ -4,17 +4,16 @@
 
 return {
   "folke/which-key.nvim",
+  enabled = false,
   event = "VeryLazy",
-  init = function()
-    vim.o.timeout = true
-    vim.o.timeoutlen = 700
-  end,
   opts = {
-    reset = 'helix',
+    preset   = "helix",
+    delay    = 700,
+    triggers = { "<auto>" },
     icons = {
       breadcrumb = "»",
       separator  = "➜ ",
-      group      = " ",
+      group      = " ",
       ellipsis   = "…",
     },
     win = {
@@ -24,16 +23,12 @@ return {
       title      = true,
       title_pos  = "center",
       zindex     = 1000,
-      height = { min = 4, max = 10 },
-
-      bo = {},
-      wo = {
-        winblend = 5,
-      },
+      height     = { min = 4, max = 10 },
+      wo         = { winblend = 5 },
     },
     plugins = {
       marks = false,
     },
-  }
+  },
 }
 -- End of File
