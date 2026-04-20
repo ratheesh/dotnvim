@@ -171,9 +171,11 @@ basic.projectname = {
 	},
 	text = function(bufnr)
 		if git_comps.is_git(bufnr) then
+			local branch_comp = git_comps.git_branch({icon = ''})
+			local branch = branch_comp(bufnr)
 			return {
 				{ sep.left_rounded, 'sep_left' },
-				{ git_comps.git_branch({icon = ' '}), 'project' },
+				{ ' ' .. truncate(branch, 20), 'project' },
 				-- { ' ', '' },
 				{ sep.right_rounded..' ', 'sep_right' },
 			}
@@ -201,6 +203,13 @@ local function is_file_ro()
 	end
 end
 
+local function truncate(s, n)
+	if s and #s > n then
+		return '…' .. s:sub(#s - n + 1)
+	end
+	return s or ''
+end
+
 local icon_comp = b_components.cache_file_icon({ default = '', hl_colors = {'FileNameFg','FileBg'} })
 basic.file = {
 	name = 'file',
@@ -216,12 +225,14 @@ basic.file = {
 		if vim.bo.filetype == 'alpha' then
 			return
 		else
+			local fname_comp = b_components.cache_file_name('Keine!', 'unique')
+			local fname = fname_comp(bufnr)
 			return {
 				-- { ' ', 'FileName' },
 				{ sep.left_rounded, 'sep_left_file' },
 				icon_comp(bufnr),
 				{ ' ', 'FileModified' },
-				{ b_components.cache_file_name('Keine!', 'unique'), 'FileName' },
+				{ truncate(fname, 20), 'FileName' },
 				{ b_components.file_modified('✱ '), 'FileModified' },
 				{ is_file_ro(), 'FileRO' },
 				{ sep.right_rounded, 'default' },
@@ -263,11 +274,13 @@ basic.git = {
 	},
 	text = function(bufnr)
 		if git_comps.is_git(bufnr) then
+			local branch_comp = git_comps.git_branch({icon = ''})
+			local branch = branch_comp(bufnr)
 			return {
 				--   󰙧    ◉  🞊 ● 󱘹   󰜥 󰐖 ▣ 󰍵
 				-- { '─', hl_list.StatusLine },
 				{ sep.left_rounded, 'sep_left_project' },
-				{ git_comps.git_branch({icon = ' '}), 'project' },
+				{ ' ' .. truncate(branch, 20), 'project' },
 				{ sep.right_rounded, 'sep_right_project' },
 				{ git_comps.diff_added({ format   = '  %s', show_zero = false }), 'added'   },
 				{ git_comps.diff_changed({ format = ' %s', show_zero = false  }), 'changed' },
