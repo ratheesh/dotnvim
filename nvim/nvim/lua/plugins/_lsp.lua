@@ -3,6 +3,51 @@
 -- LSP related plugins
 
 return {
+  { "dchinmay2/clangd_extensions.nvim", lazy = true },
+  { "ray-x/lsp_signature.nvim", event = "InsertEnter" },
+  {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    enabled = false,
+    event = "VeryLazy",
+    config = function()
+      require("tiny-inline-diagnostic").setup({
+        preset = "amongus",
+      })
+    end,
+  },
+  {
+    "Chaitanyabsprip/fastaction.nvim",
+    enabled = true,
+    event = { "LspAttach" },
+    opts = {},
+    keys = {
+      {
+        "<leader>ca",
+        function() require("fastaction").code_action() end,
+        desc = "Code Actions",
+      },
+    },
+  },
+  {
+    "rachartier/tiny-code-action.nvim",
+    enabled = false,
+    event = "LspAttach",
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+      { "folke/snacks.nvim", opts = { terminal = {} } },
+    },
+    opts = {},
+    keys = {
+      {
+        "<leader>ca",
+        function() require("tiny-code-action").code_action() end,
+        mode = { "n", "x" },
+        noremap = true,
+        silent = true,
+        desc = "Code Actions",
+      },
+    },
+  },
   {
     "Wansmer/symbol-usage.nvim",
     event = "LspAttach",
@@ -63,7 +108,9 @@ return {
   },
   {
     "roobert/action-hints.nvim",
-    config = function()
+    enabled = true,
+    event   = { "LspAttach" },
+    config  = function()
       require("action-hints").setup()
     end,
   },
