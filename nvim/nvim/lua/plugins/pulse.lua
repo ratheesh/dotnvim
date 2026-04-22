@@ -37,6 +37,5 @@ return {
       { "<leader>sd",  "<cmd>Pulse diagnostics<cr>",      desc = "Diagnostics" },
       { "<leader>sc",  "<cmd>Pulse code_actions<cr>",     desc = "Code Actions" },
     },
-  }
+  },
 }
--- End of File
