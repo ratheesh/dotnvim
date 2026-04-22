@@ -109,9 +109,15 @@ return {
   {
     "roobert/action-hints.nvim",
     enabled = true,
-    event   = { "LspAttach" },
-    config  = function()
-      require("action-hints").setup()
+    event = { "LspAttach", "BufReadPost" },
+    config = function()
+      require("action-hints").setup({
+        use_virtual_text = true,
+        template = {
+          definition = { text = " ⊛", color = "ActionHintDef" },
+          references = { text = " ↱%s", color = "ActionHintRef" },
+        },
+      })
     end,
   },
 }

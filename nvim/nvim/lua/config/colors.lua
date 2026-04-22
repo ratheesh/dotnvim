@@ -67,7 +67,7 @@ hl(0 , "StatusLine"   , { fg = "#6B717C" , bg = nil       , italic = false , bol
 hl(0 , "VertSplit"    , { fg = "#434C5E" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "ColorColumn"  , { fg = nil       , bg = '#3B4252' , italic = false , bold = false , underline = false })
 hl(0 , "CursorColumn" , { fg = nil       , bg = nil 	  , italic = false , bold = false , underline = false })
-hl(0 , "CursorLine"   , { fg = nil       , bg = "#153450" , italic = false , bold = false , underline = false })
+hl(0 , "CursorLine"   , { fg = nil       , bg = "#153450" , italic = false , bold = false , underline = false , blend = 50 })
 hl(0 , "CursorLineNr" , { fg = "#A3497B" , bg = nil       , italic = false , bold = true  , underline = false })
 hl(0 , "QuickFixLine" , { fg = nil       , bg = "#3B4252" , italic = false , bold = false , underline = false })
 hl(0 , "Pmenu"        , { fg = "#373D49" , bg = "#212930" , italic = false , bold = false , underline = false })
@@ -542,4 +542,7 @@ hl(0 , "HighlightUndo"     , { fg = "#D57780" , bg = "#3C465A" , italic = false 
 hl(0 , "HighlightRedo"     , { fg = "#99c794" , bg = "#3C465A" , italic = false , bold = true  , underline = false })
 
 hl(0 , "StatusColLineChar"   , { fg = "#304044" , bg = "#212930" , italic = false , bold = true , underline = false })
+
+hl(0 , "ActionHintDef"   , { fg = "#99c794" , bg = "#153450" , italic = false , bold = false , underline = false , blend = 50 })
+hl(0 , "ActionHintRef"   , { fg = "#607070" , bg = "#153450" , italic = false , bold = false , underline = false , blend = 50 })
 -- End of File
