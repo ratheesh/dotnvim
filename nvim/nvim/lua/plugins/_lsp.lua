@@ -50,6 +50,7 @@ return {
   },
   {
     "Wansmer/symbol-usage.nvim",
+    enabled = false,
     event = "LspAttach",
     opts = function(_, opts)
       local function text_format(symbol)
@@ -108,7 +109,7 @@ return {
   },
   {
     "roobert/action-hints.nvim",
-    enabled = true,
+    enabled = false,
     event = { "LspAttach", "BufReadPost" },
     config = function()
       require("action-hints").setup({
