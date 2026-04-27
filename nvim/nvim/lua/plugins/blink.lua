@@ -193,14 +193,17 @@ return {
       -- MENU UI
       ------------------------------------------------
 
+      local has_colorful, colorful_menu = pcall(require, "colorful-menu")
+      local has_lspkind, lspkind = pcall(require, "lspkind")
+
       local function label_text(ctx)
-        local info = require("colorful-menu").blink_highlights(ctx)
+        local info = (has_colorful and colorful_menu.blink_highlights(ctx)) or nil
         return info and info.label or ctx.label
       end
 
       local function label_highlight(ctx)
         local highlights = {}
-        local info = require("colorful-menu").blink_highlights(ctx)
+        local info = (has_colorful and colorful_menu.blink_highlights(ctx)) or nil
         if info then highlights = info.highlights end
         for _, idx in ipairs(ctx.label_matched_indices) do
           table.insert(highlights, { idx, idx + 1, group = "BlinkCmpLabelMatch" })
@@ -228,8 +231,8 @@ return {
 
             kind_icon = {
               text = function(ctx)
-                local symbols = require("lspkind").symbol_map
-                local icon = symbols[ctx.kind] or ctx.kind_icon
+                local symbols = (has_lspkind and lspkind.symbol_map) or {}
+                local icon = symbols[ctx.kind] or ctx.kind_icon or ""
                 return " " .. icon .. ""
               end,
               highlight = function(ctx)
