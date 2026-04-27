@@ -253,7 +253,7 @@ return {
 
             -- source labels matching cmp.lua's source_map format
             source_name = {
-              width = { max = 8 },
+              width = { max = 15 },
               text = function(ctx)
                 local map = {
                   lsp                 = "[LSP ]",
