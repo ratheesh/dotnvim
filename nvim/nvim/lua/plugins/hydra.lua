@@ -44,6 +44,7 @@ function M.config()
         vim.cmd 'silent! %foldopen!'
         gitsigns.toggle_signs(true)
         gitsigns.toggle_word_diff(true)
+        require('util').toggle.inlay_hints(0, false)
       end,
       on_exit = function()
         vim.cmd('echo')
@@ -58,6 +59,7 @@ function M.config()
         vim.cmd([[HighlightColors on]])
         vim.cmd('set hlsearch')
         vim.cmd('set cursorline')
+        require('util').toggle.inlay_hints(0, true)
       end
     },
     mode = { 'n', 'x' },
