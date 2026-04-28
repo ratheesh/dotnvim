@@ -1,7 +1,6 @@
 return {
 {
     'luukvbaal/statuscol.nvim',
-    branch = '0.10',
     enabled = true,
     event = { "BufReadPre" },
     config = function()
