@@ -123,7 +123,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       return
     end
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-    vim.keymap.set('n', '<leader>i', function()
+    vim.keymap.set('n', '<F4>', function()
       vim.lsp.inlay_hint.enable(
         not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }),
         { bufnr = bufnr }
