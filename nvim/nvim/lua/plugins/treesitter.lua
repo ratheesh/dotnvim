@@ -3,7 +3,7 @@ return {
   -- Neovim's built-in treesitter (vim.treesitter.*).
   {
     'nvim-treesitter/nvim-treesitter',
-    lazy = false,
+    event = { "BufReadPost", "BufNewFile" },
     build = ':TSUpdate',
     config = function()
       require('nvim-treesitter.config').setup({
