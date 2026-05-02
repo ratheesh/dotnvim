@@ -160,6 +160,13 @@ basic.paste_mode = {
 	end,
 }
 
+local function truncate(s, n)
+	if s and #s > n then
+		return '…' .. s:sub(#s - n + 1)
+	end
+	return s or ''
+end
+
 basic.projectname = {
 	name = 'projectname',
 	hl_colors = {
@@ -201,13 +208,6 @@ local function is_file_ro()
 	else
 		return ' '
 	end
-end
-
-local function truncate(s, n)
-	if s and #s > n then
-		return '…' .. s:sub(#s - n + 1)
-	end
-	return s or ''
 end
 
 local icon_comp = b_components.cache_file_icon({ default = '', hl_colors = {'FileNameFg','FileBg'} })
@@ -367,7 +367,7 @@ basic.lsp = {
 				{ sep.left_rounded, 'left_sep_diag' },
 				{ lsp_comps.lsp_hint({ format    = ' %s ' , show_zero = false }), 'blue'   },
 				{ lsp_comps.lsp_info({ format    = ' %s ' , show_zero = false }), 'blue'   },
-				{ lsp_comps.lsp_warning({ format = ' %s ' ,  how_zero = false }), 'yellow' },
+				{ lsp_comps.lsp_warning({ format = ' %s ' , show_zero = false }), 'yellow' },
 				{ lsp_comps.lsp_error({ format   = ' %s ' , show_zero = false }), 'red'    },
 				{ sep.left_rounded, 'sep_before' },
 				{ lsp_client_names({}), 'lsp_cl' },
