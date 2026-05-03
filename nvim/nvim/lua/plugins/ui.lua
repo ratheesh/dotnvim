@@ -212,7 +212,7 @@ return {
       maxkeys        = 5,
       show_count     = false,
       excluded_modes = { 'i', 'c' },
-      position       = "top-right",
+      position       = "bottom-right",
       winopts        = {
         focusable = false,
         relative  = "editor",
