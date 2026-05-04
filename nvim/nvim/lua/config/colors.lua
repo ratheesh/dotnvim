@@ -225,33 +225,88 @@ hl(0 , "CmpItemAbbrMatchFuzzy" 	  , { fg = "#6E7179" , bg = nil , italic = false
 hl(0 , "CmpItemAbbrMatch"      	  , { fg = "#62AFBF" , bg = nil , italic = true  , bold = false , underline = false })
 hl(0 , "CmpItemMatch"          	  , { fg = "#a0a0a0" , bg = nil , italic = false , bold = false , underline = true  })
 hl(0 , "CmpItemAbbrDeprecated" 	  , { fg = "#a0a0a0" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKind"           	  , { fg = "#F7B0BA" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindIcon"      	  , { fg = "#F7B0BA" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemMenu"           	  , { fg = "#6E7179" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemMenuIcon"       	  , { fg = "#6E7179" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKindVariable"   	  , { fg = "#C76D83" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindVariableIcon"  , { fg = "#C76D83" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKindInterface"  	  , { fg = "#0097BF" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindInterfaceIcon" , { fg = "#0097BF" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKindText"       	  , { fg = "#C586C0" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindTextIcon"   	  , { fg = "#C586C0" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKindFunction"   	  , { fg = "#A3BE8C" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindFunctionIcon"  , { fg = "#A3BE8C" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKindMethod"     	  , { fg = "#4d708c" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindMethodIcon" 	  , { fg = "#4d708c" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKindKeyword"    	  , { fg = "#fbb4ae" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindKeywordIcon"	  , { fg = "#fbb4ae" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKindSnippet"    	  , { fg = "#9467bd" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindSnippetIcon"	  , { fg = "#9467bd" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKindConstructor"   , { fg = "#A3BE8C" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindConstructorIcon",{ fg = "#A3BE8C" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKindField"         , { fg = "#9467bd" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindFieldIcon"     , { fg = "#9467bd" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKindClass"         , { fg = "#9c755f" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindClassIcon"     , { fg = "#9c755f" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKindModule"        , { fg = "#4C5D79" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindModuleIcon"    , { fg = "#4C5D79" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKindProperty"      , { fg = "#A06372" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindPropertyIcon"  , { fg = "#A06372" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKindUnit"          , { fg = "#8c755f" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindUnitIcon"      , { fg = "#8c755f" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKindValue"         , { fg = "#EBCB8B" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindValueIcon"     , { fg = "#EBCB8B" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKindEnum"          , { fg = "#9467bd" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindEnumIcon"      , { fg = "#9467bd" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKindColor"         , { fg = "#97B7D7" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindColorIcon"     , { fg = "#97B7D7" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKindFile"          , { fg = "#E0AF8F" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindFileIcon"      , { fg = "#E0AF8F" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKindReference"     , { fg = "#97B7D7" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindReferenceIcon" , { fg = "#97B7D7" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKindFolder"        , { fg = "#E0AF8F" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindFolderIcon"    , { fg = "#E0AF8F" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKindEnumMember"    , { fg = "#3D7BBF" , bg = nil , italic = false , bold = false , underline = false })
-hl(0 , "CmpItemKindConstant"      , { fg = "#6B717C" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindEnumMemberIcon", { fg = "#3D7BBF" , bg = nil , italic = false , bold = false , underline = false })
+
+hl(0 , "CmpItemKindConstant"      , { fg = "#1DAA89" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindConstantIcon"  , { fg = "#1DAA89" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKindStruct"        , { fg = "#af7aa1" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindStructIcon"    , { fg = "#af7aa1" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKindEvent"         , { fg = "#3D7BBF" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindEventIcon"     , { fg = "#3D7BBF" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKindOperator"      , { fg = "#bf8da7" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindOperatorIcon"  , { fg = "#bf8da7" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKindTypeParameter" , { fg = "#97B7D7" , bg = nil , italic = false , bold = false , underline = false })
+hl(0 , "CmpItemKindTypeParameterIcon", { fg = "#97B7D7" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpGhostText"          	  , { fg = "#707080" , bg = nil , italic = true  , bold = false , underline = false })
 
 -- Blink.cmp
