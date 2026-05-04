@@ -37,11 +37,9 @@ function M.config()
   })
 
   local has_words_before = function()
-    local pos = vim.fn.getpos(".")
-    local col = pos[3]
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
     if col == 0 then return false end
-    local line = vim.fn.getline(".")
-    return line:sub(col, col):match("%s") == nil
+    return vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%S") ~= nil
   end
 
   local comparators = {
@@ -95,10 +93,7 @@ function M.config()
       completion = cmp.config.window.bordered({
         side_padding = 0,
         winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel",
-        scrollbar = {
-          thumb_char = "│",
-          position = "edge",
-        },
+        scrollbar = true,
         border = "single",
       }),
       documentation = cmp.config.window.bordered({
@@ -203,8 +198,10 @@ function M.config()
     formatting = {
       fields = { "icon", "abbr", "kind", "menu" },
       format = function(entry, vim_item)
+        local kind_name = vim_item.kind
         local kind = lspkind.cmp_format({
-          mode = "symbol_text",
+          mode = "symbol",
+          preset = 'codicons',
           maxwidth = {
             menu = 50,
             abbr = 50,
@@ -216,7 +213,7 @@ function M.config()
         kind.menu = source_labels[entry.source.name] or ("[" .. entry.source.name .. "]")
 
         kind.icon = " " .. kind.icon .. ""
-        kind.kind = "" .. kind.kind .. ""
+        kind.kind = "" .. (kind_name or "") .. ""
         kind.abbr = "" .. kind.abbr .. ""
 
         return kind
@@ -271,23 +268,10 @@ function M.config()
     view = cmdline_view,
     completion = { keyword_length = 1 },
     sources = cmp.config.sources({
-      { name = "nvim_lsp", priority = 2000 },
       { name = "path", priority = 1500 },
       { name = "cmdline", priority = 1000 },
     }, {
       { name = "cmdline_history", priority = 750 },
-      { name = "nvim_lsp_document_symbol", priority = 500 },
-      {
-        name = "spell",
-        priority = 250,
-        option = {
-          keep_all_entries = false,
-          enable_in_context = function()
-            return true
-          end,
-          preselect_correct_word = true,
-        },
-      },
     }),
   })
 
