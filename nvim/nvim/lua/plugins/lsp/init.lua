@@ -9,6 +9,7 @@ return {
     dependencies = {
       "mason-org/mason.nvim",
       "mason-org/mason-lspconfig.nvim",
+      { "folke/lazydev.nvim", ft = "lua", opts = {} },
     },
 
     config = function()
