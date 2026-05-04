@@ -170,7 +170,9 @@ function M.config()
     sources = cmp.config.sources({
       { name = "copilot", priority = 1000 },
       { name = "path", priority = 999 },
-      { name = "nvim_lsp", priority = 998 },
+      { name = "nvim_lsp", priority = 998, entry_filter = function(entry)
+        return entry:get_kind() ~= types.lsp.CompletionItemKind.Snippet
+      end },
       { name = "nerdfonts", priority = 997 },
       { name = "luasnip", priority = 996 },
     }, {
@@ -278,7 +280,9 @@ function M.config()
   cmp.setup.filetype("gitcommit", {
     sources = cmp.config.sources({
       { name = "conventionalcommits" },
-      { name = "nvim_lsp" },
+      { name = "nvim_lsp", entry_filter = function(entry)
+        return entry:get_kind() ~= types.lsp.CompletionItemKind.Snippet
+      end },
       { name = "luasnip" },
     }, {
       { name = "buffer" },
