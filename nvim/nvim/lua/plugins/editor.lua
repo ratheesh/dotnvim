@@ -203,4 +203,11 @@ return {
       vim.keymap.set('n', '+', require('toggle').toggle, { desc = 'Toggle word' })
     end
   },
+  {
+    'nemanjamalesija/smart-paste.nvim',
+    enabled = true,
+    keys = { 'p', 'P', 'gp', 'gP' },
+    event = 'VeryLazy',
+    config = true,
+  },
 }

@@ -284,7 +284,7 @@ return {
   },
   {
       "rachartier/tiny-glimmer.nvim",
-      enabled = true,
+      enabled = false,
       event = "VeryLazy",
       opts = {
           auto_map = true,
