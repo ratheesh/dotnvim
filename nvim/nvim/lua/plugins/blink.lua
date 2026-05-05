@@ -360,6 +360,7 @@ return {
 
         ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
         ["<C-e>"]     = { "hide", "fallback" },
+        ["<BS>"]      = { "show", "fallback" },
 
         -- scroll docs (mirrors cmp.lua <C-d>/<C-u>)
         ["<C-d>"] = { "scroll_documentation_down", "fallback" },
