@@ -16,12 +16,14 @@ return {
   },
   {
     "yamatsum/nvim-cursorline",
+    enabled = true,
+    event = { "BufReadPre", "BufNewFile" },
     cond = #vim.api.nvim_list_uis() > 0,
     config = function()
       require("nvim-cursorline").setup({
         cursorline = {
           enable   = true,
-          timeout  = 500,
+          timeout  = 2000,
           number   = false,
         },
         cursorword   = {
