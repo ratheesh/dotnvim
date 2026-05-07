@@ -314,7 +314,8 @@ return {
 
       opts.completion.ghost_text = {
         enabled = true,
-        show_with_menu = false,
+        show_with_menu = true,
+        show_without_selection = true,
       }
 
       ------------------------------------------------
