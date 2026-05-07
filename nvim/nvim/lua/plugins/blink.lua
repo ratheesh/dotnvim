@@ -347,7 +347,7 @@ return {
           menu = { auto_show = true },
           ghost_text = { enabled = true },
           list = {
-            selection = { preselect = true, auto_insert = true },
+            selection = { preselect = false, auto_insert = true },
           },
         },
       }
