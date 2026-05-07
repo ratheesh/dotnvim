@@ -17,6 +17,7 @@ local M = {
     "hrsh7th/cmp-cmdline",
     "dmitmel/cmp-cmdline-history",
     "fang2hou/copilot-cmp",
+    "xzbdmw/colorful-menu.nvim",
   },
 }
 
@@ -28,6 +29,7 @@ function M.config()
   local luasnip = require("luasnip")
   local lspkind = require("lspkind")
   local ok_clangd, clangd_cmp = pcall(require, "clangd_extensions.cmp_scores")
+  local has_colorful, colorful_menu = pcall(require, "colorful-menu")
 
   require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -217,6 +219,24 @@ function M.config()
         kind.icon = " " .. kind.icon .. ""
         kind.kind = "" .. (kind_name or "") .. ""
         kind.abbr = "" .. kind.abbr .. ""
+
+        if has_colorful then
+          local ctx = {
+            item = entry.completion_item,
+            word = vim_item.abbr,
+          }
+          local info = colorful_menu.cmp_highlights(ctx)
+          if info then
+            for i, segment in ipairs(info) do
+              if i == 1 then
+                vim_item.abbr = segment.text
+              else
+                vim_item.abbr = vim_item.abbr .. segment.text
+              end
+              vim_item.abbr_hl = segment.group
+            end
+          end
+        end
 
         return kind
       end,
