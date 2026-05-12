@@ -354,11 +354,11 @@ basic.lsp = {
 		lsp_cl           = { 'LSPClientFg', 'LSPClientBg', 'italic' },
 		sep_after        = { 'LSPClientBg', 'ActiveBg' },
 
-		red			     = { 'LSPDiagErrFg' , 'FileNameBg' },
-		yellow 		     = { 'LSPDiagWarnFg', 'FileNameBg' },
-		blue   		     = { 'LSPDiagHintFg', 'FileNameBg' },
-		left_sep_diag    = { 'FileNameBg'   , 'ActiveBg' },
-		right_sep_diag   = { 'FileNameBg'   , 'ActiveBg' },
+		red            = { 'LSPDiagErrFg' , 'FileNameBg' },
+		yellow         = { 'LSPDiagWarnFg', 'FileNameBg' },
+		blue           = { 'LSPDiagHintFg', 'FileNameBg' },
+		left_sep_diag  = { 'FileNameBg'   , 'ActiveBg' },
+		right_sep_diag = { 'FileNameBg'   , 'ActiveBg' },
 	},
 	text = function(bufnr)
 		if lsp_comps.check_lsp(bufnr) and lsp_client_names({}) ~= nil then
@@ -366,9 +366,9 @@ basic.lsp = {
 				-- { '─', hl_list.StatusLine },
 				{ sep.left_rounded, 'left_sep_diag' },
 				{ lsp_comps.lsp_hint({ format    = ' %s ' , show_zero = false }), 'blue'   },
-				{ lsp_comps.lsp_info({ format    = ' %s ' , show_zero = false }), 'blue'   },
-				{ lsp_comps.lsp_warning({ format = ' %s ' , show_zero = false }), 'yellow' },
-				{ lsp_comps.lsp_error({ format   = ' %s ' , show_zero = false }), 'red'    },
+				{ lsp_comps.lsp_info({ format    = 'ℹ%s ' , show_zero = false }), 'blue'   },
+				{ lsp_comps.lsp_warning({ format = '!%s ' , show_zero = false }), 'yellow' },
+				{ lsp_comps.lsp_error({ format   = 'ℇ%s ' , show_zero = false }), 'red'    },
 				{ sep.left_rounded, 'sep_before' },
 				{ lsp_client_names({}), 'lsp_cl' },
 				{ sep.right_rounded, 'sep_after' },
@@ -434,7 +434,7 @@ basic.indent = {
 			-- {'│','sep'},
 			-- {'','sep1'},
 			-- {'','sep1'},
-			{ '𝓒𝓱:%02B𝒽', 'charcolor' },
+      { '𝓒𝓱:%02Bℎ', 'charcolor' },
 			{ sep.right_rounded, 'sep_after' },
 		}
 	end,
