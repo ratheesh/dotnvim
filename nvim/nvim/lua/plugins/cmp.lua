@@ -1,3 +1,7 @@
+-- Copyright (c) 2026 Ratheesh<ratheeshreddy@gmail.com>. All Rights Reserved.
+-- License: MiT
+-- Completion plugins
+
 local M = {
   "hrsh7th/nvim-cmp",
   event = { "InsertEnter", "CmdlineEnter" },

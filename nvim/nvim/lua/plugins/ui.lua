@@ -104,7 +104,11 @@ return {
           local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
           local icon, color = require("nvim-web-devicons").get_icon_color(filename)
           local modified = vim.bo[props.buf].modified and "bold,italic" or "bold"
-          return {
+-- Copyright (c) 2026 Ratheesh<ratheeshreddy@gmail.com>. All Rights Reserved.
+-- License: MiT
+-- UI plugins
+
+return {
             { get_diagnostic_label(props) },
             { icon, guifg = color }, { " " },
             { filename, gui = modified },

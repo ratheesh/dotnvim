@@ -1,3 +1,5 @@
+-- Copyright (c) 2026 Ratheesh<ratheeshreddy@gmail.com>. All Rights Reserved.
+-- License: MiT
 -- pulse.nvim plugin settings
 return {
   {

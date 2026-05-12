@@ -1,3 +1,5 @@
+-- Copyright (c) 2026 Ratheesh<ratheeshreddy@gmail.com>. All Rights Reserved.
+-- License: MiT
 
 local M = {
   'bootleq/vim-cycle',

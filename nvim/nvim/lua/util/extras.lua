@@ -1,3 +1,6 @@
+-- Copyright (c) 2026 Ratheesh<ratheeshreddy@gmail.com>. All Rights Reserved.
+-- License: MiT
+
 local Config = require("lazyvim.config")
 local Float = require("lazy.view.float")
 local LazyConfig = require("lazy.core.config")

@@ -1,3 +1,7 @@
+-- Copyright (c) 2026 Ratheesh<ratheeshreddy@gmail.com>. All Rights Reserved.
+-- License: MiT
+-- Treesitter plugins
+
 return {
   -- Parser installer only — all highlighting/folding/indentation handled by
   -- Neovim's built-in treesitter (vim.treesitter.*).
