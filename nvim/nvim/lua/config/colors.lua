@@ -49,7 +49,7 @@ hl(0 , "ModeMsg"      , { fg = "#A3BE8C" , bg = nil       , italic = false , bol
 hl(0 , "MoreMsg"      , { fg = "#A3BE8C" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "Question"     , { fg = "#81A1C1" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "Substitute"   , { fg = "#3B4252" , bg = "#EBCB8B" , italic = false , bold = false , underline = false })
-hl(0 , "SpecialKey"   , { fg = "#4C566A" , bg = nil       , italic = false , bold = false , underline = false })
+hl(0 , "SpecialKey"   , { fg =  nil      , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "TooLong"      , { fg = "#D57780" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "Underlined"   , { fg = "#D57780" , bg = nil       , italic = false , bold = false , underline = false })
 hl(0 , "Visual"       , { fg = nil       , bg = "#38485E" , italic = false , bold = false , underline = false })

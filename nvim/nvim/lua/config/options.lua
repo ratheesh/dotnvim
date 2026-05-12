@@ -58,8 +58,9 @@ o.wildmode = "longest:full,full"
 o.winminwidth = 5
 o.wrap = true
 o.smoothscroll = true
-o.showbreak = '↪ '
-
+o.showbreak = ' 󱞵 '
+o.linebreak = true
+o.breakindent = true
 opt.listchars = {
   trail = "•",
   tab = "  ",
