@@ -301,6 +301,8 @@ hl(0 , "CmpItemKindStructIcon"    , { fg = "#af7aa1" , bg = nil , italic = false
 hl(0 , "CmpItemKindEvent"         , { fg = "#3D7BBF" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "CmpItemKindEventIcon"     , { fg = "#3D7BBF" , bg = nil , italic = false , bold = false , underline = false })
 
+hl(0 , "CmpItemKindCopilot"       , { fg = "#AC6BF1" , bg = nil , italic = false , bold = false , underline = false })
+
 hl(0 , "CmpItemKindOperator"      , { fg = "#bf8da7" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "CmpItemKindOperatorIcon"  , { fg = "#bf8da7" , bg = nil , italic = false , bold = false , underline = false })
 

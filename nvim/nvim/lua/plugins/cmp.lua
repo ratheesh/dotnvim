@@ -205,6 +205,11 @@ function M.config()
       fields = { "icon", "abbr", "kind", "menu" },
       format = function(entry, vim_item)
         local kind_name = vim_item.kind
+
+        if entry.source.name == "copilot" then
+          vim_item.kind_hl = "CmpItemKindCopilot"
+        end
+
         local kind = lspkind.cmp_format({
           mode = "symbol",
           preset = 'codicons',
