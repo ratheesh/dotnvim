@@ -16,7 +16,7 @@ return {
   },
   {
     "yamatsum/nvim-cursorline",
-    enabled = true,
+    enabled = false,
     event = { "BufReadPre", "BufNewFile" },
     cond = #vim.api.nvim_list_uis() > 0,
     config = function()
