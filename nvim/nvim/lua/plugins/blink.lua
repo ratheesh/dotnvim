@@ -1,3 +1,7 @@
+-- Copyright (c) 2026 Ratheesh<ratheeshreddy@gmail.com>. All Rights Reserved.
+-- License: MIT
+-- blink.cmp completion configuration
+
 return {
   {
     "saghen/blink.cmp",
@@ -33,6 +37,15 @@ return {
     opts = function(_, opts)
 
       ------------------------------------------------
+      -- ENABLED GUARD
+      ------------------------------------------------
+
+      opts.enabled = function()
+        local ft = vim.bo.filetype
+        return ft ~= "namu_prompt" and ft ~= "namu_sidebar"
+      end
+
+      ------------------------------------------------
       -- LUASNIP SETUP (mirrors cmp.lua)
       ------------------------------------------------
 
@@ -64,12 +77,8 @@ return {
           if ok and stats and stats.size > max then
             return { "lsp", "path" }
           end
-          local ft = vim.bo.filetype
-          if ft == "gitcommit" then
+          if vim.bo.filetype == "gitcommit" then
             return { "conventionalcommits", "lsp", "snippets", "buffer" }
-          end
-          if ft == "namu_prompt" or ft == "namu_sidebar" then
-            return {}
           end
           return { "copilot", "lsp", "snippets", "path", "nerdfonts", "buffer", "emoji", "spell" }
         end,
@@ -106,7 +115,7 @@ return {
           path = {
             name = "Path",
             module = "blink.cmp.sources.path",
-            score_offset = 3,
+            score_offset = 25,
             opts = {
               trailing_slash = false,
               label_trailing_slash = true,
@@ -126,6 +135,7 @@ return {
             name = "Snippets",
             module = "blink.cmp.sources.snippets.default",
             score_offset = 85,
+            min_keyword_length = 2,
             opts = { friendly_snippets = true },
           },
 
@@ -133,7 +143,8 @@ return {
           buffer = {
             name = "Buffer",
             module = "blink.cmp.sources.buffer",
-            min_keyword_length = 2,
+            score_offset = 5,
+            min_keyword_length = 3,
             opts = {
               get_bufnrs = function()
                 local bufs = {}
@@ -150,18 +161,35 @@ return {
           },
 
           -- blink-compat wrapped sources
-          nerdfonts = { name = "nerdfonts", module = "blink.compat.source" },
-          emoji     = { name = "emoji",     module = "blink.compat.source" },
-          spell     = { name = "spell",     module = "blink.compat.source" },
+          nerdfonts = {
+            name = "nerdfonts",
+            module = "blink.compat.source",
+            score_offset = 10,
+            min_keyword_length = 2,
+          },
+          emoji = {
+            name = "emoji",
+            module = "blink.compat.source",
+            score_offset = 5,
+            min_keyword_length = 2,
+          },
+          spell = {
+            name = "spell",
+            module = "blink.compat.source",
+            score_offset = 3,
+            min_keyword_length = 3,
+          },
 
           conventionalcommits = {
-            name   = "conventionalcommits",
-            module = "blink.compat.source",
+            name         = "conventionalcommits",
+            module       = "blink.compat.source",
+            score_offset = 95,
           },
 
           cmdline_history = {
-            name   = "cmdline_history",
-            module = "blink.compat.source",
+            name         = "cmdline_history",
+            module       = "blink.compat.source",
+            score_offset = -5,
           },
         },
       }
@@ -172,6 +200,8 @@ return {
 
       opts.fuzzy = {
         implementation = "prefer_rust",
+        use_proximity  = true,
+        frecency       = { enabled = true },
       }
 
       opts.completion = opts.completion or {}
@@ -280,8 +310,14 @@ return {
       ------------------------------------------------
 
       opts.completion.trigger = {
-        show_on_keyword = true,
-        show_on_trigger_character = true,
+        show_on_keyword                      = true,
+        show_on_trigger_character            = true,
+        show_on_insert_on_trigger_character  = true,
+        show_on_blocked_trigger_characters   = { " ", "\n", "\t" },
+      }
+
+      opts.completion.accept = {
+        auto_brackets = { enabled = true },
       }
 
       opts.completion.list = {
@@ -300,10 +336,10 @@ return {
       ------------------------------------------------
 
       opts.completion.documentation = {
-        auto_show = true,
-        auto_show_delay_ms = 400,
+        auto_show          = true,
+        auto_show_delay_ms = 200,
         window = {
-          border = "rounded",
+          border       = "rounded",
           winhighlight = "Normal:CmpDocNormal",
         },
       }
@@ -313,8 +349,8 @@ return {
       ------------------------------------------------
 
       opts.completion.ghost_text = {
-        enabled = true,
-        show_with_menu = true,
+        enabled                = true,
+        show_with_menu         = true,
         show_without_selection = true,
       }
 
@@ -339,7 +375,7 @@ return {
             return { "buffer", "cmdline_history" }
           end
           if t == ":" then
-            return { "path", "cmdline", "cmdline_history", "spell" }
+            return { "path", "cmdline", "cmdline_history" }
           end
           return {}
         end,

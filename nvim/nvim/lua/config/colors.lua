@@ -316,6 +316,7 @@ hl(0 , "BlinkCmpMenu"        , { fg = "#707070" , bg = nil , italic = false  , b
 hl(0 , "BlinkCmpDocBorder"   , { fg = "#505050" , bg = nil , italic = false  , bold = false , underline = false })
 hl(0 , "BlinkCmpDocSeparator", { fg = "#BF616A" , bg = nil , italic = false  , bold = false , underline = false })
 hl(0 , "BlinkCmpLabelMatch"  , { fg = "#97B7D7" , bg = nil , italic = false  , bold = false , underline = false })
+hl(0 , "BlinkCmpGhostText"  , { fg = "#707080" , bg = nil , italic = true   , bold = false , underline = false })
 
 hl(0 , "IndentBlanklineChar" , { fg = "#3A404C" , bg = nil , italic = false , bold = false , underline = false })
 hl(0 , "DiagnosticError"     , { fg = "#BF616A" , bg = nil , italic = false , bold = true  , underline = false })

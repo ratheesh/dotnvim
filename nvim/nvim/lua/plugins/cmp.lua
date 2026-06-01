@@ -4,6 +4,7 @@
 
 local M = {
   "hrsh7th/nvim-cmp",
+  enabled = true,
   event = { "InsertEnter", "CmdlineEnter" },
 
   dependencies = {
@@ -24,8 +25,6 @@ local M = {
     "xzbdmw/colorful-menu.nvim",
   },
 }
-
-M.enabled = true
 
 function M.config()
   local cmp = require("cmp")
@@ -69,18 +68,25 @@ function M.config()
   end)
 
   local source_labels = {
-    nvim_lsp = "[LSP ]",
-    luasnip = "[SNIP]",
-    buffer = "[BUF ]",
-    path = "[PATH]",
-    copilot = "[ AI ]",
-    emoji = "[EMOJ]",
-    spell = "[SPEL]",
-    nerdfonts = "[NF  ]",
-    cmdline_history = "[HIST]",
+    nvim_lsp            = "[LSP ]",
+    luasnip             = "[SNIP]",
+    buffer              = "[BUF ]",
+    path                = "[PATH]",
+    copilot             = "[ AI ]",
+    emoji               = "[EMOJ]",
+    spell               = "[SPEL]",
+    nerdfonts           = "[NF  ]",
+    cmdline_history     = "[HIST]",
+    conventionalcommits = "[CONV]",
   }
 
   cmp.setup({
+    performance = {
+      debounce_time  = 80,
+      throttle_time  = 0,
+      max_view_entries = 200,
+    },
+
     completion = {
       completeopt = "menu,menuone,noinsert,noselect",
     },
@@ -92,7 +98,7 @@ function M.config()
     },
 
     experimental = {
-      ghost_text = true,
+      ghost_text = { hl_group = "CmpGhostText" },
     },
 
     window = {
@@ -120,7 +126,7 @@ function M.config()
       ["<BS>"] = cmp.mapping(function(fallback)
         fallback()
         vim.schedule(function()
-          if has_words_before() then
+          if not cmp.visible() and has_words_before() then
             cmp.complete()
           end
         end)
@@ -128,7 +134,7 @@ function M.config()
 
       ["<CR>"] = cmp.mapping(function(fallback)
         if cmp.visible() and cmp.get_selected_entry() then
-          cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
+          cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
         else
           fallback()
         end
@@ -137,7 +143,7 @@ function M.config()
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert, select = true })
-        elseif luasnip.expand_or_jumpable() then
+        elseif luasnip.expand_or_locally_jumpable() then
           luasnip.expand_or_jump()
         elseif has_words_before() then
           cmp.complete()
@@ -149,7 +155,7 @@ function M.config()
       ["<S-Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert, select = true })
-        elseif luasnip.jumpable(-1) then
+        elseif luasnip.locally_jumpable(-1) then
           luasnip.jump(-1)
         else
           fallback()
@@ -157,7 +163,7 @@ function M.config()
       end, { "i", "s" }),
 
       ["<C-l>"] = cmp.mapping(function(fallback)
-        if luasnip.expand_or_jumpable() then
+        if luasnip.expand_or_locally_jumpable() then
           luasnip.expand_or_jump()
         else
           fallback()
@@ -165,7 +171,7 @@ function M.config()
       end, { "i", "s" }),
 
       ["<C-h>"] = cmp.mapping(function(fallback)
-        if luasnip.jumpable(-1) then
+        if luasnip.locally_jumpable(-1) then
           luasnip.jump(-1)
         else
           fallback()
@@ -228,20 +234,10 @@ function M.config()
         kind.abbr = "" .. kind.abbr .. ""
 
         if has_colorful then
-          local ctx = {
-            item = entry.completion_item,
-            word = vim_item.abbr,
-          }
-          local info = colorful_menu.cmp_highlights(ctx)
-          if info then
-            for i, segment in ipairs(info) do
-              if i == 1 then
-                vim_item.abbr = segment.text
-              else
-                vim_item.abbr = vim_item.abbr .. segment.text
-              end
-              vim_item.abbr_hl = segment.group
-            end
+          local color_item = colorful_menu.cmp_highlights(entry)
+          if color_item and color_item.abbr ~= nil then
+            vim_item.abbr_hl_group = color_item.abbr_hl_group
+            vim_item.abbr          = color_item.abbr
           end
         end
 
