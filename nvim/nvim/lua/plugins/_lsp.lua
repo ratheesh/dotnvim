@@ -17,7 +17,7 @@ return {
   },
   {
     "Chaitanyabsprip/fastaction.nvim",
-    enabled = true,
+    enabled = false,
     event = { "LspAttach" },
     opts = {},
     keys = {
@@ -27,6 +27,20 @@ return {
         desc = "Code Actions",
       },
     },
+  },
+  {
+    "iilw/nui-diagnostic.nvim",
+    enabled = true,
+    event = { "LspAttach" },
+    dependencies = { "MunifTanjim/nui.nvim" },
+    keys = {
+      {
+        "<leader>ca",
+        function() require("nui-diagnostic").open() end,
+        desc = "Code Actions",
+      },
+    },
+    opts = {}
   },
   {
     "rachartier/tiny-code-action.nvim",
