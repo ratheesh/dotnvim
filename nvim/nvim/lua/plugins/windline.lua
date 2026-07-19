@@ -58,7 +58,7 @@ local hl_list = {
 
 local basic = {}
 
-basic.divider = { b_components.divider, '' }
+basic.divider = { b_components.divider, '', 3 }
 basic.space   = { ' ', '' }
 basic.bg      = { ' ', 'StatusLine' }
 basic.file_name_inactive = { b_components.full_file_name, hl_list.Inactive }
@@ -67,6 +67,7 @@ basic.progress_inactive  = { b_components.progress, hl_list.Inactive }
 
 basic.vi_mode = {
 	name = 'vi_mode',
+	width = 1,
 	hl_colors = {
 		Normal        = hl_list.ModeNormal,
 		Insert        = hl_list.ModeInsert,
@@ -104,6 +105,7 @@ basic.vi_mode = {
 }
 
 basic.mode_rightsep = {
+	width = 10,
 	hl_colors = {
 		default             = { 'FileNameFg'    , 'FileNameBg'    },
 		sep_left            = { 'ProjectNameBg' , 'FileNameBg'    },
@@ -144,6 +146,7 @@ basic.mode_rightsep = {
 }
 
 basic.paste_mode = {
+	width = 28,
 	hl_colors = {
 		default             = { 'FileNameFg', 'FileNameBg'},
 		sep_right_proj      = hl_list.PasteRightProjSep,
@@ -216,6 +219,7 @@ end
 local icon_comp = b_components.cache_file_icon({ default = '', hl_colors = {'FileNameFg','FileBg'} })
 basic.file = {
 	name = 'file',
+	width = 35,
 	hl_colors = {
 		sep_left_file = { 'FileBg', 'ActiveBg' },
 		default       = hl_list.File,
@@ -446,6 +450,7 @@ basic.indent = {
 --                   
 
 basic.right = {
+	width = 50,
 	hl_colors = {
 		sep_before = { 'RightBg'  , 'NormalBg'         },
 		sep_after  = { 'RightBg'  , 'NormalBg'         },
@@ -476,6 +481,7 @@ local function lazy_status()
 end
 
 basic.lazy = {
+	width = 65,
 	hl_colors = {
 		sep  = { 'FileNameBg', 'NormalBg' },
 		text = { 'LazyFg', 'FileNameBg'},
