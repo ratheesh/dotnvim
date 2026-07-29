@@ -92,6 +92,16 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- disable spell and wrap for C/C++ development filetypes
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("no_wrap_spell"),
+  pattern = { "c", "cpp", "h", "asm", "nasm", "gas" },
+  callback = function()
+    -- vim.opt_local.wrap = false
+    vim.opt_local.spell = false
+  end,
+})
+
 -- Auto create dir when saving a file, in case some intermediate directory does not exist
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   group = augroup("auto_create_dir"),
