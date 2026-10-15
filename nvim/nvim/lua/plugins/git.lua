@@ -22,6 +22,7 @@ return {
         topdelete    = { text = "" },
         changedelete = { text = "┃" },
       },
+      signcolumn = true,
       diff_opts = {
         internal = true,
       },

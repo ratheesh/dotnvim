@@ -37,7 +37,15 @@ return {
             }
           },
           {
-            text = { builtin.lnumfunc },
+            -- text = { builtin.lnumfunc },
+            text = {
+              function(args, ...)
+                if args.virtnum > 0 then
+                  return '%=%#StatusColLineChar#󰧞'
+                end
+                return builtin.lnumfunc(args, ...)
+              end,
+            },
             colwidth = 1,
             click = 'v:lua.ScLa',
           },
@@ -48,6 +56,7 @@ return {
               colwidth = 1,
               fillchar = "│",
               fillcharhl = 'StatusColLineChar',
+              wrap = true,
             },
             click = 'v:lua.ScSa',
           },
