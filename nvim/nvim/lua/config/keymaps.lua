@@ -51,6 +51,9 @@ end, { desc = "Select parent (outside)" })
 -- Select previously pasted text
 map("n", "gV", "`[V`]", { desc = "Select previously pasted text" })
 
+-- map $ in visual mode to include end of line character
+map({ "x" }, '$', 'g_', { expr = false, silent = true })
+
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
