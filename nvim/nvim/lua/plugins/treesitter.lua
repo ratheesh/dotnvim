@@ -96,101 +96,64 @@ return {
       local ts_move = require("nvim-treesitter-textobjects.move")
       local ts_select = require("nvim-treesitter-textobjects.select")
 
-      ---- MOVE ---------------------------------------------------------------
-      --------- goto_next_start
-      vim.keymap.set({ "n", "x", "o" }, "]f", function()
-        ts_move.goto_next_start("@function.outer", "textobjects")
-      end, { desc = "Next function start", silent = true })
-      vim.keymap.set({ "n", "x", "o" }, "]c", function()
-        ts_move.goto_next_start("@class.outer", "textobjects")
-      end, { desc = "Next class start", silent = true })
-      vim.keymap.set({ "n", "x", "o" }, "]w", function()
-        ts_move.goto_next_start("@block.outer", "textobjects")
-      end, { desc = "Next block start", silent = true })
-      vim.keymap.set({ "n", "x", "o" }, "]k", function()
-        ts_move.goto_next_start("@comment.outer", "textobjects")
-      end, { desc = "Next comment", silent = true })
+      -- { lhs, query, desc }
+      local move_keys = {
+        goto__next_start = {
+          { ["]f"] = "@function.outer", "Next function start" },
+          { ["]c"] = "@class.outer",    "Next class start" },
+          { ["]w"] = "@block.outer",    "Next block start" },
+          { ["]k"] = "@comment.outer",  "Next comment start" },
+        },
+        goto__next_end = {
+          { ["]F"] = "@function.outer", "Next function end" },
+          { ["]C"] = "@class.outer",    "Next class end" },
+        },
+        goto__previous_start = {
+          { ["[f"] = "@function.outer", "Previous function start" },
+          { ["[c"] = "@class.outer",    "Previous class start" },
+          { ["[w"] = "@block.outer",    "Previous block start" },
+          { ["[k"] = "@comment.outer",  "Previous comment start" },
+        },
+        goto__previous_end = {
+          { ["[F"] = "@function.outer", "Previous function end" },
+          { ["[C"] = "@class.outer",    "Previous class end" },
+        },
+        goto_next = {
+          { ["]d"] = "@conditional.outer", "Next conditional" },
+        },
+        goto_previous = {
+          { ["[d"] = "@conditional.outer", "Previous conditional" },
+        },
+      }
 
-      --------- goto_next_end
-      vim.keymap.set({ "n", "x", "o" }, "]F", function()
-        ts_move.goto_next_end("@function.outer", "textobjects")
-      end, { desc = "Next function end", silent = true })
-      vim.keymap.set({ "n", "x", "o" }, "]C", function()
-        ts_move.goto_next_end("@class.outer", "textobjects")
-      end, { desc = "Next class end", silent = true })
+      local select_keys = {
+        { "af", "@function.outer", "select around function" },
+        { "if", "@function.inner", "Select inside function" },
+        { "aC", "@class.outer", "Select around class" },
+        { "iC", "@class.inner", "Select inside class" },
+        { "ac", "@conditional.outer", "Select around conditional" },
+        { "ic", "@conditional.inner", "Select inside conditional" },
+        { "ak", "@comment.outer", "Select around comment" },
+        { "as", "@statement.outer", "Select around statement" },
+        { "ab", "@block.outer", "Select around block" },
+        { "ib", "@block.inner", "Select inside block" },
+        { "aa", "@parameter.outer", "Select around parameter" },
+        { "ia", "@parameter.inner", "Select inside parameter" },
+      }
 
-      --------- goto_previous_start
-      vim.keymap.set({ "n", "x", "o" }, "[f", function()
-        ts_move.goto_previous_start("@function.outer", "textobjects")
-      end, { desc = "Previous function start", silent = true })
-      vim.keymap.set({ "n", "x", "o" }, "[c", function()
-        ts_move.goto_previous_start("@class.outer", "textobjects")
-      end, { desc = "Previous class start", silent = true })
-      vim.keymap.set({ "n", "x", "o" }, "[w", function()
-        ts_move.goto_previous_start("@block.outer", "textobjects")
-      end, { desc = "Previous block start", silent = true })
-      vim.keymap.set({ "n", "x", "o" }, "[k", function()
-        ts_move.goto_previous_start("@comment.outer", "textobjects")
-      end, { desc = "Previous comment", silent = true })
+      for method, keys in pairs(move_keys) do
+        for _, k in ipairs(keys) do
+          vim.keymap.set({"n", "x", "o"}, k[1], function()
+            ts_move[method](k[2], "textobjects")
+          end, { desc = k[3], silent = true })
+        end
+      end
 
-      --------- goto_previous_end
-      vim.keymap.set({ "n", "x", "o" }, "[F", function()
-        ts_move.goto_previous_end("@function.outer", "textobjects")
-      end, { desc = "Previous function end", silent = true })
-      vim.keymap.set({ "n", "x", "o" }, "[C", function()
-        ts_move.goto_previous_end("@class.outer", "textobjects")
-      end, { desc = "Previous class end", silent = true })
-
-      vim.keymap.set({ "n", "x", "o" }, "]d", function()
-        ts_move.goto_next("@conditional.outer", "textobjects")
-      end, { desc = "Next conditional", silent = true })
-      vim.keymap.set({ "n", "x", "o" }, "[d", function()
-        ts_move.goto_previous("@conditional.outer", "textobjects")
-      end, { desc = "Previous conditional", silent = true })
-
-      ---- SELECT -------------------------------------------------------------
-      vim.keymap.set({ "x", "o" }, "af", function()
-        ts_select.select_textobject("@function.outer", "textobjects")
-      end, { desc = "Select around function", silent = true })
-      vim.keymap.set({ "x", "o" }, "if", function()
-        ts_select.select_textobject("@function.inner", "textobjects")
-      end, { desc = "Select inside function", silent = true })
-      vim.keymap.set({ "x", "o" }, "aC", function()
-        ts_select.select_textobject("@class.outer", "textobjects")
-      end, { desc = "Select around class", silent = true })
-      vim.keymap.set({ "x", "o" }, "iC", function()
-        ts_select.select_textobject("@class.inner", "textobjects")
-      end, { desc = "Select inside class", silent = true })
-      vim.keymap.set({ "x", "o" }, "ac", function()
-        ts_select.select_textobject("@conditional.outer", "textobjects")
-      end, { desc = "Select around conditional", silent = true })
-      vim.keymap.set({ "x", "o" }, "ic", function()
-        ts_select.select_textobject("@conditional.inner", "textobjects")
-      end, { desc = "Select inside conditional", silent = true })
-      --[[ vim.keymap.set({ "x", "o" }, "al", function()
-        ts_select.select_textobject("@loop.outer", "textobjects")
-      end, { desc = "Select around loop", silent = true })
-      vim.keymap.set({ "x", "o" }, "il", function()
-        ts_select.select_textobject("@loop.inner", "textobjects")
-      end, { desc = "Select inside loop", silent = true }) ]]
-      vim.keymap.set({ "x", "o" }, "ak", function()
-        ts_select.select_textobject("@comment.outer", "textobjects")
-      end, { desc = "Select around comment", silent = true })
-      vim.keymap.set({ "x", "o" }, "as", function()
-        ts_select.select_textobject("@statement.outer", "textobjects")
-      end, { desc = "Select around statement", silent = true })
-      vim.keymap.set({ "x", "o" }, "ab", function()
-        ts_select.select_textobject("@block.outer", "textobjects")
-      end, { desc = "Select around block", silent = true })
-      vim.keymap.set({ "x", "o" }, "ib", function()
-        ts_select.select_textobject("@block.inner", "textobjects")
-      end, { desc = "Select inside block", silent = true })
-      vim.keymap.set({ "x", "o" }, "aa", function()
-        ts_select.select_textobject("@parameter.outer", "textobjects")
-      end, { desc = "Select outside parameter", silent = true })
-      vim.keymap.set({ "x", "o" }, "ia", function()
-        ts_select.select_textobject("@parameter.inner", "textobjects")
-      end, { desc = "Select inside parameter", silent = true })
+      for _, k in ipairs(select_keys) do
+        vim.keymap.set({ "x", "o" }, k[1], function()
+          ts_select.select_textobject(k[2], "textobjects")
+        end, { desc = k[3], silent = true })
+      end
     end,
   },
   {
