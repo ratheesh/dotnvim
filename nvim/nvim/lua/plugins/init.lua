@@ -6,7 +6,7 @@ return {
   { "tpope/vim-repeat", keys = "." },
   {
     'hood/popui.nvim',
-    disable = false,
+    enabled = true,
     config = function()
       vim.ui.select = require('popui.ui-overrider')
       vim.ui.input = require('popui.input-overrider')
@@ -36,7 +36,6 @@ return {
   {
     "cshuaimin/ssr.nvim",
     enabled = true,
-    keys = { '<space>cR' },
     init = function()
       vim.keymap.set({ "n", "x" }, "<leader>cR", function()
         require("ssr").open()
@@ -66,7 +65,7 @@ return {
     'lewis6991/hover.nvim',
     enabled = true,
     event = 'LspAttach',
-    require = 'nvim-lspconfig',
+    dependencies = { 'nvim-lspconfig' },
     config = function()
       require('hover').setup {
         init = function()
