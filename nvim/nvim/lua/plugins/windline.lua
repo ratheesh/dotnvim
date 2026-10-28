@@ -290,7 +290,7 @@ basic.git = {
 				{ ' ' .. truncate(branch, 20), 'project' },
 				{ sep.right_rounded, 'sep_right_project' },
 				{ git_comps.diff_added({ format   = '  %s', show_zero = false }), 'added'   },
-				{ git_comps.diff_changed({ format = ' %s', show_zero = false  }), 'changed' },
+				{ git_comps.diff_changed({ format = '  %s', show_zero = false  }), 'changed' },
 				{ git_comps.diff_removed({ format = '  %s', show_zero = false }), 'removed' },
 	 			{ sep.right_rounded, 'right_sep_git' },
 				{ '─', hl_list.StatusLine },
